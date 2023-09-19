@@ -31,7 +31,7 @@ const port = "60000";
 
 const version = "v1";
 
-// const gateway = "jobara";
+// const gateway = "jobara";.
 const gateway = "moye";
 
 // 기본 url
