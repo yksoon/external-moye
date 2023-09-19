@@ -32,7 +32,6 @@ import { CommonRest } from "@/common/js/common";
 import { apiPath } from "@/webPath";
 
 const restTest = () => {
-    // 테스트
     const err = {};
 
     const restParams = {
