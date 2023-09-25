@@ -8,7 +8,17 @@ const path = require("path");
 
 export default ({ mode }) => {
     return defineConfig({
-        plugins: [vue()],
+        plugins: [
+            vue({
+                template: {
+                    compilerOptions: {
+                        isCustomElement: (tag) => {
+                            return tag.startsWith("Alert"); // (return true)
+                        },
+                    },
+                },
+            }),
+        ],
         resolve: {
             alias: {
                 "@": fileURLToPath(new URL("./src", import.meta.url)),

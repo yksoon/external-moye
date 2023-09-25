@@ -1,4 +1,4 @@
-<script scoped>
+<script>
 export default {
     name: "Admin",
     data() {

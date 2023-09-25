@@ -3,6 +3,7 @@ import { onMounted, ref, toRaw } from "vue";
 import { apiPath } from "@/webPath.js";
 import { CommonErrModule, CommonRest } from "@/common/js/common.js";
 import { useCodesStore } from "@/stores/codes";
+import { useAlertStore } from "@/stores/noti";
 
 export default {
     name: "Signin",
@@ -10,13 +11,20 @@ export default {
         const err = CommonErrModule();
 
         const codes = toRaw(useCodesStore().getCodes);
+        const isActive = useAlertStore();
 
         onMounted(() => {
-            console.log(codes);
+            // console.log(codes);
         });
+
+        const handleAlert = (bool) => {
+            isActive.setIsAlertOpen(bool);
+        };
 
         return {
             // count: count,
+            isActive: isActive,
+            handleAlert,
         };
     },
 };
@@ -38,6 +46,12 @@ export default {
     </div>
     <div>
         <a>Sign in</a>
+    </div>
+    <div>
+        <a @click="handleAlert(true)">test Alert</a>
+    </div>
+    <div>
+        <a @click="handleAlert(false)">close Alert</a>
     </div>
 </template>
 

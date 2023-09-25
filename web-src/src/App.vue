@@ -1,6 +1,6 @@
 <script>
 import { RouterView } from "vue-router";
-import HeaderNav from "@/components/web/common/HeaderNav.vue";
+
 import { onMounted } from "vue";
 import { apiPath } from "@/webPath";
 import { CommonErrModule, CommonRest, CommonConsole } from "@/common/js/common";
@@ -11,6 +11,7 @@ import { useResultCodeStore } from "@/stores/resultCode";
 
 export default {
     name: "App",
+    // components: [Alert, HeaderNav],
     setup() {
         const err = CommonErrModule();
         const codes = useCodesStore();
@@ -86,10 +87,16 @@ export default {
 };
 </script>
 
+<script setup>
+import Alert from "@/common/js/Alert.vue";
+import HeaderNav from "@/components/web/common/HeaderNav.vue";
+</script>
+
 <template>
     <div>
         <HeaderNav />
         <RouterView />
+        <Alert />
     </div>
 </template>
 

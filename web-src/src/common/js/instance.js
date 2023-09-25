@@ -3,6 +3,9 @@ import axios from "axios";
 let ip;
 let token;
 
+const headerTokenName = "Moye-Token";
+const headerSrcnName = "Moye-Src";
+
 const timeOut = 20000;
 
 /*
@@ -128,8 +131,8 @@ const setInterceptors = (config) => {
             : recoilSession.ipInfo;
     token = recoilSession === null ? "" : recoilSession.userToken;
 
-    config.headers["Jobara-Src"] = ip ? ip : "";
-    config.headers["Jobara-Token"] = token ? token : "";
+    config.headers[headerSrcnName] = ip ? ip : "";
+    config.headers[headerTokenName] = token ? token : "";
 
     return config;
 };
@@ -151,8 +154,8 @@ const setInterceptorsAdmin = (config) => {
             : recoilSession.ipInfo;
     token = recoilSession === null ? "" : recoilSession.userTokenAdmin;
 
-    config.headers["Jobara-Src"] = ip ? ip : "";
-    config.headers["Jobara-Token"] = token ? token : "";
+    config.headers[headerSrcnName] = ip ? ip : "";
+    config.headers[headerTokenName] = token ? token : "";
 
     return config;
 };
