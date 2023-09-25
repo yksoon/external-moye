@@ -1,55 +1,22 @@
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, toRaw } from "vue";
 import { apiPath } from "@/webPath.js";
 import { CommonErrModule, CommonRest } from "@/common/js/common.js";
+import { useCodesStore } from "@/stores/codes";
 
 export default {
     name: "Signin",
     setup() {
         const err = CommonErrModule();
 
-        // 상태(State)
-        const count = ref(0);
+        const codes = toRaw(useCodesStore().getCodes);
 
         onMounted(() => {
-            getCodes();
+            console.log(codes);
         });
 
-        // 기능(Actions)
-        function increment() {
-            count.value++;
-        }
-
-        const getCodes = () => {
-            // /v1/_codes
-            // POST
-            const restParams = {
-                method: "post",
-                url: apiPath.api_codes,
-                data: {},
-                err: err,
-                callback: (res) => responsLogic(res),
-            };
-
-            CommonRest(restParams);
-
-            const responsLogic = (res) => {
-                console.log(res);
-
-                const result_code = res.headers.result_code;
-                // 성공
-                if (result_code === successCode.success) {
-                } else {
-                    // 에러
-                    // CommonConsole("log", res);
-                    // setIsSpinner(false);
-                }
-            };
-        };
-
         return {
-            count: count,
-            increment,
+            // count: count,
         };
     },
 };
@@ -68,6 +35,9 @@ export default {
         <span>
             <input style="background-color: white" type="password" />
         </span>
+    </div>
+    <div>
+        <a>Sign in</a>
     </div>
 </template>
 

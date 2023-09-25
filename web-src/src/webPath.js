@@ -73,6 +73,11 @@ const apiPath = {
     // POST
     // 공통 코드
     api_codes: `${base_api_url + slash + version + slash}_codes`,
+
+    // /v1/info/result
+    // GET
+    // 공통 코드 result
+    api_result: `${base_api_url + slash + version + slash}info/result`,
 };
 
 export { routerPath, apiPath };

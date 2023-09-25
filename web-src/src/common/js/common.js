@@ -1,5 +1,5 @@
 import { RestServer } from "./rest";
-import { errorCode } from "./resultCode";
+import { errorCode, successCode } from "./resultCode";
 
 // TODO : 서비스 활성화 상태 체크를 위한 health check 로직 생성 및 테스트 하기 (제한 권한 없음) - 메디시티 참고
 
@@ -127,4 +127,53 @@ const CommonErrModule = () => {
     return err;
 };
 
-export { CommonRest, CommonErrorCatch, CommonErrModule };
+// -- 디버깅용 콘솔 --
+// 파라미터:
+// type - String
+// responseData - 객체
+const CommonConsole = (type, responseData) => {
+    let result_message_ko;
+    let result_message_en;
+    let result_code;
+    let message;
+
+    // response 설정
+    let response;
+    !responseData.response
+        ? (response = responseData)
+        : (response = responseData.response);
+
+    if (response.headers) {
+        result_message_ko = response.headers.result_message_ko;
+        result_message_en = response.headers.result_message_en;
+        result_code = response.headers.result_code;
+        message = response.headers.message;
+    } else {
+        response = responseData;
+    }
+
+    switch (type) {
+        case "log":
+            return console.log(responseData);
+
+        case "decLog":
+            // 규격상 http request header는 영어밖에 안되기때문에 디코딩 해준다
+            return console.log(
+                decodeURI(result_message_ko),
+                decodeURI(result_message_en),
+                decodeURI(result_code),
+                decodeURI(message)
+            );
+
+        case "alertMsg":
+            return alert(decodeURI(result_message_ko).replace("%20", " "));
+
+        case "alert":
+            return alert(responseData);
+
+        default:
+            break;
+    }
+};
+
+export { CommonRest, CommonErrorCatch, CommonErrModule, CommonConsole };
