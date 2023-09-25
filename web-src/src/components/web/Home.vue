@@ -30,6 +30,19 @@
 <script>
 import { CommonRest } from "@/common/js/common";
 import { apiPath } from "@/webPath";
+import { useRecoilState } from "vue-recoil";
+import {
+    checkScheduleAtom,
+    codesAtom,
+    countryBankAtom,
+    ipInfoAtom,
+    resultCodeAtom,
+    userInfoAtom,
+    userTokenAtom,
+    viewScheduleAtom,
+} from "@/recoils/atoms";
+
+
 
 const restTest = () => {
     const err = {};
@@ -56,6 +69,13 @@ export default {
         second: false,
         restTest: restTest,
     }),
+    mounted() {
+        const [codes, setCodes] = useRecoilState(codesAtom);
+
+        setCodes('test');
+
+        console.log(codes.value);
+    }
 };
 </script>
 
