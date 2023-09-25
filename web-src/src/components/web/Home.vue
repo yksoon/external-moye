@@ -1,3 +1,24 @@
+<script setup>
+// const restTest = () => {
+//     const err = {};
+
+//     const restParams = {
+//         method: "post",
+//         url: apiPath.api_codes,
+//         data: {},
+//         err: err,
+//         callback: (res) => responsLogic(res),
+//     };
+
+//     CommonRest(restParams);
+
+//     const responsLogic = (res) => {
+//         console.log(res);
+//     };
+// };
+
+</script>
+
 <template>
     <div>
         <h1>Home Page</h1>
@@ -20,64 +41,14 @@
             >Alert</md-button
         >
 
-        <br /><a @click="restTest">Alert First A Tag</a> <br /><a
+        <br /><a @click="alert('hello')">Alert First A Tag</a> <br /><a
             @click="second = true"
             >Alert Second A Tag</a
         >
     </div>
 </template>
 
-<script>
-import { CommonRest } from "@/common/js/common";
-import { apiPath } from "@/webPath";
-import { useRecoilState } from "vue-recoil";
-import {
-    checkScheduleAtom,
-    codesAtom,
-    countryBankAtom,
-    ipInfoAtom,
-    resultCodeAtom,
-    userInfoAtom,
-    userTokenAtom,
-    viewScheduleAtom,
-} from "@/recoils/atoms";
 
-
-
-const restTest = () => {
-    const err = {};
-
-    const restParams = {
-        method: "post",
-        url: apiPath.api_codes,
-        data: {},
-        err: err,
-        callback: (res) => responsLogic(res),
-    };
-
-    CommonRest(restParams);
-
-    const responsLogic = (res) => {
-        console.log(res);
-    };
-};
-
-export default {
-    name: "Home",
-    data: () => ({
-        first: false,
-        second: false,
-        restTest: restTest,
-    }),
-    mounted() {
-        const [codes, setCodes] = useRecoilState(codesAtom);
-
-        setCodes('test');
-
-        console.log(codes.value);
-    }
-};
-</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped></style>

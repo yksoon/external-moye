@@ -1,20 +1,18 @@
-import Vue from 'vue'
-import App from './App.vue'
-import { createPinia, PiniaVuePlugin } from 'pinia' // 상태관리 라이브러리
-import router from './routes/router'
-import VueMaterial from 'vue-material' // CSS 라이브러리
+import './assets/main.css'
+import VueMaterial from 'vue-material' // CSS 라이브러리 (https://www.npmjs.com/package/vue-material)
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
-Vue.config.productionTip = false
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-Vue.use(VueMaterial)
+import App from './App.vue'
+import router from './router'
 
-Vue.use(PiniaVuePlugin)
-const pinia = createPinia()
+const app = createApp(App)
 
-new Vue({
-    render: h => h(App),
-    router,
-    pinia
-}).$mount('#app')
+app.use(createPinia())
+app.use(router)
+app.use(VueMaterial)
+
+app.mount('#app')

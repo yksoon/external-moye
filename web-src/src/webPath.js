@@ -54,7 +54,7 @@ const routerPath = {
 
     // notice
     // /notice/notice-list
-    web_notice_url: `${base_url}notice/notice-list`,
+    web_notice_url: `${base_url}notice/notices`,
 
     // ---------------------- admin -------------------------
     // 메인
