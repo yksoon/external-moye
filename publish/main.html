@@ -21,6 +21,7 @@
     <script type="text/javascript" language="javascript" src="js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" language="javascript" src="js/aos.js"></script>
     <script type="text/javascript" language="javascript" src="js/nav.js"></script>
+    <script type="text/javascript" language="javascript" src="js/crawler.js"></script>
 </head>
 
 <body>
@@ -116,14 +117,208 @@
 
         <div id="mainvisual">
             <div class="main_txt">
-                <h2>전국민이 열광하는 레전드를 만나다</h2>
+                <div class="main_txt_wrap">
+                    <h2>전국민이 열광하는 레전드를 만나다</h2>
+                    <p>“좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만, 쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이 모두의예체능의 Vision입니다."</p>
+                </div>
             </div>
         </div>
 
         <!-- container //S-->
         <div id="container">
             <div class="section01">
+                <div class="top">
+                    <h3 class="title">LIST OF LEGEND</h3>
+                    <p>130개 예체능 카테고리 레전드 마스터</p>
+                    <a href="" class="more_btn"><span>코치진 더보기</span></a>
+                </div>
+                <!-- banner-slider //S-->
+                <div class="slide_box">
+                    <div id="gsefSpan">
+                        <div class="marquee" id="gsefSpan1">
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide_box">
+                    <div id="gsefSpan">
+                        <div class="marquee" id="gsefSpan2">
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="person">
+                                <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
+                                    <img src="" alt="">
+                                    <p>
+                                        <span class="name">이름</span>
+                                        <span class="field">분야</span>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <script>
+                    marqueeInit({
+                        uniqueid: 'gsefSpan1',
+                        style: {
+                            'margin-left': '0px',
+                            'margin-bottom': '0px',
+                            'padding': '0px',
+                            'width': '100%',
+                            'height': '315px'
+                        },
+                        inc: 10, //speed - pixel increment for each iteration of this marquee's movement
+                        mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+                        moveatleast: 1,
+                        neutral: 1500,
+                        savedirection: true
+                    });
+                    marqueeInit({
+                        uniqueid: 'gsefSpan2',
+                        style: {
+                            'margin-left': '0px',
+                            'margin-bottom': '0px',
+                            'padding': '0px',
+                            'width': '100%',
+                            'height': '315px'
+                        },
+                        inc: 10, //speed - pixel increment for each iteration of this marquee's movement
+                        mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+                        moveatleast: 1,
+                        neutral: 1500,
+                        savedirection: true,
+                        direction: 'right'
+                    });
+                </script>
+                <!-- banner-slider //E-->
+
+
+            </div>
+
+            <div class="section02">
+                <div class="top">
+                    <h3 class="title">CLASSES OF LEGEND</h3>
+                    <p>“전설을 만나다” 레전드 코치의 레슨을 직접 경험해보세요</p>
+                </div>
+                <div class="category">
+                    <div class="icon_wrap">
+                        <img src="img/main/sports01.png" alt="">
+                        <img src="img/main/sports02.png" alt="">
+                        <img src="img/main/sports03.png" alt="">
+                        <img src="img/main/sports04.png" alt="">
+                        <img src="img/main/sports05.png" alt="">
+                        <img src="img/main/sports06.png" alt="">
+                        <img src="img/main/sports07.png" alt="">
+                        <img src="img/main/sports08.png" alt="">
+                        <img src="img/main/sports09.png" alt="">
+                        <img src="img/main/sports10.png" alt="">
+                        <img src="img/main/sports11.png" alt="">
+                        <img src="img/main/sports12.png" alt="">
+                        <img src="img/main/sports13.png" alt="">
+                        <img src="img/main/sports14.png" alt="">
+                        <img src="img/main/sports15.png" alt="">
+                        <img src="img/main/sports16.png" alt="">
+                        <img src="img/main/sports17.png" alt="">
+                        <img src="img/main/sports18.png" alt="">
+                    </div>
+                    <a href="" class="more_btn"><span>카테고리 더보기</span></a>
+                </div>
+                <div class="class_wrap">
+                    <div>
+                        <img src="img/main/class01.png" alt="">
+                        <h5>PRIVATE CLASS</h5>
+                        <p>
+                            1:1 One Point Lesson<br>
+                            1:N Buddies Lesson
+                        </p>
+                    </div>
+                    <div>
+                        <img src="img/main/class02.png" alt="">
+                        <h5>SCHOOL CLASS</h5>
+                        <p>
+                            1:1 One Point Lesson<br>
+                            정기 특별 레슨<br>
+                            지자체 파견 레슨
+                        </p>
+                    </div>
+                    <div>
+                        <img src="img/main/class03.png" alt="">
+                        <h5>ONLINE CLASS</h5>
+                        <p>
+                            온라인 클래스
+                        </p>
+                    </div>
+                    <div>
+                        <img src="img/main/class04.png" alt="">
+                        <h5>SPECIAL CLASS</h5>
+                        <p>
+                            구독형 레슨<br>
+                            레슨 + 팀 운영 혼합<Br>
+                            유학 대비반, 커리어 패스 상담
+                        </p>
+                    </div>
+                </div>
             </div>
 
 
