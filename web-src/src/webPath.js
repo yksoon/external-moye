@@ -10,7 +10,7 @@ const protocol = "http://";
 
 // 실행 환경에 따라 분기처리
 // TODO: 백엔드 세팅 후 host 주소 변경
-const isDeveloping = process.env.VUE_APP_ISDEVELOPING;
+// const isDeveloping = process.env.VUE_APP_ISDEVELOPING;
 
 // gateway.hicomp.com:60000 => gateway prefix로만 구분
 // ex) http://gateway.hicomp.com:60000/jobara/v1/info
@@ -25,7 +25,7 @@ const isDeveloping = process.env.VUE_APP_ISDEVELOPING;
 //     host = "dev-api.medi-city.co.kr";
 // }
 
-const host = "";
+const host = "gateway.hicompint.com";
 
 const port = "60000";
 

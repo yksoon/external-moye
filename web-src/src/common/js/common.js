@@ -1,4 +1,5 @@
 import { RestServer } from "./rest";
+import { errorCode } from "./resultCode";
 
 // TODO : 서비스 활성화 상태 체크를 위한 health check 로직 생성 및 테스트 하기 (제한 권한 없음) - 메디시티 참고
 
@@ -38,7 +39,6 @@ const CommonRest = async (restParams = {}) => {
             );
         });
 };
-
 
 // --에러처리--
 // 파라미터:
@@ -101,7 +101,6 @@ const CommonErrorCatch = async (
 
     // 타임아웃 (axios 타임아웃 걸릴경우)
     if (error.message === `timeout of ${timeOut}ms exceeded`) {
-
         setIsSpinner(false);
 
         CommonNotify({
@@ -112,5 +111,20 @@ const CommonErrorCatch = async (
     }
 };
 
+const CommonErrModule = () => {
+    // const { alert } = useAlert();
+    // const { confirm } = useConfirm();
+    // const setIsSpinner = useSetRecoilState(isSpinnerAtom);
+    // const resetUserInfoAdmin = useResetRecoilState(userInfoAdminAtom);
+    // const resetUserTokenAdmin = useResetRecoilState(userTokenAdminAtom);
+    const err = {
+        // setIsSpinner,
+        alert,
+        // resetUserInfoAdmin,
+        // resetUserTokenAdmin,
+    };
 
-export {CommonRest, CommonErrorCatch}
+    return err;
+};
+
+export { CommonRest, CommonErrorCatch, CommonErrModule };
