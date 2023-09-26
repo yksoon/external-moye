@@ -46,6 +46,7 @@ const router = createRouter({
         },
         {
             // 404
+            // vue-router 4버전부터는 나머지 경로를 "/:catchAll(.*)" 로 잡아줘야 에러가 안남
             path: "/:catchAll(.*)",
             name: "notFound",
             component: NotFound,

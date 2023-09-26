@@ -6,8 +6,6 @@ import {
     CommonRest,
     CommonNotify,
 } from "@/common/js/common.js";
-import { useCodesStore } from "@/stores/codes";
-import { useAlertStore, useConfirmStore } from "@/stores/noti";
 
 export default {
     name: "Signin",

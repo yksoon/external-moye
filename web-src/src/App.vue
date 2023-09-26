@@ -89,10 +89,10 @@ export default {
 </script>
 
 <script setup>
-import CommonAlert from "@/common/js/CommonAlert.vue";
-import CommonConfirm from "@/common/js/CommonConfirm.vue";
+import CommonAlert from "@/common/components/CommonAlert.vue";
+import CommonConfirm from "@/common/components/CommonConfirm.vue";
 import HeaderNav from "@/components/web/common/HeaderNav.vue";
-import CommonSpinner from "@/common/js/CommonSpinner.vue";
+import CommonSpinner from "@/common/components/CommonSpinner.vue";
 </script>
 
 <template>
