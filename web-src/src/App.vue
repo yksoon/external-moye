@@ -10,6 +10,7 @@ import { useCodesStore } from "@/stores/codes";
 import { useResultCodeStore } from "@/stores/resultCode";
 
 export default {
+    components: { CommonSpinner },
     name: "App",
     // components: [Alert, HeaderNav],
     setup() {
@@ -88,15 +89,19 @@ export default {
 </script>
 
 <script setup>
-import Alert from "@/common/js/Alert.vue";
+import CommonAlert from "@/common/js/CommonAlert.vue";
+import CommonConfirm from "@/common/js/CommonConfirm.vue";
 import HeaderNav from "@/components/web/common/HeaderNav.vue";
+import CommonSpinner from "@/common/js/CommonSpinner.vue";
 </script>
 
 <template>
     <div>
-        <HeaderNav />
+        <!-- <HeaderNav /> -->
         <RouterView />
-        <Alert />
+        <CommonAlert />
+        <CommonConfirm />
+        <CommonSpinner />
     </div>
 </template>
 

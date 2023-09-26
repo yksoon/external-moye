@@ -4,6 +4,7 @@ import Admin from "@/components/admin/Admin.vue";
 import Notices from "@/components/web/notice/Notices.vue";
 import NotFound from "@/components/web/NotFound.vue";
 import Signin from "@/components/admin/Signin.vue";
+import TestPage from "@/components/admin/TestPage.vue";
 import { routerPath } from "@/webPath";
 
 const router = createRouter({
@@ -36,6 +37,12 @@ const router = createRouter({
             path: routerPath.admin_signin_url, // "/admin/signin"
             name: "signin",
             component: Signin,
+        },
+        {
+            // 관리자 기능테스트
+            path: "/admin/test-page", // "/admin/signin"
+            name: "TestPage",
+            component: TestPage,
         },
         {
             // 404

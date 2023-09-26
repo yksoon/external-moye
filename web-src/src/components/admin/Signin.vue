@@ -1,57 +1,107 @@
 <script>
 import { onMounted, ref, toRaw } from "vue";
 import { apiPath } from "@/webPath.js";
-import { CommonErrModule, CommonRest } from "@/common/js/common.js";
+import {
+    CommonErrModule,
+    CommonRest,
+    CommonNotify,
+} from "@/common/js/common.js";
 import { useCodesStore } from "@/stores/codes";
-import { useAlertStore } from "@/stores/noti";
+import { useAlertStore, useConfirmStore } from "@/stores/noti";
 
 export default {
     name: "Signin",
     setup() {
-        const err = CommonErrModule();
-
-        const codes = toRaw(useCodesStore().getCodes);
-        const isActive = useAlertStore();
+        const inputID = ref(null);
+        const inputPW = ref(null);
 
         onMounted(() => {
             // console.log(codes);
         });
 
-        const handleAlert = (bool) => {
-            isActive.setIsAlertOpen(bool);
+        const clickLogin = () => {
+            if (!inputID.value.value) {
+                CommonNotify({
+                    type: "alert",
+                    message: "아이디를 입력해주세요",
+                    callback: () => callbackLogic(),
+                });
+
+                const callbackLogic = () => {
+                    // console.log(inputID);
+                };
+
+                return false;
+            }
+            if (!inputPW.value.value) {
+                CommonNotify({
+                    type: "alert",
+                    message: "비밀번호를 입력해주세요",
+                });
+
+                return false;
+            }
+
+            // login();
         };
 
         return {
-            // count: count,
-            isActive: isActive,
-            handleAlert,
+            inputID: inputID,
+            inputPW: inputPW,
+            clickLogin: () => clickLogin(),
         };
     },
 };
 </script>
 
 <template>
-    <h1>Signin Page</h1>
-    <div>
-        <span> ID : </span>
-        <span>
-            <input style="background-color: white" type="text" />
-        </span>
-    </div>
-    <div>
-        <span> PW : </span>
-        <span>
-            <input style="background-color: white" type="password" />
-        </span>
-    </div>
-    <div>
-        <a>Sign in</a>
-    </div>
-    <div>
-        <a @click="handleAlert(true)">test Alert</a>
-    </div>
-    <div>
-        <a @click="handleAlert(false)">close Alert</a>
+    <div class="wrap">
+        <div class="admin">
+            <header>
+                <div class="login_wrap">
+                    <div class="login">
+                        <h1>
+                            <img
+                                src="../images/main/maintxt.png"
+                                alt=""
+                                style="width: 210px"
+                            />
+                        </h1>
+                        <p>로그인을 해주세요</p>
+                        <div class="input_id">
+                            <h5>아이디</h5>
+                            <input
+                                type="text"
+                                class="input"
+                                placeholder="ID"
+                                ref="inputID"
+                                autofocus
+                            />
+                        </div>
+                        <div>
+                            <h5>비밀번호</h5>
+                            <input
+                                type="password"
+                                class="input"
+                                placeholder="PW"
+                                ref="inputPW"
+                            />
+                        </div>
+                        <div class="flex login_btn">
+                            <div>
+                                <!-- <input type="checkbox" id="id_remember" />
+                                <label for="id_remember">아이디 저장</label> -->
+                            </div>
+                            <div>
+                                <a class="subbtn on" @click="clickLogin"
+                                    >로그인</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
     </div>
 </template>
 

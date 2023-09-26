@@ -1,5 +1,7 @@
 import { RestServer } from "./rest";
 import { errorCode, successCode } from "./resultCode";
+import { useAlertStore, useConfirmStore } from "@/stores/noti";
+import { useSpinnerStore } from "@/stores/spinner";
 
 // TODO : 서비스 활성화 상태 체크를 위한 health check 로직 생성 및 테스트 하기 (제한 권한 없음) - 메디시티 참고
 
@@ -176,4 +178,42 @@ const CommonConsole = (type, responseData) => {
     }
 };
 
-export { CommonRest, CommonErrorCatch, CommonErrModule, CommonConsole };
+// 알림창
+const CommonNotify = async (params) => {
+    const type = params.type;
+    // const hook = option.hook;
+    // const title = params.title;
+    // const message = params.message;
+    // const callback = params.callback ? params.callback : null;
+
+    const useAlert = useAlertStore();
+    const useConfirm = useConfirmStore();
+
+    switch (type) {
+        case "confirm":
+            useConfirm.setIsConfirmOpen(params);
+            break;
+
+        case "alert":
+            useAlert.setIsAlertOpen(params);
+            break;
+        default:
+            break;
+    }
+};
+
+// 공용 스피너
+const CommonSpinner = (params) => {
+    const useSpinner = useSpinnerStore();
+
+    useSpinner.setIsSpinner(params);
+};
+
+export {
+    CommonRest,
+    CommonErrorCatch,
+    CommonErrModule,
+    CommonConsole,
+    CommonNotify,
+    CommonSpinner,
+};
