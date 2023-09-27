@@ -13,7 +13,7 @@ export default ({ mode }) => {
                 template: {
                     compilerOptions: {
                         isCustomElement: (tag) => {
-                            return tag.startsWith("Alert"); // (return true)
+                            return tag.startsWith("*"); // (return true)
                         },
                     },
                 },

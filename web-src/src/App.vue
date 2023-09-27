@@ -10,14 +10,18 @@ import { useIpInfoStore } from "@/stores/ipInfo";
 import { storeToRefs } from "pinia";
 import axios from "axios";
 
+import HeaderNav from "@/components/web/common/HeaderNav.vue";
 import CommonAlert from "@/common/components/CommonAlert.vue";
 import CommonConfirm from "@/common/components/CommonConfirm.vue";
-import HeaderNav from "@/components/web/common/HeaderNav.vue";
 import CommonSpinner from "@/common/components/CommonSpinner.vue";
 
 export default {
+    components: {
+        CommonAlert,
+        CommonConfirm,
+        CommonSpinner,
+    },
     name: "App",
-    // components: [Alert, HeaderNav],
     setup() {
         const err = CommonErrModule();
         const codes = useCodesStore();
@@ -132,19 +136,12 @@ export default {
                 }
             };
         };
-
-        return {
-            RouterView: RouterView,
-            CommonAlert: CommonAlert,
-            CommonConfirm: CommonConfirm,
-            CommonSpinner: CommonSpinner,
-        };
     },
 };
 </script>
 
 <template>
-    <div>
+    <div class="wrapper">
         <!-- <HeaderNav /> -->
         <RouterView />
         <CommonAlert />

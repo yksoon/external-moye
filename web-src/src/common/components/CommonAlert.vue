@@ -1,12 +1,18 @@
 <script>
 import { storeToRefs } from "pinia";
 import { useAlertStore } from "@/stores/noti";
+import { onMounted, watch } from "vue";
 
 export default {
     name: "CommonAlert",
     setup() {
         const useAlert = useAlertStore();
         const { isOpen, title, message, callback } = storeToRefs(useAlert);
+
+        onMounted(() => {
+            console.log("111111111111");
+            console.log(isOpen);
+        });
 
         return {
             useAlert: useAlert,

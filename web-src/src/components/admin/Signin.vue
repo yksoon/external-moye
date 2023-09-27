@@ -18,7 +18,7 @@ export default {
         });
 
         const clickLogin = () => {
-            if (!inputID.value.value) {
+            if (!inputID.value.value.length) {
                 CommonNotify({
                     type: "alert",
                     message: "아이디를 입력해주세요",
@@ -91,9 +91,13 @@ export default {
                                 <label for="id_remember">아이디 저장</label> -->
                             </div>
                             <div>
-                                <a class="subbtn on" @click="clickLogin"
-                                    >로그인</a
+                                <a
+                                    class="btn btn01"
+                                    href="#"
+                                    @click="clickLogin"
                                 >
+                                    로그인
+                                </a>
                             </div>
                         </div>
                     </div>

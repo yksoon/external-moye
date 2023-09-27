@@ -182,7 +182,7 @@ const CommonConsole = (type, responseData) => {
 };
 
 // 알림창
-const CommonNotify = async (params) => {
+const CommonNotify = (params) => {
     const type = params.type;
     // const hook = option.hook;
     // const title = params.title;
