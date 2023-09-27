@@ -78,6 +78,14 @@ const apiPath = {
     // GET
     // 공통 코드 result
     api_result: `${base_api_url + slash + version + slash}info/result`,
+
+    // ---------------------- ADMIN ----------------------
+
+    // ---------------------- Sign In API ----------------------
+    // /v1/info/result
+    // GET
+    // 공통 코드 result
+    api_admin_signin: `${base_api_url + slash + version + slash}signin`,
 };
 
 export { routerPath, apiPath };

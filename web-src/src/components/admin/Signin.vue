@@ -5,7 +5,11 @@ import {
     CommonErrModule,
     CommonRest,
     CommonNotify,
+    CommonSpinner,
 } from "@/common/js/common.js";
+import { successCode } from "@/common/js/resultCode";
+import { useUserInfoStore, useUserTokenStore } from "@/stores/userInfo";
+import { useRouter } from "vue-router";
 
 export default {
     name: "Signin",
@@ -13,10 +17,18 @@ export default {
         const inputID = ref(null);
         const inputPW = ref(null);
 
+        const router = useRouter();
+
+        const useUserInfo = useUserInfoStore();
+        const useUserToken = useUserTokenStore();
+
+        const err = CommonErrModule();
+
         onMounted(() => {
             // console.log(codes);
         });
 
+        // 로그인 버튼
         const clickLogin = () => {
             if (!inputID.value.value) {
                 CommonNotify({
@@ -26,8 +38,9 @@ export default {
                 });
 
                 const callbackLogic = () => {
-                    // inputID.value.focus();
-                    // document.getElementById("inputID").focus();
+                    setTimeout(() => {
+                        inputID.value.focus();
+                    }, 0);
                 };
 
                 return false;
@@ -36,12 +49,87 @@ export default {
                 CommonNotify({
                     type: "alert",
                     message: "비밀번호를 입력해주세요",
+                    callback: () => callbackLogic(),
                 });
 
+                const callbackLogic = () => {
+                    setTimeout(() => {
+                        inputPW.value.focus();
+                    }, 0);
+                };
                 return false;
             }
 
-            // login();
+            login();
+        };
+
+        // 로그인
+        const login = () => {
+            CommonSpinner(true);
+
+            // /v1/signin
+            // POST
+            const url = apiPath.api_admin_signin;
+            const data = {
+                // signup_type: "000",
+                user_id: inputID.value.value,
+                user_pwd: inputPW.value.value,
+                admin_yn: "Y",
+            };
+
+            // 처리 완료 후 로직
+            const responsLogic = (res) => {
+                let result_code = res.headers.result_code;
+
+                if (result_code === successCode.success) {
+                    let user_info = res.data.result_info;
+
+                    // 블랙리스트
+                    let deleteKey = [
+                        "md_licenses_number",
+                        // "signin_policy",
+                        // "signin_policy_cd",
+                        "user_pwd",
+                        "user_role",
+                        "user_salt",
+                    ];
+
+                    for (let i = 0; i < deleteKey.length; i++) {
+                        delete user_info[deleteKey[i]];
+                    }
+
+                    // setUserInfoAdmin(user_info);
+                    useUserInfo.setUserInfo(user_info);
+                    // setUserTokenAdmin(user_info.token);
+                    useUserToken.setUserToken(user_info.token);
+
+                    // setIsSpinner(false);
+                    CommonSpinner(false);
+
+                    // navigate(routerPath.admin_main_url);
+                    router.push({ name: "admin" });
+                } else {
+                    // setIsSpinner(false);
+                    CommonSpinner(false);
+
+                    CommonNotify({
+                        type: "alert",
+                        message: res.headers.result_message_ko,
+                    });
+                }
+            };
+
+            // 파라미터
+            const restParams = {
+                method: "post",
+                url: url,
+                data: data,
+                err: err,
+                callback: (res) => responsLogic(res),
+                admin: "Y",
+            };
+
+            CommonRest(restParams);
         };
 
         return {

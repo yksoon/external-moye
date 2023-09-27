@@ -34,8 +34,12 @@ export default {
 <template>
     <v-dialog width="500" v-model="isOpen">
         <v-card>
-            <v-card-title>{{ title }}</v-card-title>
-            <v-card-text>{{ message }}</v-card-text>
+            <v-card-title v-if="title">{{
+                decodeURI(title).replace("%20", " ")
+            }}</v-card-title>
+            <v-card-text>{{
+                decodeURI(message).replace("%20", " ")
+            }}</v-card-text>
 
             <v-card-actions>
                 <v-spacer></v-spacer>
