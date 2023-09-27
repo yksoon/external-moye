@@ -18,7 +18,7 @@ export default {
         });
 
         const clickLogin = () => {
-            if (!inputID.value.value.length) {
+            if (!inputID.value.value) {
                 CommonNotify({
                     type: "alert",
                     message: "아이디를 입력해주세요",
@@ -26,7 +26,8 @@ export default {
                 });
 
                 const callbackLogic = () => {
-                    console.log(inputID);
+                    // inputID.value.focus();
+                    // document.getElementById("inputID").focus();
                 };
 
                 return false;
@@ -72,6 +73,7 @@ export default {
                                 type="text"
                                 class="input"
                                 placeholder="ID"
+                                id="inputID"
                                 ref="inputID"
                                 autofocus
                             />
@@ -82,6 +84,7 @@ export default {
                                 type="password"
                                 class="input"
                                 placeholder="PW"
+                                id="inputPW"
                                 ref="inputPW"
                             />
                         </div>
@@ -93,8 +96,8 @@ export default {
                             <div>
                                 <a
                                     class="btn btn01"
-                                    href="#"
                                     @click="clickLogin"
+                                    style="cursor: pointer"
                                 >
                                     로그인
                                 </a>

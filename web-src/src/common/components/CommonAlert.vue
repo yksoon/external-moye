@@ -9,11 +9,6 @@ export default {
         const useAlert = useAlertStore();
         const { isOpen, title, message, callback } = storeToRefs(useAlert);
 
-        onMounted(() => {
-            console.log("111111111111");
-            console.log(isOpen);
-        });
-
         return {
             useAlert: useAlert,
             isOpen: isOpen,
