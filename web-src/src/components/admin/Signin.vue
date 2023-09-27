@@ -26,7 +26,7 @@ export default {
                 });
 
                 const callbackLogic = () => {
-                    // console.log(inputID);
+                    console.log(inputID);
                 };
 
                 return false;
@@ -59,11 +59,11 @@ export default {
                 <div class="login_wrap">
                     <div class="login">
                         <h1>
-                            <img
+                            <!-- <img
                                 src="../images/main/maintxt.png"
                                 alt=""
                                 style="width: 210px"
-                            />
+                            /> -->
                         </h1>
                         <p>로그인을 해주세요</p>
                         <div class="input_id">

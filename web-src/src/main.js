@@ -34,6 +34,5 @@ const app = createApp(App);
 app.use(pinia);
 app.use(vuetify);
 app.use(router);
-// app.use(VueMaterial)
 
 app.mount("#app");

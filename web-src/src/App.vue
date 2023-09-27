@@ -1,27 +1,75 @@
 <script>
 import { RouterView } from "vue-router";
-
 import { onMounted } from "vue";
 import { apiPath } from "@/webPath";
 import { CommonErrModule, CommonRest, CommonConsole } from "@/common/js/common";
 import { successCode } from "@/common/js/resultCode";
-import { mapActions, mapState } from "pinia";
 import { useCodesStore } from "@/stores/codes";
 import { useResultCodeStore } from "@/stores/resultCode";
+import { useIpInfoStore } from "@/stores/ipInfo";
+import { storeToRefs } from "pinia";
+import axios from "axios";
+
+import CommonAlert from "@/common/components/CommonAlert.vue";
+import CommonConfirm from "@/common/components/CommonConfirm.vue";
+import HeaderNav from "@/components/web/common/HeaderNav.vue";
+import CommonSpinner from "@/common/components/CommonSpinner.vue";
 
 export default {
-    components: { CommonSpinner },
     name: "App",
     // components: [Alert, HeaderNav],
     setup() {
         const err = CommonErrModule();
         const codes = useCodesStore();
         const resultCode = useResultCodeStore();
+        const useIpInfo = useIpInfoStore();
+
+        const { ipInfo } = storeToRefs(useIpInfo);
 
         onMounted(() => {
-            setInterval(getCodes, 3600000);
-            setInterval(getResultCode, 3600000);
+            if (ipInfo.value) {
+                setInterval(getCodes(), 3600000);
+                setInterval(getResultCode(), 3600000);
+            } else {
+                getIpInfo();
+            }
         });
+
+        const getIpInfo = async () => {
+            let ip;
+
+            await axios
+                .get("https://geolocation-db.com/json/")
+                .then((res) => {
+                    // const ip = res.data.IPv4;
+                    const getIp = () => {
+                        return new Promise((resolve, reject) => {
+                            const data = res.data.IPv4;
+                            resolve(data);
+                        });
+                    };
+
+                    getIp()
+                        .then((resolvedData) => {
+                            useIpInfo.setIpInfo(resolvedData);
+                            sessionStorage.setItem("ipInfo", resolvedData);
+                        })
+                        .then(() => {
+                            getCodes();
+                            getResultCode();
+                        });
+
+                    // callback(ip);
+                    // dispatch(set_ip_info(ip));
+                })
+                .catch((error) => {
+                    ip = "";
+                    useIpInfo.setIpInfo(ip);
+                    sessionStorage.setItem("ipInfo", ip);
+                    // callback(ip);
+                    // dispatch(set_ip_info(ip));
+                });
+        };
 
         // codes
         const getCodes = () => {
@@ -84,15 +132,15 @@ export default {
                 }
             };
         };
+
+        return {
+            RouterView: RouterView,
+            CommonAlert: CommonAlert,
+            CommonConfirm: CommonConfirm,
+            CommonSpinner: CommonSpinner,
+        };
     },
 };
-</script>
-
-<script setup>
-import CommonAlert from "@/common/components/CommonAlert.vue";
-import CommonConfirm from "@/common/components/CommonConfirm.vue";
-import HeaderNav from "@/components/web/common/HeaderNav.vue";
-import CommonSpinner from "@/common/components/CommonSpinner.vue";
 </script>
 
 <template>

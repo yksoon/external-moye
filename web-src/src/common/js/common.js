@@ -61,7 +61,8 @@ const CommonErrorCatch = async (
             error.response.status === errorCode.timeOut || // 타임아웃 - 500
             error.response.status === errorCode.timeOut2 // 타임아웃 - 503
         ) {
-            setIsSpinner(false);
+            // setIsSpinner(false);
+            CommonSpinner(false);
 
             CommonNotify({
                 type: "alert",
@@ -86,7 +87,8 @@ const CommonErrorCatch = async (
         }
         // 에러
         else {
-            setIsSpinner(false);
+            // setIsSpinner(false);
+            CommonSpinner(false);
 
             CommonNotify({
                 type: "alert",
@@ -95,7 +97,8 @@ const CommonErrorCatch = async (
             });
         }
     } else {
-        setIsSpinner(true);
+        // setIsSpinner(true);
+        CommonSpinner(true);
     }
 
     // TODO: 타임아웃 전역 사용 가능하도록 (env 설정)

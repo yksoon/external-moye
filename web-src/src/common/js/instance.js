@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useIpInfoStore } from "@/stores/ipInfo";
+import { storeToRefs } from "pinia";
 
 let ip;
 let token;
@@ -123,13 +125,18 @@ const setInterceptors = (config) => {
     //     JSON.parse(sessionStorage.getItem("recoilSession")).ipInfo !== null
     //         ? JSON.parse(sessionStorage.getItem("recoilSession")).ipInfo
     //         : sessionStorage.getItem("ipInfo");
-    const recoilSession = JSON.parse(sessionStorage.getItem("recoilSession"));
+    // const recoilSession = JSON.parse(sessionStorage.getItem("recoilSession"));
 
-    ip =
-        recoilSession === null
-            ? sessionStorage.getItem("ipInfo")
-            : recoilSession.ipInfo;
-    token = recoilSession === null ? "" : recoilSession.userToken;
+    const useIpInfo = useIpInfoStore();
+    const { ipInfo } = storeToRefs(useIpInfo);
+
+    const ip = ipInfo.value;
+
+    // ip =
+    //     recoilSession === null
+    //         ? sessionStorage.getItem("ipInfo")
+    //         : recoilSession.ipInfo;
+    // token = recoilSession === null ? "" : recoilSession.userToken;
 
     config.headers[headerSrcnName] = ip ? ip : "";
     config.headers[headerTokenName] = token ? token : "";
@@ -146,13 +153,18 @@ const setInterceptorsAdmin = (config) => {
     //     JSON.parse(sessionStorage.getItem("recoilSession")).ipInfo !== null
     //         ? JSON.parse(sessionStorage.getItem("recoilSession")).ipInfo
     //         : sessionStorage.getItem("ipInfo");
-    const recoilSession = JSON.parse(sessionStorage.getItem("recoilSession"));
+    // const recoilSession = JSON.parse(sessionStorage.getItem("recoilSession"));
 
-    ip =
-        recoilSession === null
-            ? sessionStorage.getItem("ipInfo")
-            : recoilSession.ipInfo;
-    token = recoilSession === null ? "" : recoilSession.userTokenAdmin;
+    // ip =
+    //     recoilSession === null
+    //         ? sessionStorage.getItem("ipInfo")
+    //         : recoilSession.ipInfo;
+    // token = recoilSession === null ? "" : recoilSession.userTokenAdmin;
+
+    const useIpInfo = useIpInfoStore();
+    const { ipInfo } = storeToRefs(useIpInfo);
+
+    const ip = ipInfo.value;
 
     config.headers[headerSrcnName] = ip ? ip : "";
     config.headers[headerTokenName] = token ? token : "";

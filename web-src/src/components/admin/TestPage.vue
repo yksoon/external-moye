@@ -24,7 +24,8 @@ export default {
         // const useSpinner = useSpinnerStore();
 
         onMounted(() => {
-            console.log(codes);
+            // console.log(codes);
+            // console.log("222222222222");
         });
 
         const handelConfirmOpen = () => {

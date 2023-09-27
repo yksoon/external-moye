@@ -5,44 +5,44 @@
     font-family: 'Pretendard';
     font-weight: 400;
     font-style: normal;
-    src: url('/public/font_hi/Pretendard-Regular.woff')  format('woff');
+    src: url('/font_hi/Pretendard-Regular.woff')  format('woff');
 }  
 @font-face {
     font-family: 'Pretendard';
     font-weight: 600;
     font-style: bold;
-    src: url('/public/font_hi/Pretendard-Medium.woff')  format('woff');
+    src: url('/font_hi/Pretendard-Medium.woff')  format('woff');
 }  
 @font-face {
     font-family: 'Pretendard';
     font-weight: 900;
     font-style: bold;
-    src: url('/public/font_hi/Pretendard-Bold.woff')  format('woff');
+    src: url('/font_hi/Pretendard-Bold.woff')  format('woff');
 }  
 
 @font-face {
     font-family: 'GmarketSans';
     font-weight: 300;
     font-style: normal;
-    src: url('/public/font_hi/GmarketSansTTFLight.woff')  format('woff');
+    src: url('/font_hi/GmarketSansTTFLight.woff')  format('woff');
 }  
 
 @font-face {
     font-family: 'GmarketSans';
     font-weight: 400;
     font-style: normal;
-    src: url('/public/font_hi/GmarketSansTTFMedium.woff')  format('woff');
+    src: url('/font_hi/GmarketSansTTFMedium.woff')  format('woff');
 } 
 @font-face {
     font-family: 'GmarketSans';
     font-weight: 900;
     font-style: bold;
-    src: url('/public/font_hi/GmarketSansTTFBold.woff')  format('woff');
+    src: url('/font_hi/GmarketSansTTFBold.woff')  format('woff');
 } 
 
 @font-face {
     font-family: 'LOTTERIACHAB';
-    src: url('/public/font_hi/chab.ttf') format("truetype");
+    src: url('/font_hi/chab.ttf') format("truetype");
     font-weight: normal;
     font-style: normal;
 }
