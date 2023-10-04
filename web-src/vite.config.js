@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 
 const path = require("path");
 
@@ -15,7 +16,15 @@ export default ({ mode }) => {
                         isCustomElement: (tag) => {
                             return tag.startsWith("*"); // (return true)
                         },
+                        jsx: "preserve",
                     },
+                },
+            }),
+            vueJsx({
+                // options are passed on to @vue/babel-plugin-jsx
+
+                compilerOptions: {
+                    jsx: "preserve",
                 },
             }),
         ],
@@ -32,6 +41,9 @@ export default ({ mode }) => {
             //         main: resolve(__dirname, "index.html"),
             //     },
             // },
+        },
+        define: {
+            global: {},
         },
     });
 };

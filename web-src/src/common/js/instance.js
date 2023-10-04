@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useIpInfoStore } from "@/stores/ipInfo";
 import { storeToRefs } from "pinia";
+import { useUserTokenStore } from "@/stores/userInfo";
 
 let ip;
 let token;
@@ -132,6 +133,8 @@ const setInterceptors = (config) => {
 
     const ip = ipInfo.value;
 
+    const userToken = useUserTokenStore().getUserToken;
+
     // ip =
     //     recoilSession === null
     //         ? sessionStorage.getItem("ipInfo")
@@ -139,7 +142,7 @@ const setInterceptors = (config) => {
     // token = recoilSession === null ? "" : recoilSession.userToken;
 
     config.headers[headerSrcnName] = ip ? ip : "";
-    config.headers[headerTokenName] = token ? token : "";
+    config.headers[headerTokenName] = userToken ? userToken : "";
 
     return config;
 };
@@ -166,8 +169,10 @@ const setInterceptorsAdmin = (config) => {
 
     const ip = ipInfo.value;
 
+    const userToken = useUserTokenStore().getUserToken;
+
     config.headers[headerSrcnName] = ip ? ip : "";
-    config.headers[headerTokenName] = token ? token : "";
+    config.headers[headerTokenName] = userToken ? userToken : "";
 
     return config;
 };

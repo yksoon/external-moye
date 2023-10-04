@@ -21,7 +21,7 @@ export const useUserTokenStore = defineStore("userToken", {
     persist: {
         storage: sessionStorage, //쓰고싶은 스토리지(세션 또는 로컬)
     },
-    state: () => ({ userToken: {} }),
+    state: () => ({ userToken: "" }),
     actions: {
         setUserToken(param) {
             this.userToken = param;

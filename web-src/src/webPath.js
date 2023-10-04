@@ -86,6 +86,23 @@ const apiPath = {
     // GET
     // 공통 코드 result
     api_admin_signin: `${base_api_url + slash + version + slash}signin`,
+
+    // ---------------------- Menu Management API ----------------------
+    // /v1/menus
+    // GET
+    // 메뉴 리스트 호출
+    api_admin_menus: `${base_api_url + slash + version + slash}menus`,
+
+    // ---------------------- Board Management API ----------------------
+    // /v1/_boards
+    // POST
+    // 게시판 리스트 호출
+    api_admin_boards: `${base_api_url + slash + version + slash}_boards`,
+
+    // /v1/_board
+    // POST
+    // 게시판 등록
+    api_admin_reg_board: `${base_api_url + slash + version + slash}_board`,
 };
 
 export { routerPath, apiPath };

@@ -2,6 +2,8 @@ import { RestServer } from "./rest";
 import { errorCode, successCode } from "./resultCode";
 import { useAlertStore, useConfirmStore } from "@/stores/noti";
 import { useSpinnerStore } from "@/stores/spinner";
+import { useModalStore } from "@/stores/modal";
+import { createApp, defineComponent } from "vue";
 
 // TODO : 서비스 활성화 상태 체크를 위한 health check 로직 생성 및 테스트 하기 (제한 권한 없음) - 메디시티 참고
 
@@ -212,6 +214,14 @@ const CommonSpinner = (params) => {
     useSpinner.setIsSpinner(params);
 };
 
+// 공용 모달창
+const CommonModal = (params) => {
+    console.log(params);
+    const useModal = useModalStore();
+
+    useModal.setIsModalOpen(params);
+};
+
 export {
     CommonRest,
     CommonErrorCatch,
@@ -219,4 +229,5 @@ export {
     CommonConsole,
     CommonNotify,
     CommonSpinner,
+    CommonModal,
 };

@@ -14,12 +14,14 @@ import HeaderNav from "@/components/web/common/HeaderNav.vue";
 import CommonAlert from "@/common/components/CommonAlert.vue";
 import CommonConfirm from "@/common/components/CommonConfirm.vue";
 import CommonSpinner from "@/common/components/CommonSpinner.vue";
+import CommonModal from "@/common/components/CommonModal.vue";
 
 export default {
     components: {
         CommonAlert,
         CommonConfirm,
         CommonSpinner,
+        CommonModal,
     },
     name: "App",
     setup() {
@@ -147,6 +149,7 @@ export default {
         <CommonAlert />
         <CommonConfirm />
         <CommonSpinner />
+        <CommonModal />
     </div>
 </template>
 

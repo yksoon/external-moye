@@ -2,6 +2,7 @@ import "./assets/main.css";
 // import VueMaterial from 'vue-material' // CSS 라이브러리 (https://www.npmjs.com/package/vue-material)
 // import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default.css'
+import jQuery from "jquery";
 
 import "@/common/css/default.css";
 import "@/common/css/style.css";
@@ -30,6 +31,8 @@ const pinia = createPinia(); //피니아 생성
 pinia.use(piniaPluginPersistedstate); //모듈추가
 
 const app = createApp(App);
+
+global.$ = jQuery;
 
 app.use(pinia);
 app.use(vuetify);
