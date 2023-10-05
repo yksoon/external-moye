@@ -216,7 +216,7 @@ const CommonSpinner = (params) => {
 
 // 공용 모달창
 const CommonModal = (params) => {
-    console.log(params);
+    // console.log(params);
     const useModal = useModalStore();
 
     useModal.setIsModalOpen(params);

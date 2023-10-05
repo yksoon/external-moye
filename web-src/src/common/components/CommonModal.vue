@@ -9,7 +9,8 @@ export default {
     components: { NoticeModalMain },
     setup() {
         const useModal = useModalStore();
-        const { isOpen, title, component, width } = storeToRefs(useModal);
+        const { isOpen, title, component, width, handleNeedUpdate, state } =
+            storeToRefs(useModal);
 
         return {
             useModal: useModal,
@@ -17,6 +18,8 @@ export default {
             title: title,
             component: component,
             width: width,
+            state,
+            handleNeedUpdate,
         };
     },
     data() {
@@ -45,7 +48,11 @@ export default {
                 </h4>
                 <div id="transition-modal-description">
                     <!-- 공지사항 등록 -->
-                    <NoticeModalMain v-if="component === 'RegNoticeModal'" />
+                    <NoticeModalMain
+                        v-if="component === 'RegNoticeModal'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
                 </div>
             </div>
         </div>
