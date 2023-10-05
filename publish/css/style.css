@@ -121,9 +121,12 @@ a.more_btn:hover span {background: url('../img/main/arrow_btn.png') no-repeat ri
     word-wrap:break-word; }
 .section04 .box_wrap .box span {color: #333; font-size: 18px; font-weight: 500; letter-spacing: -0.04em; line-height: 23px; display: block; width: 100%; text-align: right;}
 
-.footer {width: 1600px; padding: 55px 0 75px; background-color: #E9E9E9;}
-
-
+#footer {padding: 55px 0 75px; background-color: #E9E9E9;}
+#footer .footer_content {width: 1600px; margin: 0 auto; display: flex;justify-content: space-between;align-items: center;}
+#footer .footer_content .txt h4 {font-size: 18px; font-weight: 700; color: #333; letter-spacing: -0.04em; line-height: 23px;margin: 0 0 15px;}
+#footer .footer_content .txt span {font-size: 14px; font-weight: 600; color: #666; letter-spacing: -0.04em; ;line-height: 18px;display: inline-block;} 
+#footer .footer_content .txt span::after {content: ""; display: inline-block; clear: both; width: 1px; height: 12px; background-color: #ccc;margin: 0 10px; vertical-align: middle;} 
+#footer .footer_content .txt span::after:last-child {display: none;}
 
 /* banner-slider */
 .slide_box  {width: 100%;height:315px; margin:0 auto 50px;}
