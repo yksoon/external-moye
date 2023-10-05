@@ -21,11 +21,14 @@ export default {
 
         const useUserInfo = useUserInfoStore();
         const useUserToken = useUserTokenStore();
+        const userToken = useUserToken.getUserToken;
 
         const err = CommonErrModule();
 
         onMounted(() => {
-            // console.log(codes);
+            if (userToken) {
+                router.push({ name: "admin" });
+            }
         });
 
         // 로그인 버튼
@@ -132,10 +135,17 @@ export default {
             CommonRest(restParams);
         };
 
+        const handleOnKeyPress = (e) => {
+            if (e.key === "Enter") {
+                clickLogin(); // Enter 입력이 되면 클릭 이벤트 실행
+            }
+        };
+
         return {
             inputID: inputID,
             inputPW: inputPW,
-            clickLogin: () => clickLogin(),
+            clickLogin,
+            handleOnKeyPress,
         };
     },
 };
@@ -148,11 +158,11 @@ export default {
                 <div class="login_wrap">
                     <div class="login">
                         <h1>
-                            <!-- <img
-                                src="../images/main/maintxt.png"
+                            <img
+                                src="/img/admin/logo_adm.png"
                                 alt=""
                                 style="width: 210px"
-                            /> -->
+                            />
                         </h1>
                         <p>로그인을 해주세요</p>
                         <div class="input_id">
@@ -163,6 +173,7 @@ export default {
                                 placeholder="ID"
                                 id="inputID"
                                 ref="inputID"
+                                @keydown="handleOnKeyPress"
                                 autofocus
                             />
                         </div>
@@ -174,6 +185,7 @@ export default {
                                 placeholder="PW"
                                 id="inputPW"
                                 ref="inputPW"
+                                @keydown="handleOnKeyPress"
                             />
                         </div>
                         <div class="flex login_btn">
@@ -183,7 +195,7 @@ export default {
                             </div>
                             <div>
                                 <a
-                                    class="btn btn01"
+                                    class="subbtn on"
                                     @click="clickLogin"
                                     style="cursor: pointer"
                                 >

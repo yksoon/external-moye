@@ -1,7 +1,16 @@
 <script>
-import { routerPath } from "@/webPath";
+import { routerPath, apiPath } from "@/webPath";
 import { onMounted, defineProps, toRaw } from "vue";
 import $ from "jquery";
+import {
+    CommonErrModule,
+    CommonNotify,
+    CommonRest,
+    CommonSpinner,
+} from "@/common/js/common";
+import { successCode } from "@/common/js/resultCode";
+import { useRouter } from "vue-router";
+import { useUserInfoStore, useUserTokenStore } from "@/stores/userInfo";
 
 export default {
     name: "SideNav",
@@ -16,6 +25,13 @@ export default {
         const navList = props.menuList;
         const userInfo = props.userInfo;
         const switchPage = props.switchPage;
+
+        const router = useRouter();
+
+        const useUserInfo = useUserInfoStore();
+        const useUserToken = useUserTokenStore();
+
+        const err = CommonErrModule();
 
         onMounted(() => {
             // 새로고침 하더라도 현재 메뉴 활성화
@@ -56,6 +72,50 @@ export default {
             }
         };
 
+        // 로그아웃
+        const signOut = () => {
+            CommonNotify({
+                type: "confirm",
+                message: "로그아웃 하시겠습니까?",
+                callback: () => doSignOut(),
+            });
+
+            const doSignOut = () => {
+                CommonSpinner(true);
+
+                // signout
+                // url : /v1/signout
+                // method : POST
+                const url = apiPath.api_auth_signout;
+                let data = {};
+
+                // 파라미터
+                const restParams = {
+                    method: "post",
+                    url: url,
+                    data: data,
+                    err: err,
+                    callback: (res) => responsLogic(res),
+                    admin: "Y",
+                };
+                CommonRest(restParams);
+
+                const responsLogic = (res) => {
+                    // response
+                    let result_code = res.headers.result_code;
+
+                    if (result_code === successCode.success) {
+                        useUserInfo.setUserInfo({});
+                        useUserToken.setUserToken("");
+
+                        CommonSpinner(false);
+
+                        router.replace({ name: "signin" });
+                    }
+                };
+            };
+        };
+
         return {
             navList,
             userInfo,
@@ -63,6 +123,7 @@ export default {
             depth2click,
             routerPath,
             switchPage,
+            signOut,
         };
     },
 };

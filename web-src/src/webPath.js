@@ -87,10 +87,15 @@ const apiPath = {
     // ---------------------- ADMIN ----------------------
 
     // ---------------------- Sign In API ----------------------
-    // /v1/info/result
-    // GET
+    // /v1/signin
+    // post
     // 공통 코드 result
     api_admin_signin: `${base_api_url + slash + version + slash}signin`,
+
+    // /v1/signout
+    // POST
+    // 로그아웃
+    api_auth_signout: `${base_api_url + slash + version + slash}signout`,
 
     // ---------------------- Menu Management API ----------------------
     // /v1/menus

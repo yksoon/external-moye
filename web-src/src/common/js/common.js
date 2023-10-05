@@ -4,6 +4,8 @@ import { useAlertStore, useConfirmStore } from "@/stores/noti";
 import { useSpinnerStore } from "@/stores/spinner";
 import { useModalStore } from "@/stores/modal";
 import { createApp, defineComponent } from "vue";
+import { useUserInfoStore, useUserTokenStore } from "@/stores/userInfo";
+import { useRouter } from "vue-router";
 
 // TODO : 서비스 활성화 상태 체크를 위한 health check 로직 생성 및 테스트 하기 (제한 권한 없음) - 메디시티 참고
 
@@ -80,12 +82,7 @@ const CommonErrorCatch = async (
             error.response.headers.result_code === errorCode.tokenTamperWith || // 올바른 토큰 아닐 시 - "2002"
             error.response.headers.result_code === errorCode.invalidToken // 올바른 토큰 아닐 시 - "2003"
         ) {
-            tokenExpire(
-                setIsSpinner,
-                alert,
-                resetUserInfoAdmin,
-                resetUserTokenAdmin
-            );
+            tokenExpire();
         }
         // 에러
         else {
@@ -116,6 +113,27 @@ const CommonErrorCatch = async (
             message: "잠시 후 다시 시도해주세요", // 다국어 지원을 위해 message_ko, message_en 방식으로 분류 & 메세지 자체를 따로 빼서 관리
         });
     }
+};
+
+// 토큰 만료시 처리
+const tokenExpire = () => {
+    const router = useRouter();
+
+    CommonNotify({
+        type: "alert",
+        message: "비정상 접근입니다",
+        callback: () => doSignOut(),
+    });
+
+    const doSignOut = () => {
+        const useUserInfo = useUserInfoStore();
+        const useUserToken = useUserTokenStore();
+
+        useUserInfo.setUserInfo({});
+        useUserToken.setUserToken("");
+
+        router.replace({ name: "signin" });
+    };
 };
 
 const CommonErrModule = () => {
