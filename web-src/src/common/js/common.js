@@ -21,11 +21,6 @@ callback : callback()
 admin: ""
 */
 const CommonRest = async (restParams = {}) => {
-    const setIsSpinner = restParams.err.setIsSpinner;
-    const alert = restParams.err.alert ? restParams.err.alert : "";
-    const resetUserInfoAdmin = restParams.err.resetUserInfoAdmin;
-    const resetUserTokenAdmin = restParams.err.resetUserTokenAdmin;
-
     const method = restParams.method;
     const url = restParams.url;
     const data = restParams.data;
@@ -36,13 +31,7 @@ const CommonRest = async (restParams = {}) => {
             restParams.callback(response);
         })
         .catch((error) => {
-            CommonErrorCatch(
-                error,
-                setIsSpinner,
-                alert,
-                resetUserInfoAdmin,
-                resetUserTokenAdmin
-            );
+            CommonErrorCatch(error);
         });
 };
 
@@ -50,13 +39,7 @@ const CommonRest = async (restParams = {}) => {
 // 파라미터:
 // error - error객체
 // alert - useAlert()
-const CommonErrorCatch = async (
-    error,
-    setIsSpinner,
-    alert,
-    resetUserInfoAdmin,
-    resetUserTokenAdmin
-) => {
+const CommonErrorCatch = async (error) => {
     // 오류발생시 실행
     console.log(error);
 
@@ -70,7 +53,6 @@ const CommonErrorCatch = async (
 
             CommonNotify({
                 type: "alert",
-                hook: alert,
                 message: "잠시 후 다시 시도해주세요",
             });
         }
@@ -91,7 +73,6 @@ const CommonErrorCatch = async (
 
             CommonNotify({
                 type: "alert",
-                hook: alert,
                 message: error.response.headers.result_message_ko,
             });
         }
@@ -105,11 +86,11 @@ const CommonErrorCatch = async (
 
     // 타임아웃 (axios 타임아웃 걸릴경우)
     if (error.message === `timeout of ${timeOut}ms exceeded`) {
-        setIsSpinner(false);
+        // setIsSpinner(false);
+        CommonSpinner(false);
 
         CommonNotify({
             type: "alert",
-            hook: alert,
             message: "잠시 후 다시 시도해주세요", // 다국어 지원을 위해 message_ko, message_en 방식으로 분류 & 메세지 자체를 따로 빼서 관리
         });
     }

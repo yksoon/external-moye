@@ -25,7 +25,6 @@ export default {
     },
     name: "App",
     setup() {
-        const err = CommonErrModule();
         const codes = useCodesStore();
         const resultCode = useResultCodeStore();
         const useIpInfo = useIpInfoStore();
@@ -85,7 +84,6 @@ export default {
                 method: "post",
                 url: apiPath.api_codes,
                 data: {},
-                err: err,
                 callback: (res) => responsLogic(res),
             };
 
@@ -116,7 +114,6 @@ export default {
                 method: "get",
                 url: apiPath.api_result,
                 data: {},
-                err: err,
                 callback: (res) => responsLogic(res),
             };
 

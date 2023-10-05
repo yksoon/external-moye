@@ -31,8 +31,6 @@ export default {
         const useUserInfo = useUserInfoStore();
         const useUserToken = useUserTokenStore();
 
-        const err = CommonErrModule();
-
         onMounted(() => {
             // 새로고침 하더라도 현재 메뉴 활성화
             // if (page) {
@@ -94,7 +92,6 @@ export default {
                     method: "post",
                     url: url,
                     data: data,
-                    err: err,
                     callback: (res) => responsLogic(res),
                     admin: "Y",
                 };

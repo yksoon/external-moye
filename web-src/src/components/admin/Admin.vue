@@ -18,6 +18,7 @@ import NoticeBoard from "./boardManage/noticeBoard/NoticeBoard.vue";
 import ConsultingBoard from "./boardManage/consultingBoard/ConsultingBoard.vue";
 import PhotoBoard from "./boardManage/photoBoard/PhotoBoard.vue";
 import MovieBoard from "./boardManage/movieBoard/MovieBoard.vue";
+import ArtistManage from "./artistManage/ArtistManage.vue";
 
 export default {
     name: "Admin",
@@ -27,6 +28,7 @@ export default {
         ConsultingBoard,
         PhotoBoard,
         MovieBoard,
+        ArtistManage,
     },
     setup() {
         const state = reactive({
@@ -69,7 +71,6 @@ export default {
                 method: "get",
                 url: url,
                 data: data,
-                err: err,
                 callback: (res) => responsLogic(res),
                 admin: "Y",
             };
@@ -228,6 +229,12 @@ export default {
 
             <!-- 게시판관리 => 영상갤러리 -->
             <MovieBoard v-if="pages === 'movieBoard'" :isRefresh="isRefresh" />
+
+            <!-- 아티스트관리 -->
+            <ArtistManage
+                v-if="pages === 'artistList'"
+                :isRefresh="isRefresh"
+            />
         </div>
     </div>
 </template>

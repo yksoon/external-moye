@@ -31,8 +31,6 @@ export default {
             fileList: [],
         });
 
-        const err = CommonErrModule();
-
         const useModal = useModalStore();
 
         const handleNeedUpdate = props.handleNeedUpdate;
@@ -137,7 +135,6 @@ export default {
                     method: "post_multi",
                     url: apiPath.api_admin_reg_board, // /v1/board
                     data: formData,
-                    err: err,
                     admin: "Y",
                     callback: (res) => responsLogic(res),
                 };
@@ -208,7 +205,6 @@ export default {
                     method: "put_multi",
                     url: apiPath.api_admin_mod_board, // /v1/board
                     data: formData,
-                    err: err,
                     admin: "Y",
                     callback: (res) => responsLogic(res),
                 };

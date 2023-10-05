@@ -3,10 +3,11 @@ import { storeToRefs } from "pinia";
 import { onMounted, watch } from "vue";
 import { useModalStore } from "@/stores/modal";
 import NoticeModalMain from "@/components/admin/boardManage/noticeBoard/modal/NoticeModalMain.vue";
+import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMain.vue";
 
 export default {
     name: "CommonModal",
-    components: { NoticeModalMain },
+    components: { NoticeModalMain, ArtistModalMain },
     setup() {
         const useModal = useModalStore();
         const { isOpen, title, component, width, handleNeedUpdate, state } =
@@ -50,6 +51,13 @@ export default {
                     <!-- 공지사항 등록 -->
                     <NoticeModalMain
                         v-if="component === 'RegNoticeModal'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 아티스트 관리 모달 -->
+                    <ArtistModalMain
+                        v-if="component === 'ArtistModalMain'"
                         :handleNeedUpdate="handleNeedUpdate"
                         :modData="state.modData"
                     />

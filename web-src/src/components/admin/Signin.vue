@@ -23,8 +23,6 @@ export default {
         const useUserToken = useUserTokenStore();
         const userToken = useUserToken.getUserToken;
 
-        const err = CommonErrModule();
-
         onMounted(() => {
             if (userToken) {
                 router.push({ name: "admin" });
@@ -127,7 +125,6 @@ export default {
                 method: "post",
                 url: url,
                 data: data,
-                err: err,
                 callback: (res) => responsLogic(res),
                 admin: "Y",
             };

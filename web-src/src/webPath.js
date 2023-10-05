@@ -110,7 +110,7 @@ const apiPath = {
     api_admin_boards: `${base_api_url + slash + version + slash}_boards`,
 
     // /v1/_board
-    // POST
+    // POST MULTI
     // 게시판 등록
     api_admin_reg_board: `${base_api_url + slash + version + slash}_board`,
 
@@ -128,6 +128,14 @@ const apiPath = {
     // PUT MULTI
     // 게시판 수정
     api_admin_mod_board: `${base_api_url + slash + version + slash}board`,
+
+    // ---------------------- People Management API ----------------------
+    // /v1/people/categories
+    // POST
+    // 카테고리 목록
+    api_admin_get_categories: `${
+        base_api_url + slash + version + slash
+    }people/categories`,
 };
 
 export { routerPath, apiPath };

@@ -10,7 +10,7 @@ import {
 import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
-import { reactive, onMounted, ref, h, toRaw } from "vue";
+import { reactive, ref, h, toRaw, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import {
     FlexRender,
@@ -70,7 +70,6 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
         method: "post",
         url: url,
         data: data,
-        err: err,
         callback: (res) => responsLogic(res),
         admin: "Y",
     };
@@ -197,7 +196,6 @@ const removeBoard = () => {
                     method: "delete",
                     url: url,
                     data: data,
-                    err: err,
                     callback: (res) => responsLogic(res),
                     admin: "Y",
                 };
@@ -245,7 +243,6 @@ const modBoard = (board_idx) => {
         method: "get",
         url: url,
         data: data,
-        err: err,
         callback: (res) => responsLogic(res),
         admin: "Y",
     };
