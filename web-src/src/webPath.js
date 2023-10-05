@@ -79,6 +79,11 @@ const apiPath = {
     // 공통 코드 result
     api_result: `${base_api_url + slash + version + slash}info/result`,
 
+    // /v1/_file/000/
+    // GET
+    // 파일 다운로드
+    api_file: `${base_api_url + slash + version + slash}_file/000/`,
+
     // ---------------------- ADMIN ----------------------
 
     // ---------------------- Sign In API ----------------------
@@ -103,6 +108,21 @@ const apiPath = {
     // POST
     // 게시판 등록
     api_admin_reg_board: `${base_api_url + slash + version + slash}_board`,
+
+    // /v1/board/
+    // DELETE
+    // 게시판 삭제
+    api_admin_remove_board: `${base_api_url + slash + version + slash}board`,
+
+    // /v1/board/{board_idx}
+    // GET
+    // 게시판 상세
+    api_admin_get_board: `${base_api_url + slash + version + slash}board`,
+
+    // /v1/board/
+    // PUT MULTI
+    // 게시판 수정
+    api_admin_mod_board: `${base_api_url + slash + version + slash}board`,
 };
 
 export { routerPath, apiPath };
