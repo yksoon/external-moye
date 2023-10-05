@@ -19,11 +19,15 @@ import {
     createColumnHelper,
 } from "@tanstack/vue-table";
 
-// export default {
-// name: "NoticeBoard",
-// props: {
-//     isRefresh: Boolean,
-// },
+// ------------------- import End --------------------
+
+// props 샘플
+const props = defineProps({
+    isRefresh: Boolean,
+});
+const emit = defineEmits(["update:value"]);
+console.log(props.isRefresh);
+// props 샘플 End
 
 const err = CommonErrModule();
 
