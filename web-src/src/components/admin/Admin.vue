@@ -232,7 +232,7 @@ export default {
 
             <!-- 아티스트관리 -->
             <ArtistManage
-                v-if="pages === 'artistList'"
+                v-if="pages === 'profileMng'"
                 :isRefresh="isRefresh"
             />
         </div>

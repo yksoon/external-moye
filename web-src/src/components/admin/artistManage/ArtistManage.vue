@@ -16,9 +16,9 @@ const searchKeyword = ref(null);
 
 const regArtist = () => {
     const modalOption = {
-        title: "아티스트 등록",
+        title: "인물 등록",
         component: "ArtistModalMain",
-        width: "800",
+        width: "1400",
         handleNeedUpdate: () => handleNeedUpdate(),
     };
 

@@ -1,7 +1,7 @@
 <script>
 import { routerPath, apiPath } from "@/webPath";
 import { onMounted, defineProps, toRaw } from "vue";
-import $ from "jquery";
+// import $ from "jquery";
 import {
     CommonErrModule,
     CommonNotify,

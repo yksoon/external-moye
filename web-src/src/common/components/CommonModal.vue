@@ -4,6 +4,7 @@ import { onMounted, watch } from "vue";
 import { useModalStore } from "@/stores/modal";
 import NoticeModalMain from "@/components/admin/boardManage/noticeBoard/modal/NoticeModalMain.vue";
 import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMain.vue";
+import { CommonNotify } from "@/common/js/common";
 
 export default {
     name: "CommonModal",
@@ -30,7 +31,15 @@ export default {
     },
     methods: {
         cancel() {
-            this.useModal.setIsModalClose();
+            CommonNotify({
+                type: "confirm",
+                message: "취소 하시겠습니까?",
+                callback: () => doClose(),
+            });
+
+            const doClose = () => {
+                this.useModal.setIsModalClose();
+            };
         },
     },
 };
@@ -42,7 +51,7 @@ export default {
         <div class="modal_wrap" id="modal_wrap">
             <div :class="`modal w${width}`">
                 <div class="modal_close" @click="cancel">
-                    <img src="img/common/modal_close.png" alt="" />
+                    <img src="/img/common/modal_close.png" alt="" />
                 </div>
                 <h4 class="mo_title" id="transition-modal-title">
                     {{ title }}

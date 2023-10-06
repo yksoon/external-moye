@@ -81,6 +81,7 @@ a.tablebtn.btn01 {background: #0047a0;}
 .plusbtn_wrap a {padding:0 8px;border: 1px solid #ddd;display: inline-block;border-radius: 5px;line-height: 21px;}
 
 select {border: 1px solid #ddd;height:28px;line-height:28px;font-size: 14px;color: #333;padding: 0 10px;cursor:pointer;border-radius: 5px;}
+.select {border: 1px solid #a6a6a6;height:28px;line-height:28px;font-size: 14px;color: #333;padding: 0 10px;cursor:pointer;border-radius: 5px;}
 textarea {width:100%;min-height:180px;resize: none;border: 1px solid #ddd;height:28px;line-height:28px;font-size: 14px;color: #333;padding: 0 10px;display:inline-block;min-width:80px;border-radius: 5px;}
 input::placeholder {color: #a6a6a6;}
 input.input {border: 1px solid #ddd;height:28px;line-height:28px;font-size: 14px;color: #333;padding: 0 10px;display:inline-block;min-width:80px;border-radius: 5px;}

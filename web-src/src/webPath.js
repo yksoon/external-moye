@@ -136,6 +136,11 @@ const apiPath = {
     api_admin_get_categories: `${
         base_api_url + slash + version + slash
     }people/categories`,
+
+    // /v1/people
+    // POST
+    // 아티스트 등록
+    api_admin_reg_people: `${base_api_url + slash + version + slash}people`,
 };
 
 export { routerPath, apiPath };
