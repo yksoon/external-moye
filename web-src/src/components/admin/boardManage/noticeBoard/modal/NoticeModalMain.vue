@@ -383,7 +383,7 @@ export default {
                                 <a
                                     :href="`${fileBaseUrl}${item.file_path_enc}`"
                                 >
-                                    <img src="img/common/file.svg" alt="" />
+                                    <img src="/img/common/file.svg" alt="" />
                                     {{ item.file_name }}
                                 </a>
                             </div>

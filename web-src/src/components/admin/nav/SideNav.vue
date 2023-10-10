@@ -1,7 +1,7 @@
 <script>
 import { routerPath, apiPath } from "@/webPath";
-import { onMounted, defineProps, toRaw } from "vue";
-// import $ from "jquery";
+import { onMounted, toRaw } from "vue";
+import $ from "jquery";
 import {
     CommonErrModule,
     CommonNotify,
@@ -11,6 +11,8 @@ import {
 import { successCode } from "@/common/js/resultCode";
 import { useRouter } from "vue-router";
 import { useUserInfoStore, useUserTokenStore } from "@/stores/userInfo";
+
+window.jQuery = window.$ = $;
 
 export default {
     name: "SideNav",
@@ -179,7 +181,7 @@ export default {
                                 {{ item2.title }}
                                 <img
                                     v-if="item2.child.length !== 0"
-                                    src="img/common/arrow_drop.png"
+                                    src="/img/common/arrow_drop.png"
                                     alt=""
                                 />
                             </a>

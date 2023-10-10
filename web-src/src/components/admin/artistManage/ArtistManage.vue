@@ -1,14 +1,6 @@
 <script setup>
 import { CommonModal } from "@/common/js/common";
-import {
-    reactive,
-    ref,
-    h,
-    toRaw,
-    defineProps,
-    defineEmits,
-    onMounted,
-} from "vue";
+import { reactive, ref, h, toRaw, onMounted } from "vue";
 
 // ------------------- import End --------------------
 

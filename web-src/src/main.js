@@ -9,7 +9,7 @@ import "@/common/css/admin.css";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate"; //피니아
 
 // import Vue from "vue";
-import jQuery from "jquery";
+// import jQuery from "jquery";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -31,8 +31,6 @@ const vuetify = createVuetify({
 // 피니아
 const pinia = createPinia(); //피니아 생성
 pinia.use(piniaPluginPersistedstate); //모듈추가
-
-global.$ = jQuery;
 
 // Vue에 jQuery를 등록합니다.
 // Vue.prototype.$ = jQuery;

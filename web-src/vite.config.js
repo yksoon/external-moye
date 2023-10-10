@@ -41,9 +41,17 @@ export default ({ mode }) => {
             //         main: resolve(__dirname, "index.html"),
             //     },
             // },
+            rollupOptions: {
+                output: {
+                    globals: {
+                        jquery: "window.jQuery",
+                        jquery: "window.$",
+                    },
+                },
+            },
         },
-        define: {
-            global: {},
-        },
+        // define: {
+        //     global: {},
+        // },
     });
 };
