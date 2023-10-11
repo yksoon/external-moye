@@ -19,16 +19,25 @@ const props = defineProps({
     handleNeedUpdate: Function,
 });
 
+const modData = props.modData;
+const isModData = modData
+    ? Object.keys(modData).length !== 0
+        ? true
+        : false
+    : false;
+
 const state = reactive({
     categories: [],
     peopleType: [],
     profileType: [],
     fileList: [],
-    profileSection: [{ idx: 1, sectionValue: "" }],
+    profileSection: isModData ? [] : [{ idx: 1, sectionValue: "" }],
     selectedProfile: [],
 });
 
 const handleNeedUpdate = props.handleNeedUpdate;
+
+const fileBaseUrl = apiPath.api_file;
 
 const useCodes = useCodesStore();
 const { codes } = storeToRefs(useCodes);
@@ -41,6 +50,18 @@ const selectCategory2 = ref(null);
 const selectPeopleType = ref(null);
 const inputAttachmentFile = ref(null);
 
+const inputNameCn = ref(null);
+const inputNameFirstEn = ref(null);
+const inputNameLastEn = ref(null);
+const birthType = ref(null);
+const birthday = ref(null);
+const mobile1 = ref(null);
+const mobile2 = ref(null);
+const mobile3 = ref(null);
+const gender = ref(null);
+const email = ref(null);
+const peopleMemo = ref(null);
+
 const selectedCategory1 = ref("1");
 
 onMounted(() => {
@@ -48,6 +69,89 @@ onMounted(() => {
 
     getPeopleProfileType();
 });
+
+// 수정일 경우 초기 세팅
+const getDefaultValue = () => {
+    changeSelectCategory1().then(() => {
+        inputName.value.value = modData.name_ko;
+        selectShowYn.value.value = modData.show_yn;
+        selectCategory2.value.value = modData.category_child_idx;
+        selectPeopleType.value.value = modData.people_type_cd;
+
+        inputNameCn.value.value = modData.name_cn;
+        inputNameFirstEn.value.value = modData.name_first_en;
+        inputNameLastEn.value.value = modData.name_last_en;
+        birthType.value.value = modData.birth_type_cd;
+        birthday.value.value = `${modData.birth_yyyy}-${modData.birth_mm}-${modData.birth_dd}`;
+        mobile1.value.value = modData.mobile1;
+        mobile2.value.value = modData.mobile2;
+        mobile3.value.value = modData.mobile3;
+        gender.value.value = modData.gender_cd;
+        email.value.value = modData.email;
+        peopleMemo.value.value = modData.people_memo;
+
+        state.fileList = modData.file_info;
+
+        setDefaultProfile();
+    });
+
+    // inputSubTitle.value.value = modData.sub_title;
+    // inputContent.value.value = modData.content;
+    // state.fileList = modData.file_info;
+};
+
+// 프로미스
+const changeSelectCategory1 = () =>
+    new Promise((res, rej) => {
+        selectCategory1.value.value = modData.category_parent_idx;
+        selectedCategory1.value = modData.category_parent_idx;
+
+        res();
+    });
+
+// 기본 프로필 세팅
+const setDefaultProfile = () => {
+    const defaultProfile = modData.profile_info;
+    const defaultProfileLength = defaultProfile.length;
+
+    if (defaultProfile) {
+        for (let i = 0; i < defaultProfileLength; i++) {
+            if (
+                state.profileSection.filter(
+                    (el) =>
+                        el.sectionValue === defaultProfile[i].profile_type_cd
+                ).length === 0
+            ) {
+                state.profileSection = [
+                    ...state.profileSection,
+                    { idx: i, sectionValue: defaultProfile[i].profile_type_cd },
+                ];
+            }
+        }
+
+        for (let i = 0; i < defaultProfileLength; i++) {
+            if (
+                state.profileSection.filter(
+                    (el) =>
+                        el.sectionValue === defaultProfile[i].profile_type_cd
+                ).length !== 0
+            ) {
+                const parentObj = state.profileSection.filter(
+                    (el) =>
+                        el.sectionValue === defaultProfile[i].profile_type_cd
+                )[0];
+                const obj = {
+                    parentIdx: parentObj.idx,
+                    profileType: parentObj.sectionValue,
+                    profileContent: defaultProfile[i].profile_content,
+                    inputIdx: i + 1,
+                };
+
+                state.selectedProfile = [...state.selectedProfile, obj];
+            }
+        }
+    }
+};
 
 // 모달 닫기
 const handleClose = () => {
@@ -94,7 +198,9 @@ const getCategories = (pageNum, pageSize) => {
             let result_info = res.data.result_info;
             let page_info = res.data.page_info;
 
-            createCategories(result_info);
+            createCategories(result_info).then(() => {
+                isModData && getDefaultValue();
+            });
 
             CommonSpinner(false);
         } else {
@@ -107,24 +213,27 @@ const getCategories = (pageNum, pageSize) => {
 };
 
 // 카테고리 만들기
-const createCategories = (data) => {
-    const dataLength = data.length;
+const createCategories = (data) =>
+    new Promise((resolve, reject) => {
+        const dataLength = data.length;
 
-    let categoriesArr = [];
+        let categoriesArr = [];
 
-    let depth1Arr = data.filter((el) => el.category_parent_idx === 0);
+        let depth1Arr = data.filter((el) => el.category_parent_idx === 0);
 
-    for (let j = 0; j < depth1Arr.length; j++) {
-        depth1Arr[j]["child"] = [];
-        for (let i = 0; i < dataLength; i++) {
-            if (data[i].category_parent_idx === depth1Arr[j].category_idx) {
-                depth1Arr[j]["child"].push(data[i]);
+        for (let j = 0; j < depth1Arr.length; j++) {
+            depth1Arr[j]["child"] = [];
+            for (let i = 0; i < dataLength; i++) {
+                if (data[i].category_parent_idx === depth1Arr[j].category_idx) {
+                    depth1Arr[j]["child"].push(data[i]);
+                }
             }
         }
-    }
 
-    state.categories = depth1Arr;
-};
+        state.categories = depth1Arr;
+
+        resolve();
+    });
 
 // 인물 구분 가져오기
 const getPeopleProfileType = () => {
@@ -146,10 +255,21 @@ const handleCategory1 = (e) => {
 const attachFile = (input) => {
     const maxFileCnt = 5; // 첨부파일 최대 개수
 
-    if (input.files.length > maxFileCnt) {
+    if (isFileImage(input.files)) {
+        if (input.files.length > maxFileCnt) {
+            CommonNotify({
+                type: "alert",
+                message: "파일은 5개까지 업로드 가능합니다.",
+            });
+
+            input.value = "";
+
+            return false;
+        }
+    } else {
         CommonNotify({
             type: "alert",
-            message: "파일은 5개까지 업로드 가능합니다.",
+            message: "이미지만 업로드 가능합니다..",
         });
 
         input.value = "";
@@ -158,10 +278,22 @@ const attachFile = (input) => {
     }
 };
 
+// 이미지파일인지 검증
+const isFileImage = (file) => {
+    if (file) {
+        for (let i = 0; i < file.length; i++) {
+            return file[i] && file[i]["type"].split("/")[0] === "image";
+        }
+    }
+};
+
 const handelProfileSection = (handleType, idx) => {
     switch (handleType) {
         case "add":
-            const lastSectionIdx = state.profileSection.at(-1).idx;
+            const lastSectionIdx =
+                state.profileSection.length !== 0
+                    ? state.profileSection.at(-1).idx
+                    : 0;
             const addSectionIdx = lastSectionIdx + 1;
 
             state.profileSection = [
@@ -311,6 +443,27 @@ const regArtist = () => {
             nameLastKo: inputName.value.value.substr(1),
             categoryIdx: selectCategory2.value.value,
             peopleType: selectPeopleType.value.value,
+            nameFirstCn: inputNameCn.value.value.substr(0, 1),
+            nameLastCn: inputNameCn.value.value.substr(1),
+            nameFirstEn: inputNameFirstEn.value.value,
+            nameLastEn: inputNameLastEn.value.value,
+            birthType: birthType.value.value,
+            birthYyyy: birthday.value.value
+                ? birthday.value.value.split("-")[0]
+                : "",
+            birthMm: birthday.value.value
+                ? birthday.value.value.split("-")[1]
+                : "",
+            birthDd: birthday.value.value
+                ? birthday.value.value.split("-")[2]
+                : "",
+            gender: gender.value.value,
+            email: email.value.value,
+            peopleMemo: peopleMemo.value.value,
+            interPhoneNumber: "82",
+            mobile1: mobile1.value.value,
+            mobile2: mobile2.value.value,
+            mobile3: mobile3.value.value,
         };
 
         // 기본 formData append
@@ -371,6 +524,146 @@ const regArtist = () => {
     }
 };
 
+// 수정버튼
+const modArtist = () => {
+    if (validation()) {
+        CommonSpinner(true);
+
+        const formData = new FormData();
+        const model = artistModel;
+        let data = {};
+
+        let fileArr = [];
+
+        data = {
+            ...model,
+            showYn: selectShowYn.value.value,
+            nameFirstKo: inputName.value.value.substr(0, 1),
+            nameLastKo: inputName.value.value.substr(1),
+            categoryIdx: selectCategory2.value.value,
+            peopleType: selectPeopleType.value.value,
+            peopleIdx: modData.people_idx,
+            nameFirstCn: inputNameCn.value.value.substr(0, 1),
+            nameLastCn: inputNameCn.value.value.substr(1),
+            nameFirstEn: inputNameFirstEn.value.value,
+            nameLastEn: inputNameLastEn.value.value,
+            birthType: birthType.value.value,
+            birthYyyy: birthday.value.value
+                ? birthday.value.value.split("-")[0]
+                : "",
+            birthMm: birthday.value.value
+                ? birthday.value.value.split("-")[1]
+                : "",
+            birthDd: birthday.value.value
+                ? birthday.value.value.split("-")[2]
+                : "",
+            gender: gender.value.value,
+            email: email.value.value,
+            peopleMemo: peopleMemo.value.value,
+            interPhoneNumber: "82",
+            mobile1: mobile1.value.value,
+            mobile2: mobile2.value.value,
+            mobile3: mobile3.value.value,
+        };
+
+        // 기본 formData append
+        for (const key in data) {
+            formData.append(key, data[key]);
+        }
+
+        // 파일 formData append
+        fileArr = Array.from(inputAttachmentFile.value.files);
+        let len = fileArr.length;
+        for (let i = 0; i < len; i++) {
+            formData.append("attachmentFile", fileArr[i]);
+        }
+
+        // 프로필 formData append
+        state.selectedProfile.forEach((item, idx) => {
+            if (item.profileContent) {
+                formData.append(
+                    `profileInfo[${idx}].profileType`,
+                    item.profileType
+                );
+                formData.append(
+                    `profileInfo[${idx}].profileContent`,
+                    item.profileContent
+                );
+            }
+        });
+
+        const responsLogic = (res) => {
+            let result_code = res.headers.result_code;
+            if (result_code === successCode.success) {
+                CommonSpinner(false);
+
+                CommonNotify({
+                    type: "alert",
+                    message: "아티스트 수정이 완료 되었습니다",
+                    callback: () => requestList(),
+                });
+            } else {
+                CommonSpinner(false);
+
+                CommonNotify({
+                    type: "alert",
+                    message: "잠시 후 다시 시도해주세요",
+                });
+            }
+        };
+
+        // /v1/people
+        // PUT MULTI
+        // 아티스트 수정
+        const restParams = {
+            method: "put_multi",
+            url: apiPath.api_admin_mod_people, // /v1/people
+            data: formData,
+            admin: "Y",
+            callback: (res) => responsLogic(res),
+        };
+
+        CommonRest(restParams);
+    }
+};
+
+// 삭제
+const removeArtist = () => {
+    CommonNotify({
+        type: "confirm",
+        message: "항목을 삭제하시겠습니까?",
+        callback: () => removeLogic(),
+    });
+
+    const removeLogic = () => {
+        CommonSpinner(true);
+
+        let data = {};
+        const url = `${apiPath.api_admin_remove_people}/${modData.people_idx}`;
+
+        const restParams = {
+            method: "delete",
+            url: url,
+            data: data,
+            callback: (res) => responsLogic(res),
+            admin: "Y",
+        };
+        CommonRest(restParams);
+
+        const responsLogic = (res) => {
+            if (res.headers.result_code === successCode.success) {
+                CommonSpinner(false);
+
+                CommonNotify({
+                    type: "alert",
+                    message: `삭제 되었습니다.`,
+                    callback: () => requestList(),
+                });
+            }
+        };
+    };
+};
+
 // 수정, 등록 완료 로직
 const requestList = () => {
     // 모달 닫기
@@ -396,12 +689,15 @@ const validation = () => {
 
         return false;
     }
-    if (inputAttachmentFile.value.files.length === 0) {
-        CommonNotify({
-            type: "alert",
-            message: "한가지 이상의 이미지를 첨부해주세요",
-        });
-        return false;
+
+    if (!isModData) {
+        if (inputAttachmentFile.value.files.length === 0) {
+            CommonNotify({
+                type: "alert",
+                message: "한가지 이상의 이미지를 첨부해주세요",
+            });
+            return false;
+        }
     }
     if (state.selectedProfile.length === 0) {
         CommonNotify({
@@ -412,6 +708,10 @@ const validation = () => {
     }
 
     return true;
+};
+
+const testBtn = () => {
+    console.log(birthday.value.value);
 };
 </script>
 <template>
@@ -492,7 +792,7 @@ const validation = () => {
                     </tr>
                     <tr>
                         <th>인물정보파일</th>
-                        <td class="fileicon" colSpan="3">
+                        <td class="fileicon_artist" colSpan="3">
                             <div style="margin-bottom: 5">
                                 <b>
                                     여러 파일 선택이 가능합니다. 여러 파일 선택
@@ -504,25 +804,123 @@ const validation = () => {
                                     type="file"
                                     ref="inputAttachmentFile"
                                     multiple
+                                    accept="image/*"
                                     @change="(e) => attachFile(e.target)"
                                 />
                             </div>
                             <div>
-                                <div
-                                    v-if="state.fileList.length !== 0"
-                                    v-for="item in state.fileList"
-                                >
-                                    <a
-                                        :href="`${fileBaseUrl}${item.file_path_enc}`"
+                                <div v-if="state.fileList.length !== 0">
+                                    <span
+                                        v-for="item in state.fileList"
+                                        className="hotel_img"
                                     >
                                         <img
-                                            src="/img/common/file.svg"
+                                            :src="`${fileBaseUrl}${item.file_path_enc}`"
                                             alt=""
-                                        />
-                                        {{ item.file_name }}
-                                    </a>
+                                        />&nbsp;
+                                    </span>
                                 </div>
                             </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin: 30px 0">
+            <h4 className="mo_subtitle">아티스트 기본 정보</h4>
+            <table class="table_bb">
+                <colgroup>
+                    <col width="15%" />
+                    <col width="35%" />
+                    <col width="15%" />
+                    <col width="35%" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>이름(한문)</th>
+                        <td>
+                            <input
+                                type="text"
+                                class="input wp100"
+                                ref="inputNameCn"
+                            />
+                        </td>
+                        <th>이름(영문)</th>
+                        <td>
+                            <input
+                                type="text"
+                                class="input w140"
+                                placeholder="First Name"
+                                ref="inputNameFirstEn"
+                            />
+                            <input
+                                type="text"
+                                class="input w140"
+                                placeholder="Last Name"
+                                ref="inputNameLastEn"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>생년월일</th>
+                        <td>
+                            <select class="select wp20" ref="birthType">
+                                <option value="000">양력</option>
+                                <option value="100">음력</option>
+                            </select>
+                            <input
+                                type="date"
+                                class="input wp80"
+                                ref="birthday"
+                            />
+                        </td>
+                        <th>연락처</th>
+                        <td>
+                            <input
+                                type="text"
+                                class="input w100"
+                                ref="mobile1"
+                            />
+                            -
+                            <input
+                                type="text"
+                                class="input w100"
+                                ref="mobile2"
+                            />
+                            -
+                            <input
+                                type="text"
+                                class="input w100"
+                                ref="mobile3"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>성별</th>
+                        <td>
+                            <select class="select w100" ref="gender">
+                                <option value="0">남자</option>
+                                <option value="1">여자</option>
+                            </select>
+                        </td>
+                        <th>E-MAIL</th>
+                        <td>
+                            <input
+                                type="email"
+                                class="input wp100"
+                                ref="email"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>메모</th>
+                        <td colspan="3">
+                            <input
+                                type="email"
+                                class="input wp100"
+                                ref="peopleMemo"
+                            />
                         </td>
                     </tr>
                 </tbody>
@@ -544,6 +942,8 @@ const validation = () => {
                             <div>
                                 <select
                                     class="select w180"
+                                    :id="`section_select_${item.idx}`"
+                                    :value="item.sectionValue"
                                     @change="
                                         (e) => handleProfileType(e, item.idx)
                                     "
@@ -613,8 +1013,12 @@ const validation = () => {
             </table>
         </div>
         <div class="btn_box">
-            <a v-if="!modData" class="btn btn01" @click="regArtist"> 등록 </a>
-            <a v-if="modData" class="btn btn01" @click="modBoard"> 수정 </a>
+            <!-- <a class="btn btn01" @click="testBtn"> 테스트버튼 </a> -->
+            <a v-if="!isModData" class="btn btn01" @click="regArtist"> 등록 </a>
+            <a v-if="isModData" class="btn btn03" @click="removeArtist">
+                삭제
+            </a>
+            <a v-if="isModData" class="btn btn01" @click="modArtist"> 수정 </a>
             <a class="btn btn02" @click="handleClose"> 취소 </a>
         </div>
     </div>

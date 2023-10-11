@@ -17,6 +17,8 @@ export const useModalStore = defineStore("modal", () => {
     // const state = () => ({handleNeedUpdate: ""})
 
     const setIsModalOpen = (params) => {
+        document.querySelectorAll("body")[0].style.overflow = "hidden";
+
         isOpen.value = true;
         title.value = params.title;
         component.value = params.component;
@@ -29,6 +31,8 @@ export const useModalStore = defineStore("modal", () => {
     };
 
     const setIsModalClose = async (result, callback) => {
+        document.querySelectorAll("body")[0].style.overflow = "";
+
         isOpen.value = false;
         title.value = "";
         component.value = "";

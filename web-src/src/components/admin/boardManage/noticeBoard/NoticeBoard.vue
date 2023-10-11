@@ -41,7 +41,7 @@ const modalTitle = ref("");
 const isOpen = ref(false);
 
 onMounted(() => {
-    getBoardList(1, maxRowNum, "");
+    getBoardList(1, maxRowNum.basic, "");
 });
 
 // 리스트 가져오기
@@ -128,14 +128,14 @@ const modBoardModal = (modData) => {
 // 리스트 새로고침
 const handleNeedUpdate = () => {
     console.log("handleNeedUpdate");
-    getBoardList(1, maxRowNum, "");
+    getBoardList(1, maxRowNum.basic, "");
 };
 
 // 페이지네이션 이동
 const handleChange = (page_num) => {
     const keyword = searchKeyword.value.value;
 
-    getBoardList(page_num, maxRowNum, keyword);
+    getBoardList(page_num, maxRowNum.basic, keyword);
 };
 
 // 체크박스 단일 선택
@@ -277,7 +277,7 @@ const modBoard = (board_idx) => {
 const columnHelper = createColumnHelper();
 
 // 컬럼 세팅
-// [체크박스],[제목],[부제목],[내용],[등록자],[등록일],[수정]
+// [체크박스], [노출여부], [제목], [부제목], [내용], [조회수], [등록자], [등록일], [수정]
 const columns = [
     {
         accessorKey: "board_idx",

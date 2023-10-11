@@ -44,8 +44,8 @@ export default ({ mode }) => {
             rollupOptions: {
                 output: {
                     globals: {
-                        jquery: "window.jQuery",
-                        jquery: "window.$",
+                        jquery: ["window.jQuery", "window.$"],
+                        // jquery: "window.$",
                     },
                 },
             },

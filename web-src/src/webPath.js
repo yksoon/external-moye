@@ -138,9 +138,29 @@ const apiPath = {
     }people/categories`,
 
     // /v1/people
-    // POST
+    // POST MULTI
     // 아티스트 등록
     api_admin_reg_people: `${base_api_url + slash + version + slash}people`,
+
+    // /v1/_peoples
+    // POST
+    // 아티스트 목록
+    api_admin_list_people: `${base_api_url + slash + version + slash}_peoples`,
+
+    // /v1/people
+    // DELETE
+    // 삭제
+    api_admin_remove_people: `${base_api_url + slash + version + slash}people`,
+
+    // /v1/_people/{people_idx}
+    // GET
+    // 아티스트 상세
+    api_admin_detail_people: `${base_api_url + slash + version + slash}_people`,
+
+    // /v1/people
+    // PUT MULTI
+    // 아티스트 수정
+    api_admin_mod_people: `${base_api_url + slash + version + slash}people`,
 };
 
 export { routerPath, apiPath };

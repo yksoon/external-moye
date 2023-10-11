@@ -21,6 +21,7 @@
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.22.15",
+        "@mdi/font": "^7.3.67",
         "@vitejs/plugin-vue": "^4.3.4",
         "@vue/babel-plugin-jsx": "^1.1.5",
         "vite": "^4.4.9"
