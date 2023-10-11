@@ -6,6 +6,7 @@ import { useModalStore } from "@/stores/modal";
 import { createApp, defineComponent } from "vue";
 import { useUserInfoStore, useUserTokenStore } from "@/stores/userInfo";
 import { useRouter } from "vue-router";
+import { routerPath } from "@/webPath";
 
 // TODO : 서비스 활성화 상태 체크를 위한 health check 로직 생성 및 테스트 하기 (제한 권한 없음) - 메디시티 참고
 
@@ -98,8 +99,6 @@ const CommonErrorCatch = async (error) => {
 
 // 토큰 만료시 처리
 const tokenExpire = () => {
-    const router = useRouter();
-
     CommonNotify({
         type: "alert",
         message: "비정상 접근입니다",
@@ -113,7 +112,7 @@ const tokenExpire = () => {
         useUserInfo.setUserInfo({});
         useUserToken.setUserToken("");
 
-        router.replace({ name: "signin" });
+        window.location.replace(routerPath.admin_signin_url);
     };
 };
 

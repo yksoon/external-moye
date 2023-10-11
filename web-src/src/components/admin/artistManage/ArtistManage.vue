@@ -278,6 +278,16 @@ const columns = [
 
     columnHelper.accessor((row) => row.name_ko, {
         id: "name_ko",
+        // cell: (info) =>
+        //     h(
+        //         "p",
+        //         {
+        //             style: {
+        //                 textAlign: "left",
+        //             },
+        //         },
+        //         info.getValue()
+        //     ),
         cell: (info) => info.getValue(),
         header: "이름",
         // sortingFn: "alphanumericCaseSensitive",
