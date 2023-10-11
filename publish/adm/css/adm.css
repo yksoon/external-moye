@@ -160,11 +160,12 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 .admin .login input::placeholder {color: #a8a8a8;}
 .admin .adm_search {margin:0 0 40px;border-bottom: 1px solid #eee;padding:0 0 20px;display:flex;justify-content: space-between;}
 
-.table_a {border-top: 1px solid #a8a8a8;}
-.table_a th {font-size: 14px;background: #efefef;padding:5px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;}
+.table_a {border-top: 1px solid #0754A3;}
+.table_a th {font-size: 14px;background: #f1f8ff;padding:10px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;}
 .table_a th:last-child {border-right: none;}
 .table_a td:last-child {border-right: none;}
-.table_a td {font-size: 14px;padding:5px;text-align: center;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;}
+.table_a td {font-size: 14px;padding:10px;text-align: center;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;}
+.table_a td p img {width: 100%;}
 
 .table_b {border-top: 1px solid #ddd;}
 .table_b thead th {font-size: 14px;background: #efefef;padding:5px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: center;}

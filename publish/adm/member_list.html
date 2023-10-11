@@ -8,7 +8,9 @@
     <title>모두의 예체능 - 관리자</title>
 
     <script src="js/jquery-3.7.0.min.js"></script>
-
+    <script src="js/nav.js"></script>
+    <script src="js/basic.js"></script>
+    <link rel="shortcut icon" href="/publish/img/favicon.ico">
     <link rel="stylesheet" href="/publish/css/default.css" />
     <link rel="stylesheet" href="css/adm.css" />
 </head>
@@ -28,10 +30,10 @@
                     </div>
                     <ul class="sub_gnb">
                         <li>
-                            <a onclick="navList('dash')" class="on">대시보드</a>
+                            <a onclick="navList('dash')">대시보드</a>
                         </li>
                         <li>
-                            <a onclick="navList('memberList')">아티스트 관리</a>
+                            <a onclick="navList('memberList')" class="on">아티스트 관리</a>
                         </li>
                         <li>
                             <a>게시판 관리</a>
@@ -67,25 +69,29 @@
                     <div class="adm_table">
                         <table class="table_a">
                             <colgroup>
-                                <col width="3%">
-                                <col width="4%">
-                                <col width="10%">
-                                <col width="5%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="8%">
-                                <col width="8%">
+                                <col width="2%" />
+                                <col width="10%" />
+                                <col width="7%" />
+                                <col width="10%" />
+                                <col width="10%" />
+                                <col width="5%" />
+                                <col width="5%" />
+                                <col width="5%" />
+                                <col width="7%" />
+                                <col width="5%" />
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th><input type="checkbox"></th>
                                     <th>이미지</th>
                                     <th>이름</th>
-                                    <th>종목</th>
-                                    <th>레슨 종목</th>
-                                    <th>구분</th>
+                                    <th>대분류</th>
+                                    <th>중분류</th>
+                                    <th>타입</th>
                                     <th>노출</th>
-                                    <th>편집</th>
+                                    <th>등록자</th>
+                                    <th>등록일</th>
+                                    <th>정보수정</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,13 +99,17 @@
                                     <td>
                                         <input type="checkbox">
                                     </td>
-                                    <td>1</td>
-                                    <td>ej.lim@hicomp.net</td>
-                                    <td>임은지</td>
-                                    <td>010-0000-0000</td>
-                                    <td>하이컴프아이엔티</td>
-                                    <td>디자인</td>
-                                    <td>1999-06-16</td>
+                                    <td>
+                                        <p style="width: 150px;"></p>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
