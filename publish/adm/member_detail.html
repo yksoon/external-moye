@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모두의 예체능 - 관리자</title>
+
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/basic.js"></script>
+    <link rel="shortcut icon" href="/publish/img/favicon.ico">
+    <link rel="stylesheet" href="/publish/css/default.css" />
+    <link rel="stylesheet" href="css/adm.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="admin">
+            <header>
+                <div class="gnb">
+                    <div class="adm_profile">
+                        <p>관리자 (admin)</p>
+                        <div>
+                            <a href="login.html" class="font-12">로그아웃</a>
+                            <a href="http://dev-web.medi-city.co.kr/publish/index.html" target="_blank"
+                                class="font-12">HOMEPAGE</a>
+                        </div>
+                    </div>
+                    <ul class="sub_gnb">
+                        <li>
+                            <a onclick="navList('dash')">대시보드</a>
+                        </li>
+                        <li>
+                            <a onclick="navList('memberList')" class="on">아티스트 관리</a>
+                        </li>
+                        <li>
+                            <a>게시판 관리</a>
+                            <ul class="sub_2depth">
+                                <li>
+                                    <a onclick="navList('notice')">공지사항</a>
+                                </li>
+                                <li>
+                                    <a onclick="navList('counsel')">상담문의</a>
+                                </li>
+                                <li>
+                                    <a onclick="navList('photo')">포토 갤러리</a>
+                                </li>
+                                <li>
+                                    <a onclick="navList('video')">영상 갤러리</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a onclick="navList('category')">카테고리 관리</a>
+                        </li>
+                        <li>
+                            <a onclick="navList('intro')">회사소개 다운로드</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <div class="content">
+                <div class="title">
+                    <h3>아티스트 관리</h3>
+                </div>
+                <div class="con_area">
+                    <div class="form" id="hotelInsert">
+                        <div class="">
+                            <h4 class="mo_subtitle">아티스트 필수 정보</h4>
+                            <table class="table_bb">
+                                <colgroup>
+                                    <col width="15%">
+                                    <col width="*">
+                                    <col width="15%">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>카테고리 고유번호 <span class="red">*</span></th>
+                                        <td colspan="3"><input type="email" class="input w370" autofocus></td>
+                                    </tr>
+                                    <tr>
+                                        <th>인물타입 <span class="red">*</span></th>
+                                        <td><input type="text" class="input w370"></td>
+                                        <th>인물정보파일 <span class="red">*</span></th>
+                                        <td>
+                                            여러 파일 선택이 가능합니다. 여러 파일 선택 시 ctrl 누른 후 선택하시면 됩니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>성(국문)<span class="red">*</span></th>
+                                        <td><input type="password" class="input w180" placeholder="성"></td>
+                                        <th>이름(국문)<span class="red">*</span></th>
+                                        <td><input type="password" class="input w180" placeholder="이름"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>성(중문)</th>
+                                        <td><input type="password" class="input w180"></td>
+                                        <th>이름(중문)</th>
+                                        <td><input type="password" class="input w180"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>성(영문)</th>
+                                        <td><input type="password" class="input w180" placeholder="First name"></td>
+                                        <th>이름(영문)</th>
+                                        <td><input type="password" class="input w180" placeholder="Last name"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>이메일</th>
+                                        <td colspan="3">
+                                            <input type="email" class="input w120"> @ <input type="email"
+                                                class="input w120">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>성별</th>
+                                        <td colspan="3">
+                                            <input type="radio" name="VIEW_TYPE" id="VIEW_TYPE" value="000"
+                                                class="custom-cursor-default-hover"> 남자
+                                            <input type="radio" name="VIEW_TYPE" id="VIEW_TYPE" value="000"
+                                                class="custom-cursor-default-hover"> 여자
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>생일타입</th>
+                                        <td>
+                                            <input type="radio" name="VIEW_TYPE" id="VIEW_TYPE" value="000"
+                                                class="custom-cursor-default-hover"> 양력
+                                            <input type="radio" name="VIEW_TYPE" id="VIEW_TYPE" value="000"
+                                                class="custom-cursor-default-hover"> 음력
+                                        </td>
+                                        <th>생년월일</th>
+                                        <td>
+                                            <input type="date" class="input w180">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>국제전화번호</th>
+                                        <td>
+                                            <input type="text" class="input w80" placeholder="">
+                                            <input type="text" class="input w80" placeholder="">
+                                            <input type="text" class="input w80" placeholder="">
+                                        </td>
+                                        <th>연락처</th>
+                                        <td>
+                                            <input type="text" class="input w80" placeholder="">
+                                            <input type="text" class="input w80" placeholder="">
+                                            <input type="text" class="input w80" placeholder="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>인물 메모</th>
+                                        <td colspan="3">
+                                            <textarea name="" id="" class="hotel_info"></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="subbtn_box"><a href="javascript:alert('저장되었습니다.');" class="subbtn off">저장</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+<script src="js/nav.js"></script>
+<script src="js/basic.js"></script>
