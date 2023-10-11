@@ -26,6 +26,8 @@ const state = reactive({
     checkItems: [],
 });
 
+const fileBaseUrl = apiPath.api_file;
+
 onMounted(() => {
     getPeopleList(1, maxRowNum.people, "");
 });
@@ -247,7 +249,7 @@ const modPeopleModal = (modData) => {
 const columnHelper = createColumnHelper();
 
 // 컬럼 세팅
-// [체크박스], [노출여부], [제목], [부제목], [내용], [조회수], [등록자], [등록일], [수정]
+// [체크박스], [이미지], [이름], [대분류], [중분류], [타입], [노출], [등록자], [등록일], [정보수정]
 const columns = [
     {
         accessorKey: "people_idx",
@@ -275,6 +277,22 @@ const columns = [
             }),
         // enableSorting: false,
     },
+
+    columnHelper.accessor(
+            (row) => (
+                row.file_path_enc != null ?
+                h("img", {
+                    src: fileBaseUrl+row.file_path_enc,
+                    alt: row.file_name_org
+                })
+                : ""
+            ),
+            {
+                id: "file_path_enc",
+                cell: (info) => info.getValue(),
+                header: "이미지",
+            }
+        ),
 
     columnHelper.accessor((row) => row.name_ko, {
         id: "name_ko",
@@ -317,7 +335,7 @@ const columns = [
     columnHelper.accessor((row) => row.show_yn, {
         id: "show_yn",
         cell: (info) => info.getValue(),
-        header: "노출여부",
+        header: "노출",
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
@@ -384,6 +402,7 @@ const table = useVueTable({
                 <table class="table_a">
                     <colgroup>
                         <col width="2%" />
+                        <col width="10%" />
                         <col width="7%" />
                         <col width="10%" />
                         <col width="10%" />
