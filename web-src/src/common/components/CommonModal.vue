@@ -3,12 +3,13 @@ import { storeToRefs } from "pinia";
 import { onMounted, watch } from "vue";
 import { useModalStore } from "@/stores/modal";
 import NoticeModalMain from "@/components/admin/boardManage/noticeBoard/modal/NoticeModalMain.vue";
+import PhotoModalMain from "@/components/admin/boardManage/photoBoard/modal/PhotoModalMain.vue";
 import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMain.vue";
 import { CommonNotify } from "@/common/js/common";
 
 export default {
     name: "CommonModal",
-    components: { NoticeModalMain, ArtistModalMain },
+    components: { NoticeModalMain, PhotoModalMain, ArtistModalMain },
     setup() {
         const useModal = useModalStore();
         const { isOpen, title, component, width, handleNeedUpdate, state } =
@@ -60,6 +61,13 @@ export default {
                     <!-- 공지사항 등록 -->
                     <NoticeModalMain
                         v-if="component === 'RegNoticeModal'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 포토 갤러리 등록 -->
+                    <PhotoModalMain
+                        v-if="component === 'RegPhotoModal'"
                         :handleNeedUpdate="handleNeedUpdate"
                         :modData="state.modData"
                     />
