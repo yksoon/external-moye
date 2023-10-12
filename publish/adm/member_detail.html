@@ -79,44 +79,107 @@
                                 <tbody>
                                     <tr>
                                         <th>카테고리 고유번호 <span class="red">*</span></th>
-                                        <td colspan="3"><input type="email" class="input w370" autofocus></td>
+                                        <td><input type="email" class="input w370" autofocus></td>
+                                        <th>노출여부 <span class="red">*</span></th>
+                                        <td><select class="select wp100">
+                                                <option value="Y">노출</option>
+                                                <option value="N">비노출</option>
+                                            </select></td>
+                                    </tr>
+                                    <tr>
+                                        <th>카테고리 <span class="red">*</span></th>
+                                        <td>
+                                            <select class="select w180">
+                                                <option value="1">스포츠</option>
+                                                <option value="2">음악</option>
+                                                <option value="3">댄스/무용/바둑</option>
+                                                <option value="4">팀/아카데미</option>
+                                            </select>
+                                            <select class="select w180">
+                                                <option value="5">야구</option>
+                                                <option value="6">펜싱</option>
+                                                <option value="7">농구</option>
+                                                <option value="8">골프</option>
+                                                <option value="9">볼링</option>
+                                                <option value="10">스노우보드</option>
+                                                <option value="11">스키</option>
+                                                <option value="12">아이스하키</option>
+                                                <option value="13">유도</option>
+                                                <option value="14">양궁</option>
+                                                <option value="15">육상</option>
+                                                <option value="16">탁구</option>
+                                                <option value="17">태권도</option>
+                                                <option value="18">테니스</option>
+                                                <option value="19">레슬링</option>
+                                                <option value="20">피켜 스케이팅</option>
+                                                <option value="21">피지컬 트레이닝</option>
+                                                <option value="22">필라테스</option>
+                                                <option value="23">배구</option>
+                                                <option value="24">헬스</option>
+                                                <option value="25">수영</option>
+                                                <option value="26">축구</option>
+                                            </select>
+                                        </td>
+                                        <th>구분 <span class="red">*</span></th>
+                                        <td>
+                                            <select class="select wp100">
+                                                <option value="000">레전드</option>
+                                                <option value="100">국가대표</option>
+                                                <option value="200">프리미엄</option>
+                                                <option value="900">기타</option>
+                                            </select>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>인물타입 <span class="red">*</span></th>
                                         <td><input type="text" class="input w370"></td>
                                         <th>인물정보파일 <span class="red">*</span></th>
                                         <td>
-                                            여러 파일 선택이 가능합니다. 여러 파일 선택 시 ctrl 누른 후 선택하시면 됩니다.
+                                            <b>여러 파일 선택이 가능합니다. 여러 파일 선택 시 ctrl 누른 후 선택하시면 됩니다.</b>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>성(국문)<span class="red">*</span></th>
-                                        <td><input type="password" class="input w180" placeholder="성"></td>
+                                        <td><input type="text" class="input w180" placeholder="성"></td>
                                         <th>이름(국문)<span class="red">*</span></th>
-                                        <td><input type="password" class="input w180" placeholder="이름"></td>
+                                        <td><input type="text" class="input w180" placeholder="이름"></td>
                                     </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form" id="hotelInsert">
+                        <div class="">
+                            <h4 class="mo_subtitle">아티스트 기본 정보</h4>
+                            <table class="table_bb">
+                                <colgroup>
+                                    <col width="15%">
+                                    <col width="*">
+                                    <col width="15%">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
                                     <tr>
                                         <th>성(중문)</th>
-                                        <td><input type="password" class="input w180"></td>
+                                        <td><input type="text" class="input w180"></td>
                                         <th>이름(중문)</th>
-                                        <td><input type="password" class="input w180"></td>
+                                        <td><input type="text" class="input w180"></td>
                                     </tr>
                                     <tr>
                                         <th>성(영문)</th>
-                                        <td><input type="password" class="input w180" placeholder="First name"></td>
+                                        <td><input type="text" class="input w180" placeholder="First name"></td>
                                         <th>이름(영문)</th>
-                                        <td><input type="password" class="input w180" placeholder="Last name"></td>
+                                        <td><input type="text" class="input w180" placeholder="Last name"></td>
                                     </tr>
                                     <tr>
                                         <th>이메일</th>
-                                        <td colspan="3">
+                                        <td>
                                             <input type="email" class="input w120"> @ <input type="email"
                                                 class="input w120">
                                         </td>
-                                    </tr>
-                                    <tr>
                                         <th>성별</th>
-                                        <td colspan="3">
+                                        <td>
                                             <input type="radio" name="VIEW_TYPE" id="VIEW_TYPE" value="000"
                                                 class="custom-cursor-default-hover"> 남자
                                             <input type="radio" name="VIEW_TYPE" id="VIEW_TYPE" value="000"
@@ -133,6 +196,10 @@
                                         </td>
                                         <th>생년월일</th>
                                         <td>
+                                            <select class="select wp20">
+                                                <option value="000">양력</option>
+                                                <option value="100">음력</option>
+                                            </select>
                                             <input type="date" class="input w180">
                                         </td>
                                     </tr>
@@ -151,14 +218,56 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>인물 메모</th>
+                                        <th>메모</th>
                                         <td colspan="3">
                                             <textarea name="" id="" class="hotel_info"></textarea>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <div class="subbtn_box"><a href="javascript:alert('저장되었습니다.');" class="subbtn off">저장</a>
+                        </div>
+                    </div>
+
+                    <div class="form" id="hotelInsert">
+                        <div class="">
+                            <h4 class="mo_subtitle">아티스트 프로필 정보</h4>
+                            <a class="btn btn02">추가</a>
+                            <table class="table_bb">
+                                <colgroup>
+                                    <col width="15%">
+                                    <col width="*">
+                                    <col width="15%">
+                                    <col width="*">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>프로필</th>
+                                        <td colspan="3">
+                                            <select class="select w180" id="section_select_2">
+                                                <option value="">- 선택 -</option>
+                                                <option value="000">직업</option>
+                                                <option value="050">국적</option>
+                                                <option value="100">소속</option>
+                                                <option value="200">학력</option>
+                                                <option value="300">데뷰</option>
+                                                <option value="400">수상</option>
+                                                <option value="450">자격</option>
+                                                <option value="500">경력</option>
+                                                <option value="600">작품</option>
+                                                <option value="650">공동작품</option>
+                                                <option value="700">사이트</option>
+                                                <option value="800">필모</option>
+                                                <option value="900">기타</option>
+                                            </select>
+                                            <a class="btn btn03">섹션 삭제</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="subbtn_box">
+                                <a href="javascript:alert('저장되었습니다.');" class="subbtn">저장</a>
+                                <a href="" class="subbtn delete">삭제</a>
+                                <a href="" class="subbtn off">취소</a>
                             </div>
                         </div>
 
