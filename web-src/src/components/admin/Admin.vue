@@ -240,21 +240,23 @@ export default {
                 :isRefresh="isRefresh"
             />
 
-            <!-- 게시판관리 => 포토갤러리 -->
-            <PhotoBoard 
-                v-if="pages === 'photoBoard'"
-                :isRefresh="isRefresh"
-            />
-
-            <!-- 게시판관리 => 영상갤러리 -->
-            <MovieBoard 
-                v-if="pages === 'movieBoard'"
-                :isRefresh="isRefresh"
-            />
+            
 
             <!-- 회사소개 다운로드 -->
-            <CompanyManage 
+            <CompanyManage
                 v-if="pages === 'companyMng'"
+                :isRefresh="isRefresh"
+            />
+
+            <!-- 게시판관리 => 포토갤러리 -->
+            <!-- <PhotoBoard
+                v-if="pages === 'photoBoard'"
+                :isRefresh="isRefresh"
+            /> -->
+
+            <!-- 게시판관리 => 영상갤러리 -->
+            <MovieBoard
+                v-if="pages === 'movieBoard'"
                 :isRefresh="isRefresh"
             />
 

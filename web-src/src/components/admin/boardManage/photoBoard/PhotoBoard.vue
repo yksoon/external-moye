@@ -287,34 +287,33 @@ const modBoard = (board_idx) => {
                     <a class="btn btn03" @click="removeBoard"> 삭제 </a>
                 </div>
             </div>
-            
             <div v-if="state.boardList.length !== 0" class="adm_table">
-                <div style="border-top: 1px solid #0754A3; padding: 1rem;">
-                    <input type="checkbox" name="select-all" id="select-all" @change="(e) => handleAllCheck(e.target.checked)" :checked="state.checkItems.length === state.boardList.length ? true : false">
-                    <b style="margin-left: 0.2rem;"> 전체선택 </b>
+                <!-- <table class="table_a" style="margin-bottom: 1rem;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="select-all" id="select-all" @change="(e) => handleAllCheck(e.target.checked)" :checked="state.checkItems.length === state.boardList.length ? true : false">
+                                <b> 전체선택 </b>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <div style="display: flex;">
+                    <v-card max-width="400" v-for="item in state.boardList">
+                        <v-img height="200" :src="`${fileBaseUrl}${item.file_info[0].file_path_enc}`" :alt="`${item.file_info[0].file_name}`" cover>
+                            <input type="checkbox" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
+                        </v-img>
+                        <a @click="modBoard(item.board_idx)">
+                            <v-card-title>{{ item.subject }}</v-card-title>
+                            <v-card-subtitle>{{ item.sub_title }}</v-card-subtitle>
+                            <v-card-text>{{ item.content }}</v-card-text>
+                            <v-card-text>
+                                <div>조회수 : {{ item.view_count }}</div>
+                                <div>등록일 : {{ item.reg_dttm }}</div>
+                            </v-card-text>
+                        </a>
+                    </v-card>
                 </div>
-                <v-container fluid>
-                    <v-row no-gutters>
-                        <v-col  v-for="item in state.boardList" cols="12" sm="3">
-                            <v-card class="ma-2 pa-2">
-                                <v-img height="200" :src="`${fileBaseUrl}${item.file_info[0].file_path_enc}`" :alt="`${item.file_info[0].file_name}`" cover>
-                                    <input type="checkbox" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
-                                </v-img>
-                                
-                                    <v-card-title>{{ item.subject }}</v-card-title>
-                                    <v-card-subtitle>{{ item.sub_title }}</v-card-subtitle>
-                                    <v-card-text>{{ item.content }}</v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer>
-                                            <div>조회수 : {{ item.view_count }}</div>
-                                            <div>등록일 : {{ item.reg_dttm }}</div>
-                                        </v-spacer>
-                                        <v-btn variant="outlined" @click="modBoard(item.board_idx)">수정</v-btn>
-                                    </v-card-actions>
-                            </v-card>
-                        </v-col>
-                </v-row>
-                </v-container>
             </div>
             
             <div v-if="state.boardList.length === 0" class="adm_table">
