@@ -4,12 +4,13 @@ import { onMounted, watch } from "vue";
 import { useModalStore } from "@/stores/modal";
 import NoticeModalMain from "@/components/admin/boardManage/noticeBoard/modal/NoticeModalMain.vue";
 import PhotoModalMain from "@/components/admin/boardManage/photoBoard/modal/PhotoModalMain.vue";
+import MovieModalMain from "@/components/admin/boardManage/movieBoard/modal/MovieModalMain.vue";
 import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMain.vue";
 import { CommonNotify } from "@/common/js/common";
 
 export default {
     name: "CommonModal",
-    components: { NoticeModalMain, PhotoModalMain, ArtistModalMain },
+    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain },
     setup() {
         const useModal = useModalStore();
         const { isOpen, title, component, width, handleNeedUpdate, state } =
@@ -68,6 +69,13 @@ export default {
                     <!-- 포토 갤러리 등록 -->
                     <PhotoModalMain
                         v-if="component === 'RegPhotoModal'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 영상 갤러리 등록 -->
+                    <MovieModalMain
+                        v-if="component === 'RegMovieModal'"
                         :handleNeedUpdate="handleNeedUpdate"
                         :modData="state.modData"
                     />
