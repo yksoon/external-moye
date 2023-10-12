@@ -54,7 +54,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 
     // /v1/_peoples
     // POST
-    // 아티스트 목록
+    // 인물 목록
     const url = apiPath.api_admin_list_people;
     const data = {
         page_num: pageNum,
@@ -235,7 +235,7 @@ const modPeople = (people_idx) => {
 // 글 수정
 const modPeopleModal = (modData) => {
     const modalOption = {
-        title: "아티스트 수정",
+        title: "인물 수정",
         component: "ArtistModalMain",
         width: "1400",
         modData: modData,
@@ -384,7 +384,7 @@ const table = useVueTable({
 <template>
     <div class="content">
         <div class="title">
-            <h3>아티스트 관리</h3>
+            <h3>프로필</h3>
         </div>
         <div class="con_area">
             <div class="adm_search">
@@ -393,7 +393,7 @@ const table = useVueTable({
                     <a class="btn btn02" @click="doSearch"> 검색 </a>
                 </div>
                 <div class="btn_box btn_right" style="margin: 0">
-                    <a class="btn btn01" @click="regArtist"> 아티스트 등록 </a>
+                    <a class="btn btn01" @click="regArtist"> 인물 등록 </a>
                     <a class="btn btn03" @click="removeArtist"> 삭제 </a>
                 </div>
             </div>
