@@ -94,14 +94,14 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 
        <!-- container //S-->
        <div id="container">
-        <div class="section01">
+        <div class="section01" v-if="state.peopleList.length !== 0">
             <div class="top">
                 <h3 class="title">LIST OF LEGEND</h3>
                 <p>130개 예체능 카테고리 레전드 마스터</p>
                 <a href="" class="more_btn"><span>코치진 더보기</span></a>
             </div>
             <!-- banner-slider //S-->
-            <div class="slide_box" v-if="state.peopleList.length !== 0">
+            <div class="slide_box">
                 <div id="gsefSpan">
                     <div class="marquee" id="gsefSpan1">
                         <div class="person">
