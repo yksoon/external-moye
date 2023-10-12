@@ -19,6 +19,8 @@ import ConsultingBoard from "./boardManage/consultingBoard/ConsultingBoard.vue";
 import PhotoBoard from "./boardManage/photoBoard/PhotoBoard.vue";
 import MovieBoard from "./boardManage/movieBoard/MovieBoard.vue";
 import ArtistManage from "./artistManage/ArtistManage.vue";
+import CategoryManage from "./categoryManage/CategoryManage.vue";
+import CompanyManage from "./companyManage/CompanyManage.vue";
 
 export default {
     name: "Admin",
@@ -29,6 +31,8 @@ export default {
         PhotoBoard,
         MovieBoard,
         ArtistManage,
+        CategoryManage,
+        CompanyManage
     },
     setup() {
         const state = reactive({
@@ -211,6 +215,18 @@ export default {
                 :menuList="state.menuList"
                 :switchPage="switchPage"
             />
+            
+            <!-- 인물관리 => 프로필 -->
+            <ArtistManage
+                v-if="pages === 'profileMng'"
+                :isRefresh="isRefresh"
+            />
+
+            <!-- 인물관리 => 카테고리 -->
+            <CategoryManage
+                v-if="pages === 'categoryMng'"
+                :isRefresh="isRefresh"
+            />
 
             <!-- 게시판관리 => 공지사항 -->
             <NoticeBoard
@@ -225,16 +241,23 @@ export default {
             />
 
             <!-- 게시판관리 => 포토갤러리 -->
-            <PhotoBoard v-if="pages === 'photoBoard'" :isRefresh="isRefresh" />
-
-            <!-- 게시판관리 => 영상갤러리 -->
-            <MovieBoard v-if="pages === 'movieBoard'" :isRefresh="isRefresh" />
-
-            <!-- 아티스트관리 -->
-            <ArtistManage
-                v-if="pages === 'profileMng'"
+            <PhotoBoard 
+                v-if="pages === 'photoBoard'"
                 :isRefresh="isRefresh"
             />
+
+            <!-- 게시판관리 => 영상갤러리 -->
+            <MovieBoard 
+                v-if="pages === 'movieBoard'"
+                :isRefresh="isRefresh"
+            />
+
+            <!-- 회사소개 다운로드 -->
+            <CompanyManage 
+                v-if="pages === 'companyMng'"
+                :isRefresh="isRefresh"
+            />
+
         </div>
     </div>
 </template>

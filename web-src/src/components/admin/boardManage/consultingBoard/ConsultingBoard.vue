@@ -1,10 +1,21 @@
-<script>
-export default {
-    name: "ConsultingBoard",
-    setup() {},
-};
+<script setup>
 </script>
 
 <template>
-    <div>게시판관리 => 상담문의</div>
+    <div class="content">
+        <div class="title">
+            <h3>상담문의</h3>
+        </div>
+    <div class="adm_table">
+        <table class="table_a">
+            <tbody>
+                <tr>
+                    <td>
+                        <b> 준비중입니다. </b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </template>

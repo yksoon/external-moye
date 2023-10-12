@@ -1,33 +1,29 @@
 <template>
-    <nav id="nav">
-        <RouterLink to='/'>Home</RouterLink>
-        <RouterLink to='/notice/notices'>Notices</RouterLink>
-        <RouterLink to='/admin'>Admin</RouterLink>
-    </nav>
+    <div id="header_nav">
+        <ul>
+            <li><router-link to='/'>Home</router-link></li>
+            <li><router-link to='/admin'>Admin</router-link></li>
+        </ul>
+    </div>
 </template>
 
-<script>
-import { RouterLink } from 'vue-router';
+<script setup>
 import { routerPath } from '@/webPath';
-
-export default {
-    name: 'home'
-}
 </script>
 
 <style scoped>
-#nav ul, li {
+#header_nav ul, li {
     list-style: none;
 }
-#nav > ul {
+#header_nav > ul {
     display: flex;
     text-align: left;
 }
-#nav a {
+#header_nav a {
     color: #333;
     text-decoration: none;
 }
-#nav > ul > li > a {
+#header_nav > ul > li > a {
     margin-left: 20px;
     font-weight: bold;
 }

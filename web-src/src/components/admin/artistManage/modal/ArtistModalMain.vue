@@ -326,7 +326,7 @@ const handelProfileSection = (handleType, idx) => {
     }
 };
 
-// 아티스트 프로필 셀렉트 박스 선택 이벤트
+// 인물 프로필 셀렉트 박스 선택 이벤트
 const handleProfileType = (e, sectionIdx) => {
     const val = e.target.value;
 
@@ -425,7 +425,7 @@ const handleInput = (e, parentIdx, inputIdx) => {
     }
 };
 
-// 아티스트 등록
+// 인물 등록
 const regArtist = () => {
     if (validation()) {
         CommonSpinner(true);
@@ -499,7 +499,7 @@ const regArtist = () => {
 
                 CommonNotify({
                     type: "alert",
-                    message: "아티스트 등록이 완료 되었습니다",
+                    message: "인물 등록이 완료 되었습니다",
                     callback: () => requestList(),
                 });
             } else {
@@ -599,7 +599,7 @@ const modArtist = () => {
 
                 CommonNotify({
                     type: "alert",
-                    message: "아티스트 수정이 완료 되었습니다",
+                    message: "인물 수정이 완료 되었습니다",
                     callback: () => requestList(),
                 });
             } else {
@@ -614,7 +614,7 @@ const modArtist = () => {
 
         // /v1/people
         // PUT MULTI
-        // 아티스트 수정
+        // 인물 수정
         const restParams = {
             method: "put_multi",
             url: apiPath.api_admin_mod_people, // /v1/people
@@ -717,7 +717,7 @@ const testBtn = () => {
 <template>
     <div class="admin">
         <div style="margin: 30px 0">
-            <h4 className="mo_subtitle">아티스트 필수 정보</h4>
+            <h4 className="mo_subtitle">인물 필수 정보</h4>
             <table class="table_bb">
                 <colgroup>
                     <col width="15%" />
@@ -828,7 +828,7 @@ const testBtn = () => {
         </div>
 
         <div style="margin: 30px 0">
-            <h4 className="mo_subtitle">아티스트 기본 정보</h4>
+            <h4 className="mo_subtitle">인물 기본 정보</h4>
             <table class="table_bb">
                 <colgroup>
                     <col width="15%" />
@@ -928,7 +928,7 @@ const testBtn = () => {
         </div>
 
         <div style="margin: 30px 0">
-            <h4 className="mo_subtitle">아티스트 프로필 정보</h4>
+            <h4 className="mo_subtitle">인물 프로필 정보</h4>
             <a @click="handelProfileSection('add')">추가</a>
             <table class="table_bb">
                 <colgroup>

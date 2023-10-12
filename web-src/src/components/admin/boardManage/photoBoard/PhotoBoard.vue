@@ -287,7 +287,7 @@ const modBoard = (board_idx) => {
                     <a class="btn btn03" @click="removeBoard"> 삭제 </a>
                 </div>
             </div>
-
+           
             <div v-if="state.boardList.length !== 0" v-for="item in state.boardList">
                 <v-card max-width="400">
                     <v-img height="200" :src="`${fileBaseUrl}${item.file_info[0].file_path_enc}`" :alt="`${item.file_info[0].file_name}`" cover>
@@ -304,8 +304,16 @@ const modBoard = (board_idx) => {
                     </a>
                 </v-card>
             </div>
-            <div v-if="state.boardList.length === 0">
-                <b> 데이터가 없습니다. </b>
+            <div v-if="state.boardList.length === 0" class="adm_table">
+                <table class="table_a">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b> 데이터가 없습니다. </b>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div className="pagenation" v-if="state.boardList.length !== 0">
                 <v-pagination

@@ -16,35 +16,13 @@
 //         console.log(res);
 //     };
 // };
-
+import GlobalHeader from "./common/GlobalHeader.vue";
 </script>
 
 <template>
-    <div>
-        <h1>Home Page</h1>
-        <md-dialog-alert
-            :md-active.sync="first"
-            md-content="Your post has been deleted!"
-            md-confirm-text="Cool!"
-        />
-
-        <md-dialog-alert
-            :md-active.sync="second"
-            md-title="Post created!"
-            md-content="Your post <strong>Material Design is awesome</strong> has been created."
-        />
-
-        <md-button class="md-accent md-raised" @click="first = true"
-            >Alert</md-button
-        >
-        <md-button class="md-primary md-raised" @click="second = true"
-            >Alert</md-button
-        >
-
-        <br /><a @click="alert('hello')">Alert First A Tag</a> <br /><a
-            @click="second = true"
-            >Alert Second A Tag</a
-        >
+    <GlobalHeader />
+    <div style="height: 70vh; display: flex; justify-content: center; align-items: center;">
+        <h1 style="font-weight: bold;">준비중입니다.</h1>
     </div>
 </template>
 
