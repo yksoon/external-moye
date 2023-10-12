@@ -12,12 +12,15 @@ import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
 import GlobalHeader from "./common/GlobalHeader.vue";
+import GlobalFooter from "./common/GlobalFooter.vue";
 // import $ from "jquery";
 
 // window.jQuery = window.$ = $;
 const searchKeyword = ref(null);
 const state = reactive({
-    peopleList: [],
+    peopleList1: [],
+    peopleList2: [],
+    boardList: [],
     pageInfo: {},
     checkItems: [],
 });
@@ -25,7 +28,8 @@ const state = reactive({
 const fileBaseUrl = apiPath.api_file;
 
 onMounted(() => {
-    getPeopleList(1, maxRowNum.people, "");
+    getPeopleList(1, 6, "");
+    getBoardList(1, 4, "");
 });
 
 // 인물 리스트 가져오기
@@ -64,8 +68,63 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
             let result_info = res.data.result_info;
             let page_info = res.data.page_info;
 
-            state.peopleList = result_info;
-            state.pageInfo = page_info;
+            state.peopleList1 = result_info.slice(0, 3);
+            state.peopleList2 = result_info.slice(-3);
+
+            CommonSpinner(false);
+        } else {
+            // 에러
+            CommonConsole("log", res);
+
+            CommonSpinner(false);
+        }
+    };
+};
+
+// 공지사항 리스트 가져오기
+const getBoardList = (pageNum, pageSize, searchKeyword) => {
+    CommonSpinner(true);
+
+    // /v1/boards
+    // POST
+    // board_type
+    // 000 : 공지사항
+    // 100 : 상담문의
+    // 200 : 포토게시판
+    // 300 : 영상게시판
+    // 400 : 회사소개
+    // 900 : 기타
+    const url = apiPath.api_admin_boards;
+    const data = {
+        page_num: pageNum,
+        page_size: pageSize,
+        search_keyword: searchKeyword,
+        board_type: "000",
+    };
+
+    // 파라미터
+    const restParams = {
+        method: "post",
+        url: url,
+        data: data,
+        callback: (res) => responsLogic(res),
+        admin: "Y",
+    };
+    CommonRest(restParams);
+
+    // 완료 로직
+    const responsLogic = (res) => {
+        let result_code = res.headers.result_code;
+
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
+            let page_info = res.data.page_info;
+
+            state.boardList = result_info;
 
             CommonSpinner(false);
         } else {
@@ -94,94 +153,40 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 
        <!-- container //S-->
        <div id="container">
-        <div class="section01" v-if="state.peopleList.length !== 0">
+        <div class="section01">
             <div class="top">
                 <h3 class="title">LIST OF LEGEND</h3>
                 <p>130개 예체능 카테고리 레전드 마스터</p>
                 <a href="" class="more_btn"><span>코치진 더보기</span></a>
             </div>
             <!-- banner-slider //S-->
-            <div class="slide_box">
+            <div class="slide_box" v-if="state.peopleList1.length !== 0">
                 <div id="gsefSpan">
                     <div class="marquee" id="gsefSpan1">
-                        <div class="person">
+                        <div class="person" v-for="people in state.peopleList1">
                             <a href="" target="_blank" rel="noopener noreferrer">
-                                <img :src="`${fileBaseUrl}${state.peopleList[0].file_path_enc}`" :alt="`${state.peopleList[0].file_name_org}`">
+                                <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`">
                                 <p>
-                                    <span class="name">{{state.peopleList[0].name_ko}}</span>
-                                    <span class="field">{{state.peopleList[0].category_child_name_ko}}</span>
+                                    <span class="name">{{people.name_ko}}</span>
+                                    <span class="field">{{people.category_child_name_ko}}</span>
                                 </p>
                             </a>
                         </div>
-                        <div class="person">
-                            <a href="" target="_blank" rel="noopener noreferrer">
-                                <img src="" alt="">
-                                <p>
-                                    <span class="name">{{state.peopleList[1].name_ko}}</span>
-                                    <span class="field">{{state.peopleList[1].category_child_name_ko}}</span>
-                                </p>
-                            </a>
-                        </div>
-                        <div class="person">
-                            <a href="" target="_blank" rel="noopener noreferrer">
-                                <img src="" alt="">
-                                <p>
-                                    <span class="name">{{state.peopleList[2].name_ko}}</span>
-                                    <span class="field">{{state.peopleList[2].category_child_name_ko}}</span>
-                                </p>
-                            </a>
-                        </div>
-                        <!-- <div class="person">
-                            <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
-                                <img src="" alt="">
-                                <p>
-                                    <span class="name">이름</span>
-                                    <span class="field">분야</span>
-                                </p>
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </div>
-            <div class="slide_box">
+            <div class="slide_box" v-if="state.peopleList2.length !== 0">
                 <div id="gsefSpan">
                     <div class="marquee" id="gsefSpan2">
-                        <div class="person">
-                            <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
-                                <img src="" alt="">
+                        <div class="person" v-for="people in state.peopleList2">
+                            <a href="" target="_blank" rel="noopener noreferrer">
+                                <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`">
                                 <p>
-                                    <span class="name">{{state.peopleList[3].name_ko}}</span>
-                                    <span class="field">{{state.peopleList[3].category_child_name_ko}}</span>
+                                    <span class="name">{{people.name_ko}}</span>
+                                    <span class="field">{{people.category_child_name_ko}}</span>
                                 </p>
                             </a>
                         </div>
-                        <div class="person">
-                            <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
-                                <img src="" alt="">
-                                <p>
-                                    <span class="name">{{state.peopleList[4].name_ko}}</span>
-                                    <span class="field">{{state.peopleList[4].category_child_name_ko}}</span>
-                                </p>
-                            </a>
-                        </div>
-                        <div class="person">
-                            <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
-                                <img src="" alt="">
-                                <p>
-                                    <span class="name">{{state.peopleList[5].name_ko}}</span>
-                                    <span class="field">{{state.peopleList[5].category_child_name_ko}}</span>
-                                </p>
-                            </a>
-                        </div>
-                        <!-- <div class="person">
-                            <a href="" target="_blank" rel="noopener noreferrer"><img src="" alt="">
-                                <img src="" alt="">
-                                <p>
-                                    <span class="name">이름</span>
-                                    <span class="field">분야</span>
-                                </p>
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -276,41 +281,12 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
                 <p>모두의 예체능의 주요 공지사항을 전달합니다.</p>
                 <a href="" class="more_btn"><span>공지사항 더보기</span></a>
             </div>
-            <div class="box_wrap">
-                <div class="box">
+            <div class="box_wrap" v-if="state.boardList.length !== 0">
+                <div class="box" v-for="board in state.boardList">
                     <a>
-                        <h4>공지사항의 제목이 보여집니다.</h4>
-                        <p>공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이
-                            들어가게
-                            됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.</p>
-                        <span>2023-09-01</span>
-                    </a>
-                </div>
-                <div class="box">
-                    <a>
-                        <h4>공지사항의 제목이 보여집니다.</h4>
-                        <p>공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이
-                            들어가게
-                            됩니다.</p>
-                        <span>2023-09-01</span>
-                    </a>
-                </div>
-                <div class="box">
-                    <a>
-                        <h4>공지사항의 제목이 보여집니다.</h4>
-                        <p>공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이
-                            들어가게
-                            됩니다.</p>
-                        <span>2023-09-01</span>
-                    </a>
-                </div>
-                <div class="box">
-                    <a>
-                        <h4>공지사항의 제목이 보여집니다.</h4>
-                        <p>공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이 들어가게 됩니다.공지사항의 내용이
-                            들어가게
-                            됩니다.</p>
-                        <span>2023-09-01</span>
+                        <h4>{{ board.subject }}</h4>
+                        <p>{{ board.content }}</p>
+                        <span>{{ board.reg_dttm.split(' ')[0] }}</span>
                     </a>
                 </div>
             </div>
@@ -318,10 +294,6 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 
     </div>
     <!-- container //E-->
+    <GlobalFooter/>
 </div>
 </template>
-
-
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
