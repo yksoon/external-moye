@@ -167,6 +167,7 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 
 /* header */
 .adm_profile {text-align: center;color: #fff;padding:20px 0;}
+.adm_profile > a {color: #fff;}
 
 .admin .gnb {position:fixed;width:180px;height:100vh;top:0;left:0;background:#353535;overflow-y:scroll;}
 .admin .gnb{ -ms-overflow-style: none; } .gnb::-webkit-scrollbar{ display:none; }
