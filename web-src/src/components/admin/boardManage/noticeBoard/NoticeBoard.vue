@@ -51,7 +51,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
     // /v1/boards
     // POST
     // board_type
-    // 000 : 공지사항
+    // 000 : 공지사항 [v]
     // 100 : 상담문의
     // 200 : 포토게시판
     // 300 : 영상게시판

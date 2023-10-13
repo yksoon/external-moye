@@ -5,12 +5,13 @@ import { useModalStore } from "@/stores/modal";
 import NoticeModalMain from "@/components/admin/boardManage/noticeBoard/modal/NoticeModalMain.vue";
 import PhotoModalMain from "@/components/admin/boardManage/photoBoard/modal/PhotoModalMain.vue";
 import MovieModalMain from "@/components/admin/boardManage/movieBoard/modal/MovieModalMain.vue";
+import CompanyModalMain from "@/components/admin/companyManage/modal/CompanyModalMain.vue";
 import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMain.vue";
 import { CommonNotify } from "@/common/js/common";
 
 export default {
     name: "CommonModal",
-    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain },
+    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain, CompanyModalMain },
     setup() {
         const useModal = useModalStore();
         const { isOpen, title, component, width, handleNeedUpdate, state } =
@@ -83,6 +84,13 @@ export default {
                     <!-- 아티스트 관리 모달 -->
                     <ArtistModalMain
                         v-if="component === 'ArtistModalMain'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!--  회사소개 등록 -->
+                    <CompanyModalMain
+                        v-if="component === 'CompanyModalMain'"
                         :handleNeedUpdate="handleNeedUpdate"
                         :modData="state.modData"
                     />
