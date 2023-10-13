@@ -277,7 +277,7 @@ const modBoard = (board_idx) => {
 const columnHelper = createColumnHelper();
 
 // 컬럼 세팅
-// [체크박스], [노출여부], [제목], [부제목], [내용], [조회수], [등록자], [등록일], [수정]
+// [체크박스], [제목], [부제목], [내용], [노출여부], [조회수], [등록자], [등록일], [수정]
 const columns = [
     {
         accessorKey: "board_idx",
@@ -306,13 +306,6 @@ const columns = [
         // enableSorting: false,
     },
 
-    columnHelper.accessor((row) => row.show_yn, {
-        id: "show_yn",
-        cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
-        header: "노출여부",
-        // sortingFn: "alphanumericCaseSensitive",
-    }),
-
     columnHelper.accessor((row) => row.subject, {
         id: "subject",
         cell: (info) => info.getValue(),
@@ -331,6 +324,13 @@ const columns = [
         id: "content",
         cell: (info) => info.getValue(),
         header: "내용",
+        // sortingFn: "alphanumericCaseSensitive",
+    }),
+    
+    columnHelper.accessor((row) => row.show_yn, {
+        id: "show_yn",
+        cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
+        header: "노출여부",
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
@@ -405,10 +405,10 @@ const table = useVueTable({
                 <table class="table_a">
                     <colgroup>
                         <col width="2%" />
-                        <col width="5%" />
                         <col width="20%" />
                         <col width="15%" />
                         <col width="*" />
+                        <col width="5%" />
                         <col width="5%" />
                         <col width="7%" />
                         <col width="7%" />
