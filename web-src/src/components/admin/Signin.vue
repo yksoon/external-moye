@@ -10,6 +10,7 @@ import {
 import { successCode } from "@/common/js/resultCode";
 import { useUserInfoStore, useUserTokenStore } from "@/stores/userInfo";
 import { useRouter } from "vue-router";
+import "@/common/css/admin.css";
 
 export default {
     name: "Signin",
@@ -146,6 +147,7 @@ export default {
         };
     },
 };
+
 </script>
 
 <template>

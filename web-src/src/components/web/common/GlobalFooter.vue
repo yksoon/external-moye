@@ -12,7 +12,7 @@
                 <span>M. 010-7424-9995</span>
                 <span>E. admin@mo-ye.com</span>
             </div>
-            <p class="flogo"><img src="@/assets/web/main/logo_b.png" alt=""></p>
+            <p class="flogo"><img src="/img/web/main/logo_b.png" alt=""></p>
         </div>
     </div>
     <!-- footer //E-->

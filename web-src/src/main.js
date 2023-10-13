@@ -1,11 +1,10 @@
-import "./assets/main.css";
+// import "./assets/main.css";
 // import VueMaterial from 'vue-material' // CSS 라이브러리 (https://www.npmjs.com/package/vue-material)
 // import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default.css'
 
 import "@/common/css/default.css";
 import "@/common/css/style.css";
-import "@/common/css/admin.css";
 // import "@/common/js/jquery-1.11.1.min.js";
 // import "@/common/js/jquery-easing.1.3.js";
 // import "@/common/js/aos.js";

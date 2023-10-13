@@ -21,6 +21,7 @@ import MovieBoard from "./boardManage/movieBoard/MovieBoard.vue";
 import ArtistManage from "./artistManage/ArtistManage.vue";
 import CategoryManage from "./categoryManage/CategoryManage.vue";
 import CompanyManage from "./companyManage/CompanyManage.vue";
+// import "@/common/css/admin.css";
 
 export default {
     name: "Admin",
@@ -207,8 +208,8 @@ export default {
 </script>
 
 <template>
-    <div className="wrap">
-        <div className="admin">
+    <div class="wrap">
+        <div class="admin">
             <SideNav
                 v-if="state.menuList.length !== 0"
                 :userInfo="userInfo"
@@ -240,7 +241,17 @@ export default {
                 :isRefresh="isRefresh"
             />
 
-            
+            <!-- 게시판관리 => 포토갤러리 -->
+            <PhotoBoard
+                v-if="pages === 'photoBoard'"
+                :isRefresh="isRefresh"
+            />
+
+            <!-- 게시판관리 => 영상갤러리 -->
+            <MovieBoard
+                v-if="pages === 'movieBoard'"
+                :isRefresh="isRefresh"
+            />
 
             <!-- 회사소개 다운로드 -->
             <CompanyManage
@@ -248,17 +259,6 @@ export default {
                 :isRefresh="isRefresh"
             />
 
-            <!-- 게시판관리 => 포토갤러리 -->
-            <!-- <PhotoBoard
-                v-if="pages === 'photoBoard'"
-                :isRefresh="isRefresh"
-            /> -->
-
-            <!-- 게시판관리 => 영상갤러리 -->
-            <MovieBoard
-                v-if="pages === 'movieBoard'"
-                :isRefresh="isRefresh"
-            />
 
         </div>
     </div>

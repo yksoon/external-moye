@@ -199,30 +199,30 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
             </div>
             <div class="category">
                 <div class="icon_wrap">
-                    <img src="@/assets/web/main/sports01.png" alt="">
-                    <img src="@/assets/web/main/sports02.png" alt="">
-                    <img src="@/assets/web/main/sports03.png" alt="">
-                    <img src="@/assets/web/main/sports04.png" alt="">
-                    <img src="@/assets/web/main/sports05.png" alt="">
-                    <img src="@/assets/web/main/sports06.png" alt="">
-                    <img src="@/assets/web/main/sports07.png" alt="">
-                    <img src="@/assets/web/main/sports08.png" alt="">
-                    <img src="@/assets/web/main/sports09.png" alt="">
-                    <img src="@/assets/web/main/sports10.png" alt="">
-                    <img src="@/assets/web/main/sports11.png" alt="">
-                    <img src="@/assets/web/main/sports12.png" alt="">
-                    <img src="@/assets/web/main/sports13.png" alt="">
-                    <img src="@/assets/web/main/sports14.png" alt="">
-                    <img src="@/assets/web/main/sports15.png" alt="">
-                    <img src="@/assets/web/main/sports16.png" alt="">
-                    <img src="@/assets/web/main/sports17.png" alt="">
-                    <img src="@/assets/web/main/sports18.png" alt="">
+                    <img src="/img/web/main/sports01.png" alt="">
+                    <img src="/img/web/main/sports02.png" alt="">
+                    <img src="/img/web/main/sports03.png" alt="">
+                    <img src="/img/web/main/sports04.png" alt="">
+                    <img src="/img/web/main/sports05.png" alt="">
+                    <img src="/img/web/main/sports06.png" alt="">
+                    <img src="/img/web/main/sports07.png" alt="">
+                    <img src="/img/web/main/sports08.png" alt="">
+                    <img src="/img/web/main/sports09.png" alt="">
+                    <img src="/img/web/main/sports10.png" alt="">
+                    <img src="/img/web/main/sports11.png" alt="">
+                    <img src="/img/web/main/sports12.png" alt="">
+                    <img src="/img/web/main/sports13.png" alt="">
+                    <img src="/img/web/main/sports14.png" alt="">
+                    <img src="/img/web/main/sports15.png" alt="">
+                    <img src="/img/web/main/sports16.png" alt="">
+                    <img src="/img/web/main/sports17.png" alt="">
+                    <img src="/img/web/main/sports18.png" alt="">
                 </div>
                 <a href="" class="more_btn"><span>카테고리 더보기</span></a>
             </div>
             <div class="class_wrap">
                 <div class="pink">
-                    <span><img src="@/assets/web/main/class01.png" alt=""></span>
+                    <span><img src="/img/web/main/class01.png" alt=""></span>
                     <div class="txt">
                         <h5>PRIVATE CLASS</h5>
                         <p>
@@ -232,7 +232,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                     </div>
                 </div>
                 <div class="green">
-                    <span><img src="@/assets/web/main/class02.png" alt=""></span>
+                    <span><img src="/img/web/main/class02.png" alt=""></span>
                     <div class="txt">
                         <h5>SCHOOL CLASS</h5>
                         <p>
@@ -243,7 +243,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                     </div>
                 </div>
                 <div class="blue">
-                    <span><img src="@/assets/web/main/class03.png" alt=""></span>
+                    <span><img src="/img/web/main/class03.png" alt=""></span>
                     <div class="txt">
                         <h5>ONLINE CLASS</h5>
                         <p>
@@ -252,7 +252,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                     </div>
                 </div>
                 <div>
-                    <span><img src="@/assets/web/main/class04.png" alt=""></span>
+                    <span><img src="/img/web/main/class04.png" alt=""></span>
                     <div class="txt">
                         <h5>SPECIAL CLASS</h5>
                         <p>
