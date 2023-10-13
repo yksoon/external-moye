@@ -78,6 +78,11 @@ const attachFile = (input) => {
     }
 };
 
+// 첨부파일 삭제시
+const attachFileRemove = (input) => {
+    // TODO: 첨부파일 삭제 로직 구현하기 (개별삭제)
+};
+
 // 등록
 const regBoard = () => {
 if (validation()) {
