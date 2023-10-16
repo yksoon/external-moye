@@ -722,7 +722,7 @@ const testBtn = () => {
             <table class="table_bb">
                 <colgroup>
                     <col width="15%">
-                    <col width="35%>
+                    <col width="35%">
                     <col width="15%">
                     <col width="35%">
                 </colgroup>

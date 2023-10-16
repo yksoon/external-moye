@@ -161,6 +161,34 @@ const apiPath = {
     // PUT MULTI
     // 아티스트 수정
     api_admin_mod_people: `${base_api_url + slash + version + slash}people`,
+
+    // ---------------------- History Management API ----------------------
+    // /v1/history
+    // POST MULTI
+    // 연혁 정보 등록
+    api_admin_reg_history: `${base_api_url + slash + version + slash}history`,
+    
+    // /v1/_histories
+    // POST
+    // 연혁 정보 목록
+    api_admin_get_histories: `${
+        base_api_url + slash + version + slash
+    }_histories`,
+    
+    // /v1/_history/{history_idx}
+    // GET
+    // 연혁 정보 상세
+    api_admin_detail_history: `${base_api_url + slash + version + slash}_history`,
+    
+    // /v1/history
+    // PUT MULTI
+    // 연혁 정보 수정
+    api_admin_mod_history: `${base_api_url + slash + version + slash}history`,
+
+    // /v1/history
+    // DELETE
+    // 연혁 정보 삭제
+    api_admin_remove_history: `${base_api_url + slash + version + slash}history`,
 };
 
 export { routerPath, apiPath };

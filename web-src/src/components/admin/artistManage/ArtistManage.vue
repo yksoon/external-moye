@@ -32,6 +32,7 @@ onMounted(() => {
     getPeopleList(1, maxRowNum.people, "");
 });
 
+// 인물 등록
 const regArtist = () => {
     const modalOption = {
         title: "인물 등록",

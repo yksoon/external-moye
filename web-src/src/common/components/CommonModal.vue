@@ -7,11 +7,12 @@ import PhotoModalMain from "@/components/admin/boardManage/photoBoard/modal/Phot
 import MovieModalMain from "@/components/admin/boardManage/movieBoard/modal/MovieModalMain.vue";
 import CompanyModalMain from "@/components/admin/companyManage/modal/CompanyModalMain.vue";
 import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMain.vue";
+import HistoryModalMain from "@/components/admin/historyManage/modal/HistoryModalMain.vue";
 import { CommonNotify } from "@/common/js/common";
 
 export default {
     name: "CommonModal",
-    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain, CompanyModalMain },
+    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain, CompanyModalMain, HistoryModalMain },
     setup() {
         const useModal = useModalStore();
         const { isOpen, title, component, width, handleNeedUpdate, state } =
@@ -84,6 +85,13 @@ export default {
                     <!-- 아티스트 관리 모달 -->
                     <ArtistModalMain
                         v-if="component === 'ArtistModalMain'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 연혁 관리 모달 -->
+                    <HistoryModalMain
+                        v-if="component === 'HistoryModalMain'"
                         :handleNeedUpdate="handleNeedUpdate"
                         :modData="state.modData"
                     />
