@@ -13,6 +13,7 @@ import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
 import GlobalHeader from "./common/GlobalHeader.vue";
 import GlobalFooter from "./common/GlobalFooter.vue";
+import { marqueeInit } from "@/common/js/crawler";
 // import $ from "jquery";
 
 // window.jQuery = window.$ = $;
@@ -28,8 +29,10 @@ const state = reactive({
 const fileBaseUrl = apiPath.api_file;
 
 onMounted(() => {
-    getPeopleList(1, 6, "");
+    getPeopleList(1, 8, "");
     getBoardList(1, 4, "");
+    
+   
 });
 
 // 인물 리스트 가져오기
@@ -68,9 +71,44 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
             let result_info = res.data.result_info;
             let page_info = res.data.page_info;
 
-            state.peopleList1 = result_info.slice(0, 3);
-            state.peopleList2 = result_info.slice(-3);
+            state.peopleList1 = result_info.slice(0, 4);
+            state.peopleList2 = result_info.slice(-4);
 
+            // 코치진 슬라이드 효과 적용
+            // banner-slider //S
+            marqueeInit({
+                uniqueid: 'gsefSpan1',
+                style: {
+                    'margin-left': '0px',
+                    'margin-bottom': '0px',
+                    'padding': '0px',
+                    'width': '100%',
+                    'height': '315px'
+                },
+                inc: 10, //speed - pixel increment for each iteration of this marquee's movement
+                mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+                moveatleast: 1,
+                neutral: 1500,
+                savedirection: true
+            });
+            marqueeInit({
+                uniqueid: 'gsefSpan2',
+                style: {
+                    'margin-left': '0px',
+                    'margin-bottom': '0px',
+                    'padding': '0px',
+                    'width': '100%',
+                    'height': '315px'
+                },
+                inc: 10, //speed - pixel increment for each iteration of this marquee's movement
+                mouse: 'cursor driven', //mouseover behavior ('pause' 'cursor driven' or false)
+                moveatleast: 1,
+                neutral: 1500,
+                savedirection: true,
+                direction: 'right'
+            });
+            // banner-slider //E
+            
             CommonSpinner(false);
         } else {
             // 에러
@@ -88,7 +126,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
     // /v1/boards
     // POST
     // board_type
-    // 000 : 공지사항
+    // 000 : 공지사항 [v]
     // 100 : 상담문의
     // 200 : 포토게시판
     // 300 : 영상게시판
@@ -166,6 +204,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                         <div class="person" v-for="people in state.peopleList1">
                             <a href="" target="_blank" rel="noopener noreferrer">
                                 <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`">
+                                <div v-else style="background-color: #eee;"></div>
                                 <p>
                                     <span class="name">{{people.name_ko}}</span>
                                     <span class="field">{{people.category_child_name_ko}}</span>
@@ -181,6 +220,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                         <div class="person" v-for="people in state.peopleList2">
                             <a href="" target="_blank" rel="noopener noreferrer">
                                 <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`">
+                                <div v-else style="background-color: #eee;"></div>
                                 <p>
                                     <span class="name">{{people.name_ko}}</span>
                                     <span class="field">{{people.category_child_name_ko}}</span>

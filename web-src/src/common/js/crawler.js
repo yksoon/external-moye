@@ -273,3 +273,5 @@ function marqueeInit(config) {
     window.attachEvent('onresize', resize);
 
 })();
+
+export { marqueeInit };

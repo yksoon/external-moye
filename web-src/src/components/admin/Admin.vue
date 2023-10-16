@@ -21,6 +21,8 @@ import MovieBoard from "./boardManage/movieBoard/MovieBoard.vue";
 import ArtistManage from "./artistManage/ArtistManage.vue";
 import CategoryManage from "./categoryManage/CategoryManage.vue";
 import CompanyManage from "./companyManage/CompanyManage.vue";
+import HistoryManage from "./historyManage/HistoryManage.vue";
+import PopupManage from "./popupManage/PopupManage.vue";
 // import "@/common/css/admin.css";
 
 export default {
@@ -33,7 +35,9 @@ export default {
         MovieBoard,
         ArtistManage,
         CategoryManage,
-        CompanyManage
+        CompanyManage,
+        HistoryManage,
+        PopupManage
     },
     setup() {
         const state = reactive({
@@ -229,6 +233,12 @@ export default {
                 :isRefresh="isRefresh"
             />
 
+            <!-- 연혁관리 -->
+            <HistoryManage
+                v-if="pages === 'historyMng'"
+                :isRefresh="isRefresh"
+            />
+
             <!-- 게시판관리 => 공지사항 -->
             <NoticeBoard
                 v-if="pages === 'noticeBoard'"
@@ -250,6 +260,12 @@ export default {
             <!-- 게시판관리 => 영상갤러리 -->
             <MovieBoard
                 v-if="pages === 'movieBoard'"
+                :isRefresh="isRefresh"
+            />
+
+            <!-- 팝업관리 -->
+            <PopupManage
+                v-if="pages === 'popupMng'"
                 :isRefresh="isRefresh"
             />
 

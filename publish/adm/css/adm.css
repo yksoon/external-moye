@@ -79,10 +79,10 @@ a.tablebtn {display:inline-block;width:auto;padding: 0 10px;height: 26px;text-al
 a.tablebtn.btn01 {background: #0047a0;}
 .plusbtn_wrap{display:flex;justify-content: space-between;}
 .plusbtn_wrap a {padding:0 8px;border: 1px solid #ddd;display: inline-block;border-radius: 5px;line-height: 21px;}
-.subbtn_box {text-align: center;}
-.subbtn_box a.subbtn {background: #0047a0; color: #fff; font-weight: 600; padding: 10px 20px; border-radius: 10px; display: inline-block;margin: 10px 0 0;}
-.subbtn_box a.delete {background: #f0516a;}
-.subbtn_box a.off {background:#a8a8a8;}
+.admin .subbtn_box {text-align: center;}
+.admin .subbtn_box a.subbtn {background: #0047a0; color: #fff; font-weight: 600; padding: 10px 20px; border-radius: 10px; display: inline-block;margin: 10px 0 0;}
+.admin .subbtn_box a.subbtn.delete {background: #f0516a;}
+.admin .subbtn_box a.subbtn.off {background:#a8a8a8;}
 
 
 select {border: 1px solid #ddd;height:28px;line-height:28px;font-size: 14px;color: #333;padding: 0 10px;cursor:pointer;border-radius: 5px;}

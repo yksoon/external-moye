@@ -384,7 +384,7 @@ const table = useVueTable({
 <template>
     <div class="content">
         <div class="title">
-            <h3>프로필</h3>
+            <h3>인물 관리</h3>
         </div>
         <div class="con_area">
             <div class="adm_search">

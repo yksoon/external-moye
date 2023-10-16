@@ -12,6 +12,7 @@ import { useCodesStore } from "@/stores/codes";
 import { useModalStore } from "@/stores/modal";
 import { storeToRefs } from "pinia";
 import { artistModel } from "../artistModel";
+// import "@/common/css/admin.css";
 
 // ------------------- import End --------------------
 const props = defineProps({
@@ -716,26 +717,37 @@ const testBtn = () => {
 </script>
 <template>
     <div class="admin">
-        <div style="margin: 30px 0">
+        <div class="con_area">
             <h4 className="mo_subtitle">인물 필수 정보</h4>
             <table class="table_bb">
                 <colgroup>
-                    <col width="15%" />
-                    <col width="35%" />
-                    <col width="15%" />
-                    <col width="35%" />
+                    <col width="15%">
+                    <col width="*">
+                    <col width="15%">
+                    <col width="*">
                 </colgroup>
                 <tbody>
-                    <tr>
-                        <th>이름</th>
+                    <!-- <tr>
+                        <th>이름 <span class="red">*</span></th>
                         <td>
                             <input
                                 type="text"
-                                class="input wp100"
+                                class="input w370"
                                 ref="inputName"
                             />
                         </td>
-                        <th>노출여부</th>
+                        <th>노출여부 <span class="red">*</span></th>
+                        <td>
+                            <select class="select wp100" ref="selectShowYn">
+                                <option value="Y">노출</option>
+                                <option value="N">비노출</option>
+                            </select>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <th>카테고리 고유번호 <span class="red">*</span></th>
+                        <td><input type="email" class="input w370" autofocus></td>
+                        <th>노출여부 <span class="red">*</span></th>
                         <td>
                             <select class="select wp100" ref="selectShowYn">
                                 <option value="Y">노출</option>
@@ -744,7 +756,7 @@ const testBtn = () => {
                         </td>
                     </tr>
                     <tr>
-                        <th>카테고리</th>
+                        <th>카테고리 <span class="red">*</span></th>
                         <td>
                             <select
                                 class="select w180"
@@ -778,7 +790,7 @@ const testBtn = () => {
                                 </option>
                             </select>
                         </td>
-                        <th>구분</th>
+                        <th>구분 <span class="red">*</span></th>
                         <td>
                             <select class="select wp100" ref="selectPeopleType">
                                 <option
@@ -791,7 +803,7 @@ const testBtn = () => {
                         </td>
                     </tr>
                     <tr>
-                        <th>인물정보파일</th>
+                        <th>인물정보파일 <span class="red">*</span></th>
                         <td class="fileicon_artist" colSpan="3">
                             <div style="margin-bottom: 5">
                                 <b>
@@ -823,40 +835,49 @@ const testBtn = () => {
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <th>이름(국문)<span class="red">*</span></th>
+                        <td colSpan="3"><input type="text" class="input wp100" ref="inputName" placeholder="이름"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
 
-        <div style="margin: 30px 0">
+        <div>
             <h4 className="mo_subtitle">인물 기본 정보</h4>
             <table class="table_bb">
                 <colgroup>
-                    <col width="15%" />
-                    <col width="35%" />
-                    <col width="15%" />
-                    <col width="35%" />
+                    <col width="15%">
+                    <col width="*">
+                    <col width="15%">
+                    <col width="*">
                 </colgroup>
                 <tbody>
                     <tr>
                         <th>이름(한문)</th>
-                        <td>
+                        <td colSpan="3">
                             <input
                                 type="text"
                                 class="input wp100"
                                 ref="inputNameCn"
                             />
                         </td>
+                    </tr>
+                    <tr>
+                        <th>성(영문)</th>
+                        <td>
+                            <input
+                                type="text"
+                                class="input w180"
+                                placeholder="First Name"
+                                ref="inputNameFirstEn"
+                            />
+                        </td>
                         <th>이름(영문)</th>
                         <td>
                             <input
                                 type="text"
-                                class="input w140"
-                                placeholder="First Name"
-                                ref="inputNameFirstEn"
-                            />
-                            <input
-                                type="text"
-                                class="input w140"
+                                class="input w180"
                                 placeholder="Last Name"
                                 ref="inputNameLastEn"
                             />
@@ -1012,14 +1033,13 @@ const testBtn = () => {
                 </tbody>
             </table>
         </div>
-        <div class="btn_box">
-            <!-- <a class="btn btn01" @click="testBtn"> 테스트버튼 </a> -->
-            <a v-if="!isModData" class="btn btn01" @click="regArtist"> 등록 </a>
-            <a v-if="isModData" class="btn btn03" @click="removeArtist">
+        <div class="subbtn_box">
+            <a v-if="!isModData" class="subbtn" @click="regArtist"> 등록 </a>
+            <a v-if="isModData" class="subbtn delete" @click="removeArtist">
                 삭제
             </a>
-            <a v-if="isModData" class="btn btn01" @click="modArtist"> 수정 </a>
-            <a class="btn btn02" @click="handleClose"> 취소 </a>
+            <a v-if="isModData" class="subbtn" @click="modArtist"> 수정 </a>
+            <a class="subbtn off" @click="handleClose"> 취소 </a>
         </div>
     </div>
 </template>

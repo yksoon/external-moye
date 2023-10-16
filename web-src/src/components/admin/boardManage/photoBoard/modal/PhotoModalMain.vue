@@ -2,22 +2,29 @@
 import { ref, reactive } from "vue";
 import {
     CommonErrModule,
+    CommonConsole,
     CommonRest,
     CommonNotify,
     CommonSpinner,
 } from "@/common/js/common.js";
 import { useModalStore } from "@/stores/modal";
+import { storeToRefs } from "pinia";
 import { boardModel } from "@/components/admin/boardManage/boardModel";
 import { successCode } from "@/common/js/resultCode";
 import { apiPath } from "@/webPath";
 import { onMounted } from "vue";
 
-// props 샘플
+// ------------------- import End --------------------
+
 const props = defineProps({
     handleNeedUpdate: Function,
     modData: Object,
 });
-// props 샘플 End
+
+const handleNeedUpdate = props.handleNeedUpdate;
+const modData = props.modData;
+
+let isModData = false;
 
 const fileBaseUrl = apiPath.api_file;
 
@@ -32,11 +39,6 @@ const state = reactive({
 });
 
 const useModal = useModalStore();
-
-const handleNeedUpdate = props.handleNeedUpdate;
-const modData = props.modData;
-
-let isModData = false;
 
 onMounted(() => {
     isModData = modData

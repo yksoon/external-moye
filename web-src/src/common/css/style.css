@@ -129,7 +129,7 @@ a.more_btn:hover span {background: url('/img/web/main/arrow_btn.png') no-repeat 
 #footer .footer_content .txt span::after:last-child {display: none;}
 
 /* banner-slider */
-/* .slide_box  {width: 100%;height:315px; margin:0 auto 50px;}
+.slide_box  {width: 100%;height:315px; margin:0 auto 50px;}
 .slide_box #gsefSpan .person {display:inline-block; width:450px; height:315px;margin:0 30px 0 0;  text-align:center;position:Relative;overflow:hidden;
     border-radius: 20px;}
 .slide_box #gsefSpan .person a {width:100%;display:block;}
@@ -139,18 +139,4 @@ a.more_btn:hover span {background: url('/img/web/main/arrow_btn.png') no-repeat 
 }
 .slide_box #gsefSpan .person a p span {color: #fff; font-size: 18px; font-weight: 400; line-height: 18px;display: inline-block;}
 .slide_box #gsefSpan .person a p span.name { font-size: 30px; font-weight: 500; line-height: 30px; margin: 0 15px 0 0;}
- */
-
-
- .slide_box  {width: 100%;height:315px; margin:0 auto 50px; display: flex; justify-content: center;}
-.slide_box #gsefSpan .person {display:inline-block; width:450px; height:315px;margin:0 30px 0 0;  text-align:center;position:Relative;overflow:hidden;
-    border-radius: 20px;}
-.slide_box #gsefSpan .person a {width:100%;display:block;}
-.slide_box #gsefSpan .person a img {display:block;position:absolute; top:0; bottom:0; left:0; right:0; margin:auto; max-width:100%; }
-.slide_box #gsefSpan .person a p {position: absolute; bottom: 0; width: 100% ; text-align: left; padding: 35px 10px 20px 30px;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.35) 75%,rgba(0,0,0,0.5) 100%); 
-}
-.slide_box #gsefSpan .person a p span {color: #fff; font-size: 18px; font-weight: 400; line-height: 18px;display: inline-block;}
-.slide_box #gsefSpan .person a p span.name { font-size: 30px; font-weight: 500; line-height: 30px; margin: 0 15px 0 0;}
-
 
