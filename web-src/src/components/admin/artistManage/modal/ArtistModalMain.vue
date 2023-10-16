@@ -722,9 +722,9 @@ const testBtn = () => {
             <table class="table_bb">
                 <colgroup>
                     <col width="15%">
-                    <col width="*">
+                    <col width="35%>
                     <col width="15%">
-                    <col width="*">
+                    <col width="35%">
                 </colgroup>
                 <tbody>
                     <!-- <tr>
@@ -837,209 +837,210 @@ const testBtn = () => {
                     </tr>
                     <tr>
                         <th>이름(국문)<span class="red">*</span></th>
-                        <td colSpan="3"><input type="text" class="input wp100" ref="inputName" placeholder="이름"></td>
+                        <td colSpan="3"><input type="text" class="input w180" ref="inputName" placeholder="이름"></td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+        
 
-        <div>
-            <h4 className="mo_subtitle">인물 기본 정보</h4>
-            <table class="table_bb">
-                <colgroup>
-                    <col width="15%">
-                    <col width="*">
-                    <col width="15%">
-                    <col width="*">
-                </colgroup>
-                <tbody>
-                    <tr>
-                        <th>이름(한문)</th>
-                        <td colSpan="3">
-                            <input
-                                type="text"
-                                class="input wp100"
-                                ref="inputNameCn"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>성(영문)</th>
-                        <td>
-                            <input
-                                type="text"
-                                class="input w180"
-                                placeholder="First Name"
-                                ref="inputNameFirstEn"
-                            />
-                        </td>
-                        <th>이름(영문)</th>
-                        <td>
-                            <input
-                                type="text"
-                                class="input w180"
-                                placeholder="Last Name"
-                                ref="inputNameLastEn"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>생년월일</th>
-                        <td>
-                            <select class="select wp20" ref="birthType">
-                                <option value="000">양력</option>
-                                <option value="100">음력</option>
-                            </select>
-                            <input
-                                type="date"
-                                class="input wp80"
-                                ref="birthday"
-                            />
-                        </td>
-                        <th>연락처</th>
-                        <td>
-                            <input
-                                type="text"
-                                class="input w100"
-                                ref="mobile1"
-                            />
-                            -
-                            <input
-                                type="text"
-                                class="input w100"
-                                ref="mobile2"
-                            />
-                            -
-                            <input
-                                type="text"
-                                class="input w100"
-                                ref="mobile3"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>성별</th>
-                        <td>
-                            <select class="select w100" ref="gender">
-                                <option value="0">남자</option>
-                                <option value="1">여자</option>
-                            </select>
-                        </td>
-                        <th>E-MAIL</th>
-                        <td>
-                            <input
-                                type="email"
-                                class="input wp100"
-                                ref="email"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>메모</th>
-                        <td colspan="3">
-                            <input
-                                type="email"
-                                class="input wp100"
-                                ref="peopleMemo"
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div style="margin: 30px 0">
-            <h4 className="mo_subtitle">인물 프로필 정보</h4>
-            <a @click="handelProfileSection('add')">추가</a>
-            <table class="table_bb">
-                <colgroup>
-                    <col width="15%" />
-                    <col width="*" />
-                </colgroup>
-                <tbody>
-                    <tr v-for="item in state.profileSection" :id="item.idx">
-                        <th>프로필</th>
-                        <td>
-                            <div>
-                                <select
-                                    class="select w180"
-                                    :id="`section_select_${item.idx}`"
-                                    :value="item.sectionValue"
-                                    @change="
-                                        (e) => handleProfileType(e, item.idx)
-                                    "
-                                >
-                                    <option value="">- 선택 -</option>
-                                    <option
-                                        v-for="item in state.profileType"
-                                        :value="item.code_key"
-                                    >
-                                        {{ item.code_value }}
-                                    </option>
+            <div>
+                <h4 className="mo_subtitle">인물 기본 정보</h4>
+                <table class="table_bb">
+                    <colgroup>
+                        <col width="15%">
+                        <col width="35%">
+                        <col width="15%">
+                        <col width="35%">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>이름(한문)</th>
+                            <td colSpan="3">
+                                <input
+                                    type="text"
+                                    class="input w180"
+                                    ref="inputNameCn"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>성(영문)</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="input w180"
+                                    placeholder="First Name"
+                                    ref="inputNameFirstEn"
+                                />
+                            </td>
+                            <th>이름(영문)</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="input w180"
+                                    placeholder="Last Name"
+                                    ref="inputNameLastEn"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>생년월일</th>
+                            <td>
+                                <select class="select wp20" ref="birthType">
+                                    <option value="000">양력</option>
+                                    <option value="100">음력</option>
                                 </select>
-                                <a
-                                    @click="
-                                        handelProfileSection('remove', item.idx)
-                                    "
-                                    >섹션 삭제</a
-                                >&nbsp&nbsp&nbsp
-                                <a
-                                    @click="handleInputBtn('add', item.idx)"
+                                <input
+                                    type="date"
+                                    class="input wp80"
+                                    ref="birthday"
+                                />
+                            </td>
+                            <th>연락처</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="input w100"
+                                    ref="mobile1"
+                                />
+                                -
+                                <input
+                                    type="text"
+                                    class="input w100"
+                                    ref="mobile2"
+                                />
+                                -
+                                <input
+                                    type="text"
+                                    class="input w100"
+                                    ref="mobile3"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>성별</th>
+                            <td>
+                                <select class="select w100" ref="gender">
+                                    <option value="0">남자</option>
+                                    <option value="1">여자</option>
+                                </select>
+                            </td>
+                            <th>E-MAIL</th>
+                            <td>
+                                <input
+                                    type="email"
+                                    class="input wp100"
+                                    ref="email"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>메모</th>
+                            <td colspan="3">
+                                <input
+                                    type="email"
+                                    class="input wp100"
+                                    ref="peopleMemo"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin: 30px 0">
+                <h4 className="mo_subtitle">인물 프로필 정보</h4>
+                <a @click="handelProfileSection('add')">추가</a>
+                <table class="table_bb">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="*" />
+                    </colgroup>
+                    <tbody>
+                        <tr v-for="item in state.profileSection" :id="item.idx">
+                            <th>프로필</th>
+                            <td>
+                                <div>
+                                    <select
+                                        class="select w180"
+                                        :id="`section_select_${item.idx}`"
+                                        :value="item.sectionValue"
+                                        @change="
+                                            (e) => handleProfileType(e, item.idx)
+                                        "
+                                    >
+                                        <option value="">- 선택 -</option>
+                                        <option
+                                            v-for="item in state.profileType"
+                                            :value="item.code_key"
+                                        >
+                                            {{ item.code_value }}
+                                        </option>
+                                    </select>
+                                    <a
+                                        @click="
+                                            handelProfileSection('remove', item.idx)
+                                        "
+                                        >섹션 삭제</a
+                                    >&nbsp&nbsp&nbsp
+                                    <a
+                                        @click="handleInputBtn('add', item.idx)"
+                                        v-if="
+                                            state.selectedProfile.filter(
+                                                (el) => el.parentIdx === item.idx
+                                            ).length !== 0
+                                        "
+                                        >input 추가</a
+                                    >
+                                </div>
+                                <div
                                     v-if="
                                         state.selectedProfile.filter(
                                             (el) => el.parentIdx === item.idx
                                         ).length !== 0
                                     "
-                                    >input 추가</a
-                                >
-                            </div>
-                            <div
-                                v-if="
-                                    state.selectedProfile.filter(
+                                    v-for="inputItem in state.selectedProfile.filter(
                                         (el) => el.parentIdx === item.idx
-                                    ).length !== 0
-                                "
-                                v-for="inputItem in state.selectedProfile.filter(
-                                    (el) => el.parentIdx === item.idx
-                                )"
-                            >
-                                <input
-                                    type="text"
-                                    class="input w370"
-                                    :id="`${item.idx}-${inputItem.inputIdx}`"
-                                    :value="inputItem.profileContent"
-                                    @change="
-                                        (e) =>
-                                            handleInput(
-                                                e,
+                                    )"
+                                >
+                                    <input
+                                        type="text"
+                                        class="input w370"
+                                        :id="`${item.idx}-${inputItem.inputIdx}`"
+                                        :value="inputItem.profileContent"
+                                        @change="
+                                            (e) =>
+                                                handleInput(
+                                                    e,
+                                                    item.idx,
+                                                    inputItem.inputIdx
+                                                )
+                                        "
+                                    />
+                                    <a
+                                        @click="
+                                            handleInputBtn(
+                                                'remove',
                                                 item.idx,
                                                 inputItem.inputIdx
                                             )
-                                    "
-                                />
-                                <a
-                                    @click="
-                                        handleInputBtn(
-                                            'remove',
-                                            item.idx,
-                                            inputItem.inputIdx
-                                        )
-                                    "
-                                    >input 삭제</a
-                                >
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="subbtn_box">
-            <a v-if="!isModData" class="subbtn" @click="regArtist"> 등록 </a>
-            <a v-if="isModData" class="subbtn delete" @click="removeArtist">
-                삭제
-            </a>
-            <a v-if="isModData" class="subbtn" @click="modArtist"> 수정 </a>
-            <a class="subbtn off" @click="handleClose"> 취소 </a>
+                                        "
+                                        >input 삭제</a
+                                    >
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="subbtn_box">
+                <a v-if="!isModData" class="subbtn" @click="regArtist"> 등록 </a>
+                <a v-if="isModData" class="subbtn delete" @click="removeArtist">
+                    삭제
+                </a>
+                <a v-if="isModData" class="subbtn" @click="modArtist"> 수정 </a>
+                <a class="subbtn off" @click="handleClose"> 취소 </a>
+            </div>
         </div>
     </div>
 </template>
