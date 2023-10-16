@@ -68,10 +68,21 @@ const handleClose = () => {
 const attachFile = (input) => {
     const maxFileCnt = 5; // 첨부파일 최대 개수
 
-    if (input.files.length > maxFileCnt) {
+    if (isFileImage(input.files)) {
+        if (input.files.length > maxFileCnt) {
+            CommonNotify({
+                type: "alert",
+                message: "파일은 5개까지 업로드 가능합니다.",
+            });
+
+            input.value = "";
+
+            return false;
+        }
+    } else {
         CommonNotify({
             type: "alert",
-            message: "파일은 5개까지 업로드 가능합니다.",
+            message: "이미지만 업로드 가능합니다.",
         });
 
         input.value = "";
@@ -80,9 +91,31 @@ const attachFile = (input) => {
     }
 };
 
+// 이미지파일인지 검증
+const isFileImage = (file) => {
+    if (file) {
+        for (let i = 0; i < file.length; i++) {
+            if (file[i] && file[i]["type"].split("/")[0] !== "image") {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
 // 첨부파일 삭제시
-const attachFileRemove = (input) => {
+const attachFileRemove = (idx) => {
     // TODO: 첨부파일 삭제 로직 구현하기 (개별삭제)
+    // if (state.fileList.length > 1) {
+    //     state.fileList = state.fileList.filter(
+    //         (el) => el.idx !== idx
+    //     );
+    // } else {
+    //     CommonNotify({
+    //         type: "alert",
+    //         message: "한가지 이상 필수입니다.",
+    //     });
+    // }
 };
 
 // 등록
@@ -362,6 +395,7 @@ const validation = () => {
                                 type="file"
                                 ref="inputAttachmentFile"
                                 multiple
+                                accept="image/*"
                                 @change="(e) => attachFile(e.target)"
                             />
                         </div>
@@ -376,6 +410,7 @@ const validation = () => {
                                     <img src="/img/common/file.svg" alt="" />
                                     {{ item.file_name }}
                                 </a>
+                                <!-- <a>파일 삭제</a> -->
                             </div>
                         </div>
                     </td>
