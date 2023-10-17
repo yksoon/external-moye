@@ -170,20 +170,26 @@ table.popup_manage thead tr th,table.popup_manage thead tr td{height:25px; paddi
     content: " ";
   }
   .gallery_box{
-      margin-right: -20px;
-      margin-left: -20px;
+    display: flex;
+    flex-wrap: wrap;
   }
   .col-md-3{
    position: relative;
     min-height: 1px;
-    float:left;
-    width:197px; margin:0 0 15px 20px;
   }
   .gallery_thumb a {
       display:block;
+      width: 100%;
   }
-  .gallery_thumb .thumbnail {
-  
+  .gallery_thumb {
+    box-sizing: border-box;
+    width: calc((100% - 90px) / 4);
+    margin: 0 30px 0 0;
+    display: flex;
+    flex-direction: row;
+  }
+  .gallery_thumb:nth-child(4n){
+    margin: 0;
   }
   .thumbnail {
       display: block;
@@ -201,23 +207,19 @@ table.popup_manage thead tr th,table.popup_manage thead tr td{height:25px; paddi
   .bg-thumb {
       background-position: center center;
       background-repeat: no-repeat;
-      width: 195px;
-      height: 130px;
-      border:1px solid #ccc;
+      height: 230px;
       overflow:hidden;
   }
   .thumbnail .caption {
       padding: 20px 15px;
       color: #333;
-      background:#f8f8f8;
-      border-left:1px solid #e8e8e8;
-      border-right:1px solid #e8e8e8;
-      border-bottom:1px solid #666;
+      background:#fff;
+      border-top:1px solid #3266B1;
+      border-bottom:1px solid #3266B1;
   }
-  .thumbnail .caption p {font-size:14px; font-weight:400; color:#333; height:50px; width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .thumbnail .caption div span {display:inline-block; padding:0 0 0 15px; margin:0 0 0 50px; font-size:11px;}
-  .thumbnail .caption div span.datetime {background:url('../images/common/clock.png') 0 center no-repeat; margin-left:0;}
-  .thumbnail .caption div span.hits {background:url('../images/common/hits.png') 0 center no-repeat;}
+  .thumbnail .caption p {font-size:18px; font-weight:400; color:#333; height:30px; width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .thumbnail .caption .info{text-align: right;}
+  .thumbnail .caption .info span {display:block; padding:0 0 0 15px; margin:0 0 0 50px; font-size:16px;}
   /* gallery_view //E */
   
   /* table_Writepage input group common*/
