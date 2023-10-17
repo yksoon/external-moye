@@ -87,7 +87,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
 const regBoard = () => {
     const modalOption = {
         title: "영상 갤러리 작성",
-        component: "RegPhotoModal",
+        component: "RegMovieModal",
         width: "800",
         handleNeedUpdate: () => handleNeedUpdate(),
     };
@@ -99,7 +99,7 @@ const regBoard = () => {
 const modBoardModal = (modData) => {
     const modalOption = {
         title: "영상 갤러리 수정",
-        component: "RegPhotoModal",
+        component: "RegMovieModal",
         width: "800",
         modData: modData,
         handleNeedUpdate: () => handleNeedUpdate(),
@@ -286,16 +286,16 @@ const modBoard = (board_idx) => {
                     </tbody>
                     <v-container>
                         <v-card max-width="400" v-for="item in state.boardList">
-                            <div v-if="item.file_info.length > 0">
-                                <v-img height="200" :src="`${fileBaseUrl}${item.file_info[0].file_path_enc}`" :alt="`${item.file_info[0].file_name}`" cover>
+                            <div>
+                                <v-img height="200" :src="`https://img.youtube.com/vi/${item.content}/0.jpg`" alt="" cover>
                                     <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
                                 </v-img>
                             </div>
-                            <div v-else>
+                            <!-- <div v-else>
                                 <v-img height="200" style="background-color: #f2f2f2;">
                                     <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
                                 </v-img>
-                            </div>
+                            </div> -->
                             <v-card-title>{{ item.subject }}</v-card-title>
                             <v-card-subtitle>{{ item.sub_title }}</v-card-subtitle>
                             <v-card-text>{{ item.content }}</v-card-text>

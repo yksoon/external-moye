@@ -63,20 +63,20 @@ const handleClose = () => {
 };
 
 // 파일 첨부시
-const attachFile = (input) => {
-    const maxFileCnt = 5; // 첨부파일 최대 개수
+// const attachFile = (input) => {
+//     const maxFileCnt = 5; // 첨부파일 최대 개수
 
-    if (input.files.length > maxFileCnt) {
-        CommonNotify({
-            type: "alert",
-            message: "파일은 5개까지 업로드 가능합니다.",
-        });
+//     if (input.files.length > maxFileCnt) {
+//         CommonNotify({
+//             type: "alert",
+//             message: "파일은 5개까지 업로드 가능합니다.",
+//         });
 
-        input.value = "";
+//         input.value = "";
 
-        return false;
-    }
-};
+//         return false;
+//     }
+// };
 
 // 등록
 const regBoard = () => {
@@ -105,11 +105,11 @@ if (validation()) {
     }
 
     // 파일 formData append
-    fileArr = Array.from(inputAttachmentFile.value.files);
-    let len = fileArr.length;
-    for (let i = 0; i < len; i++) {
-        formData.append("attachmentFile", fileArr[i]);
-    }
+    // fileArr = Array.from(inputAttachmentFile.value.files);
+    // let len = fileArr.length;
+    // for (let i = 0; i < len; i++) {
+    //     formData.append("attachmentFile", fileArr[i]);
+    // }
 
     const responsLogic = (res) => {
         let result_code = res.headers.result_code;
@@ -171,11 +171,11 @@ const modBoard = () => {
         }
 
         // 파일 formData append
-        fileArr = Array.from(inputAttachmentFile.value.files);
-        let len = fileArr.length;
-        for (let i = 0; i < len; i++) {
-            formData.append("attachmentFile", fileArr[i]);
-        }
+        // fileArr = Array.from(inputAttachmentFile.value.files);
+        // let len = fileArr.length;
+        // for (let i = 0; i < len; i++) {
+        //     formData.append("attachmentFile", fileArr[i]);
+        // }
 
         const responsLogic = (res) => {
             let result_code = res.headers.result_code;
@@ -295,7 +295,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>제목</th>
+                    <th>제목 <span class="red">*</span></th>
                     <td>
                         <input
                             type="text"
@@ -314,13 +314,32 @@ const validation = () => {
                         />
                     </td>
                 </tr>
-                <tr>
-                    <th>내용</th>
+                <!-- <tr>
+                    <th>영상 링크 <span class="red">*</span></th>
                     <td>
-                        <textarea
-                            class="textarea_basic"
+                        <input
+                            type="text"
+                            class="input wp100"
+                            ref=""
+                        />
+                    </td>
+                </tr> -->
+                <tr>
+                    <th>영상링크 <span class="red">*</span></th>
+                    <td>
+                        <input
+                            type="text"
+                            class="input wp100"
                             ref="inputContent"
-                        ></textarea>
+                        />
+                        <span>예시) https://www.youtube.com/watch?v=<span class="red"><b>lrmDoJkZjns</b></span></span>
+                        <div>주소창에서 빨간표시 부분만 복사하여 입력해주시면 됩니다.</div>
+                    </td>
+                </tr>
+                <tr v-if="modData">
+                    <th>영상</th>
+                    <td>
+                        <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${modData.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </td>
                 </tr>
                 <tr v-if="modData">
@@ -341,7 +360,7 @@ const validation = () => {
                         {{ modData.reg_dttm }}
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th>파일첨부</th>
                     <td class="fileicon">
                         <div style="margin-bottom: 5">
@@ -372,7 +391,7 @@ const validation = () => {
                             </div>
                         </div>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
         <div class="btn_box">

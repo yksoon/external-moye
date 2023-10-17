@@ -137,6 +137,20 @@ const apiPath = {
         base_api_url + slash + version + slash
     }people/categories`,
 
+    // /v1/people/category
+    // PUT
+    // 카테고리 수정
+    api_admin_mod_category: `${
+        base_api_url + slash + version + slash
+    }people/category`,
+
+    // /v1/people/category
+    // DELETE
+    // 카테고리 삭제
+    api_admin_remove_category: `${
+        base_api_url + slash + version + slash
+    }people/category`,
+
     // /v1/people
     // POST MULTI
     // 아티스트 등록
@@ -149,7 +163,7 @@ const apiPath = {
 
     // /v1/people
     // DELETE
-    // 삭제
+    // 아티스트 삭제
     api_admin_remove_people: `${base_api_url + slash + version + slash}people`,
 
     // /v1/_people/{people_idx}
