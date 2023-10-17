@@ -10,19 +10,25 @@ body {min-width:1600px;max-width: 1920px;margin:0 auto;}
 
 
 /* gnb */
-#gnb {position:relative;top:0; height:125px;}
-#gnb ul {display:flex;justify-content: flex-end; width:1600px; margin: 63px auto 0;text-align:center;}
+#gnb {position:relative;top:0; height:125px;display: flex;}
+#gnb ul {display: flex;justify-content: flex-end; width: 1600px; margin: 0 auto; text-align: center; align-items: center;}
 #gnb ul:after {content:" "; display:block; clear:both;}
 #gnb ul li {margin: 0 30px; text-align:center; box-sizing:border-box;}
 #gnb ul li > a {display:block; color:#333; font-size:20px;  letter-spacing:-0.02em; font-weight: 600;}
-#gnb ul li:hover > a  {color:#0092E5;}
+#gnb ul li:hover > a  {color:#3266B1;}
 #gnb ul li:hover .submenu { display:block;}
 
-#gnb ul li .submenu {display:none; width:200px; margin-left:-20px; line-height:40px;  padding:20px 0;background:#0092E5; animation:menuDown 0.3s linear;
-	border-radius:22px;
-	-webkit-border-radius:22px;
-	-moz-border-radius:22px;
+#gnb ul li .submenu {display:none; width:200px; margin-left:-30px; line-height:40px;  padding:20px 0; background: rgba(0,0,0,0.5);animation:menuDown 0.3s linear;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+    position: absolute;
+    top: 100px;
 }
+#gnb ul li:nth-child(2) .submenu {margin-left: -70px;}
+#gnb ul li:nth-child(3) .submenu {margin-left: -60px;}
+#gnb ul li:nth-child(4) .submenu {margin-left: -55px;}
+#gnb ul li:nth-child(4) .submenu {margin-left: -65px;}
 #gnb ul li .submenu a {display:block;color:#fff; font-size:17px;letter-spacing:-0.04em;}
 #gnb ul li .submenu a:hover, #gnb ul li .submenu a:focus {color:#f8ffd4;}
 
