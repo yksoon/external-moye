@@ -138,6 +138,13 @@ const apiPath = {
     }people/categories`,
 
     // /v1/people/category
+    // POST
+    // 카테고리 등록
+    api_admin_reg_category: `${
+        base_api_url + slash + version + slash
+    }people/category`,
+
+    // /v1/people/category
     // PUT
     // 카테고리 수정
     api_admin_mod_category: `${
@@ -203,6 +210,35 @@ const apiPath = {
     // DELETE
     // 연혁 정보 삭제
     api_admin_remove_history: `${base_api_url + slash + version + slash}history`,
+
+    // ---------------------- Popup Management API ----------------------
+    // /v1/popup
+    // POST
+    // 팝업 정보 등록
+    api_admin_reg_popup: `${base_api_url + slash + version + slash}popup`,
+    
+    // /v1/_popups
+    // POST
+    // 팝업 정보 목록
+    api_admin_get_popups: `${
+        base_api_url + slash + version + slash
+    }_popups`,
+    
+    // /v1/_popup/{popup_idx}
+    // GET
+    // 팝업 정보 상세
+    api_admin_detail_popup: `${base_api_url + slash + version + slash}_popup`,
+
+    // /v1/popup
+    // PUT
+    // 팝업 정보 수정
+    api_admin_mod_popup: `${base_api_url + slash + version + slash}popup`,
+
+    // /v1/popup
+    // DELETE
+    // 팝업 정보 삭제
+    api_admin_remove_popup: `${base_api_url + slash + version + slash}popup`,
+
 };
 
 export { routerPath, apiPath };

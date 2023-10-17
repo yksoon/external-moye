@@ -48,7 +48,7 @@ import { routerPath } from '@/webPath';
             <li>
                 <a href="">고객센터</a>
                 <div class="submenu">
-                    <a href="">공지사항</a>
+                    <a :href="routerPath.web_notice_url">공지사항</a>
                     <a href="">상담문의</a>
                     <a href="">회사소개서 다운로드</a>
                     <a href="">포토 갤러리</a>

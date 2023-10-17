@@ -28,7 +28,7 @@ const isModData = modData
     : false;
 
 const state = reactive({
-    historyList: isModData ? [] : [{ idx: 1, title: "" }],
+    historyList: [],
     fileList: [],
 });
 
@@ -44,8 +44,8 @@ const inputYear = ref(null);
 const inputMemo = ref(null);
 const selectShowYn = ref(null);
 
-// const inputTitle = ref(null);
-const inputSubTitle = ref(null);
+const inputTitle = ref(null);
+// const inputSubTitle = ref(null);
 const inputContent = ref(null);
 const startDate = ref(null);
 const endDate = ref(null);
@@ -62,13 +62,12 @@ const getDefaultValue = () => {
     inputYear.value.value = modData.target_year;
     inputMemo.value.value = modData.target_memo;
     selectShowYn.value.value = modData.show_yn;
-    inputTitle.value.value = modData.subject;
-    inputSubTitle.value.value = modData.sub_title;
+    inputTitle.value.value = modData.title;
     inputContent.value.value = modData.content;
     startDate.value.value = `${modData.birth_yyyy}-${modData.birth_mm}`;
     endDate.value.value = `${modData.birth_yyyy}-${modData.birth_mm}`;
 
-    state.fileList = modData.file_info;
+    // state.fileList = modData.file_info;
 };
 
 // 연혁 정보 등록
@@ -88,7 +87,7 @@ const regHistory = () => {
             showYn: selectShowYn.value.value,
             targetYear: inputYear.value.value,
             targetMemo: inputMemo.value.value,
-            detailInfo: state.historyList
+            // detailInfo: state.historyList
         };
 
         // 기본 formData append
@@ -97,32 +96,27 @@ const regHistory = () => {
         }
 
         // 연혁 formData append
-        // historyArr = Array.from(state.historyList);
-        // let len = historyArr.length;
+        // detailInfo = Array.from(state.historyList);
+        // let len = state.historyList.length;
         // for (let i = 0; i < len; i++) {
-        //     formData.append("detailInfo", historyArr[i])
+        //     formData.append("detailInfo", detailInfo[i]);
         // }
 
-        // 파일 formData append
-        // fileArr = Array.from(inputAttachmentFile.value.files);
-        // let len = fileArr.length;
-        // for (let i = 0; i < len; i++) {
-        //     formData.append("attachmentFile", fileArr[i]);
-        // }
+        // 담당자 formData append
+        state.historyList.forEach((item, idx) => {
+            //console.log(idx, ">>>>>>>>>>>>>", item);
+            // formData.append(
+            //     `detailInfo[${idx}].title`,
+            //     item.title.value
+            // );
+            formData.append(
+                `detailInfo[${idx}].title`,
+                "testststsets"
+            );
+            console.log("@>>>>>>>>>>>>>", formData);
+        });
 
-        // 프로필 formData append
-        // state.selectedProfile.forEach((item, idx) => {
-        //     if (item.profileContent) {
-        //         formData.append(
-        //             `profileInfo[${idx}].profileType`,
-        //             item.profileType
-        //         );
-        //         formData.append(
-        //             `profileInfo[${idx}].profileContent`,
-        //             item.profileContent
-        //         );
-        //     }
-        // });
+  
 
         const responsLogic = (res) => {
             let result_code = res.headers.result_code;
@@ -152,8 +146,11 @@ const regHistory = () => {
             callback: (res) => responsLogic(res),
         };
 
-        console.log(formData);
-        // CommonRest(restParams);
+//         let entries = formData.entries();
+// for (const pair of entries) {
+//     console.log(pair[0]+ ', ' + pair[1]); 
+// }
+        CommonRest(restParams);
     }
 };
 

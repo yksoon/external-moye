@@ -33,7 +33,7 @@ const modalTitle = ref("");
 const isOpen = ref(false);
 
 onMounted(() => {
-    getCategoryList(1, maxRowNum.basic, "");
+    getCategoryList(1, maxRowNum.category, "");
 });
 
 // 리스트 가져오기
@@ -261,7 +261,7 @@ const modCategory = (category_idx) => {
 const columnHelper = createColumnHelper();
 
 // 컬럼 세팅
-// [체크박스], [대분류], [중분류], [노출여부], [등록자], [등록일], [수정]
+// [체크박스], [분류], [분류명], [노출여부], [등록자], [등록일], [수정]
 const columns = [
     {
         accessorKey: "category_idx",
@@ -291,32 +291,17 @@ const columns = [
     },
 
 
-    columnHelper.accessor((row) => row.category_div_cd, {
-        id: "subject",
+    columnHelper.accessor((row) => row.category_div, {
+        id: "category_div",
         cell: (info) => info.getValue(),
-        header: "대분류",
+        header: "분류",
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
-    // columnHelper.accessor(
-    //         (row) => (
-    //             row.category_div_cd === '000' ?
-    //             h("div", {
-    //                 value: row.category_name_ko
-    //             })
-    //             : ""
-    //         ),
-    //         {
-    //             id: "category_name_ko",
-    //             cell: (info) => info.getValue(),
-    //             header: "대분류",
-    //         }
-    //     ),
-
-    columnHelper.accessor((row) => row.sub_title, {
-        id: "sub_title",
+    columnHelper.accessor((row) => row.category_name_ko, {
+        id: "category_name_ko",
         cell: (info) => info.getValue(),
-        header: "중분류",
+        header: "분류명",
         // sortingFn: "alphanumericCaseSensitive",
     }),
     
@@ -390,14 +375,12 @@ const table = useVueTable({
             <div class="adm_table">
                 <table class="table_a">
                     <colgroup>
-                        <col width="2%" />
-                        <col width="*" />
-                        <!-- <col width="15%" />
-                        <col width="*" />
-                        <col width="5%" /> -->
                         <col width="5%" />
+                        <col width="10%" />
+                        <col width="*" />
                         <col width="7%" />
                         <col width="7%" />
+                        <col width="10%" />
                         <col width="5%" />
                     </colgroup>
                     <thead>

@@ -8,11 +8,13 @@ import MovieModalMain from "@/components/admin/boardManage/movieBoard/modal/Movi
 import CompanyModalMain from "@/components/admin/companyManage/modal/CompanyModalMain.vue";
 import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMain.vue";
 import HistoryModalMain from "@/components/admin/historyManage/modal/HistoryModalMain.vue";
+import PopupModalMain from "@/components/admin/popupManage/modal/PopupModalMain.vue";
+import CategoryModalMain from "@/components/admin/categoryManage/modal/CategoryModalMain.vue";
 import { CommonNotify } from "@/common/js/common";
 
 export default {
     name: "CommonModal",
-    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain, CompanyModalMain, HistoryModalMain },
+    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain, CompanyModalMain, HistoryModalMain, PopupModalMain, CategoryModalMain },
     setup() {
         const useModal = useModalStore();
         const { isOpen, title, component, width, handleNeedUpdate, state } =
@@ -92,6 +94,20 @@ export default {
                     <!-- 연혁 관리 모달 -->
                     <HistoryModalMain
                         v-if="component === 'HistoryModalMain'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 팝업 관리 모달 -->
+                    <PopupModalMain
+                        v-if="component === 'PopupModalMain'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 카테고리 관리 모달 -->
+                    <CategoryModalMain
+                        v-if="component === 'CategoryModalMain'"
                         :handleNeedUpdate="handleNeedUpdate"
                         :modData="state.modData"
                     />
