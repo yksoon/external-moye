@@ -38,8 +38,8 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
     // board_type
     // 000 : 공지사항
     // 100 : 상담문의
-    // 200 : 포토게시판 [v]
-    // 300 : 영상게시판
+    // 200 : 포토게시판
+    // 300 : 영상게시판 [v]
     // 400 : 회사소개
     // 900 : 기타
     const url = apiPath.api_admin_boards;
@@ -47,7 +47,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
-        board_type: "200",
+        board_type: "300",
     };
 
     // 파라미터
@@ -96,10 +96,10 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                     </h2>
                 </div>
             </div>
-            <LeftMenu page="photo"/>
+            <LeftMenu page="movie"/>
             <div id="content">
                 <div id="subtitle">
-                    <h2>포토 갤러리</h2>
+                    <h2>영상 갤러리</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                     <form name="flist" method="post">
