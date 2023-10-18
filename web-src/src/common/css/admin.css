@@ -85,13 +85,24 @@ a.backbtn:hover {color: #616161;border: 1px solid #a8a8a8;}
 a.hotel_btn {display:inline-block;width: 220px;height: 53px;line-height: 53px;font-size: 14px;text-align: center;border-radius: 50px;margin: 0 20px 0 0 ;transition:all 0.3s;}
 .file {display:none;}
 .file_btn {display:inline-block;width:auto;min-width:146px;padding: 0 38px;height: 48px;text-align: center;line-height: 48px;border: 1px solid #ddd;color: #818181;cursor: pointer;}
-a.tablebtn {display:inline-block;width:auto;padding: 0 10px;height: 26px;text-align: center;line-height: 26px;border-radius: 5px;font-size: 14px;background: #525252;color:#fff;transition:all 0.3s;}
-a.tablebtn:hover {background: #adabab;border: 1px solid #adabab; color: #fff;}
+a.tablebtn {display:inline-block;width:auto;padding: 0 10px;height: 26px;text-align: center;line-height: 26px;border-radius: 5px;font-size: 14px;background: #525252;
+    color:#fff;cursor: pointer;
+    transition:all 0.3s;}
+a.tablebtn:hover {background: #adabab; color: #fff;}
 a.tablebtn.btn01 {background: #0047a0;}
+a.outbtn{background: #0754A3; padding: 5px 10px; border-radius: 5px; color: #fff; display: inline-block; margin: 0 0 5px;cursor: pointer;
+    transition:all .3s;
+    -webkit-transition:all .3s;
+    -moz-transition:all .3s;
+    -ms-transition:all .3s;
+    -o-transition:all .3s;
+    }
+a.outbtn:hover {background: #efefef; color: #858585;}
+
 .plusbtn_wrap{display:flex;justify-content: space-between;}
 .plusbtn_wrap a {padding:0 8px;border: 1px solid #ddd;display: inline-block;border-radius: 5px;line-height: 21px;}
 .admin .subbtn_box {text-align: center;}
-.admin .subbtn_box a.subbtn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; border-radius: 5px; display: inline-block;margin: 10px 3px 0;
+.admin .subbtn_box a.subbtn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; border-radius: 5px; display: inline-block;margin: 10px 3px 0;cursor: pointer;
     transition:all .3s;
     -webkit-transition:all .3s;
     -moz-transition:all .3s;
@@ -235,14 +246,6 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 .table_a td:last-child {border-right: none;}
 .table_a td {font-size: 14px;padding:10px;text-align: center;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;}
 .table_a td img {width: 100px;}
-.table_a td a.outbtn{background: #0754A3; padding: 5px 10px; border-radius: 5px; color: #fff; display: inline-block; margin: 0 0 5px;
-    transition:all .3s;
-    -webkit-transition:all .3s;
-    -moz-transition:all .3s;
-    -ms-transition:all .3s;
-    -o-transition:all .3s;
-    }
-.table_a td a.outbtn:hover {background: #efefef; color: #858585;}
 
 .table_b {border-top: 1px solid #ddd;}
 .table_b thead th {font-size: 14px;background: #efefef;padding:5px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: center;}
