@@ -181,7 +181,8 @@ const removeHistory = () => {
                 // /v1/history
                 // DELETE
                 let url =
-                    apiPath.api_admin_remove_history + `/${state.checkItems[i]}`;
+                    apiPath.api_admin_remove_history +
+                    `/${state.checkItems[i]}`;
 
                 // console.log(url);
                 // 파라미터
@@ -298,7 +299,7 @@ const columns = [
             }),
         // enableSorting: false,
     },
-    
+
     columnHelper.accessor((row) => row.target_year, {
         id: "target_year",
         cell: (info) => info.getValue(),
@@ -306,27 +307,27 @@ const columns = [
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
-    columnHelper.accessor((row) => row.title, {
-        id: "title",
+    columnHelper.accessor((row) => row.target_memo, {
+        id: "target_memo",
         cell: (info) => info.getValue(),
-        header: "제목",
-        // sortingFn: "alphanumericCaseSensitive",
-    }),
-    
-    columnHelper.accessor((row) => row.start_date, {
-        id: "start_date",
-        cell: (info) => info.getValue(),
-        header: "시작일",
+        header: "메모",
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
-    columnHelper.accessor((row) => row.end_date, {
-        id: "end_date",
-        cell: (info) => info.getValue(),
-        header: "종료일",
-        // sortingFn: "alphanumericCaseSensitive",
-    }),
-    
+    // columnHelper.accessor((row) => row.start_date, {
+    //     id: "start_date",
+    //     cell: (info) => info.getValue(),
+    //     header: "시작일",
+    //     // sortingFn: "alphanumericCaseSensitive",
+    // }),
+
+    // columnHelper.accessor((row) => row.end_date, {
+    //     id: "end_date",
+    //     cell: (info) => info.getValue(),
+    //     header: "종료일",
+    //     // sortingFn: "alphanumericCaseSensitive",
+    // }),
+
     columnHelper.accessor((row) => row.show_yn, {
         id: "show_yn",
         cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
@@ -400,8 +401,8 @@ const table = useVueTable({
                         <col width="2%" />
                         <col width="7%" />
                         <col width="*" />
-                        <col width="15%" />
-                        <col width="15%" />
+                        <!-- <col width="15%" />
+                        <col width="15%" /> -->
                         <col width="5%" />
                         <col width="7%" />
                         <col width="7%" />
@@ -443,7 +444,7 @@ const table = useVueTable({
                     </tbody>
                     <tbody v-if="state.historyList.length === 0">
                         <tr>
-                            <td colSpan="9" style="height: 55px">
+                            <td colSpan="8" style="height: 55px">
                                 <b> 데이터가 없습니다. </b>
                             </td>
                         </tr>

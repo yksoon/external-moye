@@ -883,7 +883,7 @@ const testBtn = () => {
 
             <div style="margin: 30px 0">
                 <h4 className="mo_subtitle">인물 프로필 정보</h4>
-                <a @click="handelProfileSection('add')" class="btn">추가</a>
+                <a @click="handelProfileSection('add')" class="outbtn">추가</a>
                 <table class="table_bb">
                     <colgroup>
                         <col width="15%" />
@@ -904,11 +904,11 @@ const testBtn = () => {
                                     </select>
                                     <a @click="
                                         handelProfileSection('remove', item.idx)
-                                        " class="tablebtn">섹션 삭제</a>&nbsp&nbsp&nbsp
-                                    <a class="outbtn" @click="handleInputBtn('add', item.idx)" v-if="state.selectedProfile.filter(
+                                        " class="tablebtn">프로필 삭제</a>&nbsp&nbsp&nbsp
+                                    <a class="tablebtn" @click="handleInputBtn('add', item.idx)" v-if="state.selectedProfile.filter(
                                         (el) => el.parentIdx === item.idx
                                     ).length !== 0
-                                        ">input 추가</a>
+                                        ">항목 추가</a>
                                 </div>
                                 <div v-if="state.selectedProfile.filter(
                                     (el) => el.parentIdx === item.idx
@@ -930,7 +930,7 @@ const testBtn = () => {
                                             item.idx,
                                             inputItem.inputIdx
                                         )
-                                        ">input 삭제</a>
+                                        ">항목 삭제</a>
                                 </div>
                             </td>
                         </tr>

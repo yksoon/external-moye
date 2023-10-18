@@ -200,19 +200,26 @@ const apiPath = {
     // POST MULTI
     // 연혁 정보 등록
     api_admin_reg_history: `${base_api_url + slash + version + slash}history`,
-    
+
+    // /v1/history
+    // PUT MULTI
+    // 연혁 정보 수정
+    api_admin_mod_history: `${base_api_url + slash + version + slash}history`,
+
     // /v1/_histories
     // POST
     // 연혁 정보 목록
     api_admin_get_histories: `${
         base_api_url + slash + version + slash
     }_histories`,
-    
+
     // /v1/_history/{history_idx}
     // GET
     // 연혁 정보 상세
-    api_admin_detail_history: `${base_api_url + slash + version + slash}_history`,
-    
+    api_admin_detail_history: `${
+        base_api_url + slash + version + slash
+    }_history`,
+
     // /v1/history
     // PUT MULTI
     // 연혁 정보 수정
@@ -221,21 +228,21 @@ const apiPath = {
     // /v1/history
     // DELETE
     // 연혁 정보 삭제
-    api_admin_remove_history: `${base_api_url + slash + version + slash}history`,
+    api_admin_remove_history: `${
+        base_api_url + slash + version + slash
+    }history`,
 
     // ---------------------- Popup Management API ----------------------
     // /v1/popup
     // POST
     // 팝업 정보 등록
     api_admin_reg_popup: `${base_api_url + slash + version + slash}popup`,
-    
+
     // /v1/_popups
     // POST
     // 팝업 정보 목록
-    api_admin_get_popups: `${
-        base_api_url + slash + version + slash
-    }_popups`,
-    
+    api_admin_get_popups: `${base_api_url + slash + version + slash}_popups`,
+
     // /v1/_popup/{popup_idx}
     // GET
     // 팝업 정보 상세
@@ -250,7 +257,6 @@ const apiPath = {
     // DELETE
     // 팝업 정보 삭제
     api_admin_remove_popup: `${base_api_url + slash + version + slash}popup`,
-
 };
 
 export { routerPath, apiPath };
