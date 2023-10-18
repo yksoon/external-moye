@@ -1,5 +1,83 @@
 <script setup>
+import {
+    CommonErrModule,
+    CommonConsole,
+    CommonRest,
+    CommonNotify,
+    CommonSpinner,
+} from "@/common/js/common.js";
+import { useModalStore } from "@/stores/modal";
+import { storeToRefs } from "pinia";
+import { boardModel } from "./models/notice";
+import { maxRowNum } from "@/common/js/pagenationInfoStatic";
+import { successCode } from "@/common/js/resultCode";
+import { reactive, ref, onMounted } from "vue";
+import { apiPath, routerPath } from "@/webPath";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
+import { useRoute } from "vue-router";
+
+// ------------------- import End --------------------
+
+const route = useRoute();
+
+const searchKeyword = ref(null);
+const board = ref(null);
+const state = reactive({
+    board: null,
+});
+
+onMounted(() => {
+    getBoardDetail();
+});
+
+const fileBaseUrl = apiPath.api_file;
+
+// 공지사항 상세 데이터 가져오기
+const getBoardDetail = () => {
+    CommonSpinner(true);
+
+    const boardIdx = route.params.notice;
+
+    // /v1/board/{board_idx}
+    // GET
+    // 게시판 상세
+    const url = apiPath.api_admin_get_board + `/${boardIdx}`;
+    const data = {};
+
+    // 파라미터
+    const restParams = {
+        method: "get",
+        url: url,
+        data: data,
+        callback: (res) => responsLogic(res),
+        admin: "Y"
+    };
+    CommonRest(restParams);
+
+    // 완료 로직
+    const responsLogic = (res) => {
+        let result_code = res.headers.result_code;
+
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
+            // let page_info = res.data.page_info;
+
+            state.board = result_info;
+
+            CommonSpinner(false);
+        } else {
+            // 에러
+            CommonConsole("log", res);
+
+            CommonSpinner(false);
+        }
+    };
+};
+
 </script>
 
 <template>
@@ -19,7 +97,7 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
                     <h2>공지사항</h2>
                 </div>
                 <div data-aos-duration="1000" data-aos-delay="400">
-                    <table class="board_Vtable">
+                    <table class="board_Vtable" v-if="state.board">
                         <colgroup>
                             <col width="18%">
                             <col width="*">
@@ -27,16 +105,16 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
                         </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3">제목</th>
+                                <th colspan="3">{{state.board.subject}}</th>
                             </tr>
                             <tr>
                                 <td colspan="3">
                                     <ul>
-                                        <li>관리자</li>
+                                        <li>{{state.board.reg_user_name_ko}}</li>
                                         <li class="imbar">|</li>
-                                        <li>조회수</li>
+                                        <li>{{state.board.view_count}}</li>
                                         <li class="imbar">|</li>
-                                        <li>2023-10-17</li>
+                                        <li>{{state.board.reg_dttm}}</li>
                                     </ul>
                                 </td>
                             </tr>
@@ -52,14 +130,6 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
                                             </div>
                                         </li>
                                     </ul>
-                                    <!-- <script>
-                                        $(".attachment_parent").click(function () {
-                                            $(".attachment").toggle()
-                                            $(".xbtn").click(function () {
-                                                $(".attachment").hide()
-                                            })
-                                        });
-                                    </script> -->
                                 </td>
                             </tr>
                         </thead>
@@ -67,28 +137,32 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
                             <tr>
                                 <td colspan=3>
                                     <div class="board_content">
+                                        {{state.board.content}}
                                     </div>
                                 </td>
                             </tr>
-
                         </tbody>
-                        <tfoot>
+                        <!-- <tfoot>
                             <tr>
                                 <td>이전글</td>
-                                <td colspan="2"><a href="">
-                                    </a></td>
+                                <td colspan="2">
+                                    <a :href="`${routerPath.web_notice_url}/${boardIdx-1}`">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>다음글</td>
-                                <td colspan="2"><a href="">
-                                    </a></td>
+                                <td colspan="2">
+                                    <a :href="`${routerPath.web_notice_url}/${boardIdx+1}`">
+                                    </a>
+                                </td>
                             </tr>
-                        </tfoot>
+                        </tfoot> -->
                     </table>
                     <div class="board_btn_wrap">
                         <div class="boardW_btn">
-                            <span class="back_btn">
-                            </span>
+                            <a :href="routerPath.web_notice_url" class="back_btn">목록
+                            </a>
                             <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
                             <span class="back_btn"><?=$btn_link['update']?></span> -->
                         </div>
