@@ -137,9 +137,9 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                         <tbody v-if="state.boardList.length !== 0">
                             <tr v-for="(board, idx) in state.boardList">
                                 <td>{{ idx + 1 }}</td>
-                                <td><a>{{ board.subject }}</a></td>
-                                <td><a>{{ board.sub_title }}</a></td>
-                                <td><a>{{ board.content }}</a></td>
+                                <td><a :href="`${routerPath.web_notice_url}/${board.board_idx}`">{{ board.subject }}</a></td>
+                                <td><a :href="`${routerPath.web_notice_url}/${board.board_idx}`">{{ board.sub_title }}</a></td>
+                                <td><a :href="`${routerPath.web_notice_url}/${board.board_idx}`">{{ board.content }}</a></td>
                                 <td>{{ board.view_count }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
                             </tr>

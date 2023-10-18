@@ -324,7 +324,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
             </div>
             <div class="box_wrap" v-if="state.boardList.length !== 0">
                 <div class="box" v-for="board in state.boardList">
-                    <a>
+                    <a :href="`${routerPath.web_notice_url}/${board.board_idx}`">
                         <h4>{{ board.subject }}</h4>
                         <p>{{ board.content }}</p>
                         <span>{{ board.reg_dttm.split(' ')[0] }}</span>
