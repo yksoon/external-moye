@@ -89,13 +89,6 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
     <div id="wrapper">
        <!-- 서브컨텐츠     //S-->
        <div id="container" class="sub_container">
-            <div id="subvisual" class="subvisual">
-                <div class="sub_txt">
-                    <h2 data-aos="fade-in" data-aos-duration="500">
-                        고객센터
-                    </h2>
-                </div>
-            </div>
             <LeftMenu page="photo"/>
             <div id="content">
                 <div id="subtitle">
