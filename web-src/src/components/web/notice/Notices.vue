@@ -75,8 +75,8 @@
 
                     <div class="paginate">
                         <ul class="page_btn">
-                            <a href="#" class="direction"><img src="img/common/page_Btn_02.jpg" alt="이전페이지"></a>
-                            <strong>1</strong> <a href="#" class="direction"><img src="img/common/page_Btn_03.jpg"
+                            <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
+                            <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
                                     alt="다음페이지"></a>
                         </ul>
                     </div>
