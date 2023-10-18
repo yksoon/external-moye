@@ -142,7 +142,7 @@ const getBoardDetail = () => {
                                 </td>
                             </tr>
                         </tbody>
-                        <tfoot>
+                        <!-- <tfoot>
                             <tr>
                                 <td>이전글</td>
                                 <td colspan="2">
@@ -157,7 +157,7 @@ const getBoardDetail = () => {
                                     </a>
                                 </td>
                             </tr>
-                        </tfoot>
+                        </tfoot> -->
                     </table>
                     <div class="board_btn_wrap">
                         <div class="boardW_btn">
