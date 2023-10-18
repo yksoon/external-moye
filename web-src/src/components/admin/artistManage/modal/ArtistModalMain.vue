@@ -758,34 +758,19 @@ const testBtn = () => {
                     <tr>
                         <th>카테고리 <span class="red">*</span></th>
                         <td>
-                            <select
-                                class="select w180"
-                                ref="selectCategory1"
-                                @change="handleCategory1"
-                            >
-                                <option
-                                    v-for="item in state.categories"
-                                    :value="item.category_idx"
-                                >
+                            <select class="select w180" ref="selectCategory1" @change="handleCategory1">
+                                <option v-for="item in state.categories" :value="item.category_idx">
                                     {{ item.category_name_ko }}
                                 </option>
                             </select>
-                            <select
-                                class="select w180"
-                                ref="selectCategory2"
-                                v-if="
-                                    selectedCategory1 &&
-                                    state.categories.length !== 0
-                                "
-                            >
-                                <option
-                                    v-for="item2 in state.categories.filter(
-                                        (el) =>
-                                            el.category_idx ===
-                                            Number(selectedCategory1)
-                                    )[0].child"
-                                    :value="item2.category_idx"
-                                >
+                            <select class="select w180" ref="selectCategory2" v-if="selectedCategory1 &&
+                                state.categories.length !== 0
+                                ">
+                                <option v-for="item2 in state.categories.filter(
+                                    (el) =>
+                                        el.category_idx ===
+                                        Number(selectedCategory1)
+                                )[0].child" :value="item2.category_idx">
                                     {{ item2.category_name_ko }}
                                 </option>
                             </select>
@@ -793,10 +778,7 @@ const testBtn = () => {
                         <th>구분 <span class="red">*</span></th>
                         <td>
                             <select class="select wp100" ref="selectPeopleType">
-                                <option
-                                    v-for="item in state.peopleType"
-                                    :value="item.code_key"
-                                >
+                                <option v-for="item in state.peopleType" :value="item.code_key">
                                     {{ item.code_value }}
                                 </option>
                             </select>
@@ -812,24 +794,13 @@ const testBtn = () => {
                                 </b>
                             </div>
                             <div>
-                                <input
-                                    type="file"
-                                    ref="inputAttachmentFile"
-                                    multiple
-                                    accept="image/*"
-                                    @change="(e) => attachFile(e.target)"
-                                />
+                                <input type="file" ref="inputAttachmentFile" multiple accept="image/*"
+                                    @change="(e) => attachFile(e.target)" />
                             </div>
                             <div>
                                 <div v-if="state.fileList.length !== 0">
-                                    <span
-                                        v-for="item in state.fileList"
-                                        className="hotel_img"
-                                    >
-                                        <img
-                                            :src="`${fileBaseUrl}${item.file_path_enc}`"
-                                            alt=""
-                                        />&nbsp;
+                                    <span v-for="item in state.fileList" className="hotel_img">
+                                        <img :src="`${fileBaseUrl}${item.file_path_enc}`" alt="" />&nbsp;
                                     </span>
                                 </div>
                             </div>
@@ -841,7 +812,7 @@ const testBtn = () => {
                     </tr>
                 </tbody>
             </table>
-        
+
 
             <div>
                 <h4 className="mo_subtitle">인물 기본 정보</h4>
@@ -856,31 +827,17 @@ const testBtn = () => {
                         <tr>
                             <th>이름(한문)</th>
                             <td colSpan="3">
-                                <input
-                                    type="text"
-                                    class="input w180"
-                                    ref="inputNameCn"
-                                />
+                                <input type="text" class="input w180" ref="inputNameCn" />
                             </td>
                         </tr>
                         <tr>
                             <th>성(영문)</th>
                             <td>
-                                <input
-                                    type="text"
-                                    class="input w180"
-                                    placeholder="First Name"
-                                    ref="inputNameFirstEn"
-                                />
+                                <input type="text" class="input w180" placeholder="First Name" ref="inputNameFirstEn" />
                             </td>
                             <th>이름(영문)</th>
                             <td>
-                                <input
-                                    type="text"
-                                    class="input w180"
-                                    placeholder="Last Name"
-                                    ref="inputNameLastEn"
-                                />
+                                <input type="text" class="input w180" placeholder="Last Name" ref="inputNameLastEn" />
                             </td>
                         </tr>
                         <tr>
@@ -890,31 +847,15 @@ const testBtn = () => {
                                     <option value="000">양력</option>
                                     <option value="100">음력</option>
                                 </select>
-                                <input
-                                    type="date"
-                                    class="input wp80"
-                                    ref="birthday"
-                                />
+                                <input type="date" class="input wp80" ref="birthday" />
                             </td>
                             <th>연락처</th>
                             <td>
-                                <input
-                                    type="text"
-                                    class="input w100"
-                                    ref="mobile1"
-                                />
+                                <input type="text" class="input w100" ref="mobile1" />
                                 -
-                                <input
-                                    type="text"
-                                    class="input w100"
-                                    ref="mobile2"
-                                />
+                                <input type="text" class="input w100" ref="mobile2" />
                                 -
-                                <input
-                                    type="text"
-                                    class="input w100"
-                                    ref="mobile3"
-                                />
+                                <input type="text" class="input w100" ref="mobile3" />
                             </td>
                         </tr>
                         <tr>
@@ -927,21 +868,13 @@ const testBtn = () => {
                             </td>
                             <th>E-MAIL</th>
                             <td>
-                                <input
-                                    type="email"
-                                    class="input wp100"
-                                    ref="email"
-                                />
+                                <input type="email" class="input wp100" ref="email" />
                             </td>
                         </tr>
                         <tr>
                             <th>메모</th>
                             <td colspan="3">
-                                <input
-                                    type="email"
-                                    class="input wp100"
-                                    ref="peopleMemo"
-                                />
+                                <input type="email" class="input wp100" ref="peopleMemo" />
                             </td>
                         </tr>
                     </tbody>
@@ -950,7 +883,7 @@ const testBtn = () => {
 
             <div style="margin: 30px 0">
                 <h4 className="mo_subtitle">인물 프로필 정보</h4>
-                <a @click="handelProfileSection('add')">추가</a>
+                <a @click="handelProfileSection('add')" class="btn">추가</a>
                 <table class="table_bb">
                     <colgroup>
                         <col width="15%" />
@@ -961,72 +894,43 @@ const testBtn = () => {
                             <th>프로필</th>
                             <td>
                                 <div>
-                                    <select
-                                        class="select w180"
-                                        :id="`section_select_${item.idx}`"
-                                        :value="item.sectionValue"
-                                        @change="
-                                            (e) => handleProfileType(e, item.idx)
-                                        "
-                                    >
+                                    <select class="select w180" :id="`section_select_${item.idx}`"
+                                        :value="item.sectionValue" @change="(e) => handleProfileType(e, item.idx)
+                                            ">
                                         <option value="">- 선택 -</option>
-                                        <option
-                                            v-for="item in state.profileType"
-                                            :value="item.code_key"
-                                        >
+                                        <option v-for="item in state.profileType" :value="item.code_key">
                                             {{ item.code_value }}
                                         </option>
                                     </select>
-                                    <a
-                                        @click="
-                                            handelProfileSection('remove', item.idx)
-                                        "
-                                        >섹션 삭제</a
-                                    >&nbsp&nbsp&nbsp
-                                    <a
-                                        @click="handleInputBtn('add', item.idx)"
-                                        v-if="
-                                            state.selectedProfile.filter(
-                                                (el) => el.parentIdx === item.idx
-                                            ).length !== 0
-                                        "
-                                        >input 추가</a
-                                    >
-                                </div>
-                                <div
-                                    v-if="
-                                        state.selectedProfile.filter(
-                                            (el) => el.parentIdx === item.idx
-                                        ).length !== 0
-                                    "
-                                    v-for="inputItem in state.selectedProfile.filter(
+                                    <a @click="
+                                        handelProfileSection('remove', item.idx)
+                                        " class="tablebtn">섹션 삭제</a>&nbsp&nbsp&nbsp
+                                    <a class="outbtn" @click="handleInputBtn('add', item.idx)" v-if="state.selectedProfile.filter(
                                         (el) => el.parentIdx === item.idx
-                                    )"
-                                >
-                                    <input
-                                        type="text"
-                                        class="input w370"
-                                        :id="`${item.idx}-${inputItem.inputIdx}`"
-                                        :value="inputItem.profileContent"
-                                        @change="
-                                            (e) =>
-                                                handleInput(
-                                                    e,
-                                                    item.idx,
-                                                    inputItem.inputIdx
-                                                )
-                                        "
-                                    />
-                                    <a
-                                        @click="
-                                            handleInputBtn(
-                                                'remove',
+                                    ).length !== 0
+                                        ">input 추가</a>
+                                </div>
+                                <div v-if="state.selectedProfile.filter(
+                                    (el) => el.parentIdx === item.idx
+                                ).length !== 0
+                                    " v-for="inputItem in state.selectedProfile.filter(
+        (el) => el.parentIdx === item.idx
+    )">
+                                    <input type="text" class="input w370" :id="`${item.idx}-${inputItem.inputIdx}`"
+                                        :value="inputItem.profileContent" @change="(e) =>
+                                            handleInput(
+                                                e,
                                                 item.idx,
                                                 inputItem.inputIdx
                                             )
-                                        "
-                                        >input 삭제</a
-                                    >
+                                            " />
+                                    <a class="tablebtn" @click="
+                                        handleInputBtn(
+                                            'remove',
+                                            item.idx,
+                                            inputItem.inputIdx
+                                        )
+                                        ">input 삭제</a>
                                 </div>
                             </td>
                         </tr>
