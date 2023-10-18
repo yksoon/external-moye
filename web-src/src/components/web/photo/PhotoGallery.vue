@@ -109,91 +109,25 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                         <input type="hidden" name="sfl" value="">
                         <input type="hidden" name="stx" value="">
                         <input type="hidden" name="pg" value="">
-                        <div class="gallery_box">
-                            <div class="col-md-3 gallery_thumb">
-                                <a href="">
+                        <div class="gallery_box" v-if="state.boardList.length !== 0">
+                            <div class="col-md-3 gallery_thumb" v-for="board in state.boardList">
+                                <a :href="`${routerPath.web_photo_url}/${board.board_idx}`">
                                     <div class="thumbnail">
-                                        <div class="bg-thumb" style="background-image:url(''); background-size:cover;">
+                                        <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${board.file_info[0].file_path_enc}'); background-size:cover;`">
                                             <span></span>
                                         </div>
+                                        <div v-else  class="bg-thumb"></div>
                                         <div class="caption">
-                                            <p>제목</p>
+                                            <p>{{board.subject}}</p>
                                             <div class="info">
-                                                <span class="datetime">2023-10-17</span>
-                                                <span class="hits">조회수</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 gallery_thumb">
-                                <a href="">
-                                    <div class="thumbnail">
-                                        <div class="bg-thumb" style="background-image:url(''); background-size:cover;">
-                                            <span></span>
-                                        </div>
-                                        <div class="caption">
-                                            <p>제목</p>
-                                            <div class="info">
-                                                <span class="datetime">2023-10-17</span>
-                                                <span class="hits">조회수</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 gallery_thumb">
-                                <a href="">
-                                    <div class="thumbnail">
-                                        <div class="bg-thumb" style="background-image:url(''); background-size:cover;">
-                                            <span></span>
-                                        </div>
-                                        <div class="caption">
-                                            <p>제목</p>
-                                            <div class="info">
-                                                <span class="datetime">2023-10-17</span>
-                                                <span class="hits">조회수</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 gallery_thumb">
-                                <a href="">
-                                    <div class="thumbnail">
-                                        <div class="bg-thumb" style="background-image:url(''); background-size:cover;">
-                                            <span></span>
-                                        </div>
-                                        <div class="caption">
-                                            <p>제목</p>
-                                            <div class="info">
-                                                <span class="datetime">2023-10-17</span>
-                                                <span class="hits">조회수</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-md-3 gallery_thumb">
-                                <a href="">
-                                    <div class="thumbnail">
-                                        <div class="bg-thumb" style="background-image:url(''); background-size:cover;">
-                                            <span></span>
-                                        </div>
-                                        <div class="caption">
-                                            <p>제목</p>
-                                            <div class="info">
-                                                <span class="datetime">2023-10-17</span>
-                                                <span class="hits">조회수</span>
+                                                <span class="datetime">{{board.reg_dttm}}</span>
+                                                <span class="hits">조회수 : {{board.view_count}}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <!-- <div class="boardList_btn">
-                            <span class="ok_btn"><?=$btn_link['write']?></span>
-                        </div> -->
                         <div class="paginate">
                             <ul class="page_btn">
                                 <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
