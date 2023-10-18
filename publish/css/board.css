@@ -264,8 +264,7 @@ table.popup_manage thead tr th,table.popup_manage thead tr td{height:25px; paddi
   
   /* board - list 버튼 (글쓰기) */
   .boardList_btn{font-size:13px; font-weight:600; width:100%; height:30px; line-height:30px; text-align:center; margin:15px 0 0px 0; clear:both;}
-  .boardList_btn span{display:inline-block; width:80px; float:right;}
-  .boardList_btn span a{display:block; background-color:#3266B1; color:#fff; border-radius:5px;}
+  .boardList_btn a{display:inline-table; background-color:#3266B1; color:#fff; border-radius:5px;width:80px; float:right;cursor: pointer;}
   .boardList_btn span a:hover{background-color:#eee; color:#555; border-radius:5px;}
   
   /* board - write 버튼 (등록 삭제 목록) */
@@ -286,6 +285,8 @@ table.popup_manage thead tr th,table.popup_manage thead tr td{height:25px; paddi
   .boardW_btn span.reply_btn {float:left;}
   .boardW_btn span.left_btn{position:absolute; top:0; left:0;}
   .boardW_btn span.left2_btn{position:absolute; top:0; left:90px;}
+
+
   
   /* 파일첨부버튼 */
   .file_btn{color:#fff !important; background:#3266B1; border-radius:4px; box-shadow:2px 2px 2px #ddd; height:30px; width:80px; line-height:30px; text-align:center; display:block;}
