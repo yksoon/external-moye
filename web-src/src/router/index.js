@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/components/web/Home.vue";
 import Admin from "@/components/admin/Admin.vue";
+import Consulting from '@/components/web/consulting/Consulting.vue';
+import QNA from '@/components/web/consulting/QNA.vue';
 import Notices from "@/components/web/notice/Notices.vue";
 import Notice from "@/components/web/notice/Notice.vue";
 import PhotoGallery from "@/components/web/photo/PhotoGallery.vue";
@@ -36,6 +38,18 @@ const router = createRouter({
             path: routerPath.web_notice_detail_url, // "/notice/notices/:notice"
             name: "notice",
             component: Notice,
+        },
+        {
+            // 상담문의 목록
+            path: routerPath.web_consulting_url, // "/consulting/consulting"
+            name: "consulting",
+            component: Consulting,
+        },
+        {
+            // 상담문의 상세
+            path: routerPath.web_consulting_detail_url, // "/consulting/consulting/:qna"
+            name: "qna",
+            component: QNA,
         },
         {
             // 포토갤러리
