@@ -10,11 +10,23 @@ import ArtistModalMain from "@/components/admin/artistManage/modal/ArtistModalMa
 import HistoryModalMain from "@/components/admin/historyManage/modal/HistoryModalMain.vue";
 import PopupModalMain from "@/components/admin/popupManage/modal/PopupModalMain.vue";
 import CategoryModalMain from "@/components/admin/categoryManage/modal/CategoryModalMain.vue";
+import ConsultingModalMain from "@/components/admin/boardManage/consultingBoard/modal/ConsultingModalMain.vue";
+
 import { CommonNotify } from "@/common/js/common";
 
 export default {
     name: "CommonModal",
-    components: { NoticeModalMain, PhotoModalMain, MovieModalMain, ArtistModalMain, CompanyModalMain, HistoryModalMain, PopupModalMain, CategoryModalMain },
+    components: {
+        NoticeModalMain,
+        PhotoModalMain,
+        MovieModalMain,
+        ArtistModalMain,
+        CompanyModalMain,
+        HistoryModalMain,
+        PopupModalMain,
+        CategoryModalMain,
+        ConsultingModalMain,
+    },
     setup() {
         const useModal = useModalStore();
         const { isOpen, title, component, width, handleNeedUpdate, state } =
@@ -66,6 +78,13 @@ export default {
                     <!-- 공지사항 등록 -->
                     <NoticeModalMain
                         v-if="component === 'RegNoticeModal'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 상담문의 등록 -->
+                    <ConsultingModalMain
+                        v-if="component === 'RegConsultingModal'"
                         :handleNeedUpdate="handleNeedUpdate"
                         :modData="state.modData"
                     />

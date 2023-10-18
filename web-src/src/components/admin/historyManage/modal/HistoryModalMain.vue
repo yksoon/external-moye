@@ -806,7 +806,7 @@ const validation = () => {
                             />
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th>파일첨부</th>
                         <td class="fileicon" colSpan="3">
                             <div style="margin-bottom: 5">
@@ -843,7 +843,7 @@ const validation = () => {
                                 </div>
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
