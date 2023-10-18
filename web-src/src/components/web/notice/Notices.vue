@@ -1,4 +1,88 @@
 <script setup>
+import {
+    CommonConsole,
+    CommonErrModule,
+    CommonModal,
+    CommonNotify,
+    CommonRest,
+    CommonSpinner,
+} from "@/common/js/common";
+import { successCode } from "@/common/js/resultCode";
+import { maxRowNum } from "@/common/js/pagenationInfoStatic";
+import { apiPath } from "@/webPath";
+import { reactive, ref, onMounted } from "vue";
+import { marqueeInit } from "@/common/js/crawler";
+import { routerPath } from '@/webPath';
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
+
+// ------------------- import End --------------------
+
+const searchKeyword = ref(null);
+const state = reactive({
+    boardList: [],
+    pageInfo: {},
+});
+
+onMounted(() => {
+    getBoardList(1, maxRowNum.basic, "");
+});
+
+const fileBaseUrl = apiPath.api_file;
+
+// 공지사항 리스트 가져오기
+const getBoardList = (pageNum, pageSize, searchKeyword) => {
+    CommonSpinner(true);
+
+    // /v1/boards
+    // POST
+    // board_type
+    // 000 : 공지사항 [v]
+    // 100 : 상담문의
+    // 200 : 포토게시판
+    // 300 : 영상게시판
+    // 400 : 회사소개
+    // 900 : 기타
+    const url = apiPath.api_admin_boards;
+    const data = {
+        page_num: pageNum,
+        page_size: pageSize,
+        search_keyword: searchKeyword,
+        board_type: "000",
+    };
+
+    // 파라미터
+    const restParams = {
+        method: "post",
+        url: url,
+        data: data,
+        callback: (res) => responsLogic(res),
+        admin: "Y",
+    };
+    CommonRest(restParams);
+
+    // 완료 로직
+    const responsLogic = (res) => {
+        let result_code = res.headers.result_code;
+
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
+            let page_info = res.data.page_info;
+
+            state.boardList = result_info;
+
+            CommonSpinner(false);
+        } else {
+            // 에러
+            CommonConsole("log", res);
+
+            CommonSpinner(false);
+        }
+    };
+};
 
 </script>
 
@@ -13,17 +97,7 @@
                     </h2>
                 </div>
             </div>
-            <div id="leftmenu">
-                <div id="lnb">
-                    <ul>
-                        <li><a href="" class="on">공지사항</a></li>
-                        <li><a href="">상담문의</a></li>
-                        <li><a href="">회사소개서 다운로드</a></li>
-                        <li><a href="">포토 갤러리</a></li>
-                        <li><a href="">영상 갤러리</a></li>
-                    </ul>
-                </div>
-            </div>
+            <LeftMenu page="notice" />
             <div id="content">
                 <div id="subtitle">
                     <h2>공지사항</h2>
@@ -61,22 +135,29 @@
                                 <th>등록일</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-if="state.boardList.length !== 0">
+                            <tr v-for="(board, idx) in state.boardList">
+                                <td>{{ idx + 1 }}</td>
+                                <td>{{ board.subject }}</td>
+                                <td><a>{{ board.sub_title }}</a></td>
+                                <td>{{ board.content }}</td>
+                                <td>{{ board.view_count }}</td>
+                                <td>{{ board.reg_dttm.split(' ')[0] }}</td>
+                            </tr>
+                        </tbody>
+                        <tbody v-else>
                             <tr>
-                                <td>가나다</td>
-                                <td>가나다</td>
-                                <td>가나다</td>
-                                <td>가나다</td>
-                                <td>가나다</td>
-                                <td>2023-12-12</td>
+                                <td>
+                                    목록이 없습니다. 
+                                </td>
                             </tr>
                         </tbody>
                     </table>
 
                     <div class="paginate">
                         <ul class="page_btn">
-                            <a href="#" class="direction"><img src="img/common/page_Btn_02.jpg" alt="이전페이지"></a>
-                            <strong>1</strong> <a href="#" class="direction"><img src="img/common/page_Btn_03.jpg"
+                            <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
+                            <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
                                     alt="다음페이지"></a>
                         </ul>
                     </div>

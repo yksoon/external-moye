@@ -11,9 +11,10 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
-import GlobalHeader from "./common/GlobalHeader.vue";
-import GlobalFooter from "./common/GlobalFooter.vue";
+// import GlobalHeader from "./common/GlobalHeader.vue";
+// import GlobalFooter from "./common/GlobalFooter.vue";
 import { marqueeInit } from "@/common/js/crawler";
+import { routerPath } from '@/webPath';
 // import $ from "jquery";
 
 // window.jQuery = window.$ = $;
@@ -178,16 +179,16 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
 </script>
 
 <template>
-    <div id="wrapper">
-    <GlobalHeader />
-    <div id="mainvisual">
-        <div class="main_txt">
-            <div class="main_txt_wrap">
-                <h2>전국민이 열광하는 레전드를 만나다</h2>
-                <p>“좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만, 쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이 모두의예체능의 Vision입니다."</p>
+    <div>
+    <!-- <GlobalHeader /> -->
+        <div id="mainvisual">
+            <div class="main_txt">
+                <div class="main_txt_wrap">
+                    <h2>전국민이 열광하는 레전드를 만나다</h2>
+                    <p>“좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만, 쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이 모두의예체능의 Vision입니다."</p>
+                </div>
             </div>
         </div>
-    </div>
 
        <!-- container //S-->
        <div id="container">
@@ -203,7 +204,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                     <div class="marquee" id="gsefSpan1">
                         <div class="person" v-for="people in state.peopleList1">
                             <a href="" target="_blank" rel="noopener noreferrer">
-                                <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`">
+                                <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`" style="min-width: 450px; min-height: 315px;"/>
                                 <div v-else style="background-color: #eee;"></div>
                                 <p>
                                     <span class="name">{{people.name_ko}}</span>
@@ -319,7 +320,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
             <div class="top">
                 <h3 class="title">NOTICE</h3>
                 <p>모두의 예체능의 주요 공지사항을 전달합니다.</p>
-                <a href="" class="more_btn"><span>공지사항 더보기</span></a>
+                <a :href="routerPath.web_notice_url" class="more_btn"><span>공지사항 더보기</span></a>
             </div>
             <div class="box_wrap" v-if="state.boardList.length !== 0">
                 <div class="box" v-for="board in state.boardList">
@@ -334,6 +335,6 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
 
     </div>
     <!-- container //E-->
-    <GlobalFooter/>
+    <!-- <GlobalFooter/> -->
 </div>
 </template>

@@ -51,7 +51,7 @@ import { routerPath } from '@/webPath';
                     <a :href="routerPath.web_notice_url">공지사항</a>
                     <a href="">상담문의</a>
                     <a href="">회사소개서 다운로드</a>
-                    <a href="">포토 갤러리</a>
+                    <a :href="routerPath.web_photo_url">포토 갤러리</a>
                     <a href="">영상 갤러리</a>
                 </div>
             </li>

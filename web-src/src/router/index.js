@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/components/web/Home.vue";
 import Admin from "@/components/admin/Admin.vue";
 import Notices from "@/components/web/notice/Notices.vue";
+import Notice from "@/components/web/notice/Notice.vue";
+import PhotoGallery from "@/components/web/photo/PhotoGallery.vue";
+import MovieGallery from "@/components/web/movie/MovieGallery.vue";
 import NotFound from "@/components/web/NotFound.vue";
 import Signin from "@/components/admin/Signin.vue";
 import TestPage from "@/components/admin/TestPage.vue";
@@ -25,6 +28,26 @@ const router = createRouter({
             // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: Notices,
+            children: [
+                {
+                    // 공지사항 상세
+                    path: routerPath.web_notice_detail_url, // "/notice/notices/notice"
+                    name: "notice",
+                    component: Notice,
+                }
+            ]
+        },
+        {
+            // 포토갤러리
+            path: routerPath.web_photo_url, // "/photo/photoGallery"
+            name: "photoGallery",
+            component: PhotoGallery,
+        },
+        {
+            // 영상갤러리
+            path: routerPath.web_movie_url, // "/movie/movieGallery"
+            name: "movieGallery",
+            component: MovieGallery,
         },
         {
             // 관리자 메인
