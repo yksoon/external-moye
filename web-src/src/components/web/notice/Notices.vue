@@ -111,8 +111,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                             <option value="모두">제목 + 내용</option>
                         </select>
                         <div class="placeholder_box">
-                            <input type="text" id="placeholder" name="stx" value="" autofocus="autofocus"
-                                placeholder="검색">
+                            <input type="text" id="placeholder" name="stx" value="" autofocus="autofocus" placeholder="검색">
                             <button type="button" onclick="document.fsearch.submit()" class="btn_primary">검색</button>
                         </div>
                     </div>
@@ -138,9 +137,9 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                         <tbody v-if="state.boardList.length !== 0">
                             <tr v-for="(board, idx) in state.boardList">
                                 <td>{{ idx + 1 }}</td>
-                                <td>{{ board.subject }}</td>
+                                <td><a>{{ board.subject }}</a></td>
                                 <td><a>{{ board.sub_title }}</a></td>
-                                <td>{{ board.content }}</td>
+                                <td><a>{{ board.content }}</a></td>
                                 <td>{{ board.view_count }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
                             </tr>
@@ -148,7 +147,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                         <tbody v-else>
                             <tr>
                                 <td>
-                                    목록이 없습니다. 
+                                    목록이 없습니다.
                                 </td>
                             </tr>
                         </tbody>

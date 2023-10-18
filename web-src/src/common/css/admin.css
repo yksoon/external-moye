@@ -60,8 +60,8 @@ a.login {display:inline-block;width: 104px;height: 36px;line-height: 36px;backgr
 .btn_box {margin:0 auto;text-align:center;margin:20px 0 0;}
 .btn_box.btn_right {text-align: right;}
 
-a.btn {display:inline-block;width:auto;padding: 0 20px;height: 28px;text-align: center;line-height: 26px;border-radius: 5px;font-size: 14px;
-	transition:all .3s;
+a.btn {display:inline-block;width:auto;padding: 0 20px;height: 28px;text-align: center;line-height: 26px;border-radius: 5px;font-size: 14px; cursor: pointer;
+    transition:all .3s;
 	    -webkit-transition:all .3s;
 	    -moz-transition:all .3s;
 	    -ms-transition:all .3s;
@@ -69,9 +69,13 @@ a.btn {display:inline-block;width:auto;padding: 0 20px;height: 28px;text-align: 
     }
 a.btn:hover {background: #efefef; color: #858585;}
 a.btn.btn01 {background: #0047a0;color:#fff;margin: 0 5px 5px 0;}
+a.btn.btn01:hover {background: #efefef; color: #858585;}
 a.btn.btn02 {background:#a8a8a8;color:#fff;margin: 0 5px 5px 0;}
+a.btn.btn02:hover {background: #efefef; color: #858585;}
 a.btn.btn03 {background:#f0516a;color:#fff;margin: 0 5px 5px 0;}
+a.btn.btn03:hover {background: #efefef; color: #858585;}
 a.btn.btn04 {background:#4bbc8a;color:#fff;margin: 0 5px 5px 0;}
+a.btn.btn04:hover {background: #efefef; color: #858585;}
 a.btn.hold {border: 1px solid #efefef;background: #efefef;color: #858585;}
 a.btn.hold:hover {border: 1px solid #efefef;background: #efefef;color: #858585;}
 
@@ -82,6 +86,7 @@ a.hotel_btn {display:inline-block;width: 220px;height: 53px;line-height: 53px;fo
 .file {display:none;}
 .file_btn {display:inline-block;width:auto;min-width:146px;padding: 0 38px;height: 48px;text-align: center;line-height: 48px;border: 1px solid #ddd;color: #818181;cursor: pointer;}
 a.tablebtn {display:inline-block;width:auto;padding: 0 10px;height: 26px;text-align: center;line-height: 26px;border-radius: 5px;font-size: 14px;background: #525252;color:#fff;transition:all 0.3s;}
+a.tablebtn:hover {background: #adabab;border: 1px solid #adabab; color: #fff;}
 a.tablebtn.btn01 {background: #0047a0;}
 .plusbtn_wrap{display:flex;justify-content: space-between;}
 .plusbtn_wrap a {padding:0 8px;border: 1px solid #ddd;display: inline-block;border-radius: 5px;line-height: 21px;}
@@ -95,7 +100,9 @@ a.tablebtn.btn01 {background: #0047a0;}
 }
 .admin .subbtn_box a.subbtn:hover {background: #efefef; color: #858585;}
 .admin .subbtn_box a.subbtn.delete {background: #f0516a;}
+.admin .subbtn_box a.subbtn.delete:hover {background: #efefef; }
 .admin .subbtn_box a.subbtn.off {background:#a8a8a8;}
+.admin .subbtn_box a.subbtn.off:hover {background: #efefef; }
 
 select {border: 1px solid #ddd;height:28px;line-height:28px;font-size: 14px;color: #333;padding: 0 10px;cursor:pointer;border-radius: 5px;}
 textarea {width:100%;min-height:180px;resize: none;border: 1px solid #ddd;height:28px;line-height:28px;font-size: 14px;color: #333;padding: 0 10px;display:inline-block;
@@ -228,14 +235,6 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 .table_a td:last-child {border-right: none;}
 .table_a td {font-size: 14px;padding:10px;text-align: center;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;}
 .table_a td img {width: 100px;}
-.table_a td a.tablebtn{border: 1px solid #858585;padding: 5px 10px;border-radius: 5px; color: #333
-    transition:all .3s;
-    -webkit-transition:all .3s;
-    -moz-transition:all .3s;
-    -ms-transition:all .3s;
-    -o-transition:all .3s;
-    }
-.table_a td a.tablebtn:hover {background: #adabab;border: 1px solid #adabab; color: #fff;}
 .table_a td a.outbtn{background: #0754A3; padding: 5px 10px; border-radius: 5px; color: #fff; display: inline-block; margin: 0 0 5px;
     transition:all .3s;
     -webkit-transition:all .3s;
@@ -256,7 +255,8 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 .table_bb tbody th {font-size: 14px;background: #f1f8ff;padding:10px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: center;}
 .table_bb tbody td:last-child {border-right: none;}
 .table_bb tbody td {font-size: 14px;padding:10px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: left;}
-.table_bb select {font-size: 14px;font-family:'Pretendard'; outline: none;border: 1px solid #ddd; margin: 0 10px 10px 0;}
+.table_bb select {font-size: 14px;font-family:'Pretendard'; outline: none;border: 1px solid #ddd; margin: 0 10px 10px 0; min-width: 100px;
+    background: url('/img/common/check.png') no-repeat 90% 50%;}
 .table_bb select:last-child {margin: 0 10px 0 0;}
 .table_bb input {font-size: 14px;font-family:'Pretendard'; outline: none;}
 
