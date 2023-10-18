@@ -149,6 +149,16 @@ const apiPath = {
     // 게시판 수정
     api_admin_mod_board: `${base_api_url + slash + version + slash}board`,
 
+    // /v1/_comment
+    // POST MULTI
+    // 상담문의 등록
+    api_admin_reg_comment: `${base_api_url + slash + version + slash}_comment`,
+
+    // /v1/_comment
+    // PUT MULTI
+    // 상담문의 수정
+    api_admin_mod_comment: `${base_api_url + slash + version + slash}_comment`,
+
     // ---------------------- People Management API ----------------------
     // /v1/people/categories
     // POST
