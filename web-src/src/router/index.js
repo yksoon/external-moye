@@ -28,14 +28,12 @@ const router = createRouter({
             // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: Notices,
-            children: [
-                {
-                    // 공지사항 상세
-                    path: routerPath.web_notice_detail_url, // "/notice/notices/notice"
-                    name: "notice",
-                    component: Notice,
-                }
-            ]
+        },
+        {
+            // 공지사항 상세
+            path: routerPath.web_notice_detail_url, // "/notice/notices/:notice"
+            name: "notice",
+            component: Notice,
         },
         {
             // 포토갤러리

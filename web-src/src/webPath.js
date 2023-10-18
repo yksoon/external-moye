@@ -57,8 +57,8 @@ const routerPath = {
     web_notice_url: `${base_url}notice/notices`,
 
     // notice
-    // /notice/notices/notice
-    web_notice_detail_url: `${base_url}notice/notices/notice`,
+    // /notice/notices/:notice
+    web_notice_detail_url: `${base_url}notice/notices/:notice`,
 
     // photoGallery
     // /photo/photoGallery

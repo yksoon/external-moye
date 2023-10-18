@@ -1,5 +1,81 @@
 <script setup>
+import {
+    CommonErrModule,
+    CommonConsole,
+    CommonRest,
+    CommonNotify,
+    CommonSpinner,
+} from "@/common/js/common.js";
+import { useModalStore } from "@/stores/modal";
+import { storeToRefs } from "pinia";
+import { boardModel } from "./models/notice";
+import { maxRowNum } from "@/common/js/pagenationInfoStatic";
+import { successCode } from "@/common/js/resultCode";
+import { reactive, ref, onMounted } from "vue";
+import { apiPath } from "@/webPath";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
+
+// ------------------- import End --------------------
+
+const boardIdx = $route.params.notice;
+
+const searchKeyword = ref(null);
+const board = ref(null);
+// const state = reactive({
+//     boardList: [],
+//     pageInfo: {},
+// });
+
+onMounted(() => {
+    getBoardDetail();
+});
+
+const fileBaseUrl = apiPath.api_file;
+
+// 공지사항 상세 데이터 가져오기
+const getBoardDetail = () => {
+    CommonSpinner(true);
+
+    // /v1/board/{board_idx}
+    // GET
+    // 게시판 상세
+    const url = apiPath.api_admin_get_board + `/${boardIdx}`;
+    const data = {};
+
+    // 파라미터
+    const restParams = {
+        method: "get",
+        url: url,
+        data: data,
+        callback: (res) => responsLogic(res),
+        admin: "Y"
+    };
+    CommonRest(restParams);
+
+    // 완료 로직
+    const responsLogic = (res) => {
+        let result_code = res.headers.result_code;
+
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
+            let page_info = res.data.page_info;
+
+            state.board = result_info;
+
+            CommonSpinner(false);
+        } else {
+            // 에러
+            CommonConsole("log", res);
+
+            CommonSpinner(false);
+        }
+    };
+};
+
 </script>
 
 <template>
