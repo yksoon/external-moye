@@ -294,6 +294,13 @@ const columns = [
         // enableSorting: false,
     },
 
+    columnHelper.accessor((row) => row.process_status, {
+        id: "process_status",
+        cell: (info) => info.getValue(),
+        header: "답변상태",
+        // sortingFn: "alphanumericCaseSensitive",
+    }),
+
     columnHelper.accessor((row) => row.subject, {
         id: "subject",
         cell: (info) => info.getValue(),
@@ -315,12 +322,12 @@ const columns = [
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
-    columnHelper.accessor((row) => row.show_yn, {
-        id: "show_yn",
-        cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
-        header: "노출여부",
-        // sortingFn: "alphanumericCaseSensitive",
-    }),
+    // columnHelper.accessor((row) => row.show_yn, {
+    //     id: "show_yn",
+    //     cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
+    //     header: "노출여부",
+    //     // sortingFn: "alphanumericCaseSensitive",
+    // }),
 
     columnHelper.accessor((row) => row.view_count, {
         id: "view_count",
@@ -393,11 +400,12 @@ const table = useVueTable({
                 <table class="table_a">
                     <colgroup>
                         <col width="2%" />
+                        <col width="10%" />
                         <col width="20%" />
                         <col width="15%" />
                         <col width="*" />
                         <col width="5%" />
-                        <col width="5%" />
+                        <!-- <col width="5%" /> -->
                         <col width="7%" />
                         <col width="7%" />
                         <col width="5%" />

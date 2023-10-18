@@ -35,6 +35,7 @@ const inputAnswerContent = ref(null);
 
 const state = reactive({
     fileList: [],
+    commentFileList: [],
 });
 
 const useModal = useModalStore();
@@ -64,7 +65,12 @@ const getDefaultValue = () => {
     inputContent.value.value = modData.content;
     state.fileList = modData.file_info;
 
-    inputAnswerContent.value.value = modData.commentInfo.content ?? "";
+    // console.log(modData.comment_info.content);
+    if (modData.comment_info !== null) {
+        inputAnswerContent.value.value = modData.comment_info.content;
+        state.commentFileList = modData.comment_info.file_info ?? [];
+    }
+    //
 };
 
 // 모달 닫기
@@ -103,10 +109,11 @@ const regBoard = () => {
             ...model,
             showYn: selectShowYn.value.value,
             boardType: "100",
-            // categoryType: "900",
+            boardIdx: isModData && modData.board_idx,
+            categoryType: isModData && modData.category_type_cd,
             subject: inputTitle.value.value,
             subTitle: inputSubTitle.value.value,
-            content: inputContent.value.value,
+            content: inputAnswerContent.value.value,
         };
 
         // 기본 formData append
@@ -121,6 +128,16 @@ const regBoard = () => {
             formData.append("attachmentFile", fileArr[i]);
         }
 
+        const restParams = {
+            method: "post_multi",
+            url: apiPath.api_admin_reg_comment, // /v1/board
+            data: formData,
+            admin: "Y",
+            callback: (res) => responsLogic(res),
+        };
+
+        CommonRest(restParams);
+
         const responsLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
@@ -128,7 +145,7 @@ const regBoard = () => {
 
                 CommonNotify({
                     type: "alert",
-                    message: "게시물 등록이 완료 되었습니다",
+                    message: "답변 등록이 완료 되었습니다",
                     callback: () => requestBoards(),
                 });
             } else {
@@ -140,16 +157,6 @@ const regBoard = () => {
                 });
             }
         };
-
-        const restParams = {
-            method: "post_multi",
-            url: apiPath.api_admin_reg_board, // /v1/board
-            data: formData,
-            admin: "Y",
-            callback: (res) => responsLogic(res),
-        };
-
-        CommonRest(restParams);
     }
 };
 
@@ -168,11 +175,12 @@ const modBoard = () => {
             ...model,
             showYn: selectShowYn.value.value,
             boardIdx: modData.board_idx,
-            boardType: "000",
-            categoryType: "900",
-            subject: inputTitle.value.value,
-            subTitle: inputSubTitle.value.value,
-            content: inputContent.value.value,
+            boardType: "100",
+            categoryType: modData.category_type_cd,
+            subject: modData.subject,
+            subTitle: modData.sub_title,
+            content: inputAnswerContent.value.value,
+            commentIdx: modData.comment_info.comment_idx,
         };
 
         // 기본 formData append
@@ -187,6 +195,19 @@ const modBoard = () => {
             formData.append("attachmentFile", fileArr[i]);
         }
 
+        // 수정
+        // /v1/_comment
+        // PUT MULTI
+        const restParams = {
+            method: "put_multi",
+            url: apiPath.api_admin_mod_comment, // /v1/_comment
+            data: formData,
+            admin: "Y",
+            callback: (res) => responsLogic(res),
+        };
+
+        CommonRest(restParams);
+
         const responsLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
@@ -194,7 +215,7 @@ const modBoard = () => {
 
                 CommonNotify({
                     type: "alert",
-                    message: "게시물 수정이 완료 되었습니다",
+                    message: "답변 수정이 완료 되었습니다",
                     callback: () => requestBoards(),
                 });
             } else {
@@ -207,19 +228,6 @@ const modBoard = () => {
                 });
             }
         };
-
-        // 수정
-        // /v1/board
-        // PUT MULTI
-        const restParams = {
-            method: "put_multi",
-            url: apiPath.api_admin_mod_board, // /v1/board
-            data: formData,
-            admin: "Y",
-            callback: (res) => responsLogic(res),
-        };
-
-        CommonRest(restParams);
     }
 };
 
@@ -294,6 +302,12 @@ const validation = () => {
             </colgroup>
 
             <tbody>
+                <tr>
+                    <th>상담 카테고리</th>
+                    <td v-if="isModData">
+                        {{ modData.category_type }}
+                    </td>
+                </tr>
                 <tr>
                     <th>노출여부</th>
                     <td>
@@ -405,28 +419,73 @@ const validation = () => {
 
             <tbody>
                 <tr>
-                    <th>상담 카테고리</th>
-                    <td v-if="isModData">
-                        {{ modData.category_type }}
+                    <th>상태</th>
+                    <td>
+                        {{ modData.process_status }}
                     </td>
                 </tr>
                 <tr>
                     <th>답변 내용</th>
-                    <td v-if="isModData">
+                    <td>
                         <textarea
                             class="textarea_basic"
                             ref="inputAnswerContent"
-                            :readonly="true"
-                            :disabled="true"
                         ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>파일</th>
+                    <td class="fileicon">
+                        <div style="margin-bottom: 5">
+                            <b>
+                                여러 파일 선택이 가능합니다. 여러 파일 선택 시
+                                ctrl 누른 후 선택하시면 됩니다.
+                            </b>
+                        </div>
+                        <div>
+                            <input
+                                type="file"
+                                ref="inputAttachmentFile"
+                                multiple
+                                @change="(e) => attachFile(e.target)"
+                            />
+                        </div>
+                        <div>
+                            <div
+                                v-if="state.commentFileList.length !== 0"
+                                v-for="item in state.commentFileList"
+                            >
+                                <a
+                                    :href="`${fileBaseUrl}${item.file_path_enc}`"
+                                >
+                                    <img src="/img/common/file.svg" alt="" />
+                                    {{ item.file_name }}
+                                </a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="btn_box">
-            <a v-if="!modData" class="btn btn01" @click="regBoard"> 등록 </a>
-            <a v-if="modData" class="btn btn01" @click="modBoard"> 수정 </a>
+            <a
+                v-if="modData.comment_info === null"
+                class="btn btn01"
+                @click="regBoard"
+            >
+                등록
+            </a>
+            <a
+                v-else="
+                    modData.comment_info !== null &&
+                    Object.keys(modData.comment_info).length !== 0
+                "
+                class="btn btn01"
+                @click="modBoard"
+            >
+                수정
+            </a>
             <a class="btn btn02" @click="handleClose"> 취소 </a>
         </div>
     </div>
