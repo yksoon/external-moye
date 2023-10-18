@@ -275,11 +275,16 @@ table.popup_manage thead tr th,table.popup_manage thead tr td{height:25px; paddi
   
   /* board - write 버튼 (등록 삭제 목록) */
   .board_btn_wrap{width:100%; position:relative; margin:30px 0; }
-  .boardW_btn{zoom:1; font-size:13px; font-weight:600; height:30px; line-height:30px; float:right;}
+  .boardW_btn{zoom:1; font-size:14px; font-weight:600; height:30px; line-height:30px; float:right;}
   .boardW_btn:after{content:" "; display:block; clear:both;}
-  .boardW_btn span{display:block; float:left; background-color:#f7f7f7; width:80px; border-radius:5px; text-align:center;}
-  .boardW_btn span a{display:block; color:#555;}
-  .boardW_btn span a:hover{background-color:#3266B1; color:#fff; border-radius:5px;}
+  .boardW_btn a{display:block; float:left; background-color:#3266B1; width:80px; border-radius:5px; text-align:center; color: #fff; cursor: pointer;
+	transition:all .3s;
+	    -webkit-transition:all .3s;
+	    -moz-transition:all .3s;
+	    -ms-transition:all .3s;
+	    -o-transition:all .3s;
+}
+  .boardW_btn a:hover{background-color:#efefef; color:#858585; border-radius:5px;}
   .boardW_btn span.ok_btn{float:left;}
   .boardW_btn span.ok_btn a{display:block; background-color:#f7f7f7; color:#555; border-radius:5px;}
   .boardW_btn span.ok_btn a:hover{background-color:#3266B1; color:#fff; border-radius:5px;}

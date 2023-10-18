@@ -279,7 +279,9 @@ const modBoard = (board_idx) => {
                     <tbody>
                         <tr>
                             <td>
-                                <input type="checkbox" name="select-all" id="select-all" @change="(e) => handleAllCheck(e.target.checked)" :checked="state.checkItems.length === state.boardList.length ? true : false">
+                                <input type="checkbox" name="select-all" id="select-all"
+                                    @change="(e) => handleAllCheck(e.target.checked)"
+                                    :checked="state.checkItems.length === state.boardList.length ? true : false">
                                 <b> 전체선택 </b>
                             </td>
                         </tr>
@@ -288,13 +290,18 @@ const modBoard = (board_idx) => {
                         <v-row no-gutters>
                             <v-card max-width="400" v-for="item in state.boardList">
                                 <div v-if="item.file_info.length > 0">
-                                    <v-img height="200" :src="`${fileBaseUrl}${item.file_info[0].file_path_enc}`" :alt="`${item.file_info[0].file_name}`" cover>
-                                        <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
+                                    <v-img height="200" :src="`${fileBaseUrl}${item.file_info[0].file_path_enc}`"
+                                        :alt="`${item.file_info[0].file_name}`" cover>
+                                        <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`"
+                                            @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)"
+                                            :checked="state.checkItems.includes(item.board_idx) ? true : false" />
                                     </v-img>
                                 </div>
                                 <div v-else>
                                     <v-img height="200" style="background-color: #f2f2f2;">
-                                        <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
+                                        <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`"
+                                            @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)"
+                                            :checked="state.checkItems.includes(item.board_idx) ? true : false" />
                                     </v-img>
                                 </div>
                                 <v-card-title>{{ item.subject }}</v-card-title>
@@ -322,8 +329,7 @@ const modBoard = (board_idx) => {
                             </td>
                         </tr>
                     </tbody>
-                </table>
-            </div>
+            </table>
         </div>
     </div>
-</template>
+</div></template>
