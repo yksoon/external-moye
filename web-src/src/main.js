@@ -5,6 +5,7 @@
 
 import "@/common/css/default.css";
 import "@/common/css/style.css";
+import "@/common/css/board.css";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate"; //피니아
 
 // import Vue from "vue";

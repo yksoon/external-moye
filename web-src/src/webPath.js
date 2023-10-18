@@ -53,8 +53,12 @@ const routerPath = {
     web_main_url: `${base_url}`,
 
     // notice
-    // /notice/notice-list
+    // /notice/notices
     web_notice_url: `${base_url}notice/notices`,
+
+    // photoGallery
+    // /photo/photoGallery
+    web_photo_url: `${base_url}photo/photoGallery`,
 
     // ---------------------- admin -------------------------
     // 메인

@@ -2,5 +2,5 @@
 </script>
 
 <template>
-    <div>Notice</div>
+    <div>PhotoGallery</div>
 </template>

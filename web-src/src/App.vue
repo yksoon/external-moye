@@ -2,6 +2,8 @@
 import { RouterView } from "vue-router";
 import { onMounted } from "vue";
 import { apiPath } from "@/webPath";
+import GlobalHeader from "@/components/web/common/GlobalHeader.vue";
+import GlobalFooter from "@/components/web/common/GlobalFooter.vue";
 import { CommonErrModule, CommonRest, CommonConsole } from "@/common/js/common";
 import { successCode } from "@/common/js/resultCode";
 import { useCodesStore } from "@/stores/codes";
@@ -10,7 +12,6 @@ import { useIpInfoStore } from "@/stores/ipInfo";
 import { storeToRefs } from "pinia";
 import axios from "axios";
 
-import HeaderNav from "@/components/web/common/HeaderNav.vue";
 import CommonAlert from "@/common/components/CommonAlert.vue";
 import CommonConfirm from "@/common/components/CommonConfirm.vue";
 import CommonSpinner from "@/common/components/CommonSpinner.vue";
@@ -22,6 +23,8 @@ export default {
         CommonConfirm,
         CommonSpinner,
         CommonModal,
+        GlobalHeader,
+        GlobalFooter
     },
     name: "App",
     setup() {
@@ -141,8 +144,9 @@ export default {
 
 <template>
     <div class="wrapper">
-        <!-- <HeaderNav /> -->
+        <GlobalHeader v-if="$route.name !== 'admin' && $route.name !== 'signin'"/>
         <RouterView />
+        <GlobalFooter v-if="$route.name !== 'admin' && $route.name !== 'signin'"/>
         <CommonAlert />
         <CommonConfirm />
         <CommonSpinner />
