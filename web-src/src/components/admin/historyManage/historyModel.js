@@ -1,5 +1,5 @@
 const historyModel = {
-    historyIdxs: [0],
+    // historyIdxs: [0],
     rowNum: 0,
     useYn: "",
     delYn: "",
@@ -18,7 +18,7 @@ const historyModel = {
     historyIdx: 0,
     targetYear: "",
     targetMemo: "",
-    detailInfo: []
+    // detailInfo: []
 };
 
 export { historyModel };
