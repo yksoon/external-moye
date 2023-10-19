@@ -184,7 +184,7 @@ const readyAlert = () => {
                 <a :href="routerPath.web_notice_url">고객센터</a>
                 <div class="submenu">
                     <a :href="routerPath.web_notice_url">공지사항</a>
-                    <a @click="readyAlert">상담문의</a>
+                    <a :href="routerPath.web_consulting_url">상담문의</a>
                     <a v-if="state.board" :href="`${fileBaseUrl}${state.filePath}`">회사소개서 다운로드</a>
                     <a :href="routerPath.web_photo_url">포토 갤러리</a>
                     <a :href="routerPath.web_movie_url">영상 갤러리</a>
