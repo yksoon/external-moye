@@ -106,7 +106,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                             <div class="col-md-3 gallery_thumb" v-for="board in state.boardList">
                                 <a :href="`${routerPath.web_photo_url}/${board.board_idx}`">
                                     <div class="thumbnail">
-                                        <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url(''); background-size:cover;`">
+                                        <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url('https://img.youtube.com/vi/${board.content}/0.jpg'); background-size:cover;`">
                                             <span></span>
                                         </div>
                                         <div v-else  class="bg-thumb"></div>

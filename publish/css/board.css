@@ -3,7 +3,7 @@
 
 /* 상단 검색 창 그룹 */
 div.form_group{
-	*zoom:1;
+	zoom:1;
 	display:inline-block;
 	vertical-align:top;
 	margin-bottom:30px;
@@ -113,7 +113,7 @@ table.board_Vtable tbody tr td div.board_content img {max-width:100%; height:aut
 .board_Vtable thead tr td li.download_li > a{display:block; color:#999;}
 .board_Vtable thead tr td li.download_li > a img{vertical-align:text-top;}
 .attachment{position:absolute; top:25px; left:-19px; background:#fff; width:254px; padding:6px; border:1px solid #aaa;}
-.attachment ul{*zoom:1; margin-top:6px; position:relative;}
+.attachment ul{zoom:1; margin-top:6px; position:relative;}
 .attachment ul:first-child{margin-top:0px;}
 .attachment ul:after{content:" "; display:block; clear:both;}
 .attachment ul li{ font-size:12px !important; font-weight:400; color:#444 !important; width:190px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; line-height: 21px; height: 21px;}
@@ -249,7 +249,7 @@ table.board_Wtable tbody tr td textarea:focus {border: 1px solid #3266B1;}
   input[type="checkbox"] {vertical-align:middle;}
   
   .input-group {
-      *zoom:1;
+      zoom:1;
       position: relative;
       display: table;
       border-collapse: separate;
@@ -290,7 +290,7 @@ table.board_Wtable tbody tr td textarea:focus {border: 1px solid #3266B1;}
   
   /* board - write 버튼 (등록 삭제 목록) */
   .board_btn_wrap{width:100%; position:relative; margin:30px 0; display: flex;justify-content: space-evenly; }
-  .boardW_btn{*zoom:1; font-size:14px; font-weight:500; height:30px; line-height:30px; float:right; margin: 30px 0 0;}
+  .boardW_btn{zoom:1; font-size:14px; font-weight:500; height:30px; line-height:30px; float:right; margin: 30px 0 0;}
   .boardW_btn:after{content:" "; display:block; clear:both;}
   .boardW_btn a {display: block;background-color: #3266b1; width: 80px; border-radius: 5px;text-align: center;color: #fff;cursor: pointer;
     transition: all .3s;
@@ -410,7 +410,7 @@ input[type="text"]:focus.common_text_input{
 }
 .file_input_hidden{
 	-moz-opacity: 0; 
-	filter: alpha(opacity:0); 
+	filter: alpha('opacity:0'); 
 	opacity: 0; 
 	z-index: 2;
 	position: absolute; 
@@ -453,14 +453,14 @@ input[type="text"]:focus.common_text_input{
 /* reply 등록 - 작성자,비밀번호 O */
 .reply_area {position: relative;}
 .reply_area .reply_box {position:relative;padding:20px 25px; margin:30px 0 30px 0; border-bottom:1px solid #3266b1;border-top:1px solid #3266b1;}
-.reply_area .reply_box ul {*zoom:1; margin:0 0 15px 0;}
+.reply_area .reply_box ul {zoom:1; margin:0 0 15px 0;}
 .reply_area .reply_box ul:after {content:" "; display:block; clear:both;}
 .reply_area .reply_box ul li {float:left; font-size:16px; font-weight:600; color:#666;}
 .reply_area .reply_box ul li.user span {background:url('../img/common/reply_icon1.png') 0 2px no-repeat; padding:0 0 0 20px;}
 .reply_area .reply_box ul li.user_pw span {background:url('../img/common/reply_icon2.png') 0 center no-repeat; margin: 0 5px 0 43px; padding:0 0 0 30px;}
 .reply_area .reply_box ul li span {width:90px; display:inline-block;}
 .reply_area .reply_box ul li input {height:25px; line-height:25px; border:1px solid #d1d1d1; border-radius:5px; width:217px; padding-left:10px; color:#333;outline: none;}
-.reply_area .reply_box p {*zoom:1; font-size:16px; font-weight:600; color:#aaa;}
+.reply_area .reply_box p {zoom:1; font-size:16px; font-weight:600; color:#aaa;}
 .reply_area .reply_box p:after {content:" "; display:block; clear:both;}
 .reply_area .reply_box p textarea {float:left; width:84%; border-radius:5px; padding:7px; border:1px solid #d1d1d1; font-size:13px;color:#444; color:#333;outline: none;}
 .reply_area .reply_box p span {display:inline-block; float:left; text-align:left; padding:0 0 0 20px; width:90px; color: #666;
@@ -482,7 +482,7 @@ input[type="text"]:focus.common_text_input{
 .reply_box a.reply_btn:hover {background:#3266B1;}
 
 /* reply 등록 - 작성자,비밀번호 X */
-.replay_area2 {*zoom:1;}
+.replay_area2 {zoom:1;}
 .replay_area2:after {content:" "; display:block; clear:both;}
 .replay_area2 textarea {float:left; width:759px;  border:1px solid #d1d1d1; font-size:13px;}
 .replay_area2 a.reply_btn {
@@ -500,7 +500,7 @@ input[type="text"]:focus.common_text_input{
 #reply_table {border-top:1px solid #5d5d5d; width:100%; border-spacing:0; border-collapse:collapse;}
 #reply_table tbody {border:none;}
 #reply_table td {padding:15px 10px; border-bottom:1px solid #c7c7c7;}
-#reply_table td dl dt {*zoom:1; margin:0 0 13px 0;}
+#reply_table td dl dt {zoom:1; margin:0 0 13px 0;}
 #reply_table td dl dt:after {content:" "; display:block; clear:both;}
 #reply_table td dl dt .left {float:left;}
 #reply_table td dl dt .left .user_n {font-size:16px; font-weight:600; color:#eee; display:inline-block;}

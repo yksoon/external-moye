@@ -110,8 +110,8 @@ const getBoardDetail = () => {
                                     </ul>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="3">
+                            <!-- <tr> -->
+                                <!-- <td colspan="3"> -->
                                     <!-- <ul>
                                         <li class="download_li">
                                             <a href="#none" onclick class="attachment_parent">첨부파일
@@ -135,14 +135,24 @@ const getBoardDetail = () => {
                                             </div>
                                         </li>
                                     </ul> -->
-                                </td>
-                            </tr>
+                                <!-- </td> -->
+                            <!-- </tr> -->
                         </thead>
                         <tbody>
                             <tr>
+                                <td colspan=3
+                                    v-if="state.board.file_info.length !== 0"
+                                    v-for="item in state.board.file_info"
+                                >
+                                    <div class="board_content">
+                                        <img :src="`${fileBaseUrl}${item.file_path_enc}`" :alt="item.file_name">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td colspan=3>
                                     <div class="board_content">
-                                        내용
+                                        {{ state.board.content }}
                                     </div>
                                 </td>
                             </tr>
@@ -150,7 +160,7 @@ const getBoardDetail = () => {
                     </table>
                     <div class="board_btn_wrap">
                         <div class="boardW_btn">
-                            <a :href="routerPath.web_notice_url" class="back_btn">목록
+                            <a :href="routerPath.web_photo_url" class="back_btn">목록
                             </a>
                             <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
                             <span class="back_btn"><?=$btn_link['update']?></span> -->
