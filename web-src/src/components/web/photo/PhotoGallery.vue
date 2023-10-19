@@ -95,40 +95,32 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                     <h2>포토 갤러리</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <form name="flist" method="post">
-                        <input type="hidden" name="hCode" value="">
-                        <input type="hidden" name="page" value="">
-                        <input type="hidden" name="sca" value="">
-                        <input type="hidden" name="sfl" value="">
-                        <input type="hidden" name="stx" value="">
-                        <input type="hidden" name="pg" value="">
-                        <div class="gallery_box" v-if="state.boardList.length !== 0">
-                            <div class="col-md-3 gallery_thumb" v-for="board in state.boardList">
-                                <a :href="`${routerPath.web_photo_url}/${board.board_idx}`">
-                                    <div class="thumbnail">
-                                        <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${board.file_info[0].file_path_enc}'); background-size:cover;`">
-                                            <span></span>
-                                        </div>
-                                        <div v-else  class="bg-thumb"></div>
-                                        <div class="caption">
-                                            <p>{{board.subject}}</p>
-                                            <div class="info">
-                                                <span class="datetime">{{board.reg_dttm}}</span>
-                                                <span class="hits">조회수 : {{board.view_count}}</span>
-                                            </div>
+                    <div class="gallery_box" v-if="state.boardList.length !== 0">
+                        <div class="col-md-3 gallery_thumb" v-for="board in state.boardList">
+                            <a :href="`${routerPath.web_photo_url}/${board.board_idx}`">
+                                <div class="thumbnail">
+                                    <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${board.file_info[0].file_path_enc}'); background-size:cover;`">
+                                        <span></span>
+                                    </div>
+                                    <div v-else  class="bg-thumb"></div>
+                                    <div class="caption">
+                                        <p>{{board.subject}}</p>
+                                        <div class="info">
+                                            <span class="datetime">{{board.reg_dttm}}</span>
+                                            <span class="hits">조회수 : {{board.view_count}}</span>
                                         </div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="paginate">
-                            <ul class="page_btn">
-                                <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
-                                <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
-                                        alt="다음페이지"></a>
-                            </ul>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="paginate">
+                        <ul class="page_btn">
+                            <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
+                            <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
+                                    alt="다음페이지"></a>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
