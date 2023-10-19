@@ -1,0 +1,177 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <title>모두의 예체능</title>
+    <link rel="stylesheet" type="text/css" href="css/default.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/aos.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/board.css" media="all" />
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <script type="text/javascript" language="javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" language="javascript" src="js/aos.js"></script>
+    <script type="text/javascript" language="javascript" src="js/nav.js"></script>
+    <script type="text/javascript" language="javascript" src="js/crawler.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!--header//S-->
+        <div id="header"></div>
+        <!--header//E-->
+
+        <!-- 서브컨텐츠     //S-->
+        <div id="container" class="sub_container">
+            <div id="subvisual" class="subvisual">
+                <div class="sub_txt">
+                    <h2 data-aos="fade-in" data-aos-duration="500">
+                        고객센터
+                    </h2>
+                </div>
+            </div>
+            <div id="leftmenu">
+                <div id="lnb">
+                    <ul>
+                        <li><a href="">공지사항</a></li>
+                        <li><a href="" class="on">상담문의</a></li>
+                        <li><a href="">회사소개서 다운로드</a></li>
+                        <li><a href="">포토 갤러리</a></li>
+                        <li><a href="">영상 갤러리</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content">
+                <div id="subtitle">
+                    <h2>상담문의</h2>
+                </div>
+                <div data-aos-duration="1000" data-aos-delay="400">
+                    <!--MODULE//S-->
+                    <form name="form" method="post" action="index.php" enctype="multipart/form-data">
+                        <input type="hidden" name="uploadfile"><!-- 첨부된 파일 -->
+                        <input type="hidden" name="chk_text_tmp" value="">
+                        <input type="hidden" name="hMode" value="">
+                        <input type="hidden" name="hCode" value="">
+                        <input type="hidden" name="bo_idx" value=">">
+                        <input type="hidden" name="idx" value="">
+                        <input type="hidden" name="pg" value="">
+                        <input type="hidden" name="return_url" value="">
+                        <input type="hidden" name="bo_html_use" value="" />
+                        <table class="board_Wtable">
+                            <colgroup>
+                                <col width="15%" />
+                                <col width="*" />
+                            </colgroup>
+                            <thead>
+                                <tr class="boardW_title">
+                                    <th>제목</th>
+                                    <td>
+                                        <div class="input-group">
+                                            <div class="placeholder_Title_Big"
+                                                style="display: inline-block; position: relative; vertical-align: middle; float: left;">
+                                                <input type="text" id="placeholder" name="title" value="" autofocus
+                                                    style="height: 31px; line-height: 31px; width: 800px; padding: 0px 15px! important; box-sizing: border-box;" />
+                                            </div>
+                                            <span class="input-group-Big"
+                                                style="vertical-align: middle; padding: 8px 10px; font-size: 13px; font-weight: 400; line-height: 1; color: #555; text-align: center; border-radius: 2px; float: left;">
+                                                <label><input type="checkbox" name="hidden_yn" value="Y">
+                                                    &nbsp;비밀글</label>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="boardW_title">
+                                    <th>작성자</th>
+                                    <td>
+                                        <div class="placeholder_Title_Big"
+                                            style="display: inline-block; position: relative; vertical-align: middle; float: left;">
+                                            <input type="text" id="placeholder" name="username" value="" autofocus
+                                                style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="boardW_title" id="passwd">
+                                    <th>비밀번호</th>
+                                    <td>
+                                        <div class=" placeholder_Title_Big"
+                                            style="display: inline-block; position: relative; vertical-align: middle; float: left;">
+                                            <input type="password" id="placeholder" name="passwd" value="" autofocus
+                                                style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="boardW_title">
+                                    <th>문의분야</th>
+                                    <td>
+                                        <select class="select wp100">
+                                            <option value="">개인레슨</option>
+                                            <option value="">그룹레슨</option>
+                                            <option value="">제휴문의</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>문의내용</th>
+                                    <td colspan="2">
+                                        <div class="userContent" style="margin:10px 0 20px;">
+                                            <textarea name="ir1" id="ir1" style="width:100%; height:350px"></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <!-- <div class="input-group bottom_check">
+                            <span class="input-group-addon cclyoung">
+                            </span>
+                            <div class="placeholder_box">
+                                <label for="placeholder" style="top:4px;">?의 값을 입력하세요.</label>
+                                <input type="text" id="placeholder" name="chk_text" style="height:25px;" />
+                            </div>
+                        </div> -->
+                        <div class="boardW_btn">
+                            <span class="back_btn"><a href="">확인</a></span>
+                            <span class="ok_btn"><a href="javascript:history.back();">취소</a></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--footer //S-->
+            <div id="footer"></div>
+            <!-- footer //E-->
+
+        </div>
+    </div>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>
+
+<script>
+    // header
+    const header = document.querySelector('#header');
+    fetch('include/header.html')
+        .then(res => res.text())
+        .then(data => header.innerHTML = data);
+
+    //footer
+    const footer = document.querySelector('#footer');
+    fetch('include/footer.html')
+        .then(res => res.text())
+        .then(data => footer.innerHTML = data);
+</script>
