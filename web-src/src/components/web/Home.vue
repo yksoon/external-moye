@@ -262,10 +262,10 @@ const readyAlert = () => {
                     <img src="/img/web/main/sports17.png" alt="">
                     <img src="/img/web/main/sports18.png" alt="">
                 </div>
-                <a class="more_btn"><span>카테고리 더보기</span></a>
+                <a @click="readyAlert" class="more_btn"><span>카테고리 더보기</span></a>
             </div>
             <div class="class_wrap">
-                <div class="pink">
+                <div class="pink" @click="readyAlert">
                     <span><img src="/img/web/main/class01.png" alt=""></span>
                     <div class="txt">
                         <h5>PRIVATE CLASS</h5>
@@ -275,7 +275,7 @@ const readyAlert = () => {
                         </p>
                     </div>
                 </div>
-                <div class="green">
+                <div class="green" @click="readyAlert">
                     <span><img src="/img/web/main/class02.png" alt=""></span>
                     <div class="txt">
                         <h5>SCHOOL CLASS</h5>
@@ -286,7 +286,7 @@ const readyAlert = () => {
                         </p>
                     </div>
                 </div>
-                <div class="blue">
+                <div class="blue" @click="readyAlert">
                     <span><img src="/img/web/main/class03.png" alt=""></span>
                     <div class="txt">
                         <h5>ONLINE CLASS</h5>
@@ -295,7 +295,7 @@ const readyAlert = () => {
                         </p>
                     </div>
                 </div>
-                <div>
+                <div @click="readyAlert">
                     <span><img src="/img/web/main/class04.png" alt=""></span>
                     <div class="txt">
                         <h5>SPECIAL CLASS</h5>
@@ -314,7 +314,7 @@ const readyAlert = () => {
                 <h3 class="title">예체능 교육의 Digital Transformation</h3>
                 <p>우리는 예체능 생태계를 체계화하고, 통합 서비스를 제공 하고자 합니다.</p>
                 <a @click="readyAlert" class="more_btn"><span>기업 소개 더보기</span></a>
-                <a @click="readyAlert" class="more_btn"><span>상담 문의하기</span></a>
+                <a :href="routerPath.web_consulting_url" class="more_btn"><span>상담 문의하기</span></a>
             </div>
             <div class="right"></div>
         </div>
