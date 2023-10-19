@@ -77,12 +77,20 @@ const routerPath = {
     web_movie_detail_url: `${base_url}movie/movieGallery/:movie`,
 
     // consulting
-    // /movie/movieGallery
+    // /consulting/consulting
     web_consulting_url: `${base_url}consulting/consulting`,
 
-    // movie
-    // /movie/movieGallery/:movie
+    // qna
+    // /consulting/consulting/:qna
     web_consulting_detail_url: `${base_url}consulting/consulting/:qna`,
+
+    // peoples
+    // /peoples/peoples
+    web_people_url: `${base_url}peoples/peoples`,
+
+    // people
+    // /peoples/peoples/:people
+    web_people_detail_url: `${base_url}peoples/peoples/:people`,
 
     // ---------------------- admin -------------------------
     // 메인

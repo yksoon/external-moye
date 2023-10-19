@@ -112,10 +112,10 @@ const getBoardDetail = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
-                                    <ul>
+                                <td colspan="3" v-if="state.board.file_info.length !== 0">
+                                    <ul v-for="item in state.board.file_info">
                                         <li class="download_li">
-                                            <a href="#none" onclick class="attachment_parent">첨부파일
+                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">{{ item.file_name }}
                                                 <img src="/img/common/files.jpg">
                                             </a>
                                             <div class="attachment" style="display:none;">

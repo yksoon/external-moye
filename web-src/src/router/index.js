@@ -9,6 +9,8 @@ import PhotoGallery from "@/components/web/photo/PhotoGallery.vue";
 import Photo from "@/components/web/photo/Photo.vue";
 import MovieGallery from "@/components/web/movie/MovieGallery.vue";
 import Movie from "@/components/web/movie/Movie.vue";
+import Peoples from "@/components/web/peoples/Peoples.vue";
+import People from "@/components/web/peoples/People.vue";
 import NotFound from "@/components/web/NotFound.vue";
 import Signin from "@/components/admin/Signin.vue";
 import TestPage from "@/components/admin/TestPage.vue";
@@ -74,6 +76,18 @@ const router = createRouter({
             path: routerPath.web_movie_detail_url, // "/movie/movieGallery/:movie"
             name: "movie",
             component: Movie,
+        },
+        {
+            // 코치진
+            path: routerPath.web_people_url, // "/peoples/peoples"
+            name: "peoples",
+            component: Peoples,
+        },
+        {
+            // 코치진 상세
+            path: routerPath.web_people_detail_url, // "/peoples/peoples/:people"
+            name: "people",
+            component: People,
         },
         {
             // 관리자 메인

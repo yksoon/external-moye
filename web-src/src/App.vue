@@ -17,6 +17,12 @@ import CommonConfirm from "@/common/components/CommonConfirm.vue";
 import CommonSpinner from "@/common/components/CommonSpinner.vue";
 import CommonModal from "@/common/components/CommonModal.vue";
 
+// import "@/common/js/jquery-1.11.1.min.js";
+// import "@/common/js/jquery.easing.1.3.js";
+// import "@/common/js/aos.js";
+// import "@/common/js/nav.js";
+// import "@/common/js/crawler.js";
+
 export default {
     components: {
         CommonAlert,

@@ -199,14 +199,14 @@ const readyAlert = () => {
             <div class="top">
                 <h3 class="title">LIST OF LEGEND</h3>
                 <p>130개 예체능 카테고리 레전드 마스터</p>
-                <a href="" @click="readyAlert" class="more_btn"><span>코치진 더보기</span></a>
+                <a :href="routerPath.web_notice_url" class="more_btn"><span>코치진 더보기</span></a>
             </div>
             <!-- banner-slider //S-->
             <div class="slide_box" v-if="state.peopleList1.length !== 0">
                 <div id="gsefSpan">
                     <div class="marquee" id="gsefSpan1">
                         <div class="person" v-for="people in state.peopleList1">
-                            <a href="" @click="readyAlert">
+                            <a @click="readyAlert">
                                 <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`" style="min-width: 450px; min-height: 315px;"/>
                                 <div v-else style="background-color: #eee;"></div>
                                 <p>
@@ -222,7 +222,7 @@ const readyAlert = () => {
                 <div id="gsefSpan">
                     <div class="marquee" id="gsefSpan2">
                         <div class="person" v-for="people in state.peopleList2">
-                            <a href="" @click="readyAlert">
+                            <a @click="readyAlert">
                                 <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`" :alt="`${people.file_name_org}`">
                                 <div v-else style="background-color: #eee;"></div>
                                 <p>
@@ -262,7 +262,7 @@ const readyAlert = () => {
                     <img src="/img/web/main/sports17.png" alt="">
                     <img src="/img/web/main/sports18.png" alt="">
                 </div>
-                <a href="" class="more_btn"><span>카테고리 더보기</span></a>
+                <a class="more_btn"><span>카테고리 더보기</span></a>
             </div>
             <div class="class_wrap">
                 <div class="pink">
@@ -313,8 +313,8 @@ const readyAlert = () => {
             <div class="left">
                 <h3 class="title">예체능 교육의 Digital Transformation</h3>
                 <p>우리는 예체능 생태계를 체계화하고, 통합 서비스를 제공 하고자 합니다.</p>
-                <a href="" @click="readyAlert" class="more_btn"><span>기업 소개 더보기</span></a>
-                <a href="" @click="readyAlert" class="more_btn"><span>상담 문의하기</span></a>
+                <a @click="readyAlert" class="more_btn"><span>기업 소개 더보기</span></a>
+                <a @click="readyAlert" class="more_btn"><span>상담 문의하기</span></a>
             </div>
             <div class="right"></div>
         </div>
