@@ -135,7 +135,8 @@ const readyAlert = () => {
                         </thead>
                         <tbody v-if="state.boardList.length !== 0">
                             <tr v-for="board in state.boardList">
-                                <td><img src="/img/common/lock.png" alt=""></td>
+                                <!-- <td><img src="/img/common/lock.png" alt=""></td> -->
+                                <td></td>
                                 <td>{{ board.category_type }}</td>
                                 <td><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.subject }}</a></td>
                                 <td><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.content }}</a></td>

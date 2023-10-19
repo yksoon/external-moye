@@ -139,7 +139,7 @@ const getBoardDetail = () => {
                             <!-- </tr> -->
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr style="border-bottom: none;">
                                 <td colspan=3
                                     v-if="state.board.file_info.length !== 0"
                                     v-for="item in state.board.file_info"
