@@ -228,7 +228,6 @@ const validation = () => {
 
     return true;
 };
-
 </script>
 
 <template>
@@ -242,7 +241,7 @@ const validation = () => {
             <tbody>
                 <tr>
                     <th>노출여부</th>
-                    <td>
+                    <td colSpan="3">
                         <select class="wp100" ref="selectShowYn">
                             <option value="Y">노출</option>
                             <option value="N">비노출</option>
@@ -251,7 +250,7 @@ const validation = () => {
                 </tr>
                 <tr>
                     <th>제목</th>
-                    <td>
+                    <td colSpan="3">
                         <input
                             type="text"
                             class="input wp100"
@@ -261,7 +260,7 @@ const validation = () => {
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td>
+                    <td colSpan="3">
                         <textarea
                             class="textarea_basic"
                             ref="inputContent"
@@ -271,30 +270,22 @@ const validation = () => {
                 <tr>
                     <th>시작일</th>
                     <td>
-                        <input
-                            type="date"
-                            class="input wp80"
-                            ref="startDate"
-                        />
+                        <input type="date" class="input wp80" ref="startDate" />
                     </td>
                     <th>종료일</th>
                     <td>
-                        <input
-                            type="date"
-                            class="input wp80"
-                            ref="endDate"
-                        />
+                        <input type="date" class="input wp80" ref="endDate" />
                     </td>
                 </tr>
                 <tr v-if="modData">
                     <th>등록자</th>
-                    <td>
+                    <td colSpan="3">
                         {{ modData.reg_user_name_ko }}
                     </td>
                 </tr>
                 <tr v-if="modData">
                     <th>등록일</th>
-                    <td>
+                    <td colSpan="3">
                         {{ modData.reg_dttm }}
                     </td>
                 </tr>

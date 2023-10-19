@@ -280,20 +280,19 @@ const columns = [
     },
 
     columnHelper.accessor(
-            (row) => (
-                row.file_path_enc != null ?
-                h("img", {
-                    src: fileBaseUrl+row.file_path_enc,
-                    alt: row.file_name_org
-                })
-                : ""
-            ),
-            {
-                id: "file_path_enc",
-                cell: (info) => info.getValue(),
-                header: "이미지",
-            }
-        ),
+        (row) =>
+            row.file_path_enc != null
+                ? h("img", {
+                      src: fileBaseUrl + row.file_path_enc,
+                      alt: row.file_name_org,
+                  })
+                : "",
+        {
+            id: "file_path_enc",
+            cell: (info) => info.getValue(),
+            header: "이미지",
+        }
+    ),
 
     columnHelper.accessor((row) => row.name_ko, {
         id: "name_ko",
@@ -449,7 +448,7 @@ const table = useVueTable({
                     </tbody>
                     <tbody v-if="state.peopleList.length === 0">
                         <tr>
-                            <td colSpan="9" style="height: 55px">
+                            <td colSpan="10" style="height: 55px">
                                 <b> 데이터가 없습니다. </b>
                             </td>
                         </tr>
