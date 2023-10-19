@@ -199,7 +199,7 @@ const readyAlert = () => {
             <div class="top">
                 <h3 class="title">LIST OF LEGEND</h3>
                 <p>130개 예체능 카테고리 레전드 마스터</p>
-                <a :href="routerPath.web_notice_url" class="more_btn"><span>코치진 더보기</span></a>
+                <a :href="routerPath.web_people_url" class="more_btn"><span>코치진 더보기</span></a>
             </div>
             <!-- banner-slider //S-->
             <div class="slide_box" v-if="state.peopleList1.length !== 0">
