@@ -403,7 +403,7 @@ const table = useVueTable({
                     <a class="btn btn02" @click="doSearch"> 검색 </a>
                 </div>
                 <div class="btn_box btn_right" style="margin: 0">
-                    <a class="outbtn" @click="regHistory"> 연혁 추가 </a>
+                    <a class="btn btn01" @click="regHistory"> 연혁 추가 </a>
                     <a class="btn btn03" @click="removeHistory"> 삭제 </a>
                 </div>
             </div>
