@@ -399,16 +399,11 @@ const table = useVueTable({
         <div class="con_area">
             <div class="adm_search">
                 <div>
-                    <input
-                        type="text"
-                        class="input"
-                        ref="searchKeyword"
-                        @keydown="handleOnKeyPress"
-                    />
+                    <input type="text" class="input" ref="searchKeyword" @keydown="handleOnKeyPress" />
                     <a class="btn btn02" @click="doSearch"> 검색 </a>
                 </div>
                 <div class="btn_box btn_right" style="margin: 0">
-                    <a class="btn btn01" @click="regHistory"> 연혁 추가 </a>
+                    <a class="outbtn" @click="regHistory"> 연혁 추가 </a>
                     <a class="btn btn03" @click="removeHistory"> 삭제 </a>
                 </div>
             </div>
@@ -427,36 +422,17 @@ const table = useVueTable({
                         <col width="5%" />
                     </colgroup>
                     <thead>
-                        <tr
-                            v-for="headerGroup in table.getHeaderGroups()"
-                            :key="headerGroup.id"
-                        >
-                            <th
-                                v-for="header in headerGroup.headers"
-                                :key="header.id"
-                                :colSpan="header.colSpan"
-                            >
-                                <FlexRender
-                                    v-if="!header.isPlaceholder"
-                                    :render="header.column.columnDef.header"
-                                    :props="header.getContext()"
-                                />
+                        <tr v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
+                            <th v-for="header in headerGroup.headers" :key="header.id" :colSpan="header.colSpan">
+                                <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header"
+                                    :props="header.getContext()" />
                             </th>
                         </tr>
                     </thead>
                     <tbody v-if="state.historyList.length !== 0">
-                        <tr
-                            v-for="row in table.getRowModel().rows"
-                            :key="row.id"
-                        >
-                            <td
-                                v-for="cell in row.getVisibleCells()"
-                                :key="cell.id"
-                            >
-                                <FlexRender
-                                    :render="cell.column.columnDef.cell"
-                                    :props="cell.getContext()"
-                                />
+                        <tr v-for="row in table.getRowModel().rows" :key="row.id">
+                            <td v-for="cell in row.getVisibleCells()" :key="cell.id">
+                                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
                             </td>
                         </tr>
                     </tbody>
@@ -470,13 +446,8 @@ const table = useVueTable({
                 </table>
             </div>
             <div className="pagenation" v-if="state.historyList.length !== 0">
-                <v-pagination
-                    :length="state.pageInfo.pages"
-                    :total-visible="5"
-                    rounded="2"
-                    v-model="state.pageInfo.page_num"
-                    @update:model-value="handleChange"
-                ></v-pagination>
+                <v-pagination :length="state.pageInfo.pages" :total-visible="5" rounded="2"
+                    v-model="state.pageInfo.page_num" @update:model-value="handleChange"></v-pagination>
             </div>
         </div>
     </div>
