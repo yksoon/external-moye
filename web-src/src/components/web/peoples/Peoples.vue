@@ -79,7 +79,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 
 // 페이지네이션 이동
 const handleChange = (page_num) => {
-    const keyword = searchKeyword.value.value;
+    const keyword = searchKeyword.value;
 
     getPeopleList(page_num, maxRowNum.people, keyword);
 };
@@ -107,7 +107,7 @@ const handleChange = (page_num) => {
                                         <p>{{people.subject}}</p>
                                         <div class="info">
                                             <span>{{ people.name_ko }}</span>
-                                            <span>{{ people.category_child_name_ko }}</span>
+                                            <span>{{ people.category_parent_name_ko }} / {{ people.category_child_name_ko }}</span>
                                             <!-- <span class="datetime">{{people.reg_dttm}}</span> -->
                                             <!-- <span class="hits">조회수 : {{people.view_count}}</span> -->
                                         </div>
@@ -116,7 +116,7 @@ const handleChange = (page_num) => {
                             </a>
                         </div>
                     </div>
-                    <div v-else>
+                    <div v-else style="display: flex; justify-content: center;">
                         <b> 데이터가 없습니다. </b>
                     </div>
                     <!-- <div class="paginate">

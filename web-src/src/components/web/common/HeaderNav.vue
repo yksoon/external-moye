@@ -78,7 +78,11 @@ const getLastBoard = (pageNum, pageSize, searchKeyword) => {
             state.lastBoard = result_info;
 
             // 최신 회사소개서 board_idx로 상세 데이터 요청
-            getBoard(state.lastBoard[0].board_idx);
+            if (state.lastBoard) {
+                getBoard(state.lastBoard[0].board_idx);
+            } else {
+                CommonSpinner(false);
+            }
             
         } else {
             // 에러
