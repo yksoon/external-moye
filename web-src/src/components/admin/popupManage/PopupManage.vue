@@ -36,6 +36,19 @@ onMounted(() => {
     getPopupList(1, maxRowNum.basic, "");
 });
 
+// 검색
+const doSearch = () => {
+    const searchKeywordValue = searchKeyword.value.value;
+    getPopupList(1, maxRowNum.people, searchKeywordValue);
+};
+
+// 엔터입력검색
+const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+        doSearch(); // Enter 입력이 되면 클릭 이벤트 실행
+    }
+};
+
 // 리스트 가져오기
 const getPopupList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
@@ -47,7 +60,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
     const data = {
         page_num: pageNum,
         page_size: pageSize,
-        search_keyword: searchKeyword
+        search_keyword: searchKeyword,
     };
 
     // 파라미터
@@ -166,8 +179,7 @@ const removePopup = () => {
         const removeLogic = () => {
             CommonSpinner(true);
 
-            let data = {
-            };
+            let data = {};
             let checkCount = 0;
 
             for (let i = 0; i < length; i++) {
@@ -258,7 +270,6 @@ const modPopup = (popup_idx) => {
     };
 };
 
-
 // ------------------------------- 테이블 set ------------------------------------------
 
 const columnHelper = createColumnHelper();
@@ -320,7 +331,7 @@ const columns = [
         header: "종료일",
         // sortingFn: "alphanumericCaseSensitive",
     }),
-    
+
     columnHelper.accessor((row) => row.show_yn, {
         id: "show_yn",
         cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
@@ -369,7 +380,6 @@ const table = useVueTable({
     getCoreRowModel: getCoreRowModel(),
     debugTable: false,
 });
-
 </script>
 
 <template>
@@ -380,7 +390,12 @@ const table = useVueTable({
         <div class="con_area">
             <div class="adm_search">
                 <div>
-                    <input type="text" class="input" ref="searchKeyword" />
+                    <input
+                        type="text"
+                        class="input"
+                        ref="searchKeyword"
+                        @keydown="handleOnKeyPress"
+                    />
                     <a class="btn btn02" @click="doSearch"> 검색 </a>
                 </div>
                 <div class="btn_box btn_right" style="margin: 0">
@@ -457,4 +472,3 @@ const table = useVueTable({
         </div>
     </div>
 </template>
-

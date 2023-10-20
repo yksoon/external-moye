@@ -18,6 +18,7 @@ import { onMounted } from "vue";
 
 const props = defineProps({
     modData: Object,
+    handleNeedUpdate: Function,
 });
 
 const fileBaseUrl = apiPath.api_file;

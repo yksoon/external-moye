@@ -27,6 +27,19 @@ onMounted(() => {
     getBoardList(1, maxRowNum.basic, "");
 });
 
+// 검색
+const doSearch = () => {
+    const searchKeywordValue = searchKeyword.value.value;
+    getBoardList(1, maxRowNum.people, searchKeywordValue);
+};
+
+// 엔터입력검색
+const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+        doSearch(); // Enter 입력이 되면 클릭 이벤트 실행
+    }
+};
+
 // 리스트 가져오기
 const getBoardList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
@@ -254,7 +267,6 @@ const modBoard = (board_idx) => {
         }
     };
 };
-
 </script>
 
 <template>
@@ -265,7 +277,12 @@ const modBoard = (board_idx) => {
         <div class="con_area">
             <div class="adm_search">
                 <div>
-                    <input type="text" class="input" ref="searchKeyword" />
+                    <input
+                        type="text"
+                        class="input"
+                        ref="searchKeyword"
+                        @keydown="handleOnKeyPress"
+                    />
                     <a class="btn btn02"> 검색 </a>
                 </div>
                 <div class="btn_box btn_right" style="margin: 0">
@@ -275,11 +292,28 @@ const modBoard = (board_idx) => {
             </div>
 
             <div class="adm_table">
-                <table v-if="state.boardList.length !== 0" class="table_a" style="margin-bottom: 1rem;">
+                <table
+                    v-if="state.boardList.length !== 0"
+                    class="table_a"
+                    style="margin-bottom: 1rem"
+                >
                     <tbody>
                         <tr>
                             <td>
-                                <input type="checkbox" name="select-all" id="select-all" @change="(e) => handleAllCheck(e.target.checked)" :checked="state.checkItems.length === state.boardList.length ? true : false">
+                                <input
+                                    type="checkbox"
+                                    name="select-all"
+                                    id="select-all"
+                                    @change="
+                                        (e) => handleAllCheck(e.target.checked)
+                                    "
+                                    :checked="
+                                        state.checkItems.length ===
+                                        state.boardList.length
+                                            ? true
+                                            : false
+                                    "
+                                />
                                 <b> 전체선택 </b>
                             </td>
                         </tr>
@@ -287,8 +321,31 @@ const modBoard = (board_idx) => {
                     <v-container>
                         <v-card max-width="400" v-for="item in state.boardList">
                             <div>
-                                <v-img height="200" :src="`https://img.youtube.com/vi/${item.content}/0.jpg`" alt="" cover>
-                                    <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
+                                <v-img
+                                    height="200"
+                                    :src="`https://img.youtube.com/vi/${item.content}/0.jpg`"
+                                    alt=""
+                                    cover
+                                >
+                                    <input
+                                        type="checkbox"
+                                        style="margin: 1rem"
+                                        :name="`boardIdx_${item.board_idx}`"
+                                        @change="
+                                            (e) =>
+                                                handleSingleCheck(
+                                                    e.target.checked,
+                                                    item.board_idx
+                                                )
+                                        "
+                                        :checked="
+                                            state.checkItems.includes(
+                                                item.board_idx
+                                            )
+                                                ? true
+                                                : false
+                                        "
+                                    />
                                 </v-img>
                             </div>
                             <!-- <div v-else>
@@ -297,15 +354,23 @@ const modBoard = (board_idx) => {
                                 </v-img>
                             </div> -->
                             <v-card-title>{{ item.subject }}</v-card-title>
-                            <v-card-subtitle>{{ item.sub_title }}</v-card-subtitle>
+                            <v-card-subtitle>{{
+                                item.sub_title
+                            }}</v-card-subtitle>
                             <v-card-text>{{ item.content }}</v-card-text>
                             <v-card-text>
                                 <v-card-actions>
                                     <v-spacer>
-                                        <div>조회수 : {{ item.view_count }}</div>
+                                        <div>
+                                            조회수 : {{ item.view_count }}
+                                        </div>
                                         <div>등록일 : {{ item.reg_dttm }}</div>
                                     </v-spacer>
-                                    <v-btn variant="outlined" @click="modBoard(item.board_idx)">수정</v-btn>
+                                    <v-btn
+                                        variant="outlined"
+                                        @click="modBoard(item.board_idx)"
+                                        >수정</v-btn
+                                    >
                                 </v-card-actions>
                             </v-card-text>
                         </v-card>
