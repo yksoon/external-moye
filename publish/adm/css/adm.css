@@ -186,7 +186,8 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 .table_bb tbody th {font-size: 14px;background: #f1f8ff;padding:10px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: center;}
 .table_bb tbody td:last-child {border-right: none;}
 .table_bb tbody td {font-size: 14px;padding:10px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: left;}
-.table_bb select, .table_bb input {font-size: 14px;font-family:'Pretendard'; outline: none;}
+.table_bb input {font-size: 14px;font-family:'Pretendard'; outline: none;}
+.table_bb select {background: url(/img/common/check.png) no-repeat 98% 50%;}
 
 .table_a td.inner_table_wrap {padding:0;}
 .table_a tbody td .inner_table tr:last-child th, .admin .table_a tbody td .inner_table tr:last-child td {border-bottom:none;}
