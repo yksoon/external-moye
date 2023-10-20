@@ -15,7 +15,7 @@ div.form_group:after {content:" "; display:block; clear:both;}
 #select_Option {
 	position: relative;
 	width: 120px;
-	/*height: 38px;*/
+	height: 38px;
 	padding:9px 8px;
 	vertical-align:middle;
 	display:inline-block;
@@ -39,6 +39,8 @@ div.form_group:after {content:" "; display:block; clear:both;}
 }
 .btn_primary{background:url('../img/common/search_icon.png') 13px center no-repeat #3266B1; border:none; vertical-align:middle;
 border-radius:2px; padding-left:20px; width:70px; height:38px; line-height:38px; font-size:14px; font-weight:600; color:#fff;}
+
+.btn_primary a {color: #fff;}
 
 /* input 감싼 박스 */
 .placeholder_box {
@@ -446,6 +448,7 @@ input[type="text"]:focus.common_text_input{
 .paginate strong {
     color: #fff;
     background: #3266B1;
+    margin: 0px 3px 0 6px;
 }
 
 
