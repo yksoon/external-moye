@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import Home from "@/components/web/Home.vue";
+import Home from "@/components/web/Home.vue";
 // import Admin from "@/components/admin/Admin.vue";
 // import Consulting from "@/components/web/consulting/Consulting.vue";
 // import QNAWrite from "@/components/web/consulting/QNAWrite.vue";
@@ -25,7 +25,8 @@ const router = createRouter({
             // 메인
             path: routerPath.web_main_url, // "/"
             name: "home",
-            component: () => import("@/components/web/Home.vue"),
+            // component: () => import("@/components/web/Home.vue"),
+            component: Home,
         },
         {
             // 공지사항

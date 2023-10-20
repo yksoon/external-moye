@@ -340,12 +340,12 @@ export default {
                         ></textarea>
                     </td>
                 </tr>
-                <tr v-if="modData">
+                <!-- <tr v-if="modData">
                     <th>조회수</th>
                     <td>
                         {{ modData.view_count }}
                     </td>
-                </tr>
+                </tr> -->
                 <tr v-if="modData">
                     <th>등록자</th>
                     <td>
