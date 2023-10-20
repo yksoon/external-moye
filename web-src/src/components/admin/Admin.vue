@@ -23,7 +23,7 @@ import CategoryManage from "./categoryManage/CategoryManage.vue";
 import CompanyManage from "./companyManage/CompanyManage.vue";
 import HistoryManage from "./historyManage/HistoryManage.vue";
 import PopupManage from "./popupManage/PopupManage.vue";
-// import "@/common/css/admin.css";
+import "@/common/css/admin.css";
 
 export default {
     name: "Admin",
@@ -37,7 +37,7 @@ export default {
         CategoryManage,
         CompanyManage,
         HistoryManage,
-        PopupManage
+        PopupManage,
     },
     setup() {
         const state = reactive({
@@ -220,7 +220,7 @@ export default {
                 :menuList="state.menuList"
                 :switchPage="switchPage"
             />
-            
+
             <!-- 인물관리 => 프로필 -->
             <ArtistManage
                 v-if="pages === 'profileMng'"
@@ -252,30 +252,19 @@ export default {
             />
 
             <!-- 게시판관리 => 포토갤러리 -->
-            <PhotoBoard
-                v-if="pages === 'photoBoard'"
-                :isRefresh="isRefresh"
-            />
+            <PhotoBoard v-if="pages === 'photoBoard'" :isRefresh="isRefresh" />
 
             <!-- 게시판관리 => 영상갤러리 -->
-            <MovieBoard
-                v-if="pages === 'movieBoard'"
-                :isRefresh="isRefresh"
-            />
+            <MovieBoard v-if="pages === 'movieBoard'" :isRefresh="isRefresh" />
 
             <!-- 팝업관리 -->
-            <PopupManage
-                v-if="pages === 'popupMng'"
-                :isRefresh="isRefresh"
-            />
+            <PopupManage v-if="pages === 'popupMng'" :isRefresh="isRefresh" />
 
             <!-- 회사소개 다운로드 -->
             <CompanyManage
                 v-if="pages === 'companyMng'"
                 :isRefresh="isRefresh"
             />
-
-
         </div>
     </div>
 </template>

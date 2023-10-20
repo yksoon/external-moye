@@ -17,6 +17,10 @@ import CommonConfirm from "@/common/components/CommonConfirm.vue";
 import CommonSpinner from "@/common/components/CommonSpinner.vue";
 import CommonModal from "@/common/components/CommonModal.vue";
 
+import "@/common/css/default.css";
+import "@/common/css/style.css";
+import "@/common/css/board.css";
+
 // import "@/common/js/jquery-1.11.1.min.js";
 // import "@/common/js/jquery.easing.1.3.js";
 // import "@/common/js/aos.js";
@@ -30,7 +34,7 @@ export default {
         CommonSpinner,
         CommonModal,
         GlobalHeader,
-        GlobalFooter
+        GlobalFooter,
     },
     name: "App",
     setup() {
@@ -150,9 +154,13 @@ export default {
 
 <template>
     <div class="wrapper">
-        <GlobalHeader v-if="$route.name !== 'admin' && $route.name !== 'signin'"/>
+        <GlobalHeader
+            v-if="$route.name !== 'admin' && $route.name !== 'signin'"
+        />
         <RouterView />
-        <GlobalFooter v-if="$route.name !== 'admin' && $route.name !== 'signin'"/>
+        <GlobalFooter
+            v-if="$route.name !== 'admin' && $route.name !== 'signin'"
+        />
         <CommonAlert />
         <CommonConfirm />
         <CommonSpinner />

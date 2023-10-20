@@ -345,12 +345,12 @@ const columns = [
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
-    columnHelper.accessor((row) => row.view_count, {
-        id: "view_count",
-        cell: (info) => info.getValue(),
-        header: "조회수",
-        // sortingFn: "alphanumericCaseSensitive",
-    }),
+    // columnHelper.accessor((row) => row.view_count, {
+    //     id: "view_count",
+    //     cell: (info) => info.getValue(),
+    //     header: "조회수",
+    //     // sortingFn: "alphanumericCaseSensitive",
+    // }),
 
     columnHelper.accessor((row) => row.reg_user_name_ko, {
         id: "reg_user_name_ko",
@@ -425,7 +425,7 @@ const table = useVueTable({
                         <col width="15%" />
                         <col width="*" />
                         <col width="5%" />
-                        <col width="5%" />
+                        <!-- <col width="5%" /> -->
                         <col width="7%" />
                         <col width="7%" />
                         <col width="5%" />
@@ -466,7 +466,7 @@ const table = useVueTable({
                     </tbody>
                     <tbody v-if="state.boardList.length === 0">
                         <tr>
-                            <td colSpan="9" style="height: 55px">
+                            <td colSpan="8" style="height: 55px">
                                 <b> 데이터가 없습니다. </b>
                             </td>
                         </tr>
