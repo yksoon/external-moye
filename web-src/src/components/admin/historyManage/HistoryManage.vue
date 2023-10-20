@@ -44,6 +44,19 @@ onMounted(() => {
     getHistoryList(1, maxRowNum.basic, "");
 });
 
+// 검색
+const doSearch = () => {
+    const searchKeywordValue = searchKeyword.value.value;
+    getHistoryList(1, maxRowNum.people, searchKeywordValue);
+};
+
+// 엔터입력검색
+const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+        doSearch(); // Enter 입력이 되면 클릭 이벤트 실행
+    }
+};
+
 // 리스트 가져오기
 const getHistoryList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
@@ -386,7 +399,12 @@ const table = useVueTable({
         <div class="con_area">
             <div class="adm_search">
                 <div>
-                    <input type="text" class="input" ref="searchKeyword" />
+                    <input
+                        type="text"
+                        class="input"
+                        ref="searchKeyword"
+                        @keydown="handleOnKeyPress"
+                    />
                     <a class="btn btn02" @click="doSearch"> 검색 </a>
                 </div>
                 <div class="btn_box btn_right" style="margin: 0">

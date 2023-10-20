@@ -36,6 +36,19 @@ onMounted(() => {
     getCategoryList(1, maxRowNum.category, "");
 });
 
+// 검색
+const doSearch = () => {
+    const searchKeywordValue = searchKeyword.value.value;
+    getCategoryList(1, maxRowNum.people, searchKeywordValue);
+};
+
+// 엔터입력검색
+const handleOnKeyPress = (e) => {
+    if (e.key === "Enter") {
+        doSearch(); // Enter 입력이 되면 클릭 이벤트 실행
+    }
+};
+
 // 리스트 가져오기
 const getCategoryList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
@@ -173,7 +186,8 @@ const removeCategory = () => {
                 // /v1/people/category
                 // DELETE
                 let url =
-                    apiPath.api_admin_remove_category + `/${state.checkItems[i]}`;
+                    apiPath.api_admin_remove_category +
+                    `/${state.checkItems[i]}`;
 
                 // 파라미터
                 const restParams = {
@@ -290,7 +304,6 @@ const columns = [
         // enableSorting: false,
     },
 
-
     columnHelper.accessor((row) => row.category_div, {
         id: "category_div",
         cell: (info) => info.getValue(),
@@ -304,7 +317,7 @@ const columns = [
         header: "분류명",
         // sortingFn: "alphanumericCaseSensitive",
     }),
-    
+
     columnHelper.accessor((row) => row.show_yn, {
         id: "show_yn",
         cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
@@ -363,7 +376,12 @@ const table = useVueTable({
         <div class="con_area">
             <div class="adm_search">
                 <div>
-                    <input type="text" class="input" ref="searchKeyword" />
+                    <input
+                        type="text"
+                        class="input"
+                        ref="searchKeyword"
+                        @keydown="handleOnKeyPress"
+                    />
                     <a class="btn btn02" @click="doSearch"> 검색 </a>
                 </div>
                 <div class="btn_box btn_right" style="margin: 0">
