@@ -1,11 +1,145 @@
 <script setup>
+import {
+    CommonConsole,
+    CommonErrModule,
+    CommonModal,
+    CommonNotify,
+    CommonRest,
+    CommonSpinner,
+} from "@/common/js/common";
+import { successCode } from "@/common/js/resultCode";
+import { maxRowNum } from "@/common/js/pagenationInfoStatic";
+import { reactive, ref, onMounted } from "vue";
+import { apiPath, routerPath } from '@/webPath';
+
+// ------------------- import End --------------------
+
+const searchKeyword = ref(null);
+const state = reactive({
+    peopleList: [],
+    pageInfo: {},
+});
+
+const fileBaseUrl = apiPath.api_file;
+
+onMounted(() => {
+    getPeopleList(1, maxRowNum.people, "");
+});
+
+// 리스트 가져오기
+const getPeopleList = (pageNum, pageSize, searchKeyword) => {
+    CommonSpinner(true);
+
+    // /v1/_peoples
+    // POST
+    // 인물 목록
+    const url = apiPath.api_admin_list_people;
+    const data = {
+        page_num: pageNum,
+        page_size: pageSize,
+        search_keyword: searchKeyword,
+    };
+
+    // 파라미터
+    const restParams = {
+        method: "post",
+        url: url,
+        data: data,
+        callback: (res) => responsLogic(res),
+        admin: "Y",
+    };
+    CommonRest(restParams);
+
+    // 완료 로직
+    const responsLogic = (res) => {
+        let result_code = res.headers.result_code;
+
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
+            let page_info = res.data.page_info;
+
+            state.peopleList = result_info;
+            state.pageInfo = page_info;
+
+            console.log(result_info);
+
+            CommonSpinner(false);
+        } else {
+            // 에러
+            CommonConsole("log", res);
+
+            CommonSpinner(false);
+        }
+    };
+};
+
+// 페이지네이션 이동
+const handleChange = (page_num) => {
+    const keyword = searchKeyword.value.value;
+
+    getPeopleList(page_num, maxRowNum.people, keyword);
+};
 </script>
 
 <template>
-    <!-- <div style="display:flex; justify-content: center; align-items: center;">
-        <img src="/img/common/prepare.jpg" alt="준비중입니다.">
-    </div> -->
-    <div style="height: 70vh; font-size: 2rem; text-align: center; line-height: 70vh; color: #666;">
-        <h1><b>준비중입니다.</b></h1>
+    <div id="wrapper">
+       <!-- 서브컨텐츠     //S-->
+       <div id="container" class="sub_container">
+            <LeftMenu page="photo"/>
+            <div id="content">
+                <div id="subtitle">
+                    <h2>코치진</h2>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="gallery_box" v-if="state.peopleList.length !== 0">
+                        <div class="col-md-3 gallery_thumb" v-for="people in state.peopleList">
+                            <a :href="`${routerPath.web_people_url}/${people.people_idx}`">
+                                <div class="thumbnail">
+                                    <div v-if="people.file_path_enc" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
+                                        <span></span>
+                                    </div>
+                                    <div v-else  class="bg-thumb"></div>
+                                    <div class="caption">
+                                        <p>{{people.subject}}</p>
+                                        <div class="info">
+                                            <span>{{ people.name_ko }}</span>
+                                            <span>{{ people.category_child_name_ko }}</span>
+                                            <!-- <span class="datetime">{{people.reg_dttm}}</span> -->
+                                            <!-- <span class="hits">조회수 : {{people.view_count}}</span> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <b> 데이터가 없습니다. </b>
+                    </div>
+                    <!-- <div class="paginate">
+                        <ul class="page_btn">
+                            <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
+                            <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
+                                    alt="다음페이지"></a>
+                        </ul>
+                    </div> -->
+                    <div
+                        className="pagenation"
+                        v-if="state.peopleList.length !== 0"
+                    >
+                        <v-pagination
+                            :length="state.pageInfo.pages"
+                            :total-visible="7"
+                            rounded="2"
+                            v-model="state.pageInfo.page_num"
+                            @update:model-value="handleChange"
+                        ></v-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
