@@ -24,6 +24,7 @@ import CompanyManage from "./companyManage/CompanyManage.vue";
 import HistoryManage from "./historyManage/HistoryManage.vue";
 import PopupManage from "./popupManage/PopupManage.vue";
 import "@/common/css/admin.css";
+import { useIsRefreshStore } from "@/stores/isRefresh";
 
 export default {
     name: "Admin",
@@ -49,10 +50,13 @@ export default {
         const userInfo = toRaw(useUserInfoStore().getUserInfo);
         const userToken = useUserTokenStore().getUserToken;
 
-        const isRefresh = ref(false);
+        // const isRefresh = ref(false);
 
         const usePages = usePagesStore();
         const { pages } = storeToRefs(usePages);
+
+        const useIsRefresh = useIsRefreshStore();
+        const { isRefresh } = storeToRefs(useIsRefresh);
 
         onMounted(() => {
             if (!userToken) {
@@ -170,7 +174,8 @@ export default {
         };
 
         const switchPage = (page) => {
-            isRefresh.value = !isRefresh;
+            // isRefresh.value = !isRefresh.value;
+            useIsRefresh.setIsRefresh(!isRefresh.value);
             usePages.setPages(page);
         };
 
@@ -222,49 +227,31 @@ export default {
             />
 
             <!-- 인물관리 => 프로필 -->
-            <ArtistManage
-                v-if="pages === 'profileMng'"
-                :isRefresh="isRefresh"
-            />
+            <ArtistManage v-if="pages === 'profileMng'" />
 
             <!-- 인물관리 => 카테고리 -->
-            <CategoryManage
-                v-if="pages === 'categoryMng'"
-                :isRefresh="isRefresh"
-            />
+            <CategoryManage v-if="pages === 'categoryMng'" />
 
             <!-- 연혁관리 -->
-            <HistoryManage
-                v-if="pages === 'historyMng'"
-                :isRefresh="isRefresh"
-            />
+            <HistoryManage v-if="pages === 'historyMng'" />
 
             <!-- 게시판관리 => 공지사항 -->
-            <NoticeBoard
-                v-if="pages === 'noticeBoard'"
-                :isRefresh="isRefresh"
-            />
+            <NoticeBoard v-if="pages === 'noticeBoard'" />
 
             <!-- 게시판관리 => 상담문의 -->
-            <ConsultingBoard
-                v-if="pages === 'consultingBoard'"
-                :isRefresh="isRefresh"
-            />
+            <ConsultingBoard v-if="pages === 'consultingBoard'" />
 
             <!-- 게시판관리 => 포토갤러리 -->
-            <PhotoBoard v-if="pages === 'photoBoard'" :isRefresh="isRefresh" />
+            <PhotoBoard v-if="pages === 'photoBoard'" />
 
             <!-- 게시판관리 => 영상갤러리 -->
-            <MovieBoard v-if="pages === 'movieBoard'" :isRefresh="isRefresh" />
+            <MovieBoard v-if="pages === 'movieBoard'" />
 
             <!-- 팝업관리 -->
-            <PopupManage v-if="pages === 'popupMng'" :isRefresh="isRefresh" />
+            <PopupManage v-if="pages === 'popupMng'" />
 
             <!-- 회사소개 다운로드 -->
-            <CompanyManage
-                v-if="pages === 'companyMng'"
-                :isRefresh="isRefresh"
-            />
+            <CompanyManage v-if="pages === 'companyMng'" />
         </div>
     </div>
 </template>
