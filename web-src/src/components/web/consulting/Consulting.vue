@@ -149,7 +149,7 @@ const readyAlert = () => {
 
                     <div class="board_btn_wrap">
                         <div class="boardList_btn">
-                            <a @click="readyAlert" class="back_btn">글쓰기
+                            <a :href="routerPath.web_consulting_write_url" class="back_btn">글쓰기
                             </a>
                             <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
                             <span class="back_btn"><?=$btn_link['update']?></span> -->

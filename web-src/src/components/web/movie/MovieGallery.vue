@@ -97,9 +97,10 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                     <div class="gallery_box" v-if="state.boardList.length !== 0">
                         <div class="col-md-3 gallery_thumb" v-for="board in state.boardList">
-                            <a :href="`${routerPath.web_photo_url}/${board.board_idx}`">
+                            <a :href="`${routerPath.web_movie_url}/${board.board_idx}`">
                                 <div class="thumbnail">
-                                    <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url('https://img.youtube.com/vi/${board.content}/0.jpg'); background-size:cover;`">
+                                    <div v-if="board.content" :style="`background-image:url('https://img.youtube.com/vi/${board.content}/0.jpg'); background-size:cover;`" class="bg-thumb">
+                                        <!-- <div style="background-color:lightblue;" class="bg-thumb"> -->
                                         <span></span>
                                     </div>
                                     <div v-else  class="bg-thumb"></div>

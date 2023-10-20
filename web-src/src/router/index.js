@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/components/web/Home.vue";
 import Admin from "@/components/admin/Admin.vue";
 import Consulting from '@/components/web/consulting/Consulting.vue';
+import QNAWrite from '@/components/web/consulting/QNAWrite.vue';
 import QNA from '@/components/web/consulting/QNA.vue';
 import Notices from "@/components/web/notice/Notices.vue";
 import Notice from "@/components/web/notice/Notice.vue";
@@ -46,6 +47,12 @@ const router = createRouter({
             path: routerPath.web_consulting_url, // "/consulting/consulting"
             name: "consulting",
             component: Consulting,
+        },
+        {
+            // 상담문의 작성
+            path: routerPath.web_consulting_write_url, // "/consulting/consulting/qnawrite"
+            name: "qnawrite",
+            component: QNAWrite,
         },
         {
             // 상담문의 상세

@@ -80,6 +80,10 @@ const routerPath = {
     // /consulting/consulting
     web_consulting_url: `${base_url}consulting/consulting`,
 
+    // consulting
+    // /consulting/consulting/qnawrite
+    web_consulting_write_url: `${base_url}consulting/consulting/qnawrite`,
+
     // qna
     // /consulting/consulting/:qna
     web_consulting_detail_url: `${base_url}consulting/consulting/:qna`,

@@ -148,10 +148,10 @@ const getBoardDetail = () => {
                                     </div>
                                 </td> -->
                             </tr>
-                            <tr v-if="state.board.comment_info.length !== 0" v-for="comment in state.board.commont_info">
+                            <!-- <tr v-if="state.board.comment_info.length !== 0" v-for="comment in state.board.commont_info">
                                 <th>{{ comment.reg_user_name_ko }}</th>
                                 <td colspan="2">{{ comment.content }}</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                     <div class="board_btn_wrap">

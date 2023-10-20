@@ -36,7 +36,7 @@ const fileBaseUrl = apiPath.api_file;
 const getBoardDetail = () => {
     CommonSpinner(true);
 
-    const boardIdx = route.params.notice;
+    const boardIdx = route.params.movie;
 
     // /v1/board/{board_idx}
     // GET
@@ -90,7 +90,7 @@ const getBoardDetail = () => {
                     <h2>영상 갤러리</h2>
                 </div>
                 <div data-aos-duration="1000" data-aos-delay="400">
-                    <table class="board_Vtable">
+                    <table class="board_Vtable" v-if="state.board">
                         <colgroup>
                             <col width="18%">
                             <col width="*">
@@ -98,20 +98,20 @@ const getBoardDetail = () => {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3">제목</th>
+                                <th colspan="3">{{ state.board.subject }}</th>
                             </tr>
                             <tr>
                                 <td colspan="3">
                                     <ul>
-                                        <li>등록자</li>
+                                        <li>{{ state.board.reg_user_name_ko }}</li>
                                         <li class="imbar">|</li>
-                                        <li>조회수</li>
+                                        <li>조회수 {{ state.board.view_count }}</li>
                                         <li class="imbar">|</li>
-                                        <li>등록일</li>
+                                        <li>{{ state.board.reg_dttm }}</li>
                                     </ul>
                                 </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td colspan="3">
                                     <ul>
                                         <li class="download_li">
@@ -124,13 +124,13 @@ const getBoardDetail = () => {
                                         </li>
                                     </ul>
                                 </td>
-                            </tr>
+                            </tr> -->
                         </thead>
                         <tbody>
                             <tr>
                                 <td colspan=3>
-                                    <div class="board_content">
-                                        내용
+                                    <div class="board_content" style="display: flex; justify-content: center; align-items:center;">
+                                        <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${state.board.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                     </div>
                                 </td>
                             </tr>
