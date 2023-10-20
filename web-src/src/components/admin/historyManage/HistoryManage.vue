@@ -10,7 +10,7 @@ import {
 import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
-import { reactive, ref, h, toRaw, onMounted } from "vue";
+import { reactive, ref, h, toRaw, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import {
     FlexRender,
@@ -18,16 +18,13 @@ import {
     useVueTable,
     createColumnHelper,
 } from "@tanstack/vue-table";
+import { useIsRefreshStore } from "@/stores/isRefresh";
+import { storeToRefs } from "pinia";
 
 // ------------------- import End --------------------
 
-// props 샘플
-const props = defineProps({
-    isRefresh: Boolean,
-});
-const emit = defineEmits(["update:value"]);
-console.log(props.isRefresh);
-// props 샘플 End
+const useIsRefresh = useIsRefreshStore();
+const { isRefresh } = storeToRefs(useIsRefresh);
 
 const err = CommonErrModule();
 
@@ -42,6 +39,10 @@ const isOpen = ref(false);
 
 onMounted(() => {
     getHistoryList(1, maxRowNum.basic, "");
+});
+
+watch(isRefresh, (oldval, newval) => {
+    getHistoryList(1, maxRowNum.people, "");
 });
 
 // 검색

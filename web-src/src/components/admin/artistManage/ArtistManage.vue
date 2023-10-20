@@ -6,7 +6,7 @@ import {
     CommonRest,
     CommonSpinner,
 } from "@/common/js/common";
-import { reactive, ref, h, toRaw, onMounted } from "vue";
+import { reactive, ref, h, toRaw, onMounted, watch } from "vue";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { successCode } from "@/common/js/resultCode";
@@ -16,8 +16,17 @@ import {
     useVueTable,
     createColumnHelper,
 } from "@tanstack/vue-table";
+import { useIsRefreshStore } from "@/stores/isRefresh";
+import { storeToRefs } from "pinia";
 
 // ------------------- import End --------------------
+
+const props = defineProps({
+    isRefresh: Boolean,
+});
+
+const useIsRefresh = useIsRefreshStore();
+const { isRefresh } = storeToRefs(useIsRefresh);
 
 const searchKeyword = ref(null);
 const state = reactive({
@@ -29,6 +38,10 @@ const state = reactive({
 const fileBaseUrl = apiPath.api_file;
 
 onMounted(() => {
+    getPeopleList(1, maxRowNum.people, "");
+});
+
+watch(isRefresh, (oldval, newval) => {
     getPeopleList(1, maxRowNum.people, "");
 });
 
@@ -299,6 +312,7 @@ const columns = [
                 ? h("img", {
                       src: fileBaseUrl + row.file_path_enc,
                       alt: row.file_name_org,
+                      decoding: "async",
                   })
                 : "",
         {
@@ -392,7 +406,7 @@ const table = useVueTable({
     },
     columns,
     getCoreRowModel: getCoreRowModel(),
-    debugTable: false,
+    debugTable: true,
 });
 </script>
 <template>

@@ -10,7 +10,7 @@ import {
 import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
-import { reactive, ref, h, toRaw, onMounted } from "vue";
+import { reactive, ref, h, toRaw, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import {
     FlexRender,
@@ -18,8 +18,13 @@ import {
     useVueTable,
     createColumnHelper,
 } from "@tanstack/vue-table";
+import { useIsRefreshStore } from "@/stores/isRefresh";
+import { storeToRefs } from "pinia";
 
 // ------------------- import End --------------------
+
+const useIsRefresh = useIsRefreshStore();
+const { isRefresh } = storeToRefs(useIsRefresh);
 
 const searchKeyword = ref(null);
 const state = reactive({
@@ -30,6 +35,10 @@ const state = reactive({
 
 onMounted(() => {
     getBoardList(1, maxRowNum.basic, "");
+});
+
+watch(isRefresh, (oldval, newval) => {
+    getBoardList(1, maxRowNum.people, "");
 });
 
 // 검색

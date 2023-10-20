@@ -18,8 +18,14 @@ import {
     useVueTable,
     createColumnHelper,
 } from "@tanstack/vue-table";
+import { useIsRefreshStore } from "@/stores/isRefresh";
+import { storeToRefs } from "pinia";
+import { watch } from "vue";
 
 // ------------------- import End --------------------
+
+const useIsRefresh = useIsRefreshStore();
+const { isRefresh } = storeToRefs(useIsRefresh);
 
 const err = CommonErrModule();
 
@@ -34,6 +40,10 @@ const isOpen = ref(false);
 
 onMounted(() => {
     getCategoryList(1, maxRowNum.category, "");
+});
+
+watch(isRefresh, (oldval, newval) => {
+    getCategoryList(1, maxRowNum.people, "");
 });
 
 // 검색

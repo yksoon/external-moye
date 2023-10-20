@@ -40,6 +40,8 @@ const state = reactive({
             inputContent: "",
             startDate: "",
             endDate: "",
+            inputPlace: "",
+            inputPortfolio: "",
             attachmentFile: [],
             isModAttachmentFile: [],
         },
@@ -65,6 +67,8 @@ const inputTitle = ref(null);
 const inputContent = ref(null);
 const startDate = ref(null);
 const endDate = ref(null);
+const inputPlace = ref(null);
+const inputPortfolio = ref(null);
 const inputAttachmentFile = ref(null);
 
 // const birthday = ref(null);
@@ -105,6 +109,8 @@ const getDefaultValue = () => {
             inputContent: item.content,
             startDate: item.start_date,
             endDate: item.end_date,
+            inputPlace: item.place,
+            inputPortfolio: item.portfolio_link,
             attachmentFile: [],
             isModAttachmentFile: item.file_info,
         };
@@ -164,6 +170,11 @@ const regHistory = () => {
             formData.append(`detailInfo[${idx}].content`, item.inputContent);
             formData.append(`detailInfo[${idx}].startDate`, item.startDate);
             formData.append(`detailInfo[${idx}].endDate`, item.endDate);
+            formData.append(`detailInfo[${idx}].place`, item.inputPlace);
+            formData.append(
+                `detailInfo[${idx}].portfolioLink`,
+                item.inputPortfolio
+            );
 
             // 파일 formData append
             let fileArr = [];
@@ -255,6 +266,11 @@ const modHistory = () => {
                 );
                 formData.append(`detailInfo[${idx}].startDate`, item.startDate);
                 formData.append(`detailInfo[${idx}].endDate`, item.endDate);
+                formData.append(`detailInfo[${idx}].place`, item.inputPlace);
+                formData.append(
+                    `detailInfo[${idx}].portfolioLink`,
+                    item.inputPortfolio
+                );
 
                 // 파일 formData append
                 let fileArr = [];
@@ -432,6 +448,8 @@ const handelHistory = (handleType, idx) => {
                     inputContent: "",
                     startDate: "",
                     endDate: "",
+                    inputPlace: "",
+                    inputPortfolio: "",
                     attachmentFile: [],
                     isModAttachmentFile: [],
                 },
@@ -493,6 +511,14 @@ const handleHistoryInput = (e, idx) => {
 
         case "endDate":
             newObj.endDate = value;
+            break;
+
+        case "inputPlace":
+            newObj.inputPlace = value;
+            break;
+
+        case "inputPortfolio":
+            newObj.inputPortfolio = value;
             break;
 
         default:
@@ -726,7 +752,7 @@ const validation = () => {
 
         <div class="con_area">
             <h4 className="mo_subtitle">연혁 상세 정보</h4>
-            <a @click="handelHistory('add')">연혁 추가</a>
+            <a class="outbtn" @click="handelHistory('add')">연혁 추가</a>
             <table
                 class="table_bb"
                 v-for="item in state.historyList"
@@ -752,7 +778,9 @@ const validation = () => {
                             />
                         </td>
                         <td>
-                            <a @click="handelHistory('remove', item.idx)"
+                            <a
+                                class="tablebtn"
+                                @click="handelHistory('remove', item.idx)"
                                 >연혁 삭제</a
                             >
                         </td>
@@ -802,6 +830,32 @@ const validation = () => {
                                 ref="endDate"
                                 id="endDate"
                                 :value="item.endDate"
+                                @change="(e) => handleHistoryInput(e, item.idx)"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>장소</th>
+                        <td colSpan="3">
+                            <input
+                                type="text"
+                                class="input wp100"
+                                ref="inputPlace"
+                                id="inputPlace"
+                                :value="item.inputPlace"
+                                @change="(e) => handleHistoryInput(e, item.idx)"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>포트폴리오<br />링크</th>
+                        <td colSpan="3">
+                            <input
+                                type="text"
+                                class="input wp100"
+                                ref="inputPortfolio"
+                                id="inputPortfolio"
+                                :value="item.inputPortfolio"
                                 @change="(e) => handleHistoryInput(e, item.idx)"
                             />
                         </td>

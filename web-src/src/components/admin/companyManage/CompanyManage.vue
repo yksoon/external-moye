@@ -18,16 +18,13 @@ import {
     useVueTable,
     createColumnHelper,
 } from "@tanstack/vue-table";
+import { useIsRefreshStore } from "@/stores/isRefresh";
+import { storeToRefs } from "pinia";
 
 // ------------------- import End --------------------
 
-// props 샘플
-const props = defineProps({
-    isRefresh: Boolean,
-});
-const emit = defineEmits(["update:value"]);
-console.log(props.isRefresh);
-// props 샘플 End
+const useIsRefresh = useIsRefreshStore();
+const { isRefresh } = storeToRefs(useIsRefresh);
 
 const err = CommonErrModule();
 
@@ -40,6 +37,10 @@ const state = reactive({
 
 onMounted(() => {
     getBoardList(1, maxRowNum.basic, "");
+});
+
+watch(isRefresh, (oldval, newval) => {
+    getBoardList(1, maxRowNum.people, "");
 });
 
 // 검색
