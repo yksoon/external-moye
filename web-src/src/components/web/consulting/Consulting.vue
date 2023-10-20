@@ -11,7 +11,6 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
-import { marqueeInit } from "@/common/js/crawler";
 import { routerPath } from '@/webPath';
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
@@ -135,12 +134,12 @@ const readyAlert = () => {
                         </thead>
                         <tbody v-if="state.boardList.length !== 0">
                             <tr v-for="board in state.boardList">
-                                <!-- <td><img src="/img/common/lock.png" alt=""></td> -->
-                                <td></td>
+                                <td><img v-if="board.open_yn === 'N'" src="/img/common/lock.png" alt="비밀글입니다."></td>
                                 <td>{{ board.category_type }}</td>
-                                <td><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.subject }}</a></td>
+                                <td v-if="board.open_yn === 'Y'"><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.subject }}</a></td>
+                                <td v-if="board.open_yn === 'N'"><a>{{ board.subject }}</a></td>
                                 <td><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.content }}</a></td>
-                                <td>{{ board.reg_user_name_ko }}</td>
+                                <td>{{ board.user_name_ko ? board.user_name_ko : board.reg_user_name_ko }}</td>
                                 <td>{{ board.comment_info ? '답변완료' : '미답변' }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
                             </tr>

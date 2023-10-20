@@ -11,9 +11,7 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
-// import GlobalHeader from "./common/GlobalHeader.vue";
-// import GlobalFooter from "./common/GlobalFooter.vue";
-import { marqueeInit } from "@/common/js/crawler";
+
 import { routerPath } from '@/webPath';
 // import $ from "jquery";
 
@@ -32,9 +30,9 @@ const fileBaseUrl = apiPath.api_file;
 onMounted(() => {
     getPeopleList(1, 8, "");
     getBoardList(1, 4, "");
-    
-   
 });
+
+import { marqueeInit } from "@/common/js/crawler";
 
 // 인물 리스트 가져오기
 const getPeopleList = (pageNum, pageSize, searchKeyword) => {
@@ -174,6 +172,61 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
         }
     };
 };
+
+// 팝업 리스트 가져오기
+// const getPopupList = (pageNum, pageSize, searchKeyword) => {
+//     CommonSpinner(true);
+
+//     // /v1/boards
+//     // POST
+//     // board_type
+//     // 000 : 공지사항 [v]
+//     // 100 : 상담문의
+//     // 200 : 포토게시판
+//     // 300 : 영상게시판
+//     // 400 : 회사소개
+//     // 900 : 기타
+//     const url = apiPath.api_admin_boards;
+//     const data = {
+//         page_num: pageNum,
+//         page_size: pageSize,
+//         search_keyword: searchKeyword,
+//         board_type: "000",
+//     };
+
+//     // 파라미터
+//     const restParams = {
+//         method: "post",
+//         url: url,
+//         data: data,
+//         callback: (res) => responsLogic(res),
+//         admin: "Y",
+//     };
+//     CommonRest(restParams);
+
+//     // 완료 로직
+//     const responsLogic = (res) => {
+//         let result_code = res.headers.result_code;
+
+//         // 성공
+//         if (
+//             result_code === successCode.success ||
+//             result_code === successCode.noData
+//         ) {
+//             let result_info = res.data.result_info;
+//             let page_info = res.data.page_info;
+
+//             state.boardList = result_info;
+
+//             CommonSpinner(false);
+//         } else {
+//             // 에러
+//             CommonConsole("log", res);
+
+//             CommonSpinner(false);
+//         }
+//     };
+// };
 
 const readyAlert = () => {
     alert('준비중입니다 :-)');

@@ -38,6 +38,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
+        show_yn: "Y"
     };
 
     // 파라미터

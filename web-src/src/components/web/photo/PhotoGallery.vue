@@ -11,7 +11,6 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
-import { marqueeInit } from "@/common/js/crawler";
 import { routerPath } from '@/webPath';
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
@@ -48,6 +47,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
         page_size: pageSize,
         search_keyword: searchKeyword,
         board_type: "200",
+        show_yn: "Y"
     };
 
     // 파라미터
