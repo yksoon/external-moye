@@ -174,7 +174,7 @@ export default {
             // menuList = menuArr;
             state.menuList = menuArr;
 
-            CommonSpinner(false);
+            // CommonSpinner(false);
         };
 
         const switchPage = (page) => {
