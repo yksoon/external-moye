@@ -2,8 +2,6 @@
 import { RouterView } from "vue-router";
 import { onMounted } from "vue";
 import { apiPath } from "@/webPath";
-import GlobalHeader from "@/components/web/common/GlobalHeader.vue";
-import GlobalFooter from "@/components/web/common/GlobalFooter.vue";
 import { CommonErrModule, CommonRest, CommonConsole } from "@/common/js/common";
 import { successCode } from "@/common/js/resultCode";
 import { useCodesStore } from "@/stores/codes";
@@ -33,8 +31,6 @@ export default {
         CommonConfirm,
         CommonSpinner,
         CommonModal,
-        GlobalHeader,
-        GlobalFooter,
     },
     name: "App",
     setup() {
@@ -154,13 +150,9 @@ export default {
 
 <template>
     <div class="wrapper">
-        <GlobalHeader
-            v-if="$route.name !== 'admin' && $route.name !== 'signin'"
-        />
-        <RouterView />
-        <GlobalFooter
-            v-if="$route.name !== 'admin' && $route.name !== 'signin'"
-        />
+        <component :is="$route.meta.layout || 'div'">
+            <RouterView />
+        </component>
         <CommonAlert />
         <CommonConfirm />
         <CommonSpinner />

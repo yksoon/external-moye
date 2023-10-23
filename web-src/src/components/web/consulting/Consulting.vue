@@ -115,7 +115,6 @@ const readyAlert = () => {
                         <colgroup>
                             <col width="5%" />
                             <col width="10%" />
-                            <col width="25%" />
                             <col width="*" />
                             <col width="10%" />
                             <col width="10%" />
@@ -126,7 +125,6 @@ const readyAlert = () => {
                                 <th>공개여부</th>
                                 <th>문의분야</th>
                                 <th>제목</th>
-                                <th>내용</th>
                                 <th>작성자</th>
                                 <th>답변여부</th>
                                 <th>등록일</th>
@@ -138,8 +136,7 @@ const readyAlert = () => {
                                 <td>{{ board.category_type }}</td>
                                 <td v-if="board.open_yn === 'Y'"><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.subject }}</a></td>
                                 <td v-if="board.open_yn === 'N'"><a>{{ board.subject }}</a></td>
-                                <td><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.content }}</a></td>
-                                <td>{{ board.user_name_ko ? board.user_name_ko : board.reg_user_name_ko }}</td>
+                                <td>{{ board.user_name_first_ko + board.user_name_last_ko }}</td>
                                 <td>{{ board.comment_info ? '답변완료' : '미답변' }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
                             </tr>

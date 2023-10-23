@@ -1,21 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/components/web/Home.vue";
-// import Admin from "@/components/admin/Admin.vue";
-// import Consulting from "@/components/web/consulting/Consulting.vue";
-// import QNAWrite from "@/components/web/consulting/QNAWrite.vue";
-// import QNA from "@/components/web/consulting/QNA.vue";
-// import Notices from "@/components/web/notice/Notices.vue";
-// import Notice from "@/components/web/notice/Notice.vue";
-// import PhotoGallery from "@/components/web/photo/PhotoGallery.vue";
-// import Photo from "@/components/web/photo/Photo.vue";
-// import MovieGallery from "@/components/web/movie/MovieGallery.vue";
-// import Movie from "@/components/web/movie/Movie.vue";
-// import Peoples from "@/components/web/peoples/Peoples.vue";
-// import People from "@/components/web/peoples/People.vue";
-import NotFound from "@/components/web/NotFound.vue";
-// import Signin from "@/components/admin/Signin.vue";
-// import TestPage from "@/components/admin/TestPage.vue";
 import { routerPath } from "@/webPath";
+// Layouts
+import MainLayout from '@/layouts/MainLayout.vue';
+// Pages
+import Home from "@/components/web/Home.vue";
+import NotFound from "@/components/web/NotFound.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +16,7 @@ const router = createRouter({
             name: "home",
             // component: () => import("@/components/web/Home.vue"),
             component: Home,
+            meta: { layout: MainLayout },
         },
         {
             // 공지사항
@@ -36,12 +26,14 @@ const router = createRouter({
             // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import("@/components/web/notice/Notices.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 공지사항 상세
             path: routerPath.web_notice_detail_url, // "/notice/notices/:notice"
             name: "notice",
             component: () => import("@/components/web/notice/Notice.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 상담문의 목록
@@ -49,30 +41,35 @@ const router = createRouter({
             name: "consulting",
             component: () =>
                 import("@/components/web/consulting/Consulting.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 상담문의 작성
             path: routerPath.web_consulting_write_url, // "/consulting/consulting/qnawrite"
             name: "qnawrite",
             component: () => import("@/components/web/consulting/QNAWrite.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 상담문의 상세
             path: routerPath.web_consulting_detail_url, // "/consulting/consulting/:qna"
             name: "qna",
             component: () => import("@/components/web/consulting/QNA.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 포토갤러리
             path: routerPath.web_photo_url, // "/photo/photoGallery"
             name: "photoGallery",
             component: () => import("@/components/web/photo/PhotoGallery.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 포토갤러리 상세
             path: routerPath.web_photo_detail_url, // "/photo/photoGallery/:photo"
             name: "photo",
             component: () => import("@/components/web/photo/Photo.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 영상갤러리
@@ -80,6 +77,7 @@ const router = createRouter({
             name: "movieGallery",
             // component: MovieGallery,
             component: () => import("@/components/web/movie/MovieGallery.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 영상갤러리 상세
@@ -87,6 +85,7 @@ const router = createRouter({
             name: "movie",
             // component: Movie,
             component: () => import("@/components/web/movie/Movie.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 코치진
@@ -94,6 +93,7 @@ const router = createRouter({
             name: "peoples",
             // component: Peoples,
             component: () => import("@/components/web/peoples/Peoples.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 코치진 상세
@@ -101,6 +101,7 @@ const router = createRouter({
             name: "people",
             // component: People,
             component: () => import("@/components/web/peoples/People.vue"),
+            meta: { layout: MainLayout },
         },
         {
             // 관리자 메인
