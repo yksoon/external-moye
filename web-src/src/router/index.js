@@ -104,6 +104,13 @@ const router = createRouter({
             meta: { layout: MainLayout },
         },
         {
+            // 메인페이지 팝업창
+            path: routerPath.web_popup_url, // "/popup"
+            name: "popup",
+            component: () => import("@/components/web/peoples/People.vue"),
+            meta: { layout: MainLayout },
+        },
+        {
             // 관리자 메인
             path: routerPath.admin_main_url, // "/admin"
             name: "admin",

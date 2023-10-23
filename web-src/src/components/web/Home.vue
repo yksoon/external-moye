@@ -21,6 +21,7 @@ const state = reactive({
     peopleList1: [],
     peopleList2: [],
     boardList: [],
+    popupList: [],
     pageInfo: {},
     checkItems: [],
 });
@@ -30,6 +31,8 @@ const fileBaseUrl = apiPath.api_file;
 onMounted(() => {
     getPeopleList(1, 8, "");
     getBoardList(1, 4, "");
+    getPopupList(1, maxRowNum.basic, "");
+    // window.open('','_blank','width=700, height=600, top=50, left=50, scrollbars=yes');
 });
 
 import { marqueeInit } from "@/common/js/crawler";
@@ -174,59 +177,46 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
 };
 
 // 팝업 리스트 가져오기
-// const getPopupList = (pageNum, pageSize, searchKeyword) => {
-//     CommonSpinner(true);
+const getPopupList = (pageNum, pageSize, searchKeyword) => {
 
-//     // /v1/boards
-//     // POST
-//     // board_type
-//     // 000 : 공지사항 [v]
-//     // 100 : 상담문의
-//     // 200 : 포토게시판
-//     // 300 : 영상게시판
-//     // 400 : 회사소개
-//     // 900 : 기타
-//     const url = apiPath.api_admin_boards;
-//     const data = {
-//         page_num: pageNum,
-//         page_size: pageSize,
-//         search_keyword: searchKeyword,
-//         board_type: "000",
-//     };
+    // /v1/_popups
+    // POST
+    // 팝업 정보 목록
+    const url = apiPath.api_admin_get_popups;
+    const data = {
+        page_num: pageNum,
+        page_size: pageSize,
+        search_keyword: searchKeyword,
+    };
 
-//     // 파라미터
-//     const restParams = {
-//         method: "post",
-//         url: url,
-//         data: data,
-//         callback: (res) => responsLogic(res),
-//         admin: "Y",
-//     };
-//     CommonRest(restParams);
+    // 파라미터
+    const restParams = {
+        method: "post",
+        url: url,
+        data: data,
+        callback: (res) => responsLogic(res),
+        admin: "Y",
+    };
+    CommonRest(restParams);
 
-//     // 완료 로직
-//     const responsLogic = (res) => {
-//         let result_code = res.headers.result_code;
+    // 완료 로직
+    const responsLogic = (res) => {
+        let result_code = res.headers.result_code;
 
-//         // 성공
-//         if (
-//             result_code === successCode.success ||
-//             result_code === successCode.noData
-//         ) {
-//             let result_info = res.data.result_info;
-//             let page_info = res.data.page_info;
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
 
-//             state.boardList = result_info;
-
-//             CommonSpinner(false);
-//         } else {
-//             // 에러
-//             CommonConsole("log", res);
-
-//             CommonSpinner(false);
-//         }
-//     };
-// };
+            state.popupList = result_info;
+        } else {
+            // 에러
+            CommonConsole("log", res);
+        }
+    };
+};
 
 const readyAlert = () => {
     alert("준비중입니다 :-)");
@@ -235,7 +225,6 @@ const readyAlert = () => {
 
 <template>
     <div>
-        <!-- <GlobalHeader /> -->
         <div id="mainvisual">
             <div class="main_txt">
                 <div class="main_txt_wrap">
@@ -248,7 +237,9 @@ const readyAlert = () => {
                 </div>
             </div>
         </div>
-
+        <div id="popup_wrapper">
+            <!-- popup -->
+        </div>
         <!-- container //S-->
         <div id="container">
             <div class="section01">
@@ -325,6 +316,7 @@ const readyAlert = () => {
                     </div>
                 </div>
             </div>
+
 
             <div class="section02">
                 <div class="top">

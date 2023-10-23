@@ -52,6 +52,10 @@ const routerPath = {
     // /
     web_main_url: `${base_url}`,
 
+    // 팝업
+    // /popup
+    web_popup_url: `${base_url}/popup`,
+
     // notices
     // /notice/notices
     web_notice_url: `${base_url}notice/notices`,
