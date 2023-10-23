@@ -19,9 +19,10 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 
-const selectShowYn = ref(false);
+const selectOpenYn = ref(false);
 const selectCategory = ref(false);
-const inputUserName = ref(null);
+const inputUserFirstName = ref(null);
+const inputUserLastName = ref(null);
 const inputTitle = ref(null);
 const inputSubTitle = ref(null);
 const inputContent = ref(null);
@@ -61,17 +62,18 @@ const regBoard = () => {
 
         let fileArr = [];
 
-        const show_yn = selectShowYn.value ? "N" : "Y";
-        const board_pwd = show_yn === "N" ? inputPassword.value.value : null;
+        const open_yn = selectOpenYn.value ? "N" : "Y";
+        const board_pwd = open_yn === "N" ? inputPassword.value.value : null;
 
         data = {
             ...model,
             showYn: "Y",
-            openYn: show_yn,
+            openYn: open_yn,
             boardType: "100",
             detail_type: "000",
             categoryType: selectCategory.value.value,
-            regUserNameKo: inputUserName.value.value,
+            userNameFirstKo: inputUserFirstName.value.value,
+            userNameLastKo: inputUserLastName.value.value,
             subject: inputTitle.value.value,
             subTitle: inputTitle.value.value,
             content: inputContent.value.value,
@@ -84,11 +86,11 @@ const regBoard = () => {
         }
 
         // 파일 formData append
-        // fileArr = Array.from(inputAttachmentFile.value.files);
-        // let len = fileArr.length;
-        // for (let i = 0; i < len; i++) {
-        //     formData.append("attachmentFile", fileArr[i]);
-        // }
+        fileArr = Array.from(inputAttachmentFile.value.files);
+        let len = fileArr.length;
+        for (let i = 0; i < len; i++) {
+            formData.append("attachmentFile", fileArr[i]);
+        }
 
         const restParams = {
             method: "post_multi",
@@ -145,7 +147,7 @@ const validation = () => {
         return false;
     }
 
-    if (!inputUserName.value.value) {
+    if (!inputUserFirstName.value.value) {
         CommonNotify({
             type: "alert",
             message: "작성자명을 입력해주세요",
@@ -154,7 +156,23 @@ const validation = () => {
 
         const callbackLogic = () => {
             setTimeout(() => {
-                inputSubTitle.value.focus();
+                inputUserFirstName.value.focus();
+            }, 0);
+        };
+
+        return false;
+    }
+    
+    if (!inputUserLastName.value.value) {
+        CommonNotify({
+            type: "alert",
+            message: "작성자명을 입력해주세요",
+            callback: () => callbackLogic(),
+        });
+
+        const callbackLogic = () => {
+            setTimeout(() => {
+                inputUserLastName.value.focus();
             }, 0);
         };
 
@@ -177,7 +195,7 @@ const validation = () => {
         return false;
     }
 
-    if (selectShowYn.value && !inputPassword.value) {
+    if (selectOpenYn.value && !inputPassword.value) {
         CommonNotify({
             type: "alert",
             message: "비밀번호를 입력해주세요",
@@ -186,7 +204,7 @@ const validation = () => {
 
         const callbackLogic = () => {
             setTimeout(() => {
-                inputContent.value.focus();
+                inputPassword.value.focus();
             }, 0);
         };
 
@@ -229,9 +247,19 @@ const readyAlert = () => {
                                         </div>
                                         <span class="input-group-Big"
                                             style="vertical-align: middle; padding: 8px 10px; font-size: 13px; font-weight: 400; line-height: 1; color: #555; text-align: center; border-radius: 2px; float: left;">
-                                            <label><input type="checkbox" name="hidden_yn" v-model="selectShowYn">
+                                            <label><input type="checkbox" name="hidden_yn" v-model="selectOpenYn">
                                                 &nbsp;비밀글</label>
                                         </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="boardW_title" id="passwd" v-if="selectOpenYn">
+                                <th>비밀번호</th>
+                                <td>
+                                    <div class=" placeholder_Title_Big"
+                                        style="display: inline-block; position: relative; vertical-align: middle; float: left;">
+                                        <input type="password" id="placeholder" name="passwd" ref="inputPassword" autofocus
+                                            style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" />
                                     </div>
                                 </td>
                             </tr>
@@ -240,18 +268,10 @@ const readyAlert = () => {
                                 <td>
                                     <div class="placeholder_Title_Big"
                                         style="display: inline-block; position: relative; vertical-align: middle; float: left;">
-                                        <input type="text" id="placeholder" name="username" ref="inputUserName" autofocus
-                                            style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="boardW_title" id="passwd" v-if="selectShowYn">
-                                <th>비밀번호</th>
-                                <td>
-                                    <div class=" placeholder_Title_Big"
-                                        style="display: inline-block; position: relative; vertical-align: middle; float: left;">
-                                        <input type="password" id="placeholder" name="passwd" ref="inputPassword" autofocus
-                                            style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" />
+                                        <input type="text" id="placeholder" name="username" ref="inputUserFirstName" autofocus
+                                            style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" placeholder="성"/>
+                                        <input type="text" id="placeholder" name="username" ref="inputUserLastName" autofocus
+                                        style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" placeholder="이름"/>
                                     </div>
                                 </td>
                             </tr>
@@ -275,8 +295,26 @@ const readyAlert = () => {
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <th>파일첨부</th>
+                                <td class="fileicon">
+                                    <div style="margin-bottom: 5">
+                                        <b>
+                                            여러 파일 선택이 가능합니다. 여러 파일 선택 시
+                                            ctrl 누른 후 선택하시면 됩니다.
+                                        </b>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type="file"
+                                            ref="inputAttachmentFile"
+                                            multiple
+                                            @change="(e) => attachFile(e.target)"
+                                        />
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
-
                     </table>
                     <!-- <div class="input-group bottom_check">
                         <span class="input-group-addon cclyoung">

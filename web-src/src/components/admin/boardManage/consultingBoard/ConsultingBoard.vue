@@ -287,7 +287,7 @@ const modBoard = (board_idx) => {
 const columnHelper = createColumnHelper();
 
 // 컬럼 세팅
-// [체크박스], [제목], [부제목], [내용], [노출여부], [조회수], [등록자], [등록일], [수정]
+// [체크박스], [제목], [비밀글여부], [조회수], [등록자], [등록일], [수정]
 const columns = [
     {
         accessorKey: "board_idx",
@@ -330,26 +330,12 @@ const columns = [
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
-    columnHelper.accessor((row) => row.sub_title, {
-        id: "sub_title",
-        cell: (info) => info.getValue(),
-        header: "부제목",
+    columnHelper.accessor((row) => row.open_yn, {
+        id: "open_yn",
+        cell: (info) => (info.getValue() === "Y" ? "일반글" : "비밀글"),
+        header: "공개여부",
         // sortingFn: "alphanumericCaseSensitive",
     }),
-
-    columnHelper.accessor((row) => row.content, {
-        id: "content",
-        cell: (info) => info.getValue(),
-        header: "내용",
-        // sortingFn: "alphanumericCaseSensitive",
-    }),
-
-    // columnHelper.accessor((row) => row.show_yn, {
-    //     id: "show_yn",
-    //     cell: (info) => (info.getValue() === "Y" ? "노출" : "비노출"),
-    //     header: "노출여부",
-    //     // sortingFn: "alphanumericCaseSensitive",
-    // }),
 
     columnHelper.accessor((row) => row.view_count, {
         id: "view_count",
@@ -358,9 +344,12 @@ const columns = [
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
-    columnHelper.accessor((row) => row.reg_user_name_ko, {
-        id: "reg_user_name_ko",
-        cell: (info) => info.getValue(),
+    columnHelper.accessor((row) => row, {
+        id: "user_name_ko",
+        cell: (info) => {
+            let result = info.getValue();
+            return result.user_name_first_ko + result.user_name_last_ko;
+        },
         header: "등록자",
         // sortingFn: "alphanumericCaseSensitive",
     }),
@@ -428,11 +417,9 @@ const table = useVueTable({
                     <colgroup>
                         <col width="2%" />
                         <col width="10%" />
-                        <col width="20%" />
-                        <col width="15%" />
                         <col width="*" />
+                        <col width="7%" />
                         <col width="5%" />
-                        <!-- <col width="5%" /> -->
                         <col width="7%" />
                         <col width="7%" />
                         <col width="5%" />

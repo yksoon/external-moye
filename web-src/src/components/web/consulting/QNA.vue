@@ -95,13 +95,13 @@ const getBoardDetail = () => {
                         </colgroup>
                         <thead>
                             <tr>
-                                <!-- <th colspan="3">{{ state.board.subject }} &nbsp;<img src="/img/common/common_lock.png" alt=""></th> -->
-                                <th colspan="3">{{ state.board.subject }}</th>
+                                <th colspan="3">{{ state.board.subject }} &nbsp;<img v-if="state.board.open_yn === 'N'" src="/img/common/common_lock.png" alt=""></th>
+                                <!-- <th colspan="3">{{ state.board.subject }}</th> -->
                             </tr>
                             <tr>
                                 <td colspan="3">
                                     <ul>
-                                        <li>{{ state.board.reg_user_name_ko }}</li>
+                                        <li>{{ state.board.user_name_first_ko + state.board.user_name_last_ko }}</li>
                                         <li class="imbar">|</li>
                                         <li>{{ state.board.reg_dttm }}</li>
                                     </ul>
@@ -109,6 +109,23 @@ const getBoardDetail = () => {
                             </tr>
                             <tr>
                                 <td colspan="3"><b>{{ state.board.category_type }}</b></td>
+                            </tr>
+                            <tr v-if="state.board.file_info.length !== 0">
+                                <td>
+                                    <div>
+                                        <div
+                                            
+                                            v-for="item in state.board.file_info"
+                                        >
+                                            <a
+                                                :href="`${fileBaseUrl}${item.file_path_enc}`"
+                                            >
+                                                <img src="/img/common/file.svg" alt="" />
+                                                {{ item.file_name }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,47 +136,16 @@ const getBoardDetail = () => {
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <!-- <td colspan="3" style="padding:0;">
-                                    <div class="reply_area">
-                                        <form name="reply_form" method="post">
-                                            <div class="reply_box">
-                                                <?if($member[level] < 90){?>
-                                                <ul>
-                                                    <li class="user"><span>작성자</span><input type="text" name="username"
-                                                            id="" value="" /></li>
-                                                    <li class="user_pw"><span>비밀번호</span><input type="password"
-                                                            name="passwd" id="" value="" /></li>
-                                                </ul>
-                                                <?}?>
-                                                <input type="hidden" name="modify_idx" />
-                                                <p>
-                                                    <span>내용</span>
-                                                    <textarea name="re_context" class="input"
-                                                        style="height:65px; resize:none;"></textarea>
-                                                </p>
-                                            </div>
-                                            <div class="reply_btn_box">
-                                                <a href="javascript:reply_write('<?=$idx?>','<?=$bo_idx?>','insert');"
-                                                    class="reply_btn">등록</a>
-                                            </div>
-                                        </form>
-                                        <div id="reply_area" style="width:100%"></div>
-                                    </div>
-                                </td> -->
+                            <!-- 관리자 댓글 답변 -->
+                            <tr v-if="state.board.comment_info">
+                                <th>{{ state.board.comment_info.reg_user_name_ko }}</th>
+                                <td colspan="2">{{ state.board.comment_info.content }}</td>
                             </tr>
-                            <!-- <tr v-if="state.board.comment_info.length !== 0" v-for="comment in state.board.commont_info">
-                                <th>{{ comment.reg_user_name_ko }}</th>
-                                <td colspan="2">{{ comment.content }}</td>
-                            </tr> -->
                         </tbody>
                     </table>
                     <div class="board_btn_wrap">
                         <div class="boardW_btn">
-                            <a :href="routerPath.web_consulting_url" class="back_btn">목록
-                            </a>
-                            <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
-                            <span class="back_btn"><?=$btn_link['update']?></span> -->
+                            <a :href="routerPath.web_consulting_url" class="back_btn">목록</a>
                         </div>
                     </div>
                 </div>
