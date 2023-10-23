@@ -167,3 +167,28 @@ a.more_btn:hover span {background: url('/img/web/main/arrow_btn.png') no-repeat 
 
 #subtitle {text-align: center; margin: 0 0 55px;}
 #subtitle h2 {font-size: 34px; font-weight: 600;}
+
+/* 모달 //S */
+h4.mo_title {font-size: 21px;font-weight: 700;margin:0 0 20px;padding: 0 0 10px;border-bottom: 1px solid #ddd;;}
+div.mo_title {font-size: 21px;font-weight: 700;margin:0 0 20px;padding: 0 0 10px;border-bottom: 1px solid #ddd;display:flex;justify-content: space-between;}
+div.mo_title > h4{font-size: 21px;font-weight: 700;}
+.mo_subtitle {font-size:18px;font-weight: 700;margin:0 0 14px;}
+.modal_wrap {position:fixed;top:0;left:0;width:100%;background: rgba(0,0,0,0.4);z-index:999;}
+.modal_wrap .modal {position:absolute;top:50%;left:50%;transform:translate(-50%, -50%); box-shadow: 5px 5px 15px rgba(0,0,0,0.1);background:#fff;padding:40px;max-height:840px;overflow-y:scroll;z-index:999;border-radius: 5px;}
+.modal{ -ms-overflow-style: none; } .modal::-webkit-scrollbar{ display:none; }
+.modal_wrap .modal .modal_close {position:absolute;top:42px;right:50px;cursor:pointer;}
+.modal_wrap .modal .modal_close img {width: 14px;}
+/* .modal_content {display:none;} */
+/* 모달 //E */
+
+.placeholder_Title_Big input {border: 1px solid #3266B1; outline: none; border-radius: 5px;margin: 5px 0;}
+a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; border-radius: 5px; display: inline-block;margin: 10px 3px 0;cursor: pointer;
+    transition:all .3s;
+    -webkit-transition:all .3s;
+    -moz-transition:all .3s;
+    -ms-transition:all .3s;
+    -o-transition:all .3s;
+}
+.btn_box a.btn01:hover {background: #efefef; color: #858585;}
+.btn_box a.btn02 {background:#a8a8a8;}
+.btn_box a.btn02:hover {background: #efefef; }
