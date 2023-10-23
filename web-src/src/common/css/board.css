@@ -45,8 +45,10 @@ border-radius:2px; padding-left:20px; width:70px; height:38px; line-height:38px;
 	display:inline-block;
     position: relative;
 	vertical-align:middle;
-
 }
+
+.placeholder_box button[type=button] {color: #fff;}
+
 /* input 타이틀 */
 .placeholder_box label {
     color: #797979;
