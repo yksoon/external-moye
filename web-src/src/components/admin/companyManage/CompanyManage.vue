@@ -10,7 +10,7 @@ import {
 import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
-import { reactive, ref, h, toRaw, onMounted } from "vue";
+import { reactive, ref, h, toRaw, onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import {
     FlexRender,
