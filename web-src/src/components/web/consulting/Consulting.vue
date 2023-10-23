@@ -28,7 +28,7 @@ onMounted(() => {
 
 const fileBaseUrl = apiPath.api_file;
 
-// 영상게시판 리스트 가져오기
+// 상담문의 게시판 리스트 가져오기
 const getBoardList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
 
@@ -73,6 +73,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
             let page_info = res.data.page_info;
 
             state.boardList = result_info;
+            state.pageInfo = page_info;
 
             CommonSpinner(false);
         } else {
@@ -82,6 +83,37 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
             CommonSpinner(false);
         }
     };
+};
+
+// 비밀글일 경우 비밀번호 확인 모달 표출
+const passwordCheckModal = (board_idx) => {
+    const modalOption = {
+        title: "비밀번호 확인",
+        component: "QNAPwdCheckModal",
+        width: "800",
+        boardIdx: board_idx,
+        modData: {},
+        handleNeedUpdate: () => requestBoards(),
+    };
+
+    CommonModal(modalOption);
+};
+
+// 비밀번호 확인 완료 로직
+const requestBoards = (board_idx) => {
+    location.replace(`${routerPath.web_consulting_url}/${board_idx}`);
+};
+
+// 리스트 새로고침
+const handleNeedUpdate = () => {
+    getBoardList(1, maxRowNum.basic, "");
+};
+
+// 페이지네이션 이동
+const handleChange = (page_num) => {
+    const keyword = searchKeyword.value;
+
+    getBoardList(page_num, maxRowNum.basic, keyword);
 };
 
 const readyAlert = () => {
@@ -136,7 +168,7 @@ const readyAlert = () => {
                                 <td><img v-if="board.open_yn === 'N'" src="/img/common/lock.png" alt="비밀글입니다."></td>
                                 <td>{{ board.category_type }}</td>
                                 <td v-if="board.open_yn === 'Y'"><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.subject }}</a></td>
-                                <td v-if="board.open_yn === 'N'"><a>{{ board.subject }}</a></td>
+                                <td v-if="board.open_yn === 'N'"><a @click="passwordCheckModal(board.board_idx)">{{ board.subject }}</a></td>
                                 <td>{{ board.user_name_first_ko + board.user_name_last_ko }}</td>
                                 <td>{{ board.comment_info ? '답변완료' : '미답변' }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
@@ -148,18 +180,27 @@ const readyAlert = () => {
                         <div class="boardList_btn">
                             <a :href="routerPath.web_consulting_write_url" class="back_btn">글쓰기
                             </a>
-                            <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
-                            <span class="back_btn"><?=$btn_link['update']?></span> -->
                         </div>
                     </div>
-                    <div class="paginate">
+                    <!-- <div class="paginate">
                         <ul class="page_btn">
                             <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
                             <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
                                     alt="다음페이지"></a>
                         </ul>
+                    </div> -->
+                    <div
+                        className="pagenation"
+                        v-if="state.boardList.length !== 0"
+                    >
+                        <v-pagination
+                            :length="state.pageInfo.pages"
+                            :total-visible="7"
+                            rounded="2"
+                            v-model="state.pageInfo.page_num"
+                            @update:model-value="handleChange"
+                        ></v-pagination>
                     </div>
-
                 </div>
             </div>
          </div>

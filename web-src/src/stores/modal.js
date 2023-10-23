@@ -9,6 +9,7 @@ export const useModalStore = defineStore("modal", () => {
     const title = ref("");
     const component = ref("");
     const width = ref("");
+    const boardIdx = ref(0);
     const state = reactive({
         modData: {},
     });
@@ -24,6 +25,7 @@ export const useModalStore = defineStore("modal", () => {
         component.value = params.component;
         width.value = params.width;
         state.modData = params.modData;
+        boardIdx.value = params.boardIdx;
 
         handleNeedUpdate.value = params.handleNeedUpdate
             ? () => params.handleNeedUpdate()
@@ -38,6 +40,7 @@ export const useModalStore = defineStore("modal", () => {
         component.value = "";
         width.value = "";
         state.modData = {};
+        boardIdx.value = 0;
     };
 
     return {
@@ -46,6 +49,7 @@ export const useModalStore = defineStore("modal", () => {
         component,
         width,
         state,
+        boardIdx,
         handleNeedUpdate,
         setIsModalOpen,
         setIsModalClose,

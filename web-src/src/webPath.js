@@ -169,6 +169,11 @@ const apiPath = {
     // 게시판 수정
     api_admin_mod_board: `${base_api_url + slash + version + slash}board`,
 
+    // /v1/board/_confirm
+    // POST
+    // 게시판 정보 확인 (상담문의 비밀번호 확인)
+    api_admin_confirm_board: `${base_api_url + slash + version + slash}board/_confirm`,
+
     // /v1/_comment
     // POST MULTI
     // 상담문의 등록

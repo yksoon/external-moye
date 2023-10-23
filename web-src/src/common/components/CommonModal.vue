@@ -2,6 +2,9 @@
 import { storeToRefs } from "pinia";
 import { onMounted, watch } from "vue";
 import { useModalStore } from "@/stores/modal";
+// main
+import QNAPwdCheckModal from "@/components/web/consulting/modal/QNAPwdCheckModal.vue";
+// admin
 import NoticeModalMain from "@/components/admin/boardManage/noticeBoard/modal/NoticeModalMain.vue";
 import PhotoModalMain from "@/components/admin/boardManage/photoBoard/modal/PhotoModalMain.vue";
 import MovieModalMain from "@/components/admin/boardManage/movieBoard/modal/MovieModalMain.vue";
@@ -17,6 +20,7 @@ import { CommonNotify } from "@/common/js/common";
 export default {
     name: "CommonModal",
     components: {
+        QNAPwdCheckModal,
         NoticeModalMain,
         PhotoModalMain,
         MovieModalMain,
@@ -29,7 +33,7 @@ export default {
     },
     setup() {
         const useModal = useModalStore();
-        const { isOpen, title, component, width, handleNeedUpdate, state } =
+        const { isOpen, title, component, width, handleNeedUpdate, state, boardIdx } =
             storeToRefs(useModal);
 
         return {
@@ -38,6 +42,7 @@ export default {
             title: title,
             component: component,
             width: width,
+            boardIdx: boardIdx,
             state,
             handleNeedUpdate,
         };
@@ -135,6 +140,14 @@ export default {
                     <CompanyModalMain
                         v-if="component === 'CompanyModalMain'"
                         :handleNeedUpdate="handleNeedUpdate"
+                        :modData="state.modData"
+                    />
+
+                    <!-- 상담문의 비밀글 비밀번호 확인 -->
+                    <QNAPwdCheckModal
+                        v-if="component === 'QNAPwdCheckModal'"
+                        :handleNeedUpdate="handleNeedUpdate"
+                        :boardIdx="boardIdx"
                         :modData="state.modData"
                     />
                 </div>
