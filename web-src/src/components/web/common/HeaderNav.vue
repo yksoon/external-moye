@@ -13,7 +13,7 @@ import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
-import LeftMenu from '@/components/web/common/LeftMenu.vue';
+import LeftMenu from "@/components/web/common/LeftMenu.vue";
 import { useRoute } from "vue-router";
 
 // ------------------- import End --------------------
@@ -24,7 +24,7 @@ const searchKeyword = ref(null);
 const state = reactive({
     lastBoard: [],
     board: [],
-    filePath: null
+    filePath: null,
 });
 
 onMounted(() => {
@@ -35,7 +35,7 @@ const fileBaseUrl = apiPath.api_file;
 
 // 회사소개서 다운로드 링크 가져오기
 const getLastBoard = (pageNum, pageSize, searchKeyword) => {
-    CommonSpinner(true);
+    // CommonSpinner(true);
 
     // /v1/boards
     // POST
@@ -81,9 +81,8 @@ const getLastBoard = (pageNum, pageSize, searchKeyword) => {
             if (state.lastBoard) {
                 getBoard(state.lastBoard[0].board_idx);
             } else {
-                CommonSpinner(false);
+                // CommonSpinner(false);
             }
-            
         } else {
             // 에러
             CommonConsole("log", res);
@@ -96,7 +95,7 @@ const getLastBoard = (pageNum, pageSize, searchKeyword) => {
 const getBoard = (board_idx) => {
     const boardIdx = String(board_idx);
 
-   // v1/board/{board_idx}
+    // v1/board/{board_idx}
     // GET
     const url = apiPath.api_admin_get_board + `/${boardIdx}`;
     const data = {};
@@ -118,15 +117,17 @@ const getBoard = (board_idx) => {
         // 성공
         if (result_code === successCode.success) {
             state.board = result_info;
-            state.filePath = state.board.file_info.length ? state.board.file_info[0].file_path_enc : '';
+            state.filePath = state.board.file_info.length
+                ? state.board.file_info[0].file_path_enc
+                : "";
 
-            CommonSpinner(false);
+            // CommonSpinner(false);
         }
         // 에러
         else {
             CommonConsole("log", res);
 
-            CommonSpinner(false);
+            // CommonSpinner(false);
 
             CommonNotify({
                 type: "alert",
@@ -134,11 +135,11 @@ const getBoard = (board_idx) => {
             });
         }
     };
-}
+};
 
 const readyAlert = () => {
-    alert('준비중입니다 :-)');
-}
+    alert("준비중입니다 :-)");
+};
 </script>
 
 <template>
@@ -189,7 +190,11 @@ const readyAlert = () => {
                 <div class="submenu">
                     <a :href="routerPath.web_notice_url">공지사항</a>
                     <a :href="routerPath.web_consulting_url">상담문의</a>
-                    <a v-if="state.board" :href="`${fileBaseUrl}${state.filePath}`">회사소개서 다운로드</a>
+                    <a
+                        v-if="state.board"
+                        :href="`${fileBaseUrl}${state.filePath}`"
+                        >회사소개서 다운로드</a
+                    >
                     <a :href="routerPath.web_photo_url">포토 갤러리</a>
                     <a :href="routerPath.web_movie_url">영상 갤러리</a>
                 </div>

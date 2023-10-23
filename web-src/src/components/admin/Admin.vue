@@ -65,6 +65,10 @@ export default {
             } else {
                 // console.log(userToken);
                 // console.log(userInfo);
+                if (!pages) {
+                    usePages.setPages("profileMng");
+                }
+
                 requestMenu();
             }
         });

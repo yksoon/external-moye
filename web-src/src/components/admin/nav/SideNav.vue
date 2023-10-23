@@ -143,6 +143,7 @@ export default {
                     <a @click="signOut" class="font-12"> 로그아웃 </a>&nbsp
                     <router-link
                         :to="this.routerPath.web_main_url"
+                        target="_blank"
                         class="font-12"
                     >
                         HOMEPAGE
