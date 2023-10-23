@@ -159,9 +159,16 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 /* 모달 //E */
 
 /* 모달 //S */
+/* .modal_wrap {display:block;
+
+    top:0;left:0;width:100%;height:100vh;
+
+    z-index:999;} */
+
+
 .modal_wrap {display:block;
     /* position:fixed; */
-    top:0;left:0;width:100%;height:100vh;
+    top:0;left:0;width:100%;
     /* background: rgba(0,0,0,0.4); */
     z-index:999;}
 h4.mo_title {font-size: 21px;font-weight: 700;margin:0 0 20px;padding: 0 0 10px;border-bottom: 1px solid #ddd;}

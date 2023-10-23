@@ -12,6 +12,8 @@ import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
 
+import Popup from "@/components/web/common/Popup.vue";
+
 import { routerPath } from "@/webPath";
 // import $ from "jquery";
 
@@ -225,6 +227,9 @@ const readyAlert = () => {
 
 <template>
     <div>
+        <!-- <div v-for="popup in state.popupList">
+            <Popup :popup="popup"/>
+        </div> -->
         <div id="mainvisual">
             <div class="main_txt">
                 <div class="main_txt_wrap">
@@ -236,9 +241,6 @@ const readyAlert = () => {
                     </p>
                 </div>
             </div>
-        </div>
-        <div id="popup_wrapper">
-            <!-- popup -->
         </div>
         <!-- container //S-->
         <div id="container">
