@@ -83,6 +83,13 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
         }
     };
 };
+
+// 페이지네이션 이동
+const handleChange = (page_num) => {
+    const keyword = searchKeyword.value;
+
+    getBoardList(page_num, maxRowNum.basic, keyword);
+};
 </script>
 
 <template>
@@ -115,12 +122,24 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
                             </a>
                         </div>
                     </div>
-                    <div class="paginate">
+                    <!-- <div class="paginate">
                         <ul class="page_btn">
                             <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
                             <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
                                     alt="다음페이지"></a>
                         </ul>
+                    </div> -->
+                    <div
+                        className="pagenation"
+                        v-if="state.boardList.length !== 0"
+                    >
+                        <v-pagination
+                            :length="state.pageInfo.pages"
+                            :total-visible="7"
+                            rounded="2"
+                            v-model="state.pageInfo.page_num"
+                            @update:model-value="handleChange"
+                        ></v-pagination>
                     </div>
                 </div>
             </div>
