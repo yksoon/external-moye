@@ -46,4 +46,34 @@ const boardModel = {
     modDttm: "",
 };
 
-export { boardModel };
+const popupModel = {
+    popup_idx: 0,
+    row_num: 0,
+    show_yn: "Y",
+    use_yn: "Y",
+    del_yn: "Y",
+    title: "",
+    content: "",
+    size_width: "",
+    size_height: "",
+    position_top: "",
+    position_left: "",
+    option_24_hours_yn: "N",
+    option_looking_yn: "N",
+    option_scroll_yn: "N",
+    start_date: "",
+    end_date: "",
+    user_idx: 0,
+    user_name_ko: "",
+    user_name_en: "",
+    reg_user_idx: 0,
+    reg_user_name_ko: "",
+    reg_user_name_en: "",
+    reg_dttm: "",
+    mod_user_idx: 0,
+    mod_user_name_ko: "",
+    mod_user_name_en: "",
+    mod_dttm: "",
+};
+
+export { boardModel, popupModel };
