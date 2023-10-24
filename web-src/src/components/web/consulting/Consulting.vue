@@ -116,6 +116,16 @@ const handleChange = (page_num) => {
     getBoardList(page_num, maxRowNum.basic, keyword);
 };
 
+// 게시글 클릭시 페이지 이동 함수
+const boardOpen = (open_yn, board_idx) => {
+    // 비밀글 여부 확인
+    if (open_yn === "N") { // 비밀글
+        passwordCheckModal(board_idx);
+    } else { // 일반글
+        location.href = routerPath.web_consulting_url + '/' + board_idx;
+    }
+}
+
 const readyAlert = () => {
     alert('준비중입니다 :-)');
 }
@@ -164,11 +174,10 @@ const readyAlert = () => {
                             </tr>
                         </thead>
                         <tbody v-if="state.boardList.length !== 0">
-                            <tr v-for="board in state.boardList">
+                            <tr v-for="board in state.boardList" @click="boardOpen(board.open_yn, board.board_idx)">
                                 <td><img v-if="board.open_yn === 'N'" src="/img/common/lock.png" alt="비밀글입니다."></td>
                                 <td>{{ board.category_type }}</td>
-                                <td v-if="board.open_yn === 'Y'"><a :href="`${routerPath.web_consulting_url}/${board.board_idx}`">{{ board.subject }}</a></td>
-                                <td v-if="board.open_yn === 'N'"><a @click="passwordCheckModal(board.board_idx)">{{ board.subject }}</a></td>
+                                <td>{{ board.subject }}</td>
                                 <td>{{ board.user_name_first_ko + board.user_name_last_ko }}</td>
                                 <td>{{ board.comment_info ? '답변완료' : '미답변' }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
