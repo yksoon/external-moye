@@ -11,6 +11,7 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
+import { popupModel } from "@/components/web/consulting/models/boardModel";
 
 import Popup from "@/components/web/common/Popup.vue";
 
@@ -203,6 +204,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
 
     // 완료 로직
     const responsLogic = (res) => {
+
         let result_code = res.headers.result_code;
 
         // 성공
@@ -213,6 +215,12 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
             let result_info = res.data.result_info;
 
             state.popupList = result_info;
+
+            for (const key in state.popupList) {
+                let popup = state.popupList[key];
+
+                window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
+            }
         } else {
             // 에러
             CommonConsole("log", res);
@@ -227,9 +235,6 @@ const readyAlert = () => {
 
 <template>
     <div>
-        <!-- <div v-for="popup in state.popupList">
-            <Popup :popup="popup"/>
-        </div> -->
         <div id="mainvisual">
             <div class="main_txt">
                 <div class="main_txt_wrap">
