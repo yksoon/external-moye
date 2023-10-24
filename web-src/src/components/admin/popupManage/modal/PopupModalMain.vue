@@ -22,6 +22,12 @@ const fileBaseUrl = apiPath.api_file;
 const selectShowYn = ref(null);
 const inputTitle = ref(null);
 const inputContent = ref(null);
+const inputWidth = ref(null);
+const inputHeight = ref(null);
+const inputTop = ref(null);
+const inputLeft = ref(null);
+const selectScrollYn = ref(null);
+const select24HoursYn = ref(null);
 const startDate = ref(null);
 const endDate = ref(null);
 
@@ -47,6 +53,12 @@ const getDefaultValue = () => {
     selectShowYn.value.value = modData.show_yn;
     inputTitle.value.value = modData.title;
     inputContent.value.value = modData.content;
+    inputWidth.value.value = modData.size_width;
+    inputHeight.value.value = modData.size_height;
+    inputTop.value.value = modData.position_top;
+    inputLeft.value.value = modData.position_left;
+    selectScrollYn.value.value = modData.option_scroll_yn;
+    select24HoursYn.value.value = modData.option_24_hours_yn;
     startDate.value.value = modData.start_date;
     endDate.value.value = modData.end_date;
 };
@@ -71,6 +83,12 @@ const regPopup = () => {
             show_yn: selectShowYn.value.value,
             title: inputTitle.value.value,
             content: inputContent.value.value,
+            size_width: inputWidth.value.value,
+            size_height: inputHeight.value.value,
+            position_top: inputTop.value.value,
+            position_left: inputLeft.value.value,
+            option_scroll_yn: selectScrollYn.value.value,
+            option_24_hours_yn: select24HoursYn.value.value,
             start_date: startDate.value.value,
             end_date: endDate.value.value,
         };
@@ -119,10 +137,16 @@ const modPopup = () => {
 
         data = {
             ...model,
-            show_yn: modData.show_yn,
             popup_idx: modData.popup_idx,
+            show_yn: selectShowYn.value.value,
             title: inputTitle.value.value,
             content: inputContent.value.value,
+            size_width: inputWidth.value.value,
+            size_height: inputHeight.value.value,
+            position_top: inputTop.value.value,
+            position_left: inputLeft.value.value,
+            option_scroll_yn: selectScrollYn.value.value,
+            option_24_hours_yn: select24HoursYn.value.value,
             start_date: startDate.value.value,
             end_date: endDate.value.value,
         };
@@ -234,7 +258,7 @@ const validation = () => {
     <div class="admin">
         <table class="table_bb">
             <colgroup>
-                <col width="30%" />
+                <col width="20%" />
                 <col width="*" />
             </colgroup>
 
@@ -265,6 +289,44 @@ const validation = () => {
                             class="textarea_basic"
                             ref="inputContent"
                         ></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>팝업 너비</th>
+                    <td>
+                        <input type="text" class="input wp80" ref="inputWidth" /> px
+                    </td>
+                    <th>팝업 높이</th>
+                    <td>
+                        <input type="text" class="input wp80" ref="inputHeight" /> px
+                    </td>
+                </tr>
+                <tr>
+                    <th>팝업 Top</th>
+                    <td>
+                        <input type="text" class="input wp80" ref="inputTop" /> px
+                    </td>
+                    <th>팝업 Left</th>
+                    <td>
+                        <input type="text" class="input wp80" ref="inputLeft" /> px
+                    </td>
+                </tr>
+                <tr>
+                    <th>스크롤 사용</th>
+                    <td colSpan="3">
+                        <select class="wp100" ref="selectScrollYn">
+                            <option value="N">사용안함</option>
+                            <option value="Y">사용함</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>24시간동안 띄우지 않기</th>
+                    <td colSpan="3">
+                        <select class="wp100" ref="select24HoursYn">
+                            <option value="N">사용안함</option>
+                            <option value="Y">사용함</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
