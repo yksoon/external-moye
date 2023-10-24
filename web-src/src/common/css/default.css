@@ -4,94 +4,94 @@
     font-family: 'NanumSquareNeo-Variable'; 
     font-style: normal; 
     font-weight: 100; 
-    src: url('../font/NanumSquareNeo-cBd.woff') format('woff')
+    src: url('/font/NanumSquareNeo-cBd.woff') format('woff')
 }
 @font-face { 
     font-family: 'NanumSquareNeo-Variable'; 
     font-style: normal; 
     font-weight: 700; 
-    src: url('../font/NanumSquareNeo-dEb.woff') format('woff')
+    src: url('/font/NanumSquareNeo-dEb.woff') format('woff')
 }
 @font-face { 
     font-family: 'NanumSquareNeo-Variable'; 
     font-style: normal; 
     font-weight: 300; 
-    src: url('../font/NanumSquareNeo-aLt.woff') format('woff')
+    src: url('/font/NanumSquareNeo-aLt.woff') format('woff')
 }
 @font-face { 
     font-family: 'NanumSquareNeo-Variable'; 
     font-style: normal; 
     font-weight: 400; 
-    src: url('../font/NanumSquareNeo-bRg.woff') format('woff')
+    src: url('/font/NanumSquareNeo-bRg.woff') format('woff')
 }
 @font-face { 
     font-family: 'NanumSquareNeo-Variable'; 
     font-style: normal; 
     font-weight: 900; 
-    src: url('../font/NanumSquareNeo-eHv.woff') format('woff')
+    src: url('/font/NanumSquareNeo-eHv.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 400; 
-    src: url('../font/SUIT-Regular.woff') format('woff')
+    src: url('/font/SUIT-Regular.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 500; 
-    src: url('../font/SUIT-Medium.woff') format('woff')
+    src: url('/font/SUIT-Medium.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 600; 
-    src: url('../font/SUIT-SemiBold.woff') format('woff')
+    src: url('/font/SUIT-SemiBold.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 700; 
-    src: url('../font/SUIT-Bold.woff') format('woff')
+    src: url('/font/SUIT-Bold.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 900; 
-    src: url('../font/SUIT-Heavy.woff') format('woff')
+    src: url('/font/SUIT-Heavy.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 300; 
-    src: url('../font/SUIT-Light.woff') format('woff')
+    src: url('/font/SUIT-Light.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 100; 
-    src: url('../font/SUIT-Thin.woff') format('woff')
+    src: url('/font/SUIT-Thin.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 800; 
-    src: url('../font/SUIT-ExtraBold.woff') format('woff')
+    src: url('/font/SUIT-ExtraBold.woff') format('woff')
 }
 
 @font-face { 
     font-family: 'SUIT'; 
     font-style: normal; 
     font-weight: 200; 
-    src: url('../font/SUIT-ExtraLight.woff') format('woff')
+    src: url('/font/SUIT-ExtraLight.woff') format('woff')
 }
 
 
