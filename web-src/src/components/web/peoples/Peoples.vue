@@ -94,17 +94,17 @@ const handleChange = (page_num) => {
                     <h2>코치진</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <ul class="coach_tab">
+                    <ul class="people_tab">
                         <li><a href="">스포츠</a></li>
                         <li><a href="">음악</a></li>
                         <li><a href="">댄스/무용/바둑</a></li>
                         <li><a href="">팀/아카데미</a></li>
                     </ul>
-                    <h3 class="coach_title">스포츠</h3>
-                    <div class="coach_box" v-if="state.peopleList.length !== 0">
-                        <div class="coach" v-for="people in state.peopleList">
+                    <h3 class="people_title">스포츠</h3>
+                    <div class="people_box" v-if="state.peopleList.length !== 0">
+                        <div class="people" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_people_url}/${people.people_idx}`">
-                                <div class="coach_thumb">
+                                <div class="people_thumb">
                                     <div v-if="people.file_path_enc" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
                                         <span></span>
                                     </div>

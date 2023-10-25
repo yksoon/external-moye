@@ -8,7 +8,6 @@ import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
 import { useRoute } from "vue-router";
-import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
@@ -125,59 +124,55 @@ const profileInfoSort = (profile_info) => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu subvisual="subvisual_people" page="people"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>코치진</h2>
                 </div>
-                <div data-aos-duration="1000" data-aos-delay="400">
-                    <v-container v-if="state.people">
-                        <v-row dense>
-                            <v-col cols="12">
-                                <v-card color="#fff" theme="light">
-                                  <div class="d-flex flex-no-wrap justify-space-around">
-                                    <v-avatar class="ma-3" size="125" rounded="0">
-                                        <v-img
-                                            style="background-color:#eee;"
-                                            :src="state.people.file_info.length !== 0 ? `${fileBaseUrl}${state.people.file_path_enc}` : ''"
-                                        >
-                                            <div>{{ state.people.category_parent_name_ko }}</div>
-                                        </v-img>
-                                    </v-avatar>
-                                    <div>
-                                        <v-card-title class="text-h5">{{ state.people.name_ko }}</v-card-title>
-                                        <v-card-text>{{ state.people.category_child_name_ko }} / {{ state.people.people_type }}</v-card-text>
-                                        <v-card-text>
-                                            <div>생년월일 : {{ state.people.birth }}</div>
-                                            <div>연락처 : {{ state.people.mobile }}</div>
-                                            <div>성별 : {{ state.people.mobile }}</div>
-                                            <div>E-MAIL : {{ state.people.mobile }}</div>
-                                            <div>
-                                                메모 <br/>
-                                                {{ state.people.people_memo }}
-                                            </div>
-                                        </v-card-text>
+                <div class="p_detail_wrap" data-aos-duration="1000" data-aos-delay="400" v-if="state.people">
+                    <!-- <h3 class="people_title">{{ state.people.category_parent_name_ko }}</h3> -->
+                    <div class="p_detail">
+                        <div class="detail_info">
+                            <div class="thumb">
+                                <img
+                                    style="background-color:#eee;"
+                                    :src="state.people.file_info.length !== 0 ? `${fileBaseUrl}${state.people.file_path_enc}` : '/img/web/sub/dafault_full.jpg'"
+                                >
+                            </div>
+                            <div class="profile">
+                                <div class="profile_top">
+                                    <h5>{{ state.people.name_ko }}</h5>
+                                    <div class="category">
+                                        <span>{{ state.people.category_child_name_ko }}</span>
+                                        <span>{{ state.people.people_type }}</span>
                                     </div>
-                                  </div>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="12" v-if="state.profileSection.length !== 0">
-                                <v-card color="#fff" theme="light" v-for="section in state.profileSection">
-                                    <div>{{ section.sectionValue }}</div>
-                                    <ul v-if="state.profileInfo.filter((el) => el.parentIdx === section.idx).length !== 0" 
-                                        v-for="profile in state.profileInfo.filter((el) => el.parentIdx === section.idx
-                                    )">
-                                        <li class="d-flex flex-no-wrap justify-space-around">
-                                            <v-card-text>{{ profile.profileContent }}</v-card-text>
-                                        </li>
+                                </div>
+                                <div class="about">
+                                    <p><span>생년월일</span>{{ state.people.birth }}</p>
+                                    <p><span>연락처</span>{{ state.people.mobile }}</p>
+                                    <p><span>성별</span>{{ state.people.mobile }}</p>
+                                    <p><span>E-MAIL</span>{{ state.people.mobile }}</p>
+                                    <p class="full"><span>메모</span>{{ state.people.mobile }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail_cv" v-if="state.profileSection.length !== 0">
+                            <span class="deco">{{ state.people.name_ko }}</span>
+                            <div>
+                                <div class="detail_cv_list" v-for="section in state.profileSection">
+                                    <h6>{{ section.sectionValue }}</h6>
+                                    <ul>
+                                        <li v-if="state.profileInfo.filter((el) => el.parentIdx === section.idx).length !== 0"
+                                            v-for="profile in state.profileInfo.filter((el) => el.parentIdx === section.idx
+                                        )"
+                                        >{{ profile.profileContent }}</li>
                                     </ul>
-                                </v-card>
-                              </v-col>
-                        </v-row>
-                    </v-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="board_btn_wrap">
-                        <div class="boardW_btn">
-                            <a :href="routerPath.web_people_url" class="back_btn">목록
+                        <div class="">
+                            <a :href="routerPath.web_people_url" class="detail_btn">목록으로 가기
                             </a>
                         </div>
                     </div>
