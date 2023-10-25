@@ -147,17 +147,17 @@ const profileInfoSort = (profile_info) => {
                                     </div>
                                 </div>
                                 <div class="about">
-                                    <p><span>생년월일</span>{{ state.people.birth }}</p>
-                                    <p><span>연락처</span>{{ state.people.mobile }}</p>
-                                    <p><span>성별</span>{{ state.people.mobile }}</p>
-                                    <p><span>E-MAIL</span>{{ state.people.mobile }}</p>
-                                    <p class="full"><span>메모</span>{{ state.people.mobile }}</p>
+                                    <p v-if="state.people.birth"><span>생년월일</span>{{ state.people.birth }}</p>
+                                    <p v-if="state.people.mobile"><span>연락처</span>{{ state.people.mobile }}</p>
+                                    <p v-if="state.people.gender"><span>성별</span>{{ state.people.gender }}</p>
+                                    <p v-if="state.people.email"><span>E-MAIL</span>{{ state.people.email }}</p>
+                                    <p v-if="state.people.people_memo" class="full"><span>메모</span>{{ state.people.people_memo }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="detail_cv" v-if="state.profileSection.length !== 0">
+                        <div class="detail_cv">
                             <span class="deco">{{ state.people.name_ko }}</span>
-                            <div>
+                            <div v-if="state.profileSection.length !== 0">
                                 <div class="detail_cv_list" v-for="section in state.profileSection">
                                     <h6>{{ section.sectionValue }}</h6>
                                     <ul>
