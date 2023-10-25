@@ -17,7 +17,7 @@ import { apiPath, routerPath } from '@/webPath';
 const searchKeyword = ref(null);
 const state = reactive({
     historyTarget: [],
-    historyList: [],
+    historyInfo: [],
 });
 
 const fileBaseUrl = apiPath.api_file;
@@ -30,7 +30,7 @@ onMounted(() => {
 const getHistoryList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
 
-    // /v1/_peoples
+    // /v1/_histories
     // POST
     // 연혁 목록
     const url = apiPath.api_admin_get_histories;
@@ -62,69 +62,112 @@ const getHistoryList = (pageNum, pageSize, searchKeyword) => {
         ) {
             let result_info = res.data.result_info;
 
-            state.historyList = result_info;
+            state.historyTarget = result_info;
 
-            // for (let i = 0; i < result_info.length; i++) {
-            //     state.historyTarget.push(result_info[i].target_year);
-            // }
+            for (let i = 0; i < state.historyTarget.length; i++) {
+                getHistoryDetail(state.historyTarget[i].history_idx);
+            }
 
-            // console.log('hello', state.historyList[0].detail_info);
-
-            CommonSpinner(false);
+            // CommonSpinner(false);
         } else {
             // 에러
             CommonConsole("log", res);
 
-            CommonSpinner(false);
+            // CommonSpinner(false);
         }
     };
 };
 
-const historiesSort = (profile_info) => {
-    const defaultHistory = profile_info;
-    const defaultHistoryLength = defaultHistory.length;
+// 연혁 상세 가져오기
+const getHistoryDetail = (history_idx) => {
+    CommonSpinner(true);
 
-    if (defaultHistory) {
-        // for (let i = 0; i < defaultHistoryLength; i++) {
-        //     if (
-        //         state.historyTarget.filter(
-        //             (el) =>
-        //                 el.targetYear === defaultHistory[i].target_year
-        //         ).length === 0
-        //     ) {
-        //         state.historyTarget = [
-        //             ...state.historyTarget,
-        //             { idx: i, targetYear: defaultHistory[i].target_year },
-        //         ];
-        //     }
-        // }
+    const historyIdx = String(history_idx);
 
-        // for (let i = 0; i < defaultHistoryLength; i++) {
-        //     if (
-        //         state.historyTarget.filter(
-        //             (el) =>
-        //                 el.targetYear === defaultHistory[i].target_year
-        //         ).length !== 0
-        //     ) {
-        //         const parentObj = state.profileSection.filter(
-        //             (el) =>
-        //                 el.sectionCode === defaultHistory[i].profile_type_cd
-        //         )[0];
-        //         const obj = {
-        //             parentIdx: parentObj.idx,
-        //             profileType: parentObj.sectionCode,
-        //             profileContent: defaultHistory[i].profile_content,
-        //             inputIdx: i + 1,
-        //         };
+    // /v1/_history/{history_idx}
+    // GET
+    const url = apiPath.api_admin_detail_history + `/${historyIdx}`;
+    const data = {};
 
-        //         state.profileInfo = [...state.profileInfo, obj];
-        //     }
-        // }
-    }
+    // 파라미터
+    const restParams = {
+        method: "get",
+        url: url,
+        data: data,
+        callback: (res) => responsLogic(res),
+        admin: "Y",
+    };
+    CommonRest(restParams);
+
+    const responsLogic = (res) => {
+        let result_code = res.headers.result_code;
+        let result_info = res.data.result_info;
+
+        // 성공
+        if (result_code === successCode.success) {
+            CommonSpinner(false);
+
+            // state.historyInfo = [
+            //     ...state.historyInfo,
+            //     { idx: result_info.history_idx, detail_info: result_info.detail_info }
+            // ];
+
+            if (result_info.detail_info.length) {
+                state.historyInfo.push(...result_info.detail_info);
+            }
+
+            console.log(state.historyInfo);
+        }
+        // 에러
+        else {
+            CommonConsole("log", res);
+
+            CommonSpinner(false);
+
+            CommonNotify({
+                type: "alert",
+                message: res.headers.result_message_ko,
+            });
+        }
+    };
 };
-
 </script>
 
 <template>
-    <div>histories</div>
+    <div id="wrapper">
+        <!-- 서브컨텐츠     //S-->
+        <div id="container" class="sub_container">
+            <!-- <LeftMenu subvisual="subvisual_notice" page="notice"/> -->
+            <div id="content">
+                <div id="subtitle">
+                    <h2>연혁</h2>
+                </div>
+                <div data-aos-duration="1000" data-aos-delay="400">
+                    <div v-if="state.historyInfo.length !== 0">
+                        <ul v-for="target in state.historyTarget">
+                            <div>{{ target.target_year }}</div>
+                            <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
+                                v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx
+                            )"
+                                style="display: flex;justify-content:space-around;"
+                            >
+                                <div v-if="history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }}</div>
+                                <div>{{ history.start_date.split('-')[1] }}월</div>
+                                <div>{{ history.title }}</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div v-if="state.historyInfo.length === 0">
+                        데이터가 없습니다.
+                    </div>
+                    <div class="board_btn_wrap">
+                        <div class="boardW_btn">
+                            <a :href="routerPath.web_main_url" class="back_btn">목록
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
