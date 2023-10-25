@@ -129,22 +129,6 @@ const getBoardDetail = () => {
                                 </td>
                             </tr>
                         </tbody>
-                        <!-- <tfoot>
-                            <tr>
-                                <td>이전글</td>
-                                <td colspan="2">
-                                    <a :href="`${routerPath.web_notice_url}/${boardIdx-1}`">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>다음글</td>
-                                <td colspan="2">
-                                    <a :href="`${routerPath.web_notice_url}/${boardIdx+1}`">
-                                    </a>
-                                </td>
-                            </tr>
-                        </tfoot> -->
                     </table>
                     <div class="board_btn_wrap">
                         <div class="boardW_btn">
