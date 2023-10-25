@@ -151,7 +151,7 @@ const readyAlert = () => {
                     <a @click="readyAlert">인사말</a>
                     <a @click="readyAlert">모두의 예체능 소개</a>
                     <a @click="readyAlert">조직 및 구성</a>
-                    <a @click="readyAlert">연혁</a>
+                    <a :href="routerPath.web_history_url">연혁</a>
                     <a @click="readyAlert">CI</a>
                     <a @click="readyAlert">오시는길</a>
                 </div>
