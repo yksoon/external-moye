@@ -132,7 +132,7 @@ const profileInfoSort = (profile_info) => {
                     <!-- <h3 class="people_title">{{ state.people.category_parent_name_ko }}</h3> -->
                     <div class="p_detail">
                         <div class="detail_info">
-                            <span class="deco">{{ state.people.name_ko }} </span>
+                            <span class="deco">MOYE</span>
                             <div class="thumb">
                                 <img
                                     style="background-color:#eee;"
@@ -147,6 +147,10 @@ const profileInfoSort = (profile_info) => {
                                         <span>{{ state.people.people_type }}</span>
                                     </div>
                                 </div>
+                                <p class="profile_en">
+                                    <span>You Byeong Soo</span> / 
+                                    <span>有炳水</span>
+                                </p>
                                 <div class="about">
                                     <p v-if="state.people.birth"><span>생년월일</span>{{ state.people.birth }}</p>
                                     <p v-if="state.people.mobile"><span>연락처</span>{{ state.people.mobile }}</p>
@@ -157,6 +161,8 @@ const profileInfoSort = (profile_info) => {
                             </div>
                         </div>
                         <div class="detail_cv">
+                            <!-- 프로필 없으면 보이게 -->
+                            <span v-if="state.profileSection.length === 0" class="deco">{{ state.people.name_ko }} </span>
                             <div v-if="state.profileSection.length !== 0">
                                 <div class="detail_cv_list" v-for="section in state.profileSection">
                                     <h6>{{ section.sectionValue }}</h6>
@@ -170,7 +176,7 @@ const profileInfoSort = (profile_info) => {
                             </div>
                         </div>
                     </div>
-                    <div class="board_btn_wrap">
+                    <div class="detail_btn_wrap">
                         <div class="">
                             <a :href="routerPath.web_people_url" class="detail_btn">목록으로 가기
                             </a>
