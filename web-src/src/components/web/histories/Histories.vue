@@ -16,6 +16,7 @@ import { apiPath, routerPath } from '@/webPath';
 
 const searchKeyword = ref(null);
 const state = reactive({
+    historyTarget: [],
     historyList: [],
 });
 
@@ -32,7 +33,7 @@ const getHistoryList = (pageNum, pageSize, searchKeyword) => {
     // /v1/_peoples
     // POST
     // 연혁 목록
-    const url = apiPath.api_admin_list_people;
+    const url = apiPath.api_admin_get_histories;
     const data = {
         page_num: pageNum,
         page_size: pageSize,
@@ -63,7 +64,11 @@ const getHistoryList = (pageNum, pageSize, searchKeyword) => {
 
             state.historyList = result_info;
 
-            console.log(result_info);
+            // for (let i = 0; i < result_info.length; i++) {
+            //     state.historyTarget.push(result_info[i].target_year);
+            // }
+
+            // console.log('hello', state.historyList[0].detail_info);
 
             CommonSpinner(false);
         } else {
@@ -75,8 +80,51 @@ const getHistoryList = (pageNum, pageSize, searchKeyword) => {
     };
 };
 
+const historiesSort = (profile_info) => {
+    const defaultHistory = profile_info;
+    const defaultHistoryLength = defaultHistory.length;
+
+    if (defaultHistory) {
+        // for (let i = 0; i < defaultHistoryLength; i++) {
+        //     if (
+        //         state.historyTarget.filter(
+        //             (el) =>
+        //                 el.targetYear === defaultHistory[i].target_year
+        //         ).length === 0
+        //     ) {
+        //         state.historyTarget = [
+        //             ...state.historyTarget,
+        //             { idx: i, targetYear: defaultHistory[i].target_year },
+        //         ];
+        //     }
+        // }
+
+        // for (let i = 0; i < defaultHistoryLength; i++) {
+        //     if (
+        //         state.historyTarget.filter(
+        //             (el) =>
+        //                 el.targetYear === defaultHistory[i].target_year
+        //         ).length !== 0
+        //     ) {
+        //         const parentObj = state.profileSection.filter(
+        //             (el) =>
+        //                 el.sectionCode === defaultHistory[i].profile_type_cd
+        //         )[0];
+        //         const obj = {
+        //             parentIdx: parentObj.idx,
+        //             profileType: parentObj.sectionCode,
+        //             profileContent: defaultHistory[i].profile_content,
+        //             inputIdx: i + 1,
+        //         };
+
+        //         state.profileInfo = [...state.profileInfo, obj];
+        //     }
+        // }
+    }
+};
+
 </script>
 
 <template>
-
+    <div>histories</div>
 </template>

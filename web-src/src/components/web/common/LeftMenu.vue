@@ -6,14 +6,9 @@ import {
     CommonNotify,
     CommonSpinner,
 } from "@/common/js/common.js";
-import { useModalStore } from "@/stores/modal";
-import { storeToRefs } from "pinia";
-import { boardModel } from "../notice/models/notice";
-import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
-import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { useRoute } from "vue-router";
 
 // ------------------- import End --------------------
