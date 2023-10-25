@@ -132,6 +132,7 @@ const profileInfoSort = (profile_info) => {
                     <!-- <h3 class="people_title">{{ state.people.category_parent_name_ko }}</h3> -->
                     <div class="p_detail">
                         <div class="detail_info">
+                            <span class="deco">{{ state.people.name_ko }} </span>
                             <div class="thumb">
                                 <img
                                     style="background-color:#eee;"
@@ -156,7 +157,6 @@ const profileInfoSort = (profile_info) => {
                             </div>
                         </div>
                         <div class="detail_cv">
-                            <span class="deco">{{ state.people.name_ko }}</span>
                             <div v-if="state.profileSection.length !== 0">
                                 <div class="detail_cv_list" v-for="section in state.profileSection">
                                     <h6>{{ section.sectionValue }}</h6>
