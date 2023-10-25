@@ -28,7 +28,9 @@ const inputLeft = ref(null);
 const selectScrollYn = ref(null);
 const select24HoursYn = ref(null);
 const startDate = ref(null);
+const startTime = ref(null);
 const endDate = ref(null);
+const endTime = ref(null);
 
 const useModal = useModalStore();
 
@@ -58,8 +60,10 @@ const getDefaultValue = () => {
     inputLeft.value.value = modData.position_left;
     selectScrollYn.value.value = modData.option_scroll_yn;
     select24HoursYn.value.value = modData.option_24_hours_yn;
-    startDate.value.value = modData.start_date;
-    endDate.value.value = modData.end_date;
+    startDate.value.value = modData.start_date.split(' ')[0];
+    startTime.value.value = modData.start_date.split(' ')[1];
+    endDate.value.value = modData.end_date.split(' ')[0];
+    endTime.value.value = modData.end_date.split(' ')[1];
 };
 
 // 모달 닫기
@@ -88,8 +92,8 @@ const regPopup = () => {
             position_left: inputLeft.value.value,
             option_scroll_yn: selectScrollYn.value.value,
             option_24_hours_yn: select24HoursYn.value.value,
-            start_date: startDate.value.value,
-            end_date: endDate.value.value,
+            start_date: startTime.value.value ? startDate.value.value + ' ' + startTime.value.value : startDate.value.value + ' 00:00',
+            end_date: endTime.value.value ? endDate.value.value + ' ' + endTime.value.value : endDate.value.value + ' 23:59',
         };
 
         const responsLogic = (res) => {
@@ -146,8 +150,8 @@ const modPopup = () => {
             position_left: inputLeft.value.value,
             option_scroll_yn: selectScrollYn.value.value,
             option_24_hours_yn: select24HoursYn.value.value,
-            start_date: startDate.value.value,
-            end_date: endDate.value.value,
+            start_date: startTime.value.value ? startDate.value.value + ' ' + startTime.value.value : startDate.value.value + ' 00:00',
+            end_date: endTime.value.value ? endDate.value.value + ' ' + endTime.value.value : endDate.value.value + ' 23:59',
         };
 
         // 기본 formData append
@@ -260,8 +264,12 @@ const validation = () => {
                 <col width="20%" />
                 <col width="*" />
             </colgroup>
-
             <tbody>
+                <tr>
+                    <td colSpan="4">
+                        <span class="red">* 노출여부가 노출로 설정되어 있어도 기간(종료일)이 지나면 노출되지 않습니다.</span>
+                    </td>
+                </tr>
                 <tr>
                     <th>노출여부</th>
                     <td colSpan="3">
@@ -330,12 +338,17 @@ const validation = () => {
                 </tr>
                 <tr>
                     <th>시작일</th>
-                    <td>
+                    <td colspan="3">
+                        <!-- 2023-11-11 00:00:00 -->
                         <input type="date" class="input wp80" ref="startDate" />
+                        <input type="time" class="input wp80" ref="startTime" />
                     </td>
+                </tr>
+                <tr>
                     <th>종료일</th>
-                    <td>
+                    <td colspan="3">
                         <input type="date" class="input wp80" ref="endDate" />
+                        <input type="time" class="input wp80" ref="endTime" />
                     </td>
                 </tr>
                 <tr v-if="modData">
