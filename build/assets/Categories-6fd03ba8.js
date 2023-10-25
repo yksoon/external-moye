@@ -1,0 +1,1 @@
+import{_ as e,b as r,c as s}from"./index-6e823b58.js";const o={};function c(t,n){return r(),s("div",null,"categories")}const _=e(o,[["render",c],["__file","C:/Users/LG/Desktop/server/159/moye/frontend/web-src/src/components/web/categories/Categories.vue"]]);export{_ as default};

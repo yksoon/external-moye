@@ -8,6 +8,7 @@ import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
 import { useRoute } from "vue-router";
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
@@ -124,6 +125,7 @@ const profileInfoSort = (profile_info) => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
+            <LeftMenu subvisual="subvisual_people" page="people"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>코치진</h2>

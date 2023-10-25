@@ -213,13 +213,22 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
             result_code === successCode.noData
         ) {
             let result_info = res.data.result_info;
+            let today = new Date();
+
+            let year = today.getFullYear();
+            let month = ('0' + (today.getMonth() + 1)).slice(-2);
+            let day = ('0' + today.getDate()).slice(-2);
+
+            let dateString = year + '-' + month  + '-' + day;
 
             state.popupList = result_info;
 
             for (const key in state.popupList) {
                 let popup = state.popupList[key];
                 
-                window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
+                if (popup.show_yn === "Y" && popup.start_date <= dateString && popup.end_date >= dateString) {
+                    window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
+                }
             }
         } else {
             // 에러

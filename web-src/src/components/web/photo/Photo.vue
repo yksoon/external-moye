@@ -83,7 +83,7 @@ const getBoardDetail = () => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu page="photo"/>
+            <LeftMenu subvisual="subvisual_notice" page="photo"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>포토 갤러리</h2>

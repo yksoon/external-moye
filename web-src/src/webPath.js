@@ -72,6 +72,10 @@ const routerPath = {
     // /peoples/peoples/:people
     web_people_detail_url: `${base_url}peoples/peoples/:people`,
 
+    // categories
+    // /categories/categories
+    web_category_url: `${base_url}categories/categories`,
+
     // notices
     // /notice/notices
     web_notice_url: `${base_url}notice/notices`,

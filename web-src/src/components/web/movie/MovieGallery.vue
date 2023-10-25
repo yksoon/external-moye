@@ -1,9 +1,6 @@
 <script setup>
 import {
     CommonConsole,
-    CommonErrModule,
-    CommonModal,
-    CommonNotify,
     CommonRest,
     CommonSpinner,
 } from "@/common/js/common";
@@ -96,7 +93,7 @@ const handleChange = (page_num) => {
     <div id="wrapper">
        <!-- 서브컨텐츠     //S-->
        <div id="container" class="sub_container">
-            <LeftMenu page="movie"/>
+            <LeftMenu subvisual="subvisual_notice" page="movie"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>영상 갤러리</h2>
@@ -107,7 +104,6 @@ const handleChange = (page_num) => {
                             <a :href="`${routerPath.web_movie_url}/${board.board_idx}`">
                                 <div class="thumbnail">
                                     <div v-if="board.content" :style="`background-image:url('https://img.youtube.com/vi/${board.content}/0.jpg'); background-size:cover;`" class="bg-thumb">
-                                        <!-- <div style="background-color:lightblue;" class="bg-thumb"> -->
                                         <span></span>
                                     </div>
                                     <div v-else  class="bg-thumb"></div>
@@ -122,13 +118,6 @@ const handleChange = (page_num) => {
                             </a>
                         </div>
                     </div>
-                    <!-- <div class="paginate">
-                        <ul class="page_btn">
-                            <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
-                            <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
-                                    alt="다음페이지"></a>
-                        </ul>
-                    </div> -->
                     <div
                         className="pagenation"
                         v-if="state.boardList.length !== 0"

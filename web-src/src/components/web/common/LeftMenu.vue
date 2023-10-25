@@ -14,7 +14,8 @@ import { useRoute } from "vue-router";
 // ------------------- import End --------------------
 
 const props = defineProps({
-    page: String
+    page: String,
+    subvisual: String
 });
 
 const route = useRoute();
@@ -27,7 +28,9 @@ const state = reactive({
 });
 
 onMounted(() => {
-    getLastBoard(1, 1, "");
+    if (props.subvisual === 'subvisual_notice') {
+        getLastBoard(1, 1, "");
+    }
 });
 
 const fileBaseUrl = apiPath.api_file;
@@ -135,11 +138,15 @@ const getBoard = (board_idx) => {
     };
 }
 
+const readyAlert = () => {
+    alert("준비중입니다 :-)");
+};
+
 </script>
 
 <template>
     <!-- 고객센터 -->
-    <div>
+    <div v-if="props.subvisual === 'subvisual_notice'">
         <div id="subvisual" class="subvisual_notice">
             <div class="sub_txt">
                 <h2 data-aos="fade-in" data-aos-duration="500">
@@ -160,7 +167,7 @@ const getBoard = (board_idx) => {
         </div>
     </div>
     <!-- 교육서비스 -->
-    <div>
+    <div v-if="props.subvisual === 'subvisual_people'">
         <div id="subvisual" class="subvisual_people">
             <div class="sub_txt">
                 <h2 data-aos="fade-in" data-aos-duration="500">
@@ -172,9 +179,9 @@ const getBoard = (board_idx) => {
             <div id="lnb">
                 <ul>
                     <li><a :href="routerPath.web_people_url" :class="page === 'people' ? 'on' : ''">코치진</a></li>
-                    <li><a :href="routerPath.web_consulting_url" :class="page === 'consulting' ? 'on' : ''">Class 130 Category</a></li>
-                    <li v-if="state.board"><a :href="`${fileBaseUrl}${state.filePath}`">성장과정별 교육</a></li>
-                    <li><a :href="routerPath.web_photo_url" :class="page === 'photo' ? 'on' : ''">예정교육</a></li>
+                    <li><a @click="readyAlert">Class 130 Category</a></li>
+                    <li><a @click="readyAlert">성장과정별 교육</a></li>
+                    <li><a @click="readyAlert">예정교육</a></li>
                 </ul>
             </div>
         </div>

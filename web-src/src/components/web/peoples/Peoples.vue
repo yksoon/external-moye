@@ -1,9 +1,6 @@
 <script setup>
 import {
     CommonConsole,
-    CommonErrModule,
-    CommonModal,
-    CommonNotify,
     CommonRest,
     CommonSpinner,
 } from "@/common/js/common";
@@ -11,6 +8,7 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from '@/webPath';
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
@@ -90,7 +88,7 @@ const handleChange = (page_num) => {
     <div id="wrapper">
        <!-- 서브컨텐츠     //S-->
        <div id="container" class="sub_container">
-            <LeftMenu page="people"/>
+            <LeftMenu subvisual="subvisual_people" page="people"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>코치진</h2>
@@ -125,13 +123,6 @@ const handleChange = (page_num) => {
                     <div v-else style="display: flex; justify-content: center;">
                         <b> 데이터가 없습니다. </b>
                     </div>
-                    <!-- <div class="paginate">
-                        <ul class="page_btn">
-                            <a href="#" class="direction"><img src="/img/common/page_Btn_02.jpg" alt="이전페이지"></a>
-                            <strong>1</strong> <a href="#" class="direction"><img src="/img/common/page_Btn_03.jpg"
-                                    alt="다음페이지"></a>
-                        </ul>
-                    </div> -->
                     <div
                         className="pagenation"
                         v-if="state.peopleList.length !== 0"

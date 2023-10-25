@@ -1,19 +1,15 @@
 <script setup>
 import {
-    CommonErrModule,
-    CommonConsole,
     CommonRest,
     CommonNotify,
     CommonSpinner,
 } from "@/common/js/common.js";
-import { storeToRefs } from "pinia";
-import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
 import { boardModel } from "@/components/web/consulting/models/boardModel";
-import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { useRoute } from "vue-router";
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
@@ -24,7 +20,6 @@ const selectCategory = ref(false);
 const inputUserFirstName = ref(null);
 const inputUserLastName = ref(null);
 const inputTitle = ref(null);
-const inputSubTitle = ref(null);
 const inputContent = ref(null);
 const inputPassword = ref(null);
 const inputAttachmentFile = ref(null);
@@ -224,7 +219,7 @@ const readyAlert = () => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu page="consulting" />
+            <LeftMenu psubvisual="subvisual_notice" age="consulting" />
             <div id="content">
                 <div id="subtitle">
                     <h2>상담문의</h2>
@@ -316,14 +311,6 @@ const readyAlert = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <!-- <div class="input-group bottom_check">
-                        <span class="input-group-addon cclyoung">
-                        </span>
-                        <div class="placeholder_box">
-                            <label for="placeholder" style="top:4px;">?의 값을 입력하세요.</label>
-                            <input type="text" id="placeholder" name="chk_text" style="height:25px;" />
-                        </div>
-                    </div> -->
                     <div class="boardW_btn">
                         <span class="back_btn"><a @click="regBoard">확인</a></span>
                         <span class="ok_btn"><a href="javascript:history.back();">취소</a></span>

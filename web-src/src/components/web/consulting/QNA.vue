@@ -1,24 +1,19 @@
 <script setup>
 import {
-    CommonErrModule,
     CommonConsole,
     CommonRest,
-    CommonNotify,
     CommonSpinner,
 } from "@/common/js/common.js";
-import { storeToRefs } from "pinia";
-import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
-import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { useRoute } from "vue-router";
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
 const route = useRoute();
 
-const searchKeyword = ref(null);
 const state = reactive({
     board: null,
 });
@@ -81,7 +76,7 @@ const getBoardDetail = () => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu page="consulting" />
+            <LeftMenu subvisual="subvisual_notice" page="consulting" />
             <div id="content">
                 <div id="subtitle">
                     <h2>상담문의</h2>

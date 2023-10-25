@@ -1,9 +1,6 @@
 <script setup>
 import {
     CommonConsole,
-    CommonErrModule,
-    CommonModal,
-    CommonNotify,
     CommonRest,
     CommonSpinner,
 } from "@/common/js/common";
@@ -96,7 +93,7 @@ const handleChange = (page_num) => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu page="notice" />
+            <LeftMenu subvisual="subvisual_notice" page="notice" />
             <div id="content">
                 <div id="subtitle">
                     <h2>공지사항</h2>

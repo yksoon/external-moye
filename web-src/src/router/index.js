@@ -24,6 +24,21 @@ const router = createRouter({
             name: "popup",
             component: () => import("@/components/web/common/Popup.vue"),
         },
+        // ------------------- 모두의예체능 소개 --------------------
+        {
+            // 인사말
+            path: routerPath.web_greeting_url, // "/greeting/greeting"
+            name: "histories",
+            component: () => import("@/components/web/greeting/Greeting.vue"),
+            meta: { layout: MainLayout },
+        },
+        {
+            // 모두의예체능 소개
+            path: routerPath.web_introduction_url, // "/introduction/introduction"
+            name: "histories",
+            component: () => import("@/components/web/introduction/Introduction.vue"),
+            meta: { layout: MainLayout },
+        },
         {
             // 연혁
             path: routerPath.web_history_url, // "/histories/histories"
@@ -45,6 +60,13 @@ const router = createRouter({
             name: "people",
             // component: People,
             component: () => import("@/components/web/peoples/People.vue"),
+            meta: { layout: MainLayout },
+        },
+        {
+            // Class 130 Category
+            path: routerPath.web_category_url, // "/categories/categories"
+            name: "categories",
+            component: () => import("@/components/web/categories/Categories.vue"),
             meta: { layout: MainLayout },
         },
         {

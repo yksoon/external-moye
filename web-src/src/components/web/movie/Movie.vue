@@ -1,15 +1,9 @@
 <script setup>
 import {
-    CommonErrModule,
     CommonConsole,
     CommonRest,
-    CommonNotify,
     CommonSpinner,
 } from "@/common/js/common.js";
-import { useModalStore } from "@/stores/modal";
-import { storeToRefs } from "pinia";
-import { boardModel } from "../notice/models/notice";
-import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
@@ -84,7 +78,7 @@ const getBoardDetail = () => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu page="movie"/>
+            <LeftMenu subvisual="subvisual_notice" page="movie"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>영상 갤러리</h2>
@@ -140,8 +134,6 @@ const getBoardDetail = () => {
                         <div class="boardW_btn">
                             <a :href="routerPath.web_movie_url" class="back_btn">목록
                             </a>
-                            <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
-                            <span class="back_btn"><?=$btn_link['update']?></span> -->
                         </div>
                     </div>
                 </div>

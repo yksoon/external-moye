@@ -1,20 +1,14 @@
 <script setup>
 import {
-    CommonErrModule,
     CommonConsole,
     CommonRest,
-    CommonNotify,
     CommonSpinner,
 } from "@/common/js/common.js";
-import { useModalStore } from "@/stores/modal";
-import { storeToRefs } from "pinia";
-import { boardModel } from "./models/notice";
-import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
-import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { useRoute } from "vue-router";
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
@@ -84,7 +78,7 @@ const getBoardDetail = () => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu page="notice"/>
+            <LeftMenu subvisual="subvisual_notice" page="notice"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>공지사항</h2>
