@@ -60,6 +60,17 @@ const routerPath = {
     // /popup/:popup
     web_popup_detail_url: `${base_url}/popup/:popup`,
 
+    // histories
+    // /histories/histories
+    web_history_url: `${base_url}histories/histories`,
+
+    // peoples
+    // /peoples/peoples
+    web_people_url: `${base_url}peoples/peoples`,
+
+    // people
+    // /peoples/peoples/:people
+    web_people_detail_url: `${base_url}peoples/peoples/:people`,
 
     // notices
     // /notice/notices
@@ -96,14 +107,6 @@ const routerPath = {
     // qna
     // /consulting/consulting/:qna
     web_consulting_detail_url: `${base_url}consulting/consulting/:qna`,
-
-    // peoples
-    // /peoples/peoples
-    web_people_url: `${base_url}peoples/peoples`,
-
-    // people
-    // /peoples/peoples/:people
-    web_people_detail_url: `${base_url}peoples/peoples/:people`,
 
     // ---------------------- admin -------------------------
     // 메인
