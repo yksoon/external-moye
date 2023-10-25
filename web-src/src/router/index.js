@@ -19,6 +19,35 @@ const router = createRouter({
             meta: { layout: MainLayout },
         },
         {
+            // 메인페이지 팝업창
+            path: routerPath.web_popup_detail_url, // "/popup/:popup"
+            name: "popup",
+            component: () => import("@/components/web/common/Popup.vue"),
+        },
+        {
+            // 연혁
+            path: routerPath.web_history_url, // "/histories/histories"
+            name: "histories",
+            component: () => import("@/components/web/histories/Histories.vue"),
+            meta: { layout: MainLayout },
+        },
+        {
+            // 코치진
+            path: routerPath.web_people_url, // "/peoples/peoples"
+            name: "peoples",
+            // component: Peoples,
+            component: () => import("@/components/web/peoples/Peoples.vue"),
+            meta: { layout: MainLayout },
+        },
+        {
+            // 코치진 상세
+            path: routerPath.web_people_detail_url, // "/peoples/peoples/:people"
+            name: "people",
+            // component: People,
+            component: () => import("@/components/web/peoples/People.vue"),
+            meta: { layout: MainLayout },
+        },
+        {
             // 공지사항
             path: routerPath.web_notice_url, // "/notice/notices"
             name: "notices",
@@ -86,28 +115,6 @@ const router = createRouter({
             // component: Movie,
             component: () => import("@/components/web/movie/Movie.vue"),
             meta: { layout: MainLayout },
-        },
-        {
-            // 코치진
-            path: routerPath.web_people_url, // "/peoples/peoples"
-            name: "peoples",
-            // component: Peoples,
-            component: () => import("@/components/web/peoples/Peoples.vue"),
-            meta: { layout: MainLayout },
-        },
-        {
-            // 코치진 상세
-            path: routerPath.web_people_detail_url, // "/peoples/peoples/:people"
-            name: "people",
-            // component: People,
-            component: () => import("@/components/web/peoples/People.vue"),
-            meta: { layout: MainLayout },
-        },
-        {
-            // 메인페이지 팝업창
-            path: routerPath.web_popup_detail_url, // "/popup/:popup"
-            name: "popup",
-            component: () => import("@/components/web/common/Popup.vue"),
         },
         {
             // 관리자 메인
