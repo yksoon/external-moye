@@ -44,14 +44,16 @@ const useCodes = useCodesStore();
 const { codes } = storeToRefs(useCodes);
 const useModal = useModalStore();
 
-const inputName = ref(null);
 const selectShowYn = ref(null);
 const selectCategory1 = ref(null);
 const selectCategory2 = ref(null);
 const selectPeopleType = ref(null);
 const inputAttachmentFile = ref(null);
+const inputNameFirstKo = ref(null);
+const inputNameLastKo = ref(null);
 
-const inputNameCn = ref(null);
+const inputNameFirstCn = ref(null);
+const inputNameLastCn = ref(null);
 const inputNameFirstEn = ref(null);
 const inputNameLastEn = ref(null);
 const birthType = ref(null);
@@ -74,12 +76,14 @@ onMounted(() => {
 // 수정일 경우 초기 세팅
 const getDefaultValue = () => {
     changeSelectCategory1().then(() => {
-        inputName.value.value = modData.name_ko;
         selectShowYn.value.value = modData.show_yn;
         selectCategory2.value.value = modData.category_child_idx;
         selectPeopleType.value.value = modData.people_type_cd;
-
-        inputNameCn.value.value = modData.name_cn;
+        inputNameFirstKo.value.value = modData.name_first_ko;
+        inputNameLastKo.value.value = modData.name_last_ko;
+        
+        inputNameFirstCn.value.value = modData.name_first_cn;
+        inputNameLastCn.value.value = modData.name_last_cn;
         inputNameFirstEn.value.value = modData.name_first_en;
         inputNameLastEn.value.value = modData.name_last_en;
         birthType.value.value = modData.birth_type_cd;
@@ -440,12 +444,12 @@ const regArtist = () => {
         data = {
             ...model,
             showYn: selectShowYn.value.value,
-            nameFirstKo: inputName.value.value.substr(0, 1),
-            nameLastKo: inputName.value.value.substr(1),
+            nameFirstKo: inputNameFirstKo.value.value,
+            nameLastKo: inputNameLastKo.value.value,
             categoryIdx: selectCategory2.value.value,
             peopleType: selectPeopleType.value.value,
-            nameFirstCn: inputNameCn.value.value.substr(0, 1),
-            nameLastCn: inputNameCn.value.value.substr(1),
+            nameFirstCn: inputNameFirstCn.value.value,
+            nameLastCn: inputNameLastCn.value.value,
             nameFirstEn: inputNameFirstEn.value.value,
             nameLastEn: inputNameLastEn.value.value,
             birthType: birthType.value.value,
@@ -539,13 +543,13 @@ const modArtist = () => {
         data = {
             ...model,
             showYn: selectShowYn.value.value,
-            nameFirstKo: inputName.value.value.substr(0, 1),
-            nameLastKo: inputName.value.value.substr(1),
+            nameFirstKo: inputNameFirstKo.value.value,
+            nameLastKo: inputNameLastKo.value.value,
             categoryIdx: selectCategory2.value.value,
             peopleType: selectPeopleType.value.value,
             peopleIdx: modData.people_idx,
-            nameFirstCn: inputNameCn.value.value.substr(0, 1),
-            nameLastCn: inputNameCn.value.value.substr(1),
+            nameFirstCn: inputNameFirstCn.value.value,
+            nameLastCn: inputNameLastCn.value.value,
             nameFirstEn: inputNameFirstEn.value.value,
             nameLastEn: inputNameLastEn.value.value,
             birthType: birthType.value.value,
@@ -675,7 +679,7 @@ const requestList = () => {
 
 // 검증
 const validation = () => {
-    if (!inputName.value.value) {
+    if (!inputNameFirstKo.value.value || !inputNameLastKo.value.value) {
         CommonNotify({
             type: "alert",
             message: "이름을 입력해주세요",
@@ -727,26 +731,12 @@ const testBtn = () => {
                     <col width="35%">
                 </colgroup>
                 <tbody>
-                    <!-- <tr>
-                        <th>이름 <span class="red">*</span></th>
-                        <td>
-                            <input
-                                type="text"
-                                class="input w370"
-                                ref="inputName"
-                            />
-                        </td>
-                        <th>노출여부 <span class="red">*</span></th>
-                        <td>
-                            <select class="select wp100" ref="selectShowYn">
-                                <option value="Y">노출</option>
-                                <option value="N">비노출</option>
-                            </select>
-                        </td>
-                    </tr> -->
                     <tr>
-                        <th>카테고리 고유번호 <span class="red">*</span></th>
-                        <td><input type="email" class="input w370" autofocus></td>
+                        <th>이름(국문)<span class="red">*</span></th>
+                        <td>
+                            <input type="text" class="input w180" ref="inputNameFirstKo" placeholder="성">
+                            <input type="text" class="input w180" ref="inputNameLastKo" placeholder="이름">
+                        </td>
                         <th>노출여부 <span class="red">*</span></th>
                         <td>
                             <select class="select wp100" ref="selectShowYn">
@@ -806,10 +796,6 @@ const testBtn = () => {
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <th>이름(국문)<span class="red">*</span></th>
-                        <td colSpan="3"><input type="text" class="input w180" ref="inputName" placeholder="이름"></td>
-                    </tr>
                 </tbody>
             </table>
 
@@ -826,18 +812,14 @@ const testBtn = () => {
                     <tbody>
                         <tr>
                             <th>이름(한문)</th>
-                            <td colSpan="3">
-                                <input type="text" class="input w180" ref="inputNameCn" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>성(영문)</th>
                             <td>
-                                <input type="text" class="input w180" placeholder="First Name" ref="inputNameFirstEn" />
+                                <input type="text" class="input w180" ref="inputNameFirstCn" placeholder="First Name" />
+                                <input type="text" class="input w180" ref="inputNameLastCn" placeholder="Last Name" />
                             </td>
                             <th>이름(영문)</th>
                             <td>
-                                <input type="text" class="input w180" placeholder="Last Name" ref="inputNameLastEn" />
+                                <input type="text" class="input w180" ref="inputNameFirstEn" placeholder="First Name" />
+                                <input type="text" class="input w180" ref="inputNameLastEn" placeholder="Last Name" />
                             </td>
                         </tr>
                         <tr>

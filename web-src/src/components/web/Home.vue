@@ -218,7 +218,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
 
             for (const key in state.popupList) {
                 let popup = state.popupList[key];
-
+                
                 window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
             }
         } else {
