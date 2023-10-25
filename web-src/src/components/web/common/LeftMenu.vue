@@ -138,8 +138,9 @@ const getBoard = (board_idx) => {
 </script>
 
 <template>
+    <!-- 고객센터 -->
     <div>
-        <div id="subvisual" class="subvisual">
+        <div id="subvisual" class="subvisual_notice">
             <div class="sub_txt">
                 <h2 data-aos="fade-in" data-aos-duration="500">
                     고객센터
@@ -154,6 +155,26 @@ const getBoard = (board_idx) => {
                     <li v-if="state.board"><a :href="`${fileBaseUrl}${state.filePath}`">회사소개서 다운로드</a></li>
                     <li><a :href="routerPath.web_photo_url" :class="page === 'photo' ? 'on' : ''">포토 갤러리</a></li>
                     <li><a :href="routerPath.web_movie_url" :class="page === 'movie' ? 'on' : ''">영상 갤러리</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 교육서비스 -->
+    <div>
+        <div id="subvisual" class="subvisual_people">
+            <div class="sub_txt">
+                <h2 data-aos="fade-in" data-aos-duration="500">
+                    교육서비스
+                </h2>
+            </div>
+        </div>
+        <div id="leftmenu">
+            <div id="lnb">
+                <ul>
+                    <li><a :href="routerPath.web_people_url" :class="page === 'people' ? 'on' : ''">코치진</a></li>
+                    <li><a :href="routerPath.web_consulting_url" :class="page === 'consulting' ? 'on' : ''">Class 130 Category</a></li>
+                    <li v-if="state.board"><a :href="`${fileBaseUrl}${state.filePath}`">성장과정별 교육</a></li>
+                    <li><a :href="routerPath.web_photo_url" :class="page === 'photo' ? 'on' : ''">예정교육</a></li>
                 </ul>
             </div>
         </div>

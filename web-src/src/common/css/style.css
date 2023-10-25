@@ -150,20 +150,22 @@ a.more_btn:hover span {background: url('/img/web/main/arrow_btn.png') no-repeat 
 /* sub */
 #content {width: 1600px; margin:0 auto; padding:75px 0 130px;min-height:850px;}
 
-#subvisual {width:100%;height:300px;background:url('/img/web/sub/subvisual_01.jpg') center center no-repeat; position:relative;display: flex; }
+#subvisual {width:100%;height:300px;position:relative;display: flex; }
+#subvisual.subvisual_notice {background:url('/img/web/sub/subvisual_notice.jpg') center center no-repeat;}
+#subvisual.subvisual_people {background:url('/img/web/sub/subvisual_people.jpg') center center no-repeat;}
 .sub_txt {width:1600px; margin:0 auto;text-align:left;display: flex; align-items: center;}
 .sub_txt h2 {font-size: 38px; line-height: 60px; color: #fff; font-weight: 700;font-family: 'NanumSquareNeo-Variable';}
 
 #leftmenu #lnb {height: 70px;background-color: #3266B1;}
 #leftmenu #lnb ul{width: 1600px; margin:0 auto; text-align: left;display: flex;align-items: center;height: 100%;}
 #leftmenu #lnb ul li {display: flex; flex-direction: row; margin: 0 40px;}
-#leftmenu #lnb ul li a {display: block; color: #fff; font-size: 20px; font-weight: 600;
+#leftmenu #lnb ul li a {display: block; color: #B1C1D9; font-size: 20px; font-weight: 600;
     transition:all .3s;
     -webkit-transition:all .3s;
     -moz-transition:all .3s;
     -ms-transition:all .3s;
 -o-transition:all .3s;}
-#leftmenu #lnb ul li a:hover, #leftmenu #lnb ul li a.on {color: #B1C1D9}
+#leftmenu #lnb ul li a:hover, #leftmenu #lnb ul li a.on {color: #fff}
 
 #subtitle {text-align: center; margin: 0 0 55px;}
 #subtitle h2 {font-size: 34px; font-weight: 600;}
@@ -181,6 +183,9 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 /* .modal_content {display:none;} */
 /* 모달 //E */
 
+.pagenation {margin:80px 0 0;}
+
+
 .placeholder_Title_Big input {border: 1px solid #3266B1; outline: none; border-radius: 5px;margin: 5px 0;}
 a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; border-radius: 5px; display: inline-block;margin: 10px 3px 0;cursor: pointer;
     transition:all .3s;
@@ -192,3 +197,17 @@ a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; bo
 .btn_box a.btn01:hover {background: #efefef; color: #858585;}
 .btn_box a.btn02 {background:#a8a8a8;}
 .btn_box a.btn02:hover {background: #efefef; }
+
+
+/* 코치진 */
+.coach_title {font-size: 28px;font-weight: 700;color: #3266B1;margin:0 0 24px;}
+.coach_tab {display:flex;gap:20px;justify-content: center;margin:0 0 25px;}
+.coach_tab li a {border: 1px solid #DCDCDC;border-radius: 30px;padding: 0 40px;height:55px;line-height: 55px;color: #666666;display:block;}
+.coach_tab li a.on {background: #3266B1;border: 1px solid #3266B1;}
+.coach_box {display:flex;flex-wrap: wrap;gap:40px;}
+.coach {width: calc((100% - 120px ) /4);}
+.coach .coach_thumb .bg-thumb {background: url(/img/web/sub/dafault_full.jpg) center center no-repeat;background-size:cover;border-radius: 20px;}
+.coach .info {display:flex;align-items: flex-end;padding:20px;border-bottom: 2px solid #eee;transition:all 0.3s;}
+.coach:hover .info {border-bottom: 2px solid #3266B1;}
+.coach .info .name {font-size: 21px;font-weight: 500;margin:0 15px 0 0;line-height: 1;}
+.coach .info .position {color: #616161;font-size: 14px;line-height: 1;}
