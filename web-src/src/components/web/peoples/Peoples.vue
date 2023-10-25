@@ -90,16 +90,23 @@ const handleChange = (page_num) => {
     <div id="wrapper">
        <!-- 서브컨텐츠     //S-->
        <div id="container" class="sub_container">
-            <LeftMenu page="photo"/>
+            <LeftMenu page="people"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>코치진</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <div class="gallery_box" v-if="state.peopleList.length !== 0">
-                        <div class="col-md-3 gallery_thumb" v-for="people in state.peopleList">
+                    <ul class="coach_tab">
+                        <li><a href="">스포츠</a></li>
+                        <li><a href="">음악</a></li>
+                        <li><a href="">댄스/무용/바둑</a></li>
+                        <li><a href="">팀/아카데미</a></li>
+                    </ul>
+                    <h3 class="coach_title">스포츠</h3>
+                    <div class="coach_box" v-if="state.peopleList.length !== 0">
+                        <div class="coach" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_people_url}/${people.people_idx}`">
-                                <div class="thumbnail">
+                                <div class="coach_thumb">
                                     <div v-if="people.file_path_enc" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
                                         <span></span>
                                     </div>
@@ -107,10 +114,8 @@ const handleChange = (page_num) => {
                                     <div class="caption">
                                         <p>{{people.subject}}</p>
                                         <div class="info">
-                                            <span>{{ people.name_ko }}</span>
-                                            <span>{{ people.category_parent_name_ko }} / {{ people.category_child_name_ko }}</span>
-                                            <!-- <span class="datetime">{{people.reg_dttm}}</span> -->
-                                            <!-- <span class="hits">조회수 : {{people.view_count}}</span> -->
+                                            <p class="name">{{ people.name_ko }}</p>
+                                            <span class="position">{{ people.category_parent_name_ko }} / {{ people.category_child_name_ko }}</span>
                                         </div>
                                     </div>
                                 </div>
