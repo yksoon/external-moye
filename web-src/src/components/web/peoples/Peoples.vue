@@ -90,7 +90,6 @@ const handleChange = (page_num) => {
     <div id="wrapper">
        <!-- 서브컨텐츠     //S-->
        <div id="container" class="sub_container">
-            <LeftMenu page="photo"/>
             <div id="content">
                 <div id="subtitle">
                     <h2>코치진</h2>
