@@ -303,7 +303,6 @@ const modHistory = () => {
 
             const responsLogic = (res) => {
                 let result_code = res.headers.result_code;
-                let result_message_ko = res.headers.result_message_ko;
 
                 if (result_code === successCode.success) {
                     CommonSpinner(false);
@@ -312,13 +311,6 @@ const modHistory = () => {
                         type: "alert",
                         message: "연혁 정보 수정이 완료 되었습니다",
                         callback: () => requestList(),
-                    });
-                } else if (result_code === successCode.duplication) {
-                    CommonSpinner(false);
-
-                    CommonNotify({
-                        type: "alert",
-                        message: result_message_ko,
                     });
                 } else {
                     CommonSpinner(false);
@@ -642,7 +634,7 @@ const validation = () => {
                     <tr>
                         <th>해당연도 <span class="red">*</span></th>
                         <td>
-                            <select class="select w100" v-model="inputYear">
+                            <select class="select w100" v-model="inputYear" v-if="!isModData">
                                 <option
                                     v-if="state.targetYearOption !== 0"
                                     v-for="item in state.targetYearOption"
@@ -651,7 +643,7 @@ const validation = () => {
                                     {{ item }}
                                 </option>
                             </select>
-                            연도
+                            <div v-else>{{ inputYear }} 연도</div>
                         </td>
                         <th>노출여부 <span class="red">*</span></th>
                         <td>
@@ -771,25 +763,41 @@ const validation = () => {
                     <tr>
                         <th>시작일</th>
                         <td>
-                            <input
+                            <!-- <input
                                 type="month"
                                 class="input wp80"
                                 ref="startDate"
                                 id="startDate"
                                 :value="item.startDate"
                                 @change="(e) => handleHistoryInput(e, item.idx)"
-                            />
+                            /> -->
+                            <select class="select w100" ref="startDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                                <option
+                                    v-for="item in 12"
+                                    :value="item"
+                                >
+                                    {{ item }} 월
+                                </option>
+                            </select>
                         </td>
                         <th>종료일</th>
                         <td>
-                            <input
+                            <!-- <input
                                 type="month"
                                 class="input wp80"
                                 ref="endDate"
                                 id="endDate"
                                 :value="item.endDate"
                                 @change="(e) => handleHistoryInput(e, item.idx)"
-                            />
+                            /> -->
+                            <select class="select w100" ref="endDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                                <option
+                                    v-for="item in 12"
+                                    :value="item"
+                                >
+                                    {{ item }} 월
+                                </option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
