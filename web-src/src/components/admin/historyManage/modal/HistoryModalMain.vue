@@ -21,6 +21,8 @@ const props = defineProps({
     handleNeedUpdate: Function,
 });
 
+const month = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+
 const modData = props.modData;
 const isModData = modData
     ? Object.keys(modData).length !== 0
@@ -250,7 +252,7 @@ const modHistory = () => {
                 ...model,
                 historyIdx: modData.history_idx,
                 showYn: selectShowYn.value.value,
-                targetYear: inputYear.value,
+                targetYear: modData.target_year,
                 targetMemo: inputMemo.value.value,
                 // detailInfo: state.historyList
             };
@@ -771,9 +773,10 @@ const validation = () => {
                                 :value="item.startDate"
                                 @change="(e) => handleHistoryInput(e, item.idx)"
                             /> -->
-                            <select class="select w100" ref="startDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                            <select class="select w100" id="startDate" ref="startDate" :value="item.startDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                                <option value="">월 선택</option>
                                 <option
-                                    v-for="item in 12"
+                                    v-for="item in month"
                                     :value="item"
                                 >
                                     {{ item }} 월
@@ -790,9 +793,10 @@ const validation = () => {
                                 :value="item.endDate"
                                 @change="(e) => handleHistoryInput(e, item.idx)"
                             /> -->
-                            <select class="select w100" ref="endDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                            <select class="select w100" id="endDate" ref="endDate" :value="item.endDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                                <option value="">월 선택</option>
                                 <option
-                                    v-for="item in 12"
+                                    v-for="item in month"
                                     :value="item"
                                 >
                                     {{ item }} 월
