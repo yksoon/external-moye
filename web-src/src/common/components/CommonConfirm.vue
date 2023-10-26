@@ -39,10 +39,10 @@ export default {
     <v-dialog width="500" v-model="isOpen">
         <v-card>
             <v-card-title v-if="title">{{
-                decodeURI(title).replace("%20", " ")
+                decodeURI(title).replaceAll("%20", " ")
             }}</v-card-title>
             <v-card-text>{{
-                decodeURI(message).replace("%20", " ")
+                decodeURI(message).replaceAll("%20", " ")
             }}</v-card-text>
 
             <v-card-actions>

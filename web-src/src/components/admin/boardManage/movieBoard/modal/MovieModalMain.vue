@@ -25,7 +25,8 @@ const selectShowYn = ref(null);
 const inputTitle = ref(null);
 const inputSubTitle = ref(null);
 const inputContent = ref(null);
-const inputAttachmentFile = ref(null);
+const selectAttachmentMethod = ref(null);
+const inputAttachmentFile = ref('link');
 
 const state = reactive({
     fileList: [],
@@ -63,20 +64,20 @@ const handleClose = () => {
 };
 
 // 파일 첨부시
-// const attachFile = (input) => {
-//     const maxFileCnt = 5; // 첨부파일 최대 개수
+const attachFile = (input) => {
+    const maxFileCnt = 5; // 첨부파일 최대 개수
 
-//     if (input.files.length > maxFileCnt) {
-//         CommonNotify({
-//             type: "alert",
-//             message: "파일은 5개까지 업로드 가능합니다.",
-//         });
+    if (input.files.length > maxFileCnt) {
+        CommonNotify({
+            type: "alert",
+            message: "파일은 5개까지 업로드 가능합니다.",
+        });
 
-//         input.value = "";
+        input.value = "";
 
-//         return false;
-//     }
-// };
+        return false;
+    }
+};
 
 // 등록
 const regBoard = () => {
@@ -105,11 +106,11 @@ if (validation()) {
     }
 
     // 파일 formData append
-    // fileArr = Array.from(inputAttachmentFile.value.files);
-    // let len = fileArr.length;
-    // for (let i = 0; i < len; i++) {
-    //     formData.append("attachmentFile", fileArr[i]);
-    // }
+    fileArr = Array.from(inputAttachmentFile.value.files);
+    let len = fileArr.length;
+    for (let i = 0; i < len; i++) {
+        formData.append("attachmentFile", fileArr[i]);
+    }
 
     const responsLogic = (res) => {
         let result_code = res.headers.result_code;
@@ -240,22 +241,6 @@ const validation = () => {
         return false;
     }
 
-    if (!inputSubTitle.value.value) {
-        CommonNotify({
-            type: "alert",
-            message: "부제목을 입력해주세요",
-            callback: () => callbackLogic(),
-        });
-
-        const callbackLogic = () => {
-            setTimeout(() => {
-                inputSubTitle.value.focus();
-            }, 0);
-        };
-
-        return false;
-    }
-
     if (!inputContent.value.value) {
         CommonNotify({
             type: "alert",
@@ -314,16 +299,15 @@ const validation = () => {
                         />
                     </td>
                 </tr>
-                <!-- <tr>
-                    <th>영상 링크 <span class="red">*</span></th>
+                <tr>
+                    <th>첨부방식 <span class="red">*</span></th>
                     <td>
-                        <input
-                            type="text"
-                            class="input wp100"
-                            ref=""
-                        />
+                        <select class="wp100" v-model="selectAttachmentMethod">
+                            <option value="link" selected>링크첨부</option>
+                            <option value="file">파일첨부</option>
+                        </select>
                     </td>
-                </tr> -->
+                </tr>
                 <tr>
                     <th>영상링크 <span class="red">*</span></th>
                     <td>
@@ -334,34 +318,11 @@ const validation = () => {
                         />
                         <span>예시) https://www.youtube.com/watch?v=<span class="red"><b>lrmDoJkZjns</b></span></span>
                         <div>주소창에서 빨간표시 부분만 복사하여 입력해주시면 됩니다.</div>
+                        <!-- <div>{{ selectAttachmentMethod.value }}</div> -->
                     </td>
                 </tr>
-                <tr v-if="modData">
-                    <th>영상</th>
-                    <td>
-                        <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${modData.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </td>
-                </tr>
-                <tr v-if="modData">
-                    <th>조회수</th>
-                    <td>
-                        {{ modData.view_count }}
-                    </td>
-                </tr>
-                <tr v-if="modData">
-                    <th>등록자</th>
-                    <td>
-                        {{ modData.reg_user_name_ko }}
-                    </td>
-                </tr>
-                <tr v-if="modData">
-                    <th>등록일</th>
-                    <td>
-                        {{ modData.reg_dttm }}
-                    </td>
-                </tr>
-                <!-- <tr>
-                    <th>파일첨부</th>
+                <tr>
+                    <th>파일첨부 <span class="red">*</span></th>
                     <td class="fileicon">
                         <div style="margin-bottom: 5">
                             <b>
@@ -391,7 +352,32 @@ const validation = () => {
                             </div>
                         </div>
                     </td>
-                </tr> -->
+                </tr>
+                <tr v-if="modData">
+                    <th>영상</th>
+                    <td>
+                        <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${modData.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </td>
+                </tr>
+                <tr v-if="modData">
+                    <th>조회수</th>
+                    <td>
+                        {{ modData.view_count }}
+                    </td>
+                </tr>
+                <tr v-if="modData">
+                    <th>등록자</th>
+                    <td>
+                        {{ modData.reg_user_name_ko }}
+                    </td>
+                </tr>
+                <tr v-if="modData">
+                    <th>등록일</th>
+                    <td>
+                        {{ modData.reg_dttm }}
+                    </td>
+                </tr>
+                
             </tbody>
         </table>
         <div class="btn_box">

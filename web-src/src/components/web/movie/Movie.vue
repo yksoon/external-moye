@@ -94,6 +94,9 @@ const getBoardDetail = () => {
                             <tr>
                                 <th colspan="3">{{ state.board.subject }}</th>
                             </tr>
+                            <tr v-if="state.board.sub_title">
+                                <th colspan="3">{{ state.board.sub_title }}</th>
+                            </tr>
                             <tr>
                                 <td colspan="3">
                                     <ul>

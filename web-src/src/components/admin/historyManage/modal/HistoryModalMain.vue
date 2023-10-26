@@ -79,8 +79,6 @@ onMounted(() => {
     isModData && getDefaultValue();
 
     inputYear.value = state.targetYearOption !== 0 && nowYear;
-
-    console.log(inputYear.value);
 });
 
 // const setDefaultYear = () => {
@@ -190,6 +188,8 @@ const regHistory = () => {
 
         const responsLogic = (res) => {
             let result_code = res.headers.result_code;
+            let result_message_ko = res.headers.result_message_ko;
+            
             if (result_code === successCode.success) {
                 CommonSpinner(false);
 
@@ -197,6 +197,13 @@ const regHistory = () => {
                     type: "alert",
                     message: "연혁 정보 등록이 완료 되었습니다",
                     callback: () => requestList(),
+                });
+            } else if (result_code === successCode.duplication) {
+                CommonSpinner(false);
+
+                CommonNotify({
+                    type: "alert",
+                    message: result_message_ko,
                 });
             } else {
                 CommonSpinner(false);
@@ -296,6 +303,8 @@ const modHistory = () => {
 
             const responsLogic = (res) => {
                 let result_code = res.headers.result_code;
+                let result_message_ko = res.headers.result_message_ko;
+
                 if (result_code === successCode.success) {
                     CommonSpinner(false);
 
@@ -303,6 +312,13 @@ const modHistory = () => {
                         type: "alert",
                         message: "연혁 정보 수정이 완료 되었습니다",
                         callback: () => requestList(),
+                    });
+                } else if (result_code === successCode.duplication) {
+                    CommonSpinner(false);
+
+                    CommonNotify({
+                        type: "alert",
+                        message: result_message_ko,
                     });
                 } else {
                     CommonSpinner(false);
@@ -487,8 +503,6 @@ const handleHistoryInput = (e, idx) => {
     const id = e.target.id;
     const value = e.target.value;
 
-    console.log("1111111111", idx);
-
     // 수정 할 오브젝트 추출
     let newObj = state.historyList.filter((el) => el.idx === idx)[0];
 
@@ -533,58 +547,6 @@ const handleHistoryInput = (e, idx) => {
     });
 
     state.historyList = list;
-
-    console.log(state.historyList);
-};
-
-// 인물 프로필 셀렉트 박스 선택 이벤트
-const handleProfileType = (e, historyIdx) => {
-    const val = e.target.value;
-
-    if (state.historyList.filter((el) => el.title === val).length !== 0) {
-        // CommonNotify({
-        //     type: "alert",
-        //     message: "이미 선택하였습니다. 선택된 항목에서 추가해주세요",
-        // });
-
-        if (
-            state.selectedProfile.filter((el) => el.parentIdx === sectionIdx)
-                .length !== 0
-        ) {
-            e.target.value = state.selectedProfile.filter(
-                (el) => el.parentIdx === sectionIdx
-            )[0].profileType;
-        } else {
-            e.target.value = "";
-        }
-    } else {
-        for (let i = 0; i < state.profileSection.length; i++) {
-            if (state.profileSection[i].idx === sectionIdx) {
-                state.profileSection[i].sectionValue = val;
-            }
-        }
-
-        for (let i = 0; i < state.selectedProfile.length; i++) {
-            if (state.selectedProfile[i].parentIdx === sectionIdx) {
-                state.selectedProfile[i].profileType = val;
-            }
-        }
-
-        if (
-            state.selectedProfile.filter((el) => el.parentIdx === sectionIdx)
-                .length === 0
-        ) {
-            state.selectedProfile = [
-                ...state.selectedProfile,
-                {
-                    parentIdx: sectionIdx,
-                    profileType: val,
-                    profileContent: "",
-                    inputIdx: 1,
-                },
-            ];
-        }
-    }
 };
 
 // input 추가/삭제
@@ -651,25 +613,21 @@ const validation = () => {
         return false;
     }
 
-    // if (!isModData) {
-    //     if (inputAttachmentFile.value.files.length === 0) {
-    //         CommonNotify({
-    //             type: "alert",
-    //             message: "한가지 이상의 이미지를 첨부해주세요",
-    //         });
-    //         return false;
-    //     }
-    // }
-    if (state.historyList.length === 0) {
-        CommonNotify({
-            type: "alert",
-            message: "한개 이상의 연혁을 추가해주세요",
-        });
-        return false;
-    }
+    state.historyList.forEach((item, idx) => {
+        if (!item.inputTitle.length) {
+            CommonNotify({
+                type: "alert",
+                message: "연혁 제목을 입력해주세요",
+            });
+            return false;
+        }
+    });
 
     return true;
 };
+
+// DatePicker
+
 </script>
 <template>
     <div class="admin">

@@ -10,6 +10,7 @@ const errorCode = {
 
 const successCode = {
     success: "0000", // 성공
+    duplication: "1008", // 데이터 중복
     noData: "9997", // 데이터 없음
 };
 
