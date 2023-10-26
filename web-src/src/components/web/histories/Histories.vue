@@ -147,18 +147,18 @@ const getHistoryDetail = (history_idx) => {
                         <div class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
                             <ul class="month">
-                                <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
+                               <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
                                     v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)"
                                     style="display: flex;justify-content:space-around;"
                                 >
-                                    <div>
-                                        <h6 v-if="history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }} 월</h6>
-                                        <h6 v-else>{{ history.end_date }}월</h6>
-                                        <p>{{ history.title }}</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                                <div>
+                                    <h6 v-if="history.start_date && history.end_date && history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }} 월</h6>
+                                    <h6 v-if="!history.start_date && !history.end_date"></h6>
+                                    <h6 v-else>{{ history.start_date ? history.start_date : history.end_date }} 월</h6>
+                                    <p>{{ history.title }}</p>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <div v-if="state.historyInfo.length === 0">
                         데이터가 없습니다.
