@@ -94,12 +94,12 @@ export default {
                     method: "post",
                     url: url,
                     data: data,
-                    callback: (res) => responsLogic(res),
+                    callback: (res) => responseLogic(res),
                     admin: "Y",
                 };
                 CommonRest(restParams);
 
-                const responsLogic = (res) => {
+                const responseLogic = (res) => {
                     // response
                     let result_code = res.headers.result_code;
 

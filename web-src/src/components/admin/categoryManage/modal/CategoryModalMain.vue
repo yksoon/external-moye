@@ -72,7 +72,7 @@ if (validation()) {
     };
 
     
-    const responsLogic = (res) => {
+    const responseLogic = (res) => {
         let result_code = res.headers.result_code;
         if (result_code === successCode.success) {
             CommonSpinner(false);
@@ -97,7 +97,7 @@ if (validation()) {
         url: apiPath.api_admin_reg_category, // /v1/people/category
         data: data,
         admin: "Y",
-        callback: (res) => responsLogic(res),
+        callback: (res) => responseLogic(res),
     };
 
     CommonRest(restParams);
@@ -121,7 +121,7 @@ const modCategory = () => {
             category_name_ko: inputTitle.value.value,
         };
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);
@@ -150,7 +150,7 @@ const modCategory = () => {
             url: apiPath.api_admin_mod_category, // /v1/people/category
             data: data,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);

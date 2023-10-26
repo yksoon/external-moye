@@ -44,7 +44,7 @@ const passwordCheck = () => {
             board_idx: board_idx,
         };
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_info = res.data.result_info;
 
             if (result_info === true) {
@@ -63,7 +63,7 @@ const passwordCheck = () => {
             url: url, // /v1/board/_confirm
             data: data,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);

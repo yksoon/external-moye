@@ -96,7 +96,7 @@ const regPopup = () => {
             end_date: endTime.value.value ? endDate.value.value + ' ' + endTime.value.value : endDate.value.value + ' 23:59',
         };
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);
@@ -121,7 +121,7 @@ const regPopup = () => {
             url: apiPath.api_admin_reg_popup, // /v1/popup
             data: data,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);
@@ -159,7 +159,7 @@ const modPopup = () => {
         //     formData.append(key, data[key]);
         // }
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);
@@ -188,7 +188,7 @@ const modPopup = () => {
             url: apiPath.api_admin_mod_popup, // /v1/popup
             data: data,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);

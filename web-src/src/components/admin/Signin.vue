@@ -80,7 +80,7 @@ export default {
             };
 
             // 처리 완료 후 로직
-            const responsLogic = (res) => {
+            const responseLogic = (res) => {
                 let result_code = res.headers.result_code;
 
                 if (result_code === successCode.success) {
@@ -126,7 +126,7 @@ export default {
                 method: "post",
                 url: url,
                 data: data,
-                callback: (res) => responsLogic(res),
+                callback: (res) => responseLogic(res),
                 admin: "Y",
             };
 

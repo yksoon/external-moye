@@ -186,13 +186,13 @@ const getCategories = (pageNum, pageSize) => {
         method: "post",
         url: url,
         data: data,
-        callback: (res) => responsLogic(res),
+        callback: (res) => responseLogic(res),
         admin: "Y",
     };
     CommonRest(restParams);
 
     // 완료 로직
-    const responsLogic = (res) => {
+    const responseLogic = (res) => {
         let result_code = res.headers.result_code;
 
         // 성공
@@ -497,7 +497,7 @@ const regArtist = () => {
             }
         });
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);
@@ -522,7 +522,7 @@ const regArtist = () => {
             url: apiPath.api_admin_reg_people, // /v1/people
             data: formData,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);
@@ -597,7 +597,7 @@ const modArtist = () => {
             }
         });
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);
@@ -625,7 +625,7 @@ const modArtist = () => {
             url: apiPath.api_admin_mod_people, // /v1/people
             data: formData,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);
@@ -650,12 +650,12 @@ const removeArtist = () => {
             method: "delete",
             url: url,
             data: data,
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
             admin: "Y",
         };
         CommonRest(restParams);
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             if (res.headers.result_code === successCode.success) {
                 CommonSpinner(false);
 

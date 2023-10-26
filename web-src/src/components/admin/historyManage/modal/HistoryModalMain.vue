@@ -188,7 +188,7 @@ const regHistory = () => {
             }
         });
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             let result_message_ko = res.headers.result_message_ko;
             
@@ -222,7 +222,7 @@ const regHistory = () => {
             url: apiPath.api_admin_reg_history, // /v1/history
             data: formData,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);
@@ -298,12 +298,12 @@ const modHistory = () => {
                 url: apiPath.api_admin_mod_history, // /v1/history
                 data: formData,
                 admin: "Y",
-                callback: (res) => responsLogic(res),
+                callback: (res) => responseLogic(res),
             };
 
             CommonRest(restParams);
 
-            const responsLogic = (res) => {
+            const responseLogic = (res) => {
                 let result_code = res.headers.result_code;
 
                 if (result_code === successCode.success) {
@@ -350,13 +350,13 @@ const removeHistory = () => {
             method: "delete",
             url: url,
             data: data,
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
             admin: "Y",
         };
 
         CommonRest(restParams);
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             if (res.headers.result_code === successCode.success) {
                 CommonSpinner(false);
 
@@ -765,14 +765,6 @@ const validation = () => {
                     <tr>
                         <th>시작일</th>
                         <td>
-                            <!-- <input
-                                type="month"
-                                class="input wp80"
-                                ref="startDate"
-                                id="startDate"
-                                :value="item.startDate"
-                                @change="(e) => handleHistoryInput(e, item.idx)"
-                            /> -->
                             <select class="select w100" id="startDate" ref="startDate" :value="item.startDate" @change="(e) => handleHistoryInput(e, item.idx)">
                                 <option value="">월 선택</option>
                                 <option
@@ -785,14 +777,6 @@ const validation = () => {
                         </td>
                         <th>종료일</th>
                         <td>
-                            <!-- <input
-                                type="month"
-                                class="input wp80"
-                                ref="endDate"
-                                id="endDate"
-                                :value="item.endDate"
-                                @change="(e) => handleHistoryInput(e, item.idx)"
-                            /> -->
                             <select class="select w100" id="endDate" ref="endDate" :value="item.endDate" @change="(e) => handleHistoryInput(e, item.idx)">
                                 <option value="">월 선택</option>
                                 <option

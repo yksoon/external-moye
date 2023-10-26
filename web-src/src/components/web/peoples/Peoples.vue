@@ -8,9 +8,14 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from '@/webPath';
+import { useRoute } from "vue-router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
+
+const route = useRoute();
+
+const peopleIdx = route.params.people;
 
 const searchKeyword = ref(null);
 const state = reactive({
@@ -36,6 +41,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
+        category_idx: 1,
         show_yn: "Y"
     };
 
@@ -44,13 +50,13 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         method: "post",
         url: url,
         data: data,
-        callback: (res) => responsLogic(res),
+        callback: (res) => responseLogic(res),
         admin: "Y",
     };
     CommonRest(restParams);
 
     // 완료 로직
-    const responsLogic = (res) => {
+    const responseLogic = (res) => {
         let result_code = res.headers.result_code;
 
         // 성공
@@ -63,8 +69,6 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 
             state.peopleList = result_info;
             state.pageInfo = page_info;
-
-            console.log(result_info);
 
             CommonSpinner(false);
         } else {
