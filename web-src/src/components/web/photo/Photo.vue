@@ -88,20 +88,15 @@ const getBoardDetail = () => {
                 <div id="subtitle">
                     <h2>포토 갤러리</h2>
                 </div>
-                <div data-aos-duration="1000" data-aos-delay="400">
-                    <table class="board_Vtable" v-if="state.board">
-                        <colgroup>
-                            <col width="18%">
-                            <col width="*">
-                            <col width="*">
-                        </colgroup>
+                <div class="gallery_view" data-aos-duration="1000" data-aos-delay="400">
+                    <table v-if="state.board">
                         <thead>
                             <tr>
-                                <th colspan="3">{{ state.board.subject }}</th>
+                                <th class="gallery_title">{{ state.board.subject }}</th>
                             </tr>
                             <tr>
-                                <td colspan="3">
-                                    <ul>
+                                <td>
+                                    <ul class="gallery_info">
                                         <li>{{ state.board.reg_user_name_ko }}</li>
                                         <li class="imbar">|</li>
                                         <li>조회수 {{ state.board.view_count }}</li>
@@ -140,31 +135,29 @@ const getBoardDetail = () => {
                         </thead>
                         <tbody>
                             <tr style="border-bottom: none;">
-                                <td colspan=3
+                                <td 
                                     v-if="state.board.file_info.length !== 0"
                                     v-for="item in state.board.file_info"
                                 >
-                                    <div class="board_content">
+                                    <div class="gallery_content">
                                         <img :src="`${fileBaseUrl}${item.file_path_enc}`" :alt="item.file_name">
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan=3>
-                                    <div class="board_content">
+                                <td>
+                                    <div class="gallery_content">
                                         {{ state.board.content }}
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="board_btn_wrap">
-                        <div class="boardW_btn">
-                            <a :href="routerPath.web_photo_url" class="back_btn">목록
+                    <div class="detail_btn_wrap">
+                            <a :href="routerPath.web_photo_url" class="detail_btn">목록
                             </a>
                             <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
                             <span class="back_btn"><?=$btn_link['update']?></span> -->
-                        </div>
                     </div>
                 </div>
             </div>

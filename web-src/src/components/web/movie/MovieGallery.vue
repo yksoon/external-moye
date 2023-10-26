@@ -99,19 +99,18 @@ const handleChange = (page_num) => {
                     <h2>영상 갤러리</h2>
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <div class="gallery_box" v-if="state.boardList.length !== 0">
-                        <div class="col-md-3 gallery_thumb" v-for="board in state.boardList">
+                    <div class="movie_wrap" v-if="state.boardList.length !== 0">
+                        <div class="movie" v-for="board in state.boardList">
                             <a :href="`${routerPath.web_movie_url}/${board.board_idx}`">
-                                <div class="thumbnail">
+                                <div class="thumb">
                                     <div v-if="board.content" :style="`background-image:url('https://img.youtube.com/vi/${board.content}/0.jpg'); background-size:cover;`" class="bg-thumb">
                                         <span></span>
                                     </div>
                                     <div v-else  class="bg-thumb"></div>
-                                    <div class="caption">
+                                    <div class="title">
                                         <p>{{board.subject}}</p>
                                         <div class="info">
                                             <span class="datetime">{{board.reg_dttm}}</span>
-                                            <span class="hits">조회수 : {{board.view_count}}</span>
                                         </div>
                                     </div>
                                 </div>

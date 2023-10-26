@@ -267,3 +267,38 @@ a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; bo
 .detail_btn {display:inline-block;margin:0 auto;border: 1px solid #ddd;color: #9e9e9e;border-radius: 50px;line-height:52px;padding:0 60px;font-size: 16px;}
 .detail_btn:hover {background: #ddd;}
 
+/* 갤러리 */
+.gallery_wrap {display:flex;flex-wrap: wrap;gap:40px;}
+.gallery {width: calc(( 100% - 120px ) / 4 );}
+.gallery .bg-thumb {border-radius: 20px;}
+.gallery .bg-thumb {height:260px;}
+.gallery .title {padding:20px 10px;}
+.gallery .title p {font-size: 21px;font-weight: 600;color: #111;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin: 0 0 10px 0;}
+.gallery .title .datetime {font-size: 16px;color: #818181;font-weight: 400;}
+.gallery:hover .title p {color: #3266B1;}
+
+.gallery_view {border-top: 1px solid #111;}
+.gallery_view .gallery_content img {max-width:100%;margin:0 auto;}
+.gallery_view .gallery_title {text-align: center;background: none;color: #111;font-size: 32px;font-weight: 600;padding:24px 0 8px;}
+.gallery_view .gallery_subtitle {color: #616161;font-size: 21px;font-weight: 400;}
+.gallery_view .gallery_info {display:flex;justify-content: center;padding:0 0 36px;border-bottom: 1px solid #ddd;margin:0 0 40px;}
+.gallery_view .gallery_info li {padding:0 10px;}
+
+
+/* 동영상갤러리 */
+.movie_wrap {display:flex;flex-wrap: wrap;gap:40px;}
+.movie {width: calc(( 100% - 40px ) / 2 );}
+.movie .bg-thumb {border-radius: 20px;}
+.movie .bg-thumb {height:320px;}
+.movie .title {padding:20px 10px;}
+.movie .title p {font-size: 21px;font-weight: 600;color: #111;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin: 0 0 10px 0;}
+.movie .title .datetime {font-size: 16px;color: #818181;font-weight: 400;}
+.movie:hover .title p {color: #3266B1;}
+
+.movie_view {border-top: 1px solid #111;}
+.movie_view .movie_content iframe {width:100%;height:820px;}
+.movie_view .movie_title {text-align: center;background: none;color: #111;font-size: 32px;font-weight: 600;padding:24px 0 8px;}
+.movie_view .movie_subtitle {color: #616161;font-size: 21px;font-weight: 400;}
+.movie_view .movie_info {display:flex;justify-content: center;padding:0 0 36px;border-bottom: 1px solid #ddd;margin:0 0 40px;}
+.movie_view .movie_info li {padding:0 10px;}
+

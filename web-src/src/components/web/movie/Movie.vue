@@ -83,8 +83,8 @@ const getBoardDetail = () => {
                 <div id="subtitle">
                     <h2>영상 갤러리</h2>
                 </div>
-                <div data-aos-duration="1000" data-aos-delay="400">
-                    <table class="board_Vtable" v-if="state.board">
+                <div class="movie_view" data-aos-duration="1000" data-aos-delay="400">
+                    <table v-if="state.board">
                         <colgroup>
                             <col width="18%">
                             <col width="*">
@@ -92,14 +92,11 @@ const getBoardDetail = () => {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3">{{ state.board.subject }}</th>
-                            </tr>
-                            <tr v-if="state.board.sub_title">
-                                <th colspan="3">{{ state.board.sub_title }}</th>
+                                <th colspan="3" class="movie_title">{{ state.board.subject }} <span class="movie_subtitle" v-if="state.board.sub_title">{{ state.board.sub_title }}</span></th>
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <ul>
+                                    <ul class="movie_info">
                                         <li>{{ state.board.reg_user_name_ko }}</li>
                                         <li class="imbar">|</li>
                                         <li>조회수 {{ state.board.view_count }}</li>
@@ -126,18 +123,16 @@ const getBoardDetail = () => {
                         <tbody>
                             <tr>
                                 <td colspan=3>
-                                    <div class="board_content" style="display: flex; justify-content: center; align-items:center;">
-                                        <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${state.board.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    <div class="movie_content" style="display: flex; justify-content: center; align-items:center;">
+                                        <iframe  :src="`https://www.youtube.com/embed/${state.board.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="board_btn_wrap">
-                        <div class="boardW_btn">
-                            <a :href="routerPath.web_movie_url" class="back_btn">목록
+                    <div class="detail_btn_wrap">
+                            <a :href="routerPath.web_movie_url" class="detail_btn">목록
                             </a>
-                        </div>
                     </div>
                 </div>
             </div>
