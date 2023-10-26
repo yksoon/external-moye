@@ -151,8 +151,9 @@ const getHistoryDetail = (history_idx) => {
                                 style="display: flex;justify-content:space-around;"
                             >
                                 <div>
-                                    <h6 v-if="history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }} 월</h6>
-                                    <h6 v-else>{{ history.end_date }}월</h6>
+                                    <h6 v-if="history.start_date && history.end_date && history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }} 월</h6>
+                                    <h6 v-if="!history.start_date && !history.end_date"></h6>
+                                    <h6 v-else>{{ history.start_date ? history.start_date : history.end_date }} 월</h6>
                                     <p>{{ history.title }}</p>
                                 </div>
                             </li>
