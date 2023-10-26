@@ -144,19 +144,21 @@ const getHistoryDetail = (history_idx) => {
                 </div>
                 <div class="history" data-aos-duration="1000" data-aos-delay="400">
                     <div v-if="state.historyInfo.length !== 0">
-                        <ul v-for="target in state.historyTarget">
+                        <div class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
-                            <li class="month" v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
-                                v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)"
-                                style="display: flex;justify-content:space-around;"
-                            >
-                                <div>
-                                    <h6 v-if="history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }} 월</h6>
-                                    <h6 v-else>{{ history.end_date }}월</h6>
-                                    <p>{{ history.title }}</p>
-                                </div>
-                            </li>
-                        </ul>
+                            <ul class="month">
+                                <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
+                                    v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)"
+                                    style="display: flex;justify-content:space-around;"
+                                >
+                                    <div>
+                                        <h6 v-if="history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }} 월</h6>
+                                        <h6 v-else>{{ history.end_date }}월</h6>
+                                        <p>{{ history.title }}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div v-if="state.historyInfo.length === 0">
                         데이터가 없습니다.

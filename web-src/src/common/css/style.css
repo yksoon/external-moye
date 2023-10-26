@@ -199,6 +199,12 @@ a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; bo
 .btn_box a.btn02:hover {background: #efefef; }
 
 
+/* 연혁 */
+.history_box {display:flex;}
+.history .year {width:50%;font-size: 64px;font-weight: 900;color: #DEDEDE;text-align: right;}
+.history .month {width:50%;}
+
+
 /* 코치진 */
 .people_title {font-size:30px;font-weight: 500;color: #3266B1;margin:0 0 30px;}
 .people_tab {display:flex;gap:20px;justify-content: center;margin:0 0 25px;}
