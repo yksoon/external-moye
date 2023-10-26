@@ -15,9 +15,10 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 const route = useRoute();
 
+const peopleIdx = route.params.people;
+
 const searchKeyword = ref(null);
 const state = reactive({
-    peopleData: [],
     peopleList: [],
     pageInfo: {},
 });
@@ -40,6 +41,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
+        category_idx: 1,
         show_yn: "Y"
     };
 
@@ -65,12 +67,8 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
             let result_info = res.data.result_info;
             let page_info = res.data.page_info;
 
-            state.peopleData = result_info;
+            state.peopleList = result_info;
             state.pageInfo = page_info;
-
-            if (state.peopleData.length !== 0) {
-                peopleCategorySort(state.peopleData);
-            }
 
             CommonSpinner(false);
         } else {
@@ -80,50 +78,6 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
             CommonSpinner(false);
         }
     };
-};
-
-// 인물 목록 카테고리별 정렬
-const peopleCategorySort = (peopleData) => {
-    const defaultData = peopleData;
-    const defaultDataLength = defaultData.length;
-
-    if (defaultData) {
-        for (let i = 0; i < defaultDataLength; i++) {
-            if (
-                state.profileSection.filter(
-                    (el) =>
-                        el.sectionCode === defaultData[i].profile_type_cd
-                ).length === 0
-            ) {
-                state.profileSection = [
-                    ...state.profileSection,
-                    { idx: i, sectionCode: defaultData[i].profile_type_cd, sectionValue: defaultData[i].profile_type },
-                ];
-            }
-        }
-
-        for (let i = 0; i < defaultDataLength; i++) {
-            if (
-                state.profileSection.filter(
-                    (el) =>
-                        el.sectionCode === defaultData[i].profile_type_cd
-                ).length !== 0
-            ) {
-                const parentObj = state.profileSection.filter(
-                    (el) =>
-                        el.sectionCode === defaultData[i].profile_type_cd
-                )[0];
-                const obj = {
-                    parentIdx: parentObj.idx,
-                    profileType: parentObj.sectionCode,
-                    profileContent: defaultData[i].profile_content,
-                    inputIdx: i + 1,
-                };
-
-                state.profileInfo = [...state.profileInfo, obj];
-            }
-        }
-    }
 };
 
 // 페이지네이션 이동
