@@ -14,7 +14,7 @@ body {min-width:1600px;max-width: 1920px;margin:0 auto;}
 #gnb ul {display: flex;justify-content: flex-end; width: 1600px; margin: 30px auto 0; text-align: center; align-items: center;}
 #gnb ul:after {content:" "; display:block; clear:both;}
 #gnb ul li {margin: 0 30px; text-align:center; box-sizing:border-box;height: 100%;}
-#gnb ul li > a {display:block; color:#333; font-size:20px;  letter-spacing:-0.02em; font-weight: 600;display: flex;align-items: center;height: 100%;}
+#gnb ul li > a {display:block; color:#333; font-size:20px;  letter-spacing:-0.02em; font-weight: 600;display: flex;align-items: center;height: 100%;cursor:pointer;}
 #gnb ul li:hover > a  {color:#3266B1;}
 #gnb ul li:hover .submenu { display:block;}
 
