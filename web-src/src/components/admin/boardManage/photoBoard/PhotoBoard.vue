@@ -331,7 +331,8 @@ const modBoard = (board_idx) => {
                     <v-container>
                         <v-row no-gutters>
                             <v-card
-                                max-width="400"
+                                width="19%"
+                                style="margin-right: 1%"
                                 v-for="item in state.boardList"
                             >
                                 <div v-if="item.file_info.length > 0">

@@ -85,17 +85,15 @@ const getBoardDetail = () => {
                 </div>
                 <div class="movie_view" data-aos-duration="1000" data-aos-delay="400">
                     <table v-if="state.board">
-                        <colgroup>
-                            <col width="18%">
-                            <col width="*">
-                            <col width="*">
-                        </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3" class="movie_title">{{ state.board.subject }} <span class="movie_subtitle" v-if="state.board.sub_title">{{ state.board.sub_title }}</span></th>
+                                <th class="movie_title">{{ state.board.subject }}</th>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <th><span class="movie_subtitle" v-if="state.board.sub_title">{{ state.board.sub_title }}</span></th>
+                            </tr>
+                            <tr>
+                                <td>
                                     <ul class="movie_info">
                                         <li>{{ state.board.reg_user_name_ko }}</li>
                                         <li class="imbar">|</li>
@@ -106,7 +104,7 @@ const getBoardDetail = () => {
                                 </td>
                             </tr>
                             <!-- <tr>
-                                <td colspan="3">
+                                <td>
                                     <ul>
                                         <li class="download_li">
                                             <a href="#none" onclick class="attachment_parent">첨부파일

@@ -95,6 +95,9 @@ const getBoardDetail = () => {
                                 <th class="gallery_title">{{ state.board.subject }}</th>
                             </tr>
                             <tr>
+                                <th><span class="gallery_subtitle" v-if="state.board.sub_title">{{ state.board.sub_title }}</span></th>
+                            </tr>
+                            <tr>
                                 <td>
                                     <ul class="gallery_info">
                                         <li>{{ state.board.reg_user_name_ko }}</li>
@@ -146,7 +149,7 @@ const getBoardDetail = () => {
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="gallery_content">
+                                    <div class="gallery_content_text">
                                         {{ state.board.content }}
                                     </div>
                                 </td>
