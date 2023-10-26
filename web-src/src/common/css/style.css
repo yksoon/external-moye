@@ -199,6 +199,32 @@ a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; bo
 .btn_box a.btn02:hover {background: #efefef; }
 
 
+/* 연혁 */
+.history_box {display:flex;}
+.history .year {width:50%;font-size: 72px;font-weight: 900;color: #DEDEDE;text-align: right;padding:0 50px 80px 0;border-right: 3px solid #ddd;line-height: 1;margin-right:-3px;}
+.history .month {width:50%; padding:0 0 0 50px;border-left: 3px solid #111;margin:0 0 80px;height:fit-content;z-index: 10;}
+.history .month div.title_wrap {width: 100%;}
+.history .month li {display:flex;font-size: 18px;margin:0 0 18px;}
+.history .month li h6 {color: #111;font-weight: 600;margin:8px 12px 0 0;min-width:80px;}
+.history .month li p.tit {color: #111;font-weight: 600;}
+.history .month li p.tit span {color: #818181;font-weight: 400;}
+.history .month li p.subtit {color: #111;font-size: 14px;}
+.history .month li p.txt {border: 1px solid #eee;padding:10px;border-radius: 10px;font-size: 14px;margin:10px 0 0;}
+.history .month li a {display:inline-block;text-decoration: underline;font-size: 16px;margin:12px 0 0;color: #3266B1;}
+.history .history_title {display:flex; justify-content: space-between; align-items: center;}
+
+.history_box:nth-child(2n) {flex-direction: row-reverse;}
+.history_box:nth-child(2n) .year {border-right: none;text-align: left;border-left: 3px solid #ddd;padding:0 0 80px 40px;margin-right:3px;margin-left:-3px;}
+.history_box:nth-child(2n) .month {text-align: right;border-right: 3px solid #111;border-left: none;padding:0 50px 0 0;}
+.history_box:nth-child(2n) .month li {flex-direction: row-reverse;}
+.history_box:nth-child(2n) .month li h6 {margin:8px 0 0 12px;}
+.history_box:nth-child(2n) .history_title {flex-direction: row-reverse;}
+
+.history_box:first-child .year {color:#cad6e9;}
+.history_box:first-child .month {border-left: 3px solid #3266B1;}
+.history_box:first-child .month li h6 {color: #3266B1;}
+
+
 /* 코치진 */
 .people_title {font-size:30px;font-weight: 500;color: #3266B1;margin:0 0 30px;}
 .people_tab {display:flex;gap:20px;justify-content: center;margin:0 0 25px;}
