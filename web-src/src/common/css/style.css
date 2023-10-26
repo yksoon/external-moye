@@ -232,7 +232,7 @@ a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; bo
 .people_tab li a.on {background: #3266B1;border: 1px solid #3266B1;}
 .people_box {display:flex;flex-wrap: wrap;gap:40px;}
 .people {width: calc((100% - 120px ) /4);}
-.people .people_thumb .bg-thumb {background: url(/img/web/sub/dafault_full.jpg) center center no-repeat;background-size:cover;border-radius: 20px;}
+.people .people_thumb .bg-thumb {background: url(/img/web/sub/default_full.jpg) center center no-repeat;background-size:cover;border-radius: 20px;}
 .people .info {display:flex;align-items: flex-end;padding:20px;border-bottom: 2px solid #eee;transition:all 0.3s;}
 .people:hover .info {border-bottom: 2px solid #3266B1;}
 .people .info .name {font-size: 21px;font-weight: 500;margin:0 15px 0 0;line-height: 1;}
