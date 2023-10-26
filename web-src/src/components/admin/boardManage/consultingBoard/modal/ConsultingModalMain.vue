@@ -134,12 +134,12 @@ const regBoard = () => {
             url: apiPath.api_admin_reg_comment, // /v1/board
             data: formData,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);
@@ -204,12 +204,12 @@ const modBoard = () => {
             url: apiPath.api_admin_mod_comment, // /v1/_comment
             data: formData,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);

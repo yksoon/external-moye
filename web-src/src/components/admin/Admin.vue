@@ -88,13 +88,13 @@ export default {
                 method: "get",
                 url: url,
                 data: data,
-                callback: (res) => responsLogic(res),
+                callback: (res) => responseLogic(res),
                 admin: "Y",
             };
 
             CommonRest(restParams);
 
-            const responsLogic = (res) => {
+            const responseLogic = (res) => {
                 const result_code = res.headers.result_code;
                 let resData = [];
 

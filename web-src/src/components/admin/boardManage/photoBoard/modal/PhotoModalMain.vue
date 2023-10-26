@@ -151,7 +151,7 @@ if (validation()) {
         formData.append("attachmentFile", fileArr[i]);
     }
 
-    const responsLogic = (res) => {
+    const responseLogic = (res) => {
         let result_code = res.headers.result_code;
         if (result_code === successCode.success) {
             CommonSpinner(false);
@@ -176,7 +176,7 @@ if (validation()) {
         url: apiPath.api_admin_reg_board, // /v1/board
         data: formData,
         admin: "Y",
-        callback: (res) => responsLogic(res),
+        callback: (res) => responseLogic(res),
     };
 
     CommonRest(restParams);
@@ -217,7 +217,7 @@ const modBoard = () => {
             formData.append("attachmentFile", fileArr[i]);
         }
 
-        const responsLogic = (res) => {
+        const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             if (result_code === successCode.success) {
                 CommonSpinner(false);
@@ -246,7 +246,7 @@ const modBoard = () => {
             url: apiPath.api_admin_mod_board, // /v1/board
             data: formData,
             admin: "Y",
-            callback: (res) => responsLogic(res),
+            callback: (res) => responseLogic(res),
         };
 
         CommonRest(restParams);

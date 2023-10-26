@@ -93,12 +93,12 @@ export default {
                 method: "post",
                 url: apiPath.api_codes,
                 data: {},
-                callback: (res) => responsLogic(res),
+                callback: (res) => responseLogic(res),
             };
 
             CommonRest(restParams);
 
-            const responsLogic = (res) => {
+            const responseLogic = (res) => {
                 // console.log(res);
 
                 const result_code = res.headers.result_code;
@@ -123,12 +123,12 @@ export default {
                 method: "get",
                 url: apiPath.api_result,
                 data: {},
-                callback: (res) => responsLogic(res),
+                callback: (res) => responseLogic(res),
             };
 
             CommonRest(restParams);
 
-            const responsLogic = (res) => {
+            const responseLogic = (res) => {
                 // console.log(res);
 
                 const result_code = res.headers.result_code;

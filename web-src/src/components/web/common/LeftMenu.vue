@@ -61,13 +61,13 @@ const getLastBoard = (pageNum, pageSize, searchKeyword) => {
         method: "post",
         url: url,
         data: data,
-        callback: (res) => responsLogic(res),
+        callback: (res) => responseLogic(res),
         admin: "Y",
     };
     CommonRest(restParams);
 
     // 완료 로직
-    const responsLogic = (res) => {
+    const responseLogic = (res) => {
         let result_code = res.headers.result_code;
 
         // 성공
@@ -108,12 +108,12 @@ const getBoard = (board_idx) => {
         method: "get",
         url: url,
         data: data,
-        callback: (res) => responsLogic(res),
+        callback: (res) => responseLogic(res),
         admin: "Y",
     };
     CommonRest(restParams);
 
-    const responsLogic = (res) => {
+    const responseLogic = (res) => {
         let result_code = res.headers.result_code;
         let result_info = res.data.result_info;
 

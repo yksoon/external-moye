@@ -8,12 +8,16 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from '@/webPath';
+import { useRoute } from "vue-router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
+const route = useRoute();
+
 const searchKeyword = ref(null);
 const state = reactive({
+    peopleData: [],
     peopleList: [],
     pageInfo: {},
 });
@@ -44,13 +48,13 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         method: "post",
         url: url,
         data: data,
-        callback: (res) => responsLogic(res),
+        callback: (res) => responseLogic(res),
         admin: "Y",
     };
     CommonRest(restParams);
 
     // 완료 로직
-    const responsLogic = (res) => {
+    const responseLogic = (res) => {
         let result_code = res.headers.result_code;
 
         // 성공
@@ -61,10 +65,12 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
             let result_info = res.data.result_info;
             let page_info = res.data.page_info;
 
-            state.peopleList = result_info;
+            state.peopleData = result_info;
             state.pageInfo = page_info;
 
-            console.log(result_info);
+            if (state.peopleData.length !== 0) {
+                peopleCategorySort(state.peopleData);
+            }
 
             CommonSpinner(false);
         } else {
@@ -74,6 +80,50 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
             CommonSpinner(false);
         }
     };
+};
+
+// 인물 목록 카테고리별 정렬
+const peopleCategorySort = (peopleData) => {
+    const defaultData = peopleData;
+    const defaultDataLength = defaultData.length;
+
+    if (defaultData) {
+        for (let i = 0; i < defaultDataLength; i++) {
+            if (
+                state.profileSection.filter(
+                    (el) =>
+                        el.sectionCode === defaultData[i].profile_type_cd
+                ).length === 0
+            ) {
+                state.profileSection = [
+                    ...state.profileSection,
+                    { idx: i, sectionCode: defaultData[i].profile_type_cd, sectionValue: defaultData[i].profile_type },
+                ];
+            }
+        }
+
+        for (let i = 0; i < defaultDataLength; i++) {
+            if (
+                state.profileSection.filter(
+                    (el) =>
+                        el.sectionCode === defaultData[i].profile_type_cd
+                ).length !== 0
+            ) {
+                const parentObj = state.profileSection.filter(
+                    (el) =>
+                        el.sectionCode === defaultData[i].profile_type_cd
+                )[0];
+                const obj = {
+                    parentIdx: parentObj.idx,
+                    profileType: parentObj.sectionCode,
+                    profileContent: defaultData[i].profile_content,
+                    inputIdx: i + 1,
+                };
+
+                state.profileInfo = [...state.profileInfo, obj];
+            }
+        }
+    }
 };
 
 // 페이지네이션 이동
