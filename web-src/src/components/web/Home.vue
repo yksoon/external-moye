@@ -270,7 +270,8 @@ const readyAlert = () => {
                                 class="person"
                                 v-for="people in state.peopleList1"
                             >
-                                <a @click="readyAlert">
+                                <a :href="`${routerPath.web_people_url}/${people.people_idx}`">
+                                    <!-- 프로필 이미지 있는 경우 -->
                                     <img
                                         v-if="people.file_path_enc !== null"
                                         :src="`${fileBaseUrl}${people.file_path_enc}`"
@@ -280,10 +281,12 @@ const readyAlert = () => {
                                             min-height: 315px;
                                         "
                                     />
-                                    <div
+                                    <!-- 프로필 이미지 없는 경우 -->
+                                    <img
                                         v-else
-                                        style="background-color: #eee"
-                                    ></div>
+                                        src="/img/web/sub/default_full.jpg"
+                                        alt="인물 기본 이미지"
+                                    />
                                     <p>
                                         <span class="name">{{
                                             people.name_ko
@@ -304,16 +307,19 @@ const readyAlert = () => {
                                 class="person"
                                 v-for="people in state.peopleList2"
                             >
-                                <a @click="readyAlert">
+                                <a :href="`${routerPath.web_people_url}/${people.people_idx}`">
+                                    <!-- 프로필 이미지 있는 경우 -->
                                     <img
                                         v-if="people.file_path_enc !== null"
                                         :src="`${fileBaseUrl}${people.file_path_enc}`"
                                         :alt="`${people.file_name_org}`"
                                     />
-                                    <div
+                                    <!-- 프로필 이미지 없는 경우 -->
+                                    <img
                                         v-else
-                                        style="background-color: #eee"
-                                    ></div>
+                                        src="/img/web/sub/default_full.jpg"
+                                        alt="인물 기본 이미지"
+                                    />
                                     <p>
                                         <span class="name">{{
                                             people.name_ko
@@ -328,7 +334,6 @@ const readyAlert = () => {
                     </div>
                 </div>
             </div>
-
 
             <div class="section02">
                 <div class="top">
@@ -452,6 +457,5 @@ const readyAlert = () => {
             </div>
         </div>
         <!-- container //E-->
-        <!-- <GlobalFooter/> -->
     </div>
 </template>

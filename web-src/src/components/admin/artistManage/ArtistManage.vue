@@ -306,15 +306,12 @@ const columns = [
         // enableSorting: false,
     },
 
-    columnHelper.accessor(
-        (row) =>
-            row.file_path_enc != null
-                ? h("img", {
-                      src: fileBaseUrl + row.file_path_enc,
-                      alt: row.file_name_org,
-                      decoding: "async",
-                  })
-                : "",
+    columnHelper.accessor((row) =>
+        h("img", {
+            src: row.file_path_enc ? fileBaseUrl + row.file_path_enc : "/img/web/sub/default_full.jpg",
+            alt: row.file_name_org,
+            decoding: "async",
+        }),
         {
             id: "file_path_enc",
             cell: (info) => info.getValue(),
@@ -324,16 +321,6 @@ const columns = [
 
     columnHelper.accessor((row) => row.name_ko, {
         id: "name_ko",
-        // cell: (info) =>
-        //     h(
-        //         "p",
-        //         {
-        //             style: {
-        //                 textAlign: "left",
-        //             },
-        //         },
-        //         info.getValue()
-        //     ),
         cell: (info) => info.getValue(),
         header: "이름",
         // sortingFn: "alphanumericCaseSensitive",

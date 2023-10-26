@@ -136,7 +136,7 @@ const profileInfoSort = (profile_info) => {
                             <div class="thumb">
                                 <img
                                     style="background-color:#eee;"
-                                    :src="state.people.file_info.length !== 0 ? `${fileBaseUrl}${state.people.file_path_enc}` : '/img/web/sub/dafault_full.jpg'"
+                                    :src="state.people.file_info.length !== 0 ? `${fileBaseUrl}${state.people.file_path_enc}` : '/img/web/sub/default_full.jpg'"
                                 >
                             </div>
                             <div class="profile">
