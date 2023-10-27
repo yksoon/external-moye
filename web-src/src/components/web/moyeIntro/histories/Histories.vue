@@ -137,7 +137,7 @@ const getHistoryDetail = (history_idx) => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <!-- <LeftMenu subvisual="subvisual_notice" page="notice"/> -->
+            <!-- <LeftMenu subvisual="subvisual_notice" page="notice" /> -->
             <div id="content">
                 <div id="subtitle">
                     <h2>연혁</h2>
@@ -147,18 +147,25 @@ const getHistoryDetail = (history_idx) => {
                         <div class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
                             <ul class="month">
-                               <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
+                                <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
                                     v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)">
                                     <div>
-                                        <h6 v-if="history.start_date && history.end_date && history.start_date !== history.end_date">{{ history.start_date + '~' + history.end_date }}월</h6>
+                                        <h6
+                                            v-if="history.start_date && history.end_date && history.start_date !== history.end_date">
+                                            {{ history.start_date + '~' + history.end_date }}월</h6>
                                         <h6 v-else-if="!history.start_date && !history.end_date">-</h6>
                                         <h6 v-else>{{ history.start_date ? history.start_date : history.end_date }}월</h6>
                                     </div>
                                     <div class="title_wrap">
                                         <div class="history_title">
-                                            <p class="tit">{{ history.title }} <span v-if="history.place">({{ history.place }})</span></p>
-                                            <a v-if="history.portfolio_link" :href="history.portfolio_link" target="_blank" >
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-400h480L570-600 450-440l-90-120-120 160ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg>
+                                            <p class="tit">{{ history.title }} <span v-if="history.place">({{ history.place
+                                            }})</span></p>
+                                            <a v-if="history.portfolio_link" :href="history.portfolio_link" target="_blank">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                                    width="24">
+                                                    <path
+                                                        d="M240-400h480L570-600 450-440l-90-120-120 160ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z" />
+                                                </svg>
                                             </a>
                                         </div>
                                         <p class="subtit" v-if="history.sub_title">{{ history.sub_title }}</p>
