@@ -181,6 +181,16 @@ background: url('../img/sub/bak_abc_gray.png') no-repeat 765px 400px; margin: 0 
 .greetings .txt_box .bottom .name {font-weight: 700;}
 
 /* 소개 */
+.intro {margin: 90px 0 0 0;}
 .intro h3 {font-weight: 700;font-family: 'NanumSquareNeo-Variable'; font-size: 28px;color: #3266B1;margin: 0 0 20px 0;}
-.intro .box {border: 1px solid #CECECE; border: 1px solid #CECECE; border-radius: 30px; margin: 0 0 80px;padding: 35px 140px;}
-.intro .box ul li span {display: inline-block; font-size: 20px; font-weight: 700; color: #3266B1; padding: 10px 30px; border: 1px solid #3266B1;border-radius: 30px;line-height: 20px;}
+.intro .box {border: 1px solid #CECECE; border: 1px solid #CECECE; border-radius: 30px; margin: 0 0 80px;text-align: center; padding: 50px 70px;
+display: flex;justify-content: space-evenly;}
+.intro .box:last-child {justify-content: space-between;}
+.intro .box ul {text-align: left;display: flex;flex-direction: column; width: calc((100% - 240px) / 2);}
+.intro .box ul li {display: flex;flex-direction: row;align-items: center; margin: 0 0 30px;}
+.intro .box ul li:last-child {margin: 0;}
+.intro .box ul li span {display: inline-block; font-size: 20px; font-weight: 700; color: #3266B1; padding: 10px 30px; border: 1px solid #3266B1;border-radius: 30px;
+    line-height: 20px; margin: 0 15px 0 0;}
+.intro .box ul li p {font-size: 18px; font-weight: 500; line-height: 26px;}
+.intro .box ul li.line {align-items: flex-start;}
+.intro .box ul li.line p {padding: 10px 0 0 0;}
