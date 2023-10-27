@@ -157,11 +157,11 @@ const readyAlert = () => {
         <div id="leftmenu">
             <div id="lnb">
                 <ul>
-                    <li><a :href="routerPath.web_notice_url" :class="page === 'notice' ? 'on' : ''">공지사항</a></li>
+                    <li><a :href="routerPath.web_notices_url" :class="page === 'notice' ? 'on' : ''">공지사항</a></li>
                     <li><a :href="routerPath.web_consulting_url" :class="page === 'consulting' ? 'on' : ''">상담문의</a></li>
                     <li v-if="state.board"><a :href="`${fileBaseUrl}${state.filePath}`">회사소개서 다운로드</a></li>
-                    <li><a :href="routerPath.web_photo_url" :class="page === 'photo' ? 'on' : ''">포토 갤러리</a></li>
-                    <li><a :href="routerPath.web_movie_url" :class="page === 'movie' ? 'on' : ''">영상 갤러리</a></li>
+                    <li><a :href="routerPath.web_photoGallery_url" :class="page === 'photo' ? 'on' : ''">포토 갤러리</a></li>
+                    <li><a :href="routerPath.web_movieGallery_url" :class="page === 'movie' ? 'on' : ''">영상 갤러리</a></li>
                 </ul>
             </div>
         </div>
@@ -178,7 +178,7 @@ const readyAlert = () => {
         <div id="leftmenu">
             <div id="lnb">
                 <ul>
-                    <li><a :href="routerPath.web_people_url" :class="page === 'people' ? 'on' : ''">코치진</a></li>
+                    <li><a :href="routerPath.web_peoples_url" :class="page === 'people' ? 'on' : ''">코치진</a></li>
                     <li><a @click="readyAlert">Class 130 Category</a></li>
                     <li><a @click="readyAlert">성장과정별 교육</a></li>
                     <li><a @click="readyAlert">예정교육</a></li>

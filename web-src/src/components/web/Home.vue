@@ -11,7 +11,7 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
-import { popupModel } from "@/components/web/consulting/models/boardModel";
+import { popupModel } from "@/components/web/support/consulting/models/boardModel";
 
 import Popup from "@/components/web/common/Popup.vue";
 
@@ -258,7 +258,7 @@ const readyAlert = () => {
                 <div class="top">
                     <h3 class="title">LIST OF LEGEND</h3>
                     <p>130개 예체능 카테고리 레전드 마스터</p>
-                    <a :href="routerPath.web_people_url" class="more_btn"
+                    <a :href="routerPath.web_peoples_url" class="more_btn"
                         ><span>코치진 더보기</span></a
                     >
                 </div>
@@ -270,7 +270,7 @@ const readyAlert = () => {
                                 class="person"
                                 v-for="people in state.peopleList1"
                             >
-                                <a :href="`${routerPath.web_people_url}/${people.people_idx}`">
+                                <a :href="`${routerPath.web_peoples_url}/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img
                                         v-if="people.file_path_enc !== null"
@@ -307,7 +307,7 @@ const readyAlert = () => {
                                 class="person"
                                 v-for="people in state.peopleList2"
                             >
-                                <a :href="`${routerPath.web_people_url}/${people.people_idx}`">
+                                <a :href="`${routerPath.web_peoples_url}/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img
                                         v-if="people.file_path_enc !== null"
@@ -439,14 +439,14 @@ const readyAlert = () => {
                 <div class="top">
                     <h3 class="title">NOTICE</h3>
                     <p>모두의 예체능의 주요 공지사항을 전달합니다.</p>
-                    <a :href="routerPath.web_notice_url" class="more_btn"
+                    <a :href="routerPath.web_notices_url" class="more_btn"
                         ><span>공지사항 더보기</span></a
                     >
                 </div>
                 <div class="box_wrap" v-if="state.boardList.length !== 0">
                     <div class="box" v-for="board in state.boardList">
                         <a
-                            :href="`${routerPath.web_notice_url}/${board.board_idx}`"
+                            :href="`${routerPath.web_notices_url}/${board.board_idx}`"
                         >
                             <h4>{{ board.subject }}</h4>
                             <p>{{ board.content }}</p>

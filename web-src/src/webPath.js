@@ -54,67 +54,127 @@ const routerPath = {
 
     // 팝업
     // /popup
-    web_popup_url: `${base_url}/popup`,
+    web_popup_url: `${base_url}popup`,
 
     // 팝업 상세
     // /popup/:popup
-    web_popup_detail_url: `${base_url}/popup/:popup`,
+    web_popup_detail_url: `${base_url}popup/:popup`,
 
-    // histories
-    // /histories/histories
-    web_history_url: `${base_url}histories/histories`,
+    // ------------------- 모두의예체능 소개 --------------------
 
-    // peoples
-    // /peoples/peoples
-    web_people_url: `${base_url}peoples/peoples`,
+    // 인사말
+    // /moyeIntro/greetings
+    web_greetings_url: `${base_url}moyeIntro/greetings`,
 
-    // peoples
-    // /peoples/:category
-    web_people_category_url: `${base_url}peoples/:category`,
+    // 모두의예체능 소개
+    // /moyeIntro/introduction
+    web_introduction_url: `${base_url}moyeIntro/introduction`,
 
-    // people
-    // /peoples/peoples/:people
-    web_people_detail_url: `${base_url}peoples/peoples/:people`,
+    // 조직 및 구성
+    // /moyeIntro/members
+    web_members_url: `${base_url}moyeIntro/members`,
 
-    // categories
-    // /categories/categories
-    web_category_url: `${base_url}categories/categories`,
+    // 연혁
+    // /moyeIntro/histories
+    web_histories_url: `${base_url}moyeIntro/histories`,
 
-    // notices
-    // /notice/notices
-    web_notice_url: `${base_url}notice/notices`,
+    // CI
+    // /moyeIntro/ci
+    web_ci_url: `${base_url}moyeIntro/ci`,
 
-    // notice
-    // /notice/notices/:notice
-    web_notice_detail_url: `${base_url}notice/notices/:notice`,
+    // 오시는길
+    // /moyeIntro/location
+    web_location_url: `${base_url}moyeIntro/location`,
 
-    // photoGallery
-    // /photo/photoGallery
-    web_photo_url: `${base_url}photo/photoGallery`,
+    // ------------------- 사업 소개 --------------------
 
-    // photo
-    // /photo/photoGallery/:photo
-    web_photo_detail_url: `${base_url}photo/photoGallery/:photo`,
+    // 사업분야
+    // /businessIntro/businessAreas
+    web_businessAreas_url: `${base_url}businessIntro/businessAreas`,
+    
+    // 플랫폼서비스
+    // /businessIntro/platform
+    web_platform_url: `${base_url}businessIntro/platform`,
+     
+    // 예체능 시설 Promotion
+    // /businessIntro/promotion
+    web_promotion_url: `${base_url}businessIntro/promotion`,
+   
+    // 예체능 시설 Promotion
+    // /businessIntro/promotion
+    web_promotion_url: `${base_url}businessIntro/promotion`,
+   
+    // ------------------- 교육서비스 --------------------
+   
+    // 코치진
+    // /education/peoples
+    web_peoples_url: `${base_url}education/peoples`,
+   
+    // 코치진 상세
+    // /education/peoples/:people
+    web_people_detail_url: `${base_url}education/peoples/:people`,
+    
+    // Class 130 Category
+    // /education/categories
+    web_categories_url: `${base_url}education/categories`,
+  
+    // 성장과정별 교육
+    // /education/growthProcess
+    web_growthProcess_url: `${base_url}education/growthProcess`,
+  
+    // 예정교육
+    // /education/scheduledEducation
+    web_scheduledEducation_url: `${base_url}education/scheduledEducation`,
+  
+    // ------------------- 파트너쉽 --------------------
 
-    // movieGallery
-    // /movie/movieGallery
-    web_movie_url: `${base_url}movie/movieGallery`,
+    // 파트너쉽
+    // /partnership
+    web_partnership_url: `${base_url}partnership`,
+  
+    // ------------------- 모두의예체능 APP --------------------
 
-    // movie
-    // /movie/movieGallery/:movie
-    web_movie_detail_url: `${base_url}movie/movieGallery/:movie`,
+    // 모두의예체능 APP
+    // /appIntro
+    web_appIntro_url: `${base_url}appIntro`,
+  
+    // ------------------- 고객센터 --------------------
 
-    // consulting
-    // /consulting/consulting
-    web_consulting_url: `${base_url}consulting/consulting`,
+    // 공지사항
+    // /support/notices
+    web_notices_url: `${base_url}support/notices`,
+  
+    // 공지사항 상세
+    // /support/notices/:notice
+    web_notice_detail_url: `${base_url}support/notices/:notice`,
+    
+    // 상담문의
+    // /support/consulting
+    web_consulting_url: `${base_url}support/consulting`,
 
-    // consulting
-    // /consulting/consulting/qnawrite
-    web_consulting_write_url: `${base_url}consulting/consulting/qnawrite`,
+    // 상담문의 작성
+    // /support/consulting/qnawrite
+    web_consulting_write_url: `${base_url}support/consulting/qnawrite`,
 
-    // qna
-    // /consulting/consulting/:qna
-    web_consulting_detail_url: `${base_url}consulting/consulting/:qna`,
+    // 상담문의 상세
+    // /support/consulting/:qna
+    web_consulting_detail_url: `${base_url}support/consulting/:qna`,
+
+    // 포토갤러리
+    // /support/photoGallery
+    web_photoGallery_url: `${base_url}support/photoGallery`,
+
+    // 포토갤러리 상세
+    // /support/photoGallery/:photo
+    web_photo_detail_url: `${base_url}support/photoGallery/:photo`,
+    
+    // 영상갤러리
+    // /support/movieGallery
+    web_movieGallery_url: `${base_url}support/movieGallery`,
+    
+    // 영상갤러리 상세
+    // /support/movieGallery/:movie
+    web_movie_detail_url: `${base_url}support/movieGallery/:movie`,
 
     // ---------------------- admin -------------------------
     // 메인

@@ -3,7 +3,7 @@ import { storeToRefs } from "pinia";
 import { onMounted, watch } from "vue";
 import { useModalStore } from "@/stores/modal";
 // main
-import QNAPwdCheckModal from "@/components/web/consulting/modal/QNAPwdCheckModal.vue";
+import QNAPwdCheckModal from "@/components/web/support/consulting/modal/QNAPwdCheckModal.vue";
 // admin
 import NoticeModalMain from "@/components/admin/boardManage/noticeBoard/modal/NoticeModalMain.vue";
 import PhotoModalMain from "@/components/admin/boardManage/photoBoard/modal/PhotoModalMain.vue";
