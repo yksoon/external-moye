@@ -27,11 +27,6 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
                 </div>
                 <p><img src="/img/web/sub/ci_img.png" alt=""></p>
             </div>
-
-            <!--footer //S-->
-            <div id="footer"></div>
-            <!-- footer //E-->
-
         </div>
     </div>
 </template>

@@ -152,6 +152,7 @@ a.more_btn:hover span {background: url('/img/web/main/arrow_btn.png') no-repeat 
 
 #subvisual {width:100%;height:300px;position:relative;display: flex; }
 #subvisual.subvisual_intro  {background:url('/img/web/sub/subvisual_notice.jpg') center center no-repeat;}
+#subvisual.subvisual_business  {background:url('/img/web/sub/subvisual_business.jpg') center center no-repeat;}
 #subvisual.subvisual_notice {background:url('/img/web/sub/subvisual_notice.jpg') center center no-repeat;}
 #subvisual.subvisual_people {background:url('/img/web/sub/subvisual_people.jpg') center center no-repeat;}
 .sub_txt {width:1600px; margin:0 auto;text-align:left;display: flex; align-items: center;}

@@ -59,11 +59,6 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
                 </div>
             </div>
-
-            <!--footer //S-->
-            <div id="footer"></div>
-            <!-- footer //E-->
-
         </div>
     </div>
 </template>
