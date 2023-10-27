@@ -217,7 +217,7 @@ a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; bo
 .history_box:nth-child(2n) .year {border-right: none;text-align: left;border-left: 3px solid #ddd;padding:0 0 80px 40px;margin-right:3px;margin-left:-3px;}
 .history_box:nth-child(2n) .month {text-align: right;border-right: 3px solid #111;border-left: none;padding:0 50px 0 0;}
 .history_box:nth-child(2n) .month li {flex-direction: row-reverse;}
-.history_box:nth-child(2n) .month li h6 {margin:8px 0 0 12px;}
+.history_box:nth-child(2n) .month li h6 {margin:0px 0 0 12px;}
 .history_box:nth-child(2n) .history_title {flex-direction: row-reverse;}
 
 .history_box:first-child .year {color:#cad6e9;}
