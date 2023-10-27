@@ -19,9 +19,8 @@ import "@/common/css/default.css";
 import "@/common/css/style.css";
 import "@/common/css/board.css";
 
-// import "@/common/js/jquery-1.11.1.min.js";
 // import "@/common/js/jquery.easing.1.3.js";
-// import "@/common/js/aos.js";
+// import "@/common/js/jquery-1.11.1.min.js";
 // import "@/common/js/nav.js";
 // import "@/common/js/crawler.js";
 

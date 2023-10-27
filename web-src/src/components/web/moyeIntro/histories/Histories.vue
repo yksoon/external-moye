@@ -1,8 +1,6 @@
 <script setup>
 import {
     CommonConsole,
-    CommonErrModule,
-    CommonModal,
     CommonNotify,
     CommonRest,
     CommonSpinner,
@@ -142,9 +140,9 @@ const getHistoryDetail = (history_idx) => {
                 <div id="subtitle">
                     <h2>연혁</h2>
                 </div>
-                <div class="history" data-aos-duration="1000" data-aos-delay="400">
-                    <div v-if="state.historyInfo.length !== 0">
-                        <div class="history_box" v-for="target in state.historyTarget">
+                <div class="history">
+                    <aos-vue v-if="state.historyInfo.length !== 0" animation="slide-up" :duration="600" :delay="300">
+                        <aos-vue class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
                             <ul class="month">
                                <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
@@ -166,8 +164,8 @@ const getHistoryDetail = (history_idx) => {
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
+                        </aos-vue>
+                    </aos-vue>
                     <div v-if="state.historyInfo.length === 0">
                         데이터가 없습니다.
                     </div>

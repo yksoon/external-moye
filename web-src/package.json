@@ -11,6 +11,8 @@
     "dependencies": {
         "@tanstack/vue-table": "^8.10.3",
         "@vitejs/plugin-vue-jsx": "^3.0.2",
+        "aos": "^2.3.4",
+        "aos-vue": "^0.0.5",
         "axios": "^1.5.0",
         "jquery": "^3.7.1",
         "pinia": "^2.1.6",
