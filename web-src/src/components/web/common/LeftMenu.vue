@@ -85,7 +85,7 @@ const getLastBoard = (pageNum, pageSize, searchKeyword) => {
             } else {
                 CommonSpinner(false);
             }
-            
+
         } else {
             // 에러
             CommonConsole("log", res);
@@ -98,7 +98,7 @@ const getLastBoard = (pageNum, pageSize, searchKeyword) => {
 const getBoard = (board_idx) => {
     const boardIdx = String(board_idx);
 
-   // v1/board/{board_idx}
+    // v1/board/{board_idx}
     // GET
     const url = apiPath.api_admin_get_board + `/${boardIdx}`;
     const data = {};
@@ -145,6 +145,52 @@ const readyAlert = () => {
 </script>
 
 <template>
+    <!-- 모두의예체능 소개 -->
+    <div v-if="props.subvisual === 'subvisual_intro'">
+        <div id="subvisual" class="subvisual_intro">
+            <div class="sub_txt">
+                <h2 data-aos="fade-in" data-aos-duration="500">
+                    모두의예체능 소개
+                </h2>
+            </div>
+        </div>
+        <div id="leftmenu">
+            <div id="lnb">
+                <ul>
+                    <li><a :href="routerPath.web_greetings_url" :class="page === 'greetings' ? 'on' : ''">인사말</a></li>
+                    <li><a :href="routerPath.web_introduction_url" :class="page === 'introduction' ? 'on' : ''">모두의 예체능
+                            소개</a></li>
+                    <li><a :href="routerPath.web_members_url" :class="page === 'members' ? 'on' : ''">조직 및 구성</a></li>
+                    <li><a :href="routerPath.web_histories_url" :class="page === 'histories' ? 'on' : ''">연혁</a></li>
+                    <li><a :href="routerPath.web_ci_url" :class="page === 'ci' ? 'on' : ''">CI</a></li>
+                    <li><a :href="routerPath.web_location_url" :class="page === 'location' ? 'on' : ''">오시는길</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 사업소개 -->
+    <div v-if="props.subvisual === 'subvisual_business'">
+        <div id="subvisual" class="subvisual_business">
+            <div class="sub_txt">
+                <h2 data-aos="fade-in" data-aos-duration="500">
+                    사업소개
+                </h2>
+            </div>
+        </div>
+        <div id="leftmenu">
+            <div id="lnb">
+                <ul>
+                    <li><a :href="routerPath.web_greetings_url" :class="page === 'greetings' ? 'on' : ''">인사말</a></li>
+                    <li><a :href="routerPath.web_introduction_url" :class="page === 'introduction' ? 'on' : ''">모두의 예체능
+                            소개</a></li>
+                    <li><a :href="routerPath.web_members_url" :class="page === 'members' ? 'on' : ''">조직 및 구성</a></li>
+                    <li><a :href="routerPath.web_histories_url" :class="page === 'histories' ? 'on' : ''">연혁</a></li>
+                    <li><a :href="routerPath.web_ci_url" :class="page === 'ci' ? 'on' : ''">CI</a></li>
+                    <li><a :href="routerPath.web_location_url" :class="page === 'location' ? 'on' : ''">오시는길</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- 고객센터 -->
     <div v-if="props.subvisual === 'subvisual_notice'">
         <div id="subvisual" class="subvisual_notice">
