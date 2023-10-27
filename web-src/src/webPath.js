@@ -68,6 +68,10 @@ const routerPath = {
     // /peoples/peoples
     web_people_url: `${base_url}peoples/peoples`,
 
+    // peoples
+    // /peoples/:category
+    web_people_category_url: `${base_url}peoples/:category`,
+
     // people
     // /peoples/peoples/:people
     web_people_detail_url: `${base_url}peoples/peoples/:people`,
