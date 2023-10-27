@@ -24,8 +24,8 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
                     <div class="box">
                         <img src="/img/web/sub/ci_color.png" alt="">
                     </div>
+                    <p><img src="/img/web/sub/ci_img.png" alt=""></p>
                 </div>
-                <p><img src="/img/web/sub/ci_img.png" alt=""></p>
             </div>
         </div>
     </div>
