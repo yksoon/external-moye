@@ -154,7 +154,7 @@ const handleChange = (page_num) => {
                 <div id="subtitle">
                     <h2>코치진</h2>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <aos-vue animation="fade-up" :duration="1000" :delay="400">
                     <ul class="people_tab">
                         <li><a href="">스포츠</a></li>
                         <li><a href="">음악</a></li>
@@ -196,7 +196,7 @@ const handleChange = (page_num) => {
                             @update:model-value="handleChange"
                         ></v-pagination>
                     </div>
-                </div>
+                </aos-vue>
             </div>
         </div>
     </div>

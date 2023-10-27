@@ -142,8 +142,8 @@ const getHistoryDetail = (history_idx) => {
                     <h2>연혁</h2>
                 </div>
                 <div class="history">
-                    <aos-vue v-if="state.historyInfo.length !== 0" animation="slide-up" :duration="600" :delay="300">
-                        <aos-vue class="history_box" v-for="target in state.historyTarget">
+                    <aos-vue v-if="state.historyInfo.length !== 0" animation="fade-up" :duration="1000" :delay="400">
+                        <div class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
                             <ul class="month">
                                 <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
@@ -172,7 +172,7 @@ const getHistoryDetail = (history_idx) => {
                                     </div>
                                 </li>
                             </ul>
-                        </aos-vue>
+                        </div>
                     </aos-vue>
                     <div v-if="state.historyInfo.length === 0">
                         데이터가 없습니다.
