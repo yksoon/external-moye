@@ -170,4 +170,17 @@ a.more_btn:hover span {background: url('../img/main/arrow_btn.png') no-repeat ri
 #subtitle h2 {font-size: 34px; font-weight: 600;}
 
 /* 인사말 */
-.greetings {}
+.greetings {position: relative;}
+.greetings .face {position: absolute; left: 0; top: 70px; z-index: 1;} 
+.greetings .txt_box { border: 1px solid #3266B1; border-radius: 40px; padding: 70px 0 25px 170px; position: relative; width: 1385px; box-sizing: border-box;
+background: url('../img/sub/bak_abc_gray.png') no-repeat 765px 400px; margin: 0 0 0 250px;}
+.greetings .txt_box h3 {font-size: 28px; color: #3266B1; font-weight: 700; margin: 0 0 50px 0;}
+.greetings .txt_box p {font-size: 18px; color: #333; line-height: 26px; margin: 0 0 25px;}
+.greetings .txt_box .bottom {font-size: 16px; line-height: 24px; margin: 40px 0 0 0;}
+.greetings .txt_box .bottom span {display: inline-block; vertical-align: middle;}
+.greetings .txt_box .bottom .name {font-weight: 700;}
+
+/* 소개 */
+.intro h3 {font-weight: 700;font-family: 'NanumSquareNeo-Variable'; font-size: 28px;color: #3266B1;margin: 0 0 20px 0;}
+.intro .box {border: 1px solid #CECECE; border: 1px solid #CECECE; border-radius: 30px; margin: 0 0 80px;padding: 35px 140px;}
+.intro .box ul li span {display: inline-block; font-size: 20px; font-weight: 700; color: #3266B1; padding: 10px 30px; border: 1px solid #3266B1;border-radius: 30px;line-height: 20px;}
