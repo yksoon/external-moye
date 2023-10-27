@@ -1,4 +1,5 @@
 <script setup>
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import {
     CommonConsole,
     CommonErrModule,
@@ -137,7 +138,7 @@ const getHistoryDetail = (history_idx) => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <!-- <LeftMenu subvisual="subvisual_notice" page="notice" /> -->
+            <LeftMenu subvisual="subvisual_intro" page="histories" />
             <div id="content">
                 <div id="subtitle">
                     <h2>연혁</h2>

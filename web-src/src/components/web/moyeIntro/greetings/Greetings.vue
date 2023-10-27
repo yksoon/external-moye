@@ -1,4 +1,5 @@
 <script setup>
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 </script>
 
 <template>
@@ -12,7 +13,7 @@
                     <h2>인사말</h2>
                 </div>
                 <div class="greetings" data-aos-duration="1000" data-aos-delay="400">
-                    <div class="face"><img src="img/sub/ceo_photo.png" alt=""></div>
+                    <div class="face"><img src="/img/web/sub/ceo_photo.png" alt=""></div>
                     <div class="txt_box">
                         <h3>안녕하십니까? 모두의예체능 대표 안경현입니다.</h3>
                         <p>
@@ -31,7 +32,7 @@
                         <div class="bottom">
                             예체능의 모든 것<br>
                             모두의예체능
-                            <p class="name">대표 안경현 <span><img src="img/sub/sign.png" alt=""></span></p>
+                            <p class="name">대표 안경현 <span><img src="/img/web/sub/sign.png" alt=""></span></p>
                         </div>
                     </div>
                 </div>
