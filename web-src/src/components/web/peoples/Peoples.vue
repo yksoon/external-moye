@@ -15,10 +15,11 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 const route = useRoute();
 
-const peopleIdx = route.params.people;
+const categoryIdx = route.params.category;
 
 const searchKeyword = ref(null);
 const state = reactive({
+    categoryList: [],
     peopleList: [],
     pageInfo: {},
 });
@@ -26,10 +27,66 @@ const state = reactive({
 const fileBaseUrl = apiPath.api_file;
 
 onMounted(() => {
+    // getCategoryList(1, maxRowNum.category, "");
     getPeopleList(1, maxRowNum.people, "");
 });
 
-// 리스트 가져오기
+// // 카테고리 리스트 가져오기
+// const getCategoryList = (pageNum, pageSize, searchKeyword) => {
+//     CommonSpinner(true);
+
+//     // /v1/people/categories
+//     // POST
+//     // 카테고리 목록
+//     const url = apiPath.api_admin_get_categories;
+//     const data = {
+//         page_num: pageNum,
+//         page_size: pageSize,
+//         search_keyword: searchKeyword,
+//         // category_div: "000"
+//     };
+
+//     // 파라미터
+//     const restParams = {
+//         method: "post",
+//         url: url,
+//         data: data,
+//         callback: (res) => responseLogic(res),
+//         admin: "Y",
+//     };
+//     CommonRest(restParams);
+
+//     // 완료 로직
+//     const responseLogic = (res) => {
+//         let result_code = res.headers.result_code;
+
+//         // 성공
+//         if (
+//             result_code === successCode.success ||
+//             result_code === successCode.noData
+//         ) {
+//             let result_info = res.data.result_info;
+
+//             state.categoryList = result_info;
+
+//             // if (state.categoryList.length) {
+//             //     console.log(state.categoryList)
+//             //     // for (let i = 0; i < state.categoryList.length; i++) {
+//             //     //     getCategoryList(1, maxRowNum.people, "");
+//             //     // }
+//             // }
+
+//             // CommonSpinner(false);
+//         } else {
+//             // 에러
+//             CommonConsole("log", res);
+
+//             // CommonSpinner(false);
+//         }
+//     };
+// };
+
+// 인물 리스트 가져오기 (카테고리별)
 const getPeopleList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
 
@@ -41,7 +98,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
-        category_idx: 1,
+        category_idx: categoryIdx,
         show_yn: "Y"
     };
 
@@ -84,7 +141,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 const handleChange = (page_num) => {
     const keyword = searchKeyword.value;
 
-    getPeopleList(page_num, maxRowNum.people, keyword);
+    // getPeopleList(page_num, maxRowNum.people, keyword);
 };
 </script>
 

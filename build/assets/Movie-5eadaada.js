@@ -1,0 +1,14 @@
+import{_ as f,u as g,h as d,r as y,o as w,C as n,a as k,b as l,c as r,e as a,d as e,q as C,t as o,j as x,l as M,s as _,f as j,g as B}from"./index-63c720bd.js";import{L as D}from"./LeftMenu-f15d19b1.js";const L={id:"wrapper"},N={id:"container",class:"sub_container"},P={id:"content"},S=e("div",{id:"subtitle"},[e("h2",null,"영상 갤러리")],-1),V={class:"movie_view","data-aos-duration":"1000","data-aos-delay":"400"},R={key:0},Y={class:"movie_title"},$={key:0,class:"movie_subtitle"},q={class:"movie_info"},E=e("li",{class:"imbar"},"|",-1),G=e("li",{class:"imbar"},"|",-1),I={colspan:"3"},T={class:"movie_content",style:{display:"flex","justify-content":"center","align-items":"center"}},U=["src"],z={class:"detail_btn_wrap"},A=["href"],F={__name:"Movie",setup(H){const u=g();d(null),d(null);const t=y({board:null});w(()=>{m()});const m=()=>{n(!0);const i=u.params.movie,p={method:"get",url:B.api_admin_get_board+`/${i}`,data:{},callback:s=>h(s),admin:"Y"};k(p);const h=s=>{let c=s.headers.result_code;if(c===_.success||c===_.noData){let v=s.data.result_info;t.board=v,n(!1)}else j("log",s),n(!1)}};return(i,b)=>(l(),r("div",L,[a(" 서브컨텐츠     //S"),e("div",N,[C(D,{subvisual:"subvisual_notice",page:"movie"}),e("div",P,[S,e("div",V,[t.board?(l(),r("table",R,[e("thead",null,[e("tr",null,[e("th",Y,o(t.board.subject),1)]),e("tr",null,[e("th",null,[t.board.sub_title?(l(),r("span",$,o(t.board.sub_title),1)):a("v-if",!0)])]),e("tr",null,[e("td",null,[e("ul",q,[e("li",null,o(t.board.reg_user_name_ko),1),E,e("li",null,"조회수 "+o(t.board.view_count),1),G,e("li",null,o(t.board.reg_dttm),1)])])]),a(` <tr>\r
+                                <td>\r
+                                    <ul>\r
+                                        <li class="download_li">\r
+                                            <a href="#none" onclick class="attachment_parent">첨부파일\r
+                                                <img src="/img/common/files.jpg">\r
+                                            </a>\r
+                                            <div class="attachment" style="display:none;">\r
+                                                <div class="xbtn"><img src="/img/common/x_btn.png"></div>\r
+                                            </div>\r
+                                        </li>\r
+                                    </ul>\r
+                                </td>\r
+                            </tr> `)]),e("tbody",null,[e("tr",null,[e("td",I,[e("div",T,[e("iframe",{src:`https://www.youtube.com/embed/${t.board.content}`,title:"YouTube video player",frameborder:"0",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",allowfullscreen:""},null,8,U)])])])])])):a("v-if",!0),e("div",z,[e("a",{href:x(M).web_movie_url,class:"detail_btn"},"목록 ",8,A)])])])])]))}},Q=f(F,[["__file","C:/Users/LG/Desktop/server/159/moye/frontend/web-src/src/components/web/movie/Movie.vue"]]);export{Q as default};
