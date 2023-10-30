@@ -92,15 +92,15 @@ const router = createRouter({
         },
         // ------------------- 교육서비스 --------------------
         {
-            // 코치진
-            path: routerPath.web_peoples_url, // "/education/peoples"
+            // 코치진 카테고리별
+            path: routerPath.web_peoples_byCategory_url, // "/education/peoples/:category"
             name: "peoples",
             component: () => import("@/components/web/education/peoples/Peoples.vue"),
             meta: { layout: MainLayout },
         },
         {
             // 코치진 상세
-            path: routerPath.web_people_detail_url, // "/education/peoples/:people"
+            path: routerPath.web_people_detail_url, // "/education/peoples/people/:people"
             name: "people",
             component: () => import("@/components/web/education/peoples/People.vue"),
             meta: { layout: MainLayout },

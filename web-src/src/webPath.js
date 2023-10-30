@@ -105,14 +105,18 @@ const routerPath = {
     web_promotion_url: `${base_url}businessIntro/promotion`,
    
     // ------------------- 교육서비스 --------------------
-   
+
     // 코치진
     // /education/peoples
     web_peoples_url: `${base_url}education/peoples`,
    
+    // 코치진 카테고리별
+    // /education/peoples/:category
+    web_peoples_byCategory_url: `${base_url}education/peoples/:category`,
+
     // 코치진 상세
-    // /education/peoples/:people
-    web_people_detail_url: `${base_url}education/peoples/:people`,
+    // /education/peoples/people/:people
+    web_people_detail_url: `${base_url}education/peoples/people/:people`,
     
     // Class 130 Category
     // /education/categories
@@ -270,7 +274,7 @@ const apiPath = {
     // 카테고리 목록
     api_admin_get_categories: `${
         base_api_url + slash + version + slash
-    }people/categories`,
+    }people/_categories`,
 
     // /v1/people/category
     // POST

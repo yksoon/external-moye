@@ -27,64 +27,56 @@ const state = reactive({
 const fileBaseUrl = apiPath.api_file;
 
 onMounted(() => {
-    // getCategoryList(1, maxRowNum.category, "");
+    getCategoryList(1, 0, "");
     getPeopleList(1, maxRowNum.people, "");
 });
 
 // // 카테고리 리스트 가져오기
-// const getCategoryList = (pageNum, pageSize, searchKeyword) => {
-//     CommonSpinner(true);
+const getCategoryList = (pageNum, pageSize, searchKeyword) => {
+    CommonSpinner(true);
 
-//     // /v1/people/categories
-//     // POST
-//     // 카테고리 목록
-//     const url = apiPath.api_admin_get_categories;
-//     const data = {
-//         page_num: pageNum,
-//         page_size: pageSize,
-//         search_keyword: searchKeyword,
-//         // category_div: "000"
-//     };
+    // /v1/people/_categories
+    // POST
+    // 카테고리 목록
+    const url = apiPath.api_admin_get_categories;
+    const data = {
+        page_num: pageNum,
+        page_size: pageSize,
+        search_keyword: searchKeyword,
+        category_div: "000"
+    };
 
-//     // 파라미터
-//     const restParams = {
-//         method: "post",
-//         url: url,
-//         data: data,
-//         callback: (res) => responseLogic(res),
-//         admin: "Y",
-//     };
-//     CommonRest(restParams);
+    // 파라미터
+    const restParams = {
+        method: "post",
+        url: url,
+        data: data,
+        callback: (res) => responseLogic(res),
+        admin: "Y",
+    };
+    CommonRest(restParams);
 
-//     // 완료 로직
-//     const responseLogic = (res) => {
-//         let result_code = res.headers.result_code;
+    // 완료 로직
+    const responseLogic = (res) => {
+        let result_code = res.headers.result_code;
 
-//         // 성공
-//         if (
-//             result_code === successCode.success ||
-//             result_code === successCode.noData
-//         ) {
-//             let result_info = res.data.result_info;
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
 
-//             state.categoryList = result_info;
+            state.categoryList = result_info;
 
-//             // if (state.categoryList.length) {
-//             //     console.log(state.categoryList)
-//             //     // for (let i = 0; i < state.categoryList.length; i++) {
-//             //     //     getCategoryList(1, maxRowNum.people, "");
-//             //     // }
-//             // }
+        } else {
+            // 에러
+            CommonConsole("log", res);
 
-//             // CommonSpinner(false);
-//         } else {
-//             // 에러
-//             CommonConsole("log", res);
-
-//             // CommonSpinner(false);
-//         }
-//     };
-// };
+            CommonSpinner(false);
+        }
+    };
+};
 
 // 인물 리스트 가져오기 (카테고리별)
 const getPeopleList = (pageNum, pageSize, searchKeyword) => {
@@ -141,7 +133,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 const handleChange = (page_num) => {
     const keyword = searchKeyword.value;
 
-    // getPeopleList(page_num, maxRowNum.people, keyword);
+    getPeopleList(page_num, maxRowNum.people, keyword);
 };
 </script>
 
@@ -155,16 +147,18 @@ const handleChange = (page_num) => {
                     <h2>코치진</h2>
                 </div>
                 <div>
-                    <ul class="people_tab">
-                        <li><a href="">스포츠</a></li>
-                        <li><a href="">음악</a></li>
-                        <li><a href="">댄스/무용/바둑</a></li>
-                        <li><a href="">팀/아카데미</a></li>
+                    <ul class="people_tab" v-if="state.categoryList.length">
+                        <li v-for="category in state.categoryList">
+                            <a :href="routerPath.web_peoples_url + '/' + category.category_idx"
+                                :class="categoryIdx == category.category_idx ? 'on' : ''">
+                                {{ category.category_name_ko }}
+                            </a>
+                        </li>
                     </ul>
-                    <h3 class="people_title">스포츠</h3>
+                    <h3 class="people_title" v-if="state.categoryList.length">{{state.categoryList.filter((el) => el.category_idx == categoryIdx)[0].category_name_ko}}</h3>
                     <div class="people_box" v-if="state.peopleList.length !== 0">
                         <div class="people" v-for="people in state.peopleList">
-                            <a :href="`${routerPath.web_peoples_url}/${people.people_idx}`">
+                            <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                 <div class="people_thumb">
                                     <div v-if="people.file_path_enc" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
                                         <span></span>
