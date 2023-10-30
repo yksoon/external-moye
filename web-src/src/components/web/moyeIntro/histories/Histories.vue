@@ -142,12 +142,13 @@ const getHistoryDetail = (history_idx) => {
                     <h2>연혁</h2>
                 </div>
                 <div class="history">
-                    <aos-vue v-if="state.historyInfo.length !== 0" animation="fade-up" :duration="1000" :delay="400">
+                    <div v-if="state.historyInfo.length !== 0">
                         <div class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
                             <ul class="month">
-                                <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
-                                    v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)">
+                                <aos-vue v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
+                                    v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)"
+                                    animation="fade-up" :duration="1000" :delay="200">
                                     <div>
                                         <h6
                                             v-if="history.start_date && history.end_date && history.start_date !== history.end_date">
@@ -170,10 +171,10 @@ const getHistoryDetail = (history_idx) => {
                                         <p class="subtit" v-if="history.sub_title">{{ history.sub_title }}</p>
                                         <p class="txt" v-if="history.content">{{ history.content }}</p>
                                     </div>
-                                </li>
+                                </aos-vue>
                             </ul>
                         </div>
-                    </aos-vue>
+                    </div>
                     <div v-if="state.historyInfo.length === 0">
                         데이터가 없습니다.
                     </div>

@@ -98,7 +98,7 @@ const handleChange = (page_num) => {
                 <div id="subtitle">
                     <h2>영상 갤러리</h2>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <div>
                     <div class="movie_wrap" v-if="state.boardList.length !== 0">
                         <div class="movie" v-for="board in state.boardList">
                             <a :href="`${routerPath.web_movieGallery_url}/${board.board_idx}`">

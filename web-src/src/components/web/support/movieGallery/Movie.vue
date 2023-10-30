@@ -83,7 +83,7 @@ const getBoardDetail = () => {
                 <div id="subtitle">
                     <h2>영상 갤러리</h2>
                 </div>
-                <div class="movie_view" data-aos-duration="1000" data-aos-delay="400">
+                <div class="movie_view">
                     <table v-if="state.board">
                         <thead>
                             <tr>

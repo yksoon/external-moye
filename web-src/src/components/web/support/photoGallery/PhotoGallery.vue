@@ -6,9 +6,8 @@ import {
 } from "@/common/js/common";
 import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
-import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
-import { routerPath } from '@/webPath';
+import { apiPath, routerPath } from '@/webPath';
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
@@ -98,7 +97,7 @@ const handleChange = (page_num) => {
                 <div id="subtitle">
                     <h2>포토 갤러리</h2>
                 </div>
-                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <div>
                     <div class="gallery_wrap" v-if="state.boardList.length !== 0">
                         <div class="gallery" v-for="board in state.boardList">
                             <a :href="`${routerPath.web_photoGallery_url}/${board.board_idx}`">

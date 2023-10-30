@@ -154,7 +154,7 @@ const handleChange = (page_num) => {
                 <div id="subtitle">
                     <h2>코치진</h2>
                 </div>
-                <aos-vue animation="fade-up" :duration="1000" :delay="400">
+                <div>
                     <ul class="people_tab">
                         <li><a href="">스포츠</a></li>
                         <li><a href="">음악</a></li>
@@ -162,7 +162,7 @@ const handleChange = (page_num) => {
                         <li><a href="">팀/아카데미</a></li>
                     </ul>
                     <h3 class="people_title">스포츠</h3>
-                    <div class="people_box" v-if="state.peopleList.length !== 0">
+                    <aos-vue class="people_box" v-if="state.peopleList.length !== 0" animation="fade-up" :duration="1000" :delay="400">
                         <div class="people" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_peoples_url}/${people.people_idx}`">
                                 <div class="people_thumb">
@@ -180,7 +180,7 @@ const handleChange = (page_num) => {
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </aos-vue>
                     <div v-else style="display: flex; justify-content: center;">
                         <b> 데이터가 없습니다. </b>
                     </div>
@@ -196,7 +196,7 @@ const handleChange = (page_num) => {
                             @update:model-value="handleChange"
                         ></v-pagination>
                     </div>
-                </aos-vue>
+                </div>
             </div>
         </div>
     </div>
