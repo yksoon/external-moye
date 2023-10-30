@@ -15,10 +15,9 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 const route = useRoute();
 
-const categoryIdx = route.params.category;
-
 const searchKeyword = ref(null);
 const state = reactive({
+    categoryIdx : null,
     categoryList: [],
     peopleList: [],
     pageInfo: {},
@@ -28,7 +27,6 @@ const fileBaseUrl = apiPath.api_file;
 
 onMounted(() => {
     getCategoryList(1, 0, "");
-    getPeopleList(1, maxRowNum.people, "");
 });
 
 // // 카테고리 리스트 가져오기
@@ -69,6 +67,10 @@ const getCategoryList = (pageNum, pageSize, searchKeyword) => {
 
             state.categoryList = result_info;
 
+            state.categoryIdx = route.params.category ? route.params.category : state.categoryList[0].category_idx;
+            
+            getPeopleList(1, maxRowNum.people, "");
+
         } else {
             // 에러
             CommonConsole("log", res);
@@ -90,7 +92,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
-        category_idx: categoryIdx,
+        category_idx: state.categoryIdx,
         show_yn: "Y"
     };
 
@@ -150,12 +152,12 @@ const handleChange = (page_num) => {
                     <ul class="people_tab" v-if="state.categoryList.length">
                         <li v-for="category in state.categoryList">
                             <a :href="routerPath.web_peoples_url + '/' + category.category_idx"
-                                :class="categoryIdx == category.category_idx ? 'on' : ''">
+                                :class="state.categoryIdx == category.category_idx ? 'on' : ''">
                                 {{ category.category_name_ko }}
                             </a>
                         </li>
                     </ul>
-                    <h3 class="people_title" v-if="state.categoryList.length">{{state.categoryList.filter((el) => el.category_idx == categoryIdx)[0].category_name_ko}}</h3>
+                    <h3 class="people_title" v-if="state.categoryList.length">{{state.categoryList.filter((el) => el.category_idx == state.categoryIdx)[0].category_name_ko}}</h3>
                     <div class="people_box" v-if="state.peopleList.length !== 0">
                         <div class="people" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">

@@ -25,7 +25,6 @@ const state = reactive({
 
 onMounted(() => {
     getLastBoard(1, 1, "");
-    getFirstCategory(1, 1, "");
 });
 
 const fileBaseUrl = apiPath.api_file;
@@ -134,53 +133,6 @@ const getBoard = (board_idx) => {
     };
 };
 
-// 전체 카테고리 중 가장 최근 데이터 불러오기
-const getFirstCategory = (pageNum, pageSize, searchKeyword) => {
-    CommonSpinner(true);
-
-    // /v1/people/_categories
-    // POST
-    // 카테고리 목록
-    const url = apiPath.api_admin_get_categories;
-    const data = {
-        page_num: pageNum,
-        page_size: pageSize,
-        search_keyword: searchKeyword,
-        category_div: "000"
-    };
-
-    // 파라미터
-    const restParams = {
-        method: "post",
-        url: url,
-        data: data,
-        callback: (res) => responseLogic(res),
-        admin: "Y",
-    };
-    CommonRest(restParams);
-
-    // 완료 로직
-    const responseLogic = (res) => {
-        let result_code = res.headers.result_code;
-
-        // 성공
-        if (
-            result_code === successCode.success ||
-            result_code === successCode.noData
-        ) {
-            let result_info = res.data.result_info;
-            
-            state.lastCategory = result_info[0];
-
-        } else {
-            // 에러
-            CommonConsole("log", res);
-
-            CommonSpinner(false);
-        }
-    };
-};
-
 const readyAlert = () => {
     alert("준비중입니다 :-)");
 };
@@ -209,9 +161,9 @@ const readyAlert = () => {
                 </div>
             </li>
             <li>
-                <a :href="routerPath.web_peoples_url + '/' + state.lastCategory.category_idx">교육서비스</a>
+                <a :href="routerPath.web_peoples_url">교육서비스</a>
                 <div class="submenu">
-                    <a :href="routerPath.web_peoples_url + '/' + state.lastCategory.category_idx">코치진</a>
+                    <a :href="routerPath.web_peoples_url">코치진</a>
                     <a :href="routerPath.web_categories_url">Class 130 Category</a>
                     <a :href="routerPath.web_growthProcess_url">성장과정별 교육</a>
                     <a :href="routerPath.web_scheduledEducation_url">예정교육</a>

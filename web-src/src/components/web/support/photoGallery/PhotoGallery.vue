@@ -102,7 +102,7 @@ const handleChange = (page_num) => {
                         <div class="gallery" v-for="board in state.boardList">
                             <a :href="`${routerPath.web_photoGallery_url}/${board.board_idx}`">
                                 <div class="thumb">
-                                    <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${board.file_info[0].file_path_enc}'); background-size:cover;`">
+                                    <div v-if="board.file_info.length" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${board.file_info[0].file_path_enc}'); background-size:cover; background-color:#eee;`">
                                         <span></span>
                                     </div>
                                     <div v-else  class="bg-thumb"></div>

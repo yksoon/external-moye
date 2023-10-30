@@ -270,7 +270,7 @@ const readyAlert = () => {
                                 class="person"
                                 v-for="people in state.peopleList1"
                             >
-                                <a :href="`${routerPath.web_peoples_url}/${people.people_idx}`">
+                                <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img
                                         v-if="people.file_path_enc !== null"

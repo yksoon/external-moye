@@ -30,6 +30,10 @@ const state = reactive({
 
 const fileBaseUrl = apiPath.api_file;
 
+onMounted(() => {
+    CommonSpinner(false);
+});
+
 // 파일 첨부시
 const attachFile = (input) => {
     const maxFileCnt = 5; // 첨부파일 최대 개수

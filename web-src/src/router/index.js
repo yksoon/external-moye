@@ -92,9 +92,16 @@ const router = createRouter({
         },
         // ------------------- 교육서비스 --------------------
         {
+            // 코치진 (카테고리 파라미터 없을 경우 첫번째 카테고리 목록)
+            path: routerPath.web_peoples_url, // "/education/peoples"
+            name: "peoples",
+            component: () => import("@/components/web/education/peoples/Peoples.vue"),
+            meta: { layout: MainLayout },
+        },
+        {
             // 코치진 카테고리별
             path: routerPath.web_peoples_byCategory_url, // "/education/peoples/:category"
-            name: "peoples",
+            name: "peoplesbycategory",
             component: () => import("@/components/web/education/peoples/Peoples.vue"),
             meta: { layout: MainLayout },
         },
