@@ -171,8 +171,7 @@ const getFirstCategory = (pageNum, pageSize, searchKeyword) => {
             let result_info = res.data.result_info;
             
             state.lastCategory = result_info[0];
-
-            CommonSpinner(false);
+            
         } else {
             // 에러
             CommonConsole("log", res);
