@@ -128,7 +128,7 @@ const profileInfoSort = (profile_info) => {
                 <div id="subtitle">
                     <h2>코치진</h2>
                 </div>
-                <div class="p_detail_wrap" data-aos-duration="1000" data-aos-delay="400" v-if="state.people">
+                <div class="p_detail_wrap" v-if="state.people">
                     <!-- <h3 class="people_title">{{ state.people.category_parent_name_ko }}</h3> -->
                     <div class="p_detail">
                         <div class="detail_info">

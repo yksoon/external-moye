@@ -83,7 +83,7 @@ const getBoardDetail = () => {
                 <div id="subtitle">
                     <h2>공지사항</h2>
                 </div>
-                <div data-aos-duration="1000" data-aos-delay="400">
+                <div>
                     <table class="board_Vtable" v-if="state.board">
                         <colgroup>
                             <col width="18%">
