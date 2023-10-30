@@ -57,7 +57,7 @@ body {min-width:1600px;max-width: 1920px;margin:0 auto;}
 
 h3.title {color: #333; font-size: 34px; font-weight: 900; letter-spacing: -0.02em; line-height: 34px;}
 a.more_btn {border: 1px solid #707070; border-radius: 35px;padding: 15px 25px;display: inline-block;}
-a.more_btn span {color: #666; font-size: 20px; font-weight: 500; letter-spacing: -0.02em;padding: 0 33px 0 0;
+a.more_btn span {color: #666; font-size: 20px; font-weight: 500; letter-spacing: -0.02em;padding: 0 33px 0 0;line-height: 20px;
 background: url('/img/web/main/arrow_btn.png') no-repeat right center; display: block;
 transition:all .3s;
 -webkit-transition:all .3s;
@@ -66,6 +66,16 @@ transition:all .3s;
 -o-transition:all .3s;
 }
 a.more_btn:hover span {background: url('/img/web/main/arrow_btn.png') no-repeat right 0; }
+a.more_btn_blue {border: 1px solid #3266B1; border-radius: 35px;padding: 15px 25px;display: inline-block;}
+a.more_btn_blue span {color: #3266B1; font-size: 20px; font-weight: 500; letter-spacing: -0.02em;padding: 0 45px 0 0;line-height: 20px;
+background: url('/img/web/sub/arrow_btn_blue.png') no-repeat right center; display: block;
+transition:all .3s;
+-webkit-transition:all .3s;
+-moz-transition:all .3s;
+-ms-transition:all .3s;
+-o-transition:all .3s;
+}
+a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') no-repeat right 0; }
 
 .section01 {padding:105px 0 55px;background: url('/img/web/main/section01_bg.png') no-repeat center / cover;}
 .section01 .top {width:1600px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between;}
@@ -266,7 +276,15 @@ display: flex;justify-content: space-evenly;}
 .map table tr td {color: #333; font-size: 18px; line-height: 18px;}
 
 /* 사업분야 */
-.category {}
+.category .section {margin: 0 0 100px;}
+.category .section h3 span{display: block; font-size: 17px; font-weight: 400; color: #B1C1D9; line-height: 17px; margin: 0 0 10px;}
+.category .section h3 {color: #3266B1; font-size: 28px; font-weight: 700; line-height: 28px; margin: 0 0 30px;}
+.category .section p {font-size: 20px; font-weight: 700; color: #111; line-height: 35px; margin: 0 0 50px;}
+.category .section .box_wrap {display: flex;}
+.category .section .box_wrap p {position: relative;}
+.category .section .box_wrap p span {color: #fff; font-size: 20px; font-weight: 700; line-height: 27px; position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.category .side {display: flex;justify-content: space-between;}
+
 
 
 /* 코치진 */
