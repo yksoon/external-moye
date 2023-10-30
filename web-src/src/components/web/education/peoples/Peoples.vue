@@ -67,7 +67,7 @@ const getCategoryList = (pageNum, pageSize, searchKeyword) => {
 
             state.categoryList = result_info;
 
-            state.categoryIdx = route.params.category ? route.params.category : state.categoryList[0].category_idx;
+            state.categoryIdx = route.params.category ? route.params.category : null;
             
             getPeopleList(1, maxRowNum.people, "");
 
@@ -150,6 +150,9 @@ const handleChange = (page_num) => {
                 </div>
                 <div>
                     <ul class="people_tab" v-if="state.categoryList.length">
+                        <li>
+                            <a :href="routerPath.web_peoples_url" :class="!state.categoryIdx ? 'on' : ''">전체</a>
+                        </li>
                         <li v-for="category in state.categoryList">
                             <a :href="routerPath.web_peoples_url + '/' + category.category_idx"
                                 :class="state.categoryIdx == category.category_idx ? 'on' : ''">
@@ -157,7 +160,7 @@ const handleChange = (page_num) => {
                             </a>
                         </li>
                     </ul>
-                    <h3 class="people_title" v-if="state.categoryList.length">{{state.categoryList.filter((el) => el.category_idx == state.categoryIdx)[0].category_name_ko}}</h3>
+                    <h3 class="people_title" v-if="state.categoryList.length">{{state.categoryIdx ? state.categoryList.filter((el) => el.category_idx == state.categoryIdx)[0].category_name_ko : '전체'}}</h3>
                     <div class="people_box" v-if="state.peopleList.length !== 0">
                         <div class="people" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
