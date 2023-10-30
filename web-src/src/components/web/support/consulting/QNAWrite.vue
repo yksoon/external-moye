@@ -224,7 +224,7 @@ const readyAlert = () => {
                 <div id="subtitle">
                     <h2>상담문의</h2>
                 </div>
-                <div data-aos-duration="1000" data-aos-delay="400">
+                <div>
                     <table class="board_Wtable">
                         <colgroup>
                             <col width="15%" />

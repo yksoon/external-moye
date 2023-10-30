@@ -12,7 +12,7 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
                 <div id="subtitle">
                     <h2>인사말</h2>
                 </div>
-                <div class="greetings" data-aos-duration="1000" data-aos-delay="400">
+                <div class="greetings">
                     <div class="face"><img src="/img/web/sub/ceo_photo.png" alt=""></div>
                     <div class="txt_box">
                         <h3>안녕하십니까? 모두의예체능 대표 안경현입니다.</h3>

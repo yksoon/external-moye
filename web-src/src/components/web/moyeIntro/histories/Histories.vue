@@ -146,9 +146,8 @@ const getHistoryDetail = (history_idx) => {
                         <div class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
                             <ul class="month">
-                                <aos-vue v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
-                                    v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)"
-                                    animation="fade-up" :duration="1000" :delay="200">
+                                <div v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
+                                    v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)">
                                     <div>
                                         <h6
                                             v-if="history.start_date && history.end_date && history.start_date !== history.end_date">
@@ -171,12 +170,12 @@ const getHistoryDetail = (history_idx) => {
                                         <p class="subtit" v-if="history.sub_title">{{ history.sub_title }}</p>
                                         <p class="txt" v-if="history.content">{{ history.content }}</p>
                                     </div>
-                                </aos-vue>
+                                </div>
                             </ul>
                         </div>
                     </div>
-                    <div v-if="state.historyInfo.length === 0">
-                        데이터가 없습니다.
+                    <div v-if="state.historyInfo.length === 0" style="display: flex; justify-content: center;">
+                        <b> 데이터가 없습니다. </b>
                     </div>
                 </div>
             </div>

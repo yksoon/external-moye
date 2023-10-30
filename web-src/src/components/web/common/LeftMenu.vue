@@ -149,7 +149,7 @@ const readyAlert = () => {
     <div v-if="props.subvisual === 'subvisual_intro'">
         <div id="subvisual" class="subvisual_intro">
             <div class="sub_txt">
-                <h2 data-aos="fade-in" data-aos-duration="500">
+                <h2>
                     모두의예체능 소개
                 </h2>
             </div>
@@ -172,7 +172,7 @@ const readyAlert = () => {
     <div v-if="props.subvisual === 'subvisual_business'">
         <div id="subvisual" class="subvisual_business">
             <div class="sub_txt">
-                <h2 data-aos="fade-in" data-aos-duration="500">
+                <h2>
                     사업소개
                 </h2>
             </div>
@@ -195,7 +195,7 @@ const readyAlert = () => {
     <div v-if="props.subvisual === 'subvisual_notice'">
         <div id="subvisual" class="subvisual_notice">
             <div class="sub_txt">
-                <h2 data-aos="fade-in" data-aos-duration="500">
+                <h2>
                     고객센터
                 </h2>
             </div>
@@ -216,7 +216,7 @@ const readyAlert = () => {
     <div v-if="props.subvisual === 'subvisual_people'">
         <div id="subvisual" class="subvisual_people">
             <div class="sub_txt">
-                <h2 data-aos="fade-in" data-aos-duration="500">
+                <h2>
                     교육서비스
                 </h2>
             </div>

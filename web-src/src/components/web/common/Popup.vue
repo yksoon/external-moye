@@ -72,7 +72,7 @@ const getPopupDetail = () => {
 <template>
 <div id="wrapper">
     <div id="container" class="sub_container">
-        <div data-aos-duration="1000" data-aos-delay="400">
+        <div>
             <table class="board_Vtable" v-if="state.popup">
                 <colgroup>
                     <col width="*">
