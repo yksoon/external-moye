@@ -1,4 +1,10 @@
 <script setup>
+import { CommonSpinner } from '@/common/js/common';
+import { onMounted } from "vue";
+
+onMounted(() => {
+    CommonSpinner(false);
+});
 </script>
 
 <template>

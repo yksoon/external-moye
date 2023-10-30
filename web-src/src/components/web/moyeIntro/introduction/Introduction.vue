@@ -1,5 +1,11 @@
 <script setup>
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
+import { CommonSpinner } from '@/common/js/common';
+import { onMounted } from "vue";
+
+onMounted(() => {
+    CommonSpinner(false);
+});
 </script>
 
 <template>
