@@ -45,7 +45,7 @@ onMounted(() => {
                             </tr>
                             <tr>
                                 <th>전화번호</th>
-                                <td>010-7424-9995층</td>
+                                <td>010-7424-9995</td>
                             </tr>
                             <tr>
                                 <th>E-mail</th>
