@@ -325,6 +325,10 @@ padding: 5px 60px; border-radius: 30px;}
 .platform .txt p {font-size: 20px; font-weight: 500; color: #111; line-height: 35px; margin: 0 0 50px;}
 .platform div:nth-child(2) p:first-child {margin: 0 0 30px;}
 
+/* 예체능시설 promotion */
+.promotion {text-align: center;}
+.promotion h5 {font-size: 34px; font-weight: 700;font-family: 'NanumSquareNeo-Variable'; color: #3266B1;}
+
 /* 코치진 */
 .people_title {font-size:30px;font-weight: 500;color: #3266B1;margin:0 0 30px;}
 .people_tab {display:flex;gap:20px;justify-content: center;margin:0 0 25px;}
