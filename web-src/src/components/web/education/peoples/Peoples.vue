@@ -180,9 +180,6 @@ const handleChange = (page_num) => {
                             </a>
                         </div>
                     </div>
-                    <div v-else style="display: flex; justify-content: center;">
-                        <b> 데이터가 없습니다. </b>
-                    </div>
                     <div
                         className="pagenation"
                         v-if="state.peopleList.length !== 0"

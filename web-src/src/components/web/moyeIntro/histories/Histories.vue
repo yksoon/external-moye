@@ -174,9 +174,6 @@ const getHistoryDetail = (history_idx) => {
                             </ul>
                         </div>
                     </div>
-                    <div v-if="state.historyInfo.length === 0" style="display: flex; justify-content: center;">
-                        <b> 데이터가 없습니다. </b>
-                    </div>
                 </div>
             </div>
         </div>
