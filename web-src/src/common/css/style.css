@@ -390,7 +390,7 @@ padding: 5px 60px; border-radius: 30px;}
 .class .part .list {display: flex;flex-wrap: wrap;}
 .class .part .list p {display: flex; flex-direction: column;align-items: center; width: calc(100% / 6); margin: 0 0 30px;}
 .class .part .list p img {max-height: 50px;}
-.class .part .list p span {font-size: 17px; font-weight: 600; color: #111; display: block;}
+.class .part .list p span {font-size: 17px; font-weight: 600; color: #111; display: block;} 
 .class .sports .title h4 {font-size: 50px; font-weight: 700; color: rgba(177,193,217,0.13); line-height: 50px; display: block;}
 .class .sports .title span {display: block; font-size: 30px; font-weight: 700; color: #3266B1; line-height: 30px;position: absolute; left: 127px; top: 60px;}
 .class .sports .part h5 {font-size: 20px; font-weight: 700; line-height: 24px; padding: 5px 0 5px 20px; background-color: #3266B1; border-radius: 40px; color: #fff;
@@ -402,6 +402,27 @@ margin: 0 0 30px;}
 .class .art .part h5 {font-size: 20px; font-weight: 700; line-height: 24px; padding: 5px 0 5px 20px; background-color: #48A96C; border-radius: 40px; color: #fff;
     margin: 0 0 30px;}
 .class .art .part .list p span::before {content: ""; display: block; clear: both;width: 30px; height: 1px; background-color: #48A96C; margin: 10px 0;}
+
+/* 성장과정별 교육 */
+.growth .graybox {border: 1px solid #ccc; box-sizing: border-box; border-radius: 30px; padding: 30px 45px;display: flex;align-items: center; flex-wrap: wrap;width: 100%;
+     margin: 0 0 10px 0; justify-content: space-between;}
+.growth .graybox h5{font-size: 20px;font-weight: 700;letter-spacing: -0.03em;}
+.growth .graybox ul {width: 74.5%;}
+.growth .graybox ul li {font-size: 16px; font-weight: 400; letter-spacing: -0.03em; color: #333;line-height: 16px; margin: 0 0 10px;}
+.growth .graybox ul li:last-child {margin: 0;}
+.growth .graybox ul li::before {content: ""; display: inline-block; clear: both; width: 3px; height: 3px; background-color: #3266B1; border-radius: 50%; 
+    margin: 0 10px 0 0; vertical-align: middle;}
+.growth .graybox p {width: 100%; margin: 45px 0 0 0;}
+.growth .graybox span {margin: 25px 0 15px; display: block; width: 100%; font-size: 18px; font-weight: 500;color: #333;}
+.growth .graybox table tbody {border-top: 1px solid #ddd;}
+.growth .graybox table tbody tr {border-bottom: 1px solid #ddd;}
+.growth .graybox table tbody tr th {background-color: #F5F9FF; font-size: 18px; font-weight: 700; color: #333; letter-spacing: -0.03em; line-height: 18px; padding: 10px;
+    border-right: 1px solid #ddd;}
+.growth .graybox table tbody tr th.left {text-align: left;padding: 10px 10px 10px 60px;}
+.growth .graybox table tbody tr td {font-size: 18px; font-weight: 500; color: #333; letter-spacing: -0.03em; line-height: 18px; padding: 10px; text-align: center;
+border-right: 1px solid #ddd;}
+.growth .graybox table tbody tr td.left {text-align: left;padding: 10px 10px 10px 60px; line-height: 27px;}
+.growth .graybox table tbody tr td.circle {display: block; margin: 0; background: url('/img/web/sub/circle_red.png') no-repeat center;}
 
 
 /* 갤러리 */
