@@ -1,4 +1,5 @@
 <script setup>
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { CommonSpinner } from '@/common/js/common';
 import { onMounted } from "vue";
 
@@ -9,7 +10,18 @@ onMounted(() => {
 
 <template>
     <!-- 파트너쉽 -->
-    <div style="height: 70vh; display: flex; justify-content: center; align-items: center;">
-        <h1 style="font-size: 2rem; font-weight: bold; color: #888;">준비중입니다.</h1>
+    <div id="wrapper">
+        <!-- 서브컨텐츠     //S-->
+        <div id="container" class="sub_container">
+            <LeftMenu subvisual="subvisual_partnership" page="partnership" />
+            <div id="content">
+                <div id="subtitle">
+                    <h2>Partnership</h2>
+                </div>
+                <div class="map">
+
+                </div>
+            </div>
+        </div>
     </div>
 </template>

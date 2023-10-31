@@ -213,6 +213,42 @@ const readyAlert = () => {
             </div>
         </div>
     </div>
+    <!-- 파트너쉽 -->
+    <div v-if="props.subvisual === 'subvisual_partnership'">
+        <div id="subvisual" class="subvisual_partnership">
+            <div class="sub_txt">
+                <h2>
+                    Partnership
+                </h2>
+            </div>
+        </div>
+        <div id="leftmenu">
+            <div id="lnb">
+                <ul>
+                    <li><a :href="routerPath.web_partnership_url"
+                            :class="page === 'partnership' ? 'on' : ''">Partnership</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 모두의예체능 -->
+    <div v-if="props.subvisual === 'subvisual_app'">
+        <div id="subvisual" class="subvisual_app">
+            <div class="sub_txt">
+                <h2>
+                    모두의예체능 APP
+                </h2>
+            </div>
+        </div>
+        <div id="leftmenu">
+            <div id="lnb">
+                <ul>
+                    <li><a :href="routerPath.web_appIntro_url" :class="page === 'app' ? 'on' : ''">모두의예체능 APP</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- 고객센터 -->
     <div v-if="props.subvisual === 'subvisual_notice'">
         <div id="subvisual" class="subvisual_notice">
