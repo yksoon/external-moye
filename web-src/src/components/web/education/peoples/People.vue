@@ -8,6 +8,7 @@ import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
 import { useRoute } from "vue-router";
+import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
@@ -125,6 +126,7 @@ const profileInfoSort = (profile_info) => {
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
             <div id="content">
+                <LeftMenu subvisual="subvisual_people" page="people" />
                 <div id="subtitle">
                     <h2>코치진</h2>
                 </div>
@@ -134,10 +136,8 @@ const profileInfoSort = (profile_info) => {
                         <div class="detail_info">
                             <span class="deco">MOYE</span>
                             <div class="thumb">
-                                <img
-                                    style="background-color:#eee;"
-                                    :src="state.people.file_info.length !== 0 ? `${fileBaseUrl}${state.people.file_path_enc}` : '/img/web/sub/default_full.jpg'"
-                                >
+                                <img style="background-color:#eee;"
+                                    :src="state.people.file_info.length !== 0 ? `${fileBaseUrl}${state.people.file_path_enc}` : '/img/web/sub/default_full.jpg'">
                             </div>
                             <div class="profile">
                                 <div class="profile_top">
@@ -157,7 +157,8 @@ const profileInfoSort = (profile_info) => {
                                     <p v-if="state.people.mobile"><span>연락처</span>{{ state.people.mobile }}</p>
                                     <p v-if="state.people.gender"><span>성별</span>{{ state.people.gender }}</p>
                                     <p v-if="state.people.email"><span>E-MAIL</span>{{ state.people.email }}</p>
-                                    <p v-if="state.people.people_memo" class="full"><span>메모</span>{{ state.people.people_memo }}</p>
+                                    <p v-if="state.people.people_memo" class="full"><span>메모</span>{{
+                                        state.people.people_memo }}</p>
                                 </div>
                             </div>
                         </div>
@@ -170,8 +171,7 @@ const profileInfoSort = (profile_info) => {
                                     <ul>
                                         <li v-if="state.profileInfo.filter((el) => el.parentIdx === section.idx).length !== 0"
                                             v-for="profile in state.profileInfo.filter((el) => el.parentIdx === section.idx
-                                        )"
-                                        >{{ profile.profileContent }}</li>
+                                            )">{{ profile.profileContent }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@ const profileInfoSort = (profile_info) => {
                     </div>
                     <div class="detail_btn_wrap">
                         <div class="">
-                            <a @click="()=>this.$router.go(-1)" class="detail_btn">목록으로 가기
+                            <a @click="() => this.$router.go(-1)" class="detail_btn">목록으로 가기
                             </a>
                         </div>
                     </div>
