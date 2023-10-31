@@ -280,7 +280,6 @@ display: flex;justify-content: space-evenly;}
 .category .section h3 span{display: block; font-size: 17px; font-weight: 400; color: #B1C1D9; line-height: 17px; margin: 0 0 10px;}
 .category .section h3 {color: #3266B1; font-size: 28px; font-weight: 700; line-height: 28px; margin: 0 0 30px;}
 .category .section p {font-size: 20px; font-weight: 700; color: #111; line-height: 35px; margin: 0 0 50px;}
-.category .section span {display: block; color: #333; font-size: 16px; line-height: 26px; letter-spacing: -0.03em;}
 .category .section .box_wrap {display: flex;justify-content: space-between;}
 .category .section .box_wrap p {position: relative;height: 220px;margin: 0;}
 .category .section .box_wrap p span {color: #fff; font-size: 20px; font-weight: 700; line-height: 27px; position: absolute; top: 50%; left: 50%; 
@@ -312,6 +311,7 @@ display: flex;justify-content: space-evenly;}
 .category .section .logo span {display: block; font-weight: 16px; color: #111; font-weight: 400; letter-spacing: -0.03em; line-height: 16px; background-color: #f4f4f4;
 padding: 5px 60px; border-radius: 30px;}
 .category .section05 .box_wrap p {margin: 25px 0 20px;}
+.category .section05 span {display: block; color: #333; font-size: 16px; line-height: 26px; letter-spacing: -0.03em;}
 .category .side {display: flex;justify-content: space-between;}
 .category .side .graybox_wrap {flex-direction: column; width: 795px;}
 .category .side .graybox_wrap .graybox {margin: 0 0 10px;padding: 24px 45px;}
@@ -364,7 +364,7 @@ padding: 5px 60px; border-radius: 30px;}
 .p_detail .detail_cv div.detail_cv_list ul li:before {content:"";display:inline-block;width:4px;height:4px;background: #9e9e9e;vertical-align: middle;margin:0 12px 4px 0;}
 
 .detail_btn_wrap {text-align:center;margin:120px 0 0;}
-.detail_btn {display:inline-block;margin:0 auto;border: 1px solid #ddd;color: #9e9e9e;border-radius: 50px;line-height:52px;padding:0 60px;font-size: 16px;}
+.detail_btn {display:inline-block;margin:0 auto;border: 1px solid #ddd;color: #9e9e9e;border-radius: 50px;line-height:52px;padding:0 60px;font-size: 16px;cursor: pointer;}
 .detail_btn:hover {background: #ddd;}
 
 /* 갤러리 */

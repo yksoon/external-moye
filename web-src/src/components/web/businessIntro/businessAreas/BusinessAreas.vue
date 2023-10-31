@@ -11,7 +11,7 @@ onMounted(() => {
 <template>
     <!-- 사업분야 -->
     <div id="wrapper">
-        <!-- 서브컨텐츠     //S-->
+        <!-- 서브컨텐츠 //S-->
         <div id="container" class="sub_container">
             <LeftMenu subvisual="subvisual_business" page="category" />
             <div id="content">
