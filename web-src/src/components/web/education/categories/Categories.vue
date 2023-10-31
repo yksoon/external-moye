@@ -24,13 +24,110 @@ onMounted(() => {
                             <h4>SPORTS</h4>
                             <span>스포츠</span>
                         </div>
-                        <div class="list">
+                        <div class="part">
                             <div>
                                 <h5>구기종목 (12)</h5>
-                                <p>
-                                    <img src="/img/web/sub/01_01_01.png" alt="">
-                                    <span>축구</span>
-                                </p>
+                                <div class="list">
+                                    <p>
+                                        <img src="/img/web/sub/01_01_01.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_02.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_03.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_04.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_05.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_05.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_05.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>구기종목 (12)</h5>
+                                <div class="list">
+                                    <p>
+                                        <img src="/img/web/sub/01_01_01.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_02.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_03.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_04.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_05.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_05.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/01_01_05.png" alt="">
+                                        <span>축구</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="art">
+                        <div class="title">
+                            <h4>ART</h4>
+                            <span>예술</span>
+                        </div>
+                        <div class="part">
+                            <div>
+                                <h5>댄스/무용 (15)</h5>
+                                <div class="list">
+                                    <p>
+                                        <img src="/img/web/sub/02_01_01.png" alt="">
+                                        <span>발레</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/02_01_02.png" alt="">
+                                        <span>발레</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/02_01_03.png" alt="">
+                                        <span>발레</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/02_01_04.png" alt="">
+                                        <span>발레</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/02_01_05.png" alt="">
+                                        <span>발레</span>
+                                    </p>
+                                    <p>
+                                        <img src="/img/web/sub/02_01_05.png" alt="">
+                                        <span>발레</span>
+                                    </p>
+
+                                </div>
                             </div>
                         </div>
                     </div>
