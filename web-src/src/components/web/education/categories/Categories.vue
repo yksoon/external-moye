@@ -2,6 +2,7 @@
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { CommonSpinner } from '@/common/js/common';
 import { onMounted } from "vue";
+import { categoriesModel } from "./130categoriesModel";
 
 onMounted(() => {
     CommonSpinner(false);
@@ -19,114 +20,22 @@ onMounted(() => {
                     <h2>Class 130 Category</h2>
                 </div>
                 <div class="class">
-                    <div class="sports">
+                    <!-- 대분류 -->
+                    <div v-for="parent in categoriesModel" :class="parent.category_parent_name_en">
                         <div class="title">
-                            <h4>SPORTS</h4>
-                            <span>스포츠</span>
+                            <h4>{{ parent.category_parent_name_en.toUpperCase() }}</h4>
+                            <span>{{ parent.category_parent_name_ko }}</span>
                         </div>
                         <div class="part">
-                            <div>
-                                <h5>구기종목 (12)</h5>
+                            <!-- 중분류 -->
+                            <div v-for="child in parent.category_child_info">
+                                <h5>{{ child.category_child_name_ko }} ({{ child.category_info.length }})</h5>
                                 <div class="list">
-                                    <p>
-                                        <img src="/img/web/sub/01_01_01.png" alt="">
-                                        <span>축구</span>
+                                    <!-- 카테고리 -->
+                                    <p v-for="category in child.category_info">
+                                        <img :src="`/img/web/sub/${category.file_path_enc}`" :alt="category.category_name_ko">
+                                        <span>{{ category.category_name_ko }}</span>
                                     </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_02.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_03.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_04.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_05.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_05.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_05.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <h5>구기종목 (12)</h5>
-                                <div class="list">
-                                    <p>
-                                        <img src="/img/web/sub/01_01_01.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_02.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_03.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_04.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_05.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_05.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/01_01_05.png" alt="">
-                                        <span>축구</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="art">
-                        <div class="title">
-                            <h4>ART</h4>
-                            <span>예술</span>
-                        </div>
-                        <div class="part">
-                            <div>
-                                <h5>댄스/무용 (15)</h5>
-                                <div class="list">
-                                    <p>
-                                        <img src="/img/web/sub/02_01_01.png" alt="">
-                                        <span>발레</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/02_01_02.png" alt="">
-                                        <span>발레</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/02_01_03.png" alt="">
-                                        <span>발레</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/02_01_04.png" alt="">
-                                        <span>발레</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/02_01_05.png" alt="">
-                                        <span>발레</span>
-                                    </p>
-                                    <p>
-                                        <img src="/img/web/sub/02_01_05.png" alt="">
-                                        <span>발레</span>
-                                    </p>
-
                                 </div>
                             </div>
                         </div>
