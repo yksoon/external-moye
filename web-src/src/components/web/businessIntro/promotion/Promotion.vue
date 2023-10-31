@@ -1,6 +1,7 @@
 <script setup>
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { CommonSpinner } from '@/common/js/common';
+import { routerPath } from "@/webPath";
 import { onMounted } from "vue";
 
 onMounted(() => {
@@ -20,12 +21,12 @@ onMounted(() => {
                 </div>
                 <div class="promotion">
                     <div class="img_wrap">
-                        <p><img src="/img/web/sub/promotion_img01.png" alt=""></p>
-                        <p><img src="/img/web/sub/promotion_img02.png" alt=""></p>
-                        <p><img src="/img/web/sub/promotion_img03.png" alt=""></p>
+                        <p class="pink"><span>효과적인 홍보를 하고 싶다면 ?</span></p>
+                        <p class="green"><span>전단지가 너무 비싸다면 ?</span></p>
+                        <p class="blue"><span>양질의 코치를 원한다면 ?</span></p>
                     </div>
                     <h5>이러한 고민들을 모두의예체능이 해결해드립니다.</h5>
-                    <a href="" class="more_btn_blue"><span>입점문의</span></a>
+                    <a :href="routerPath.web_consulting_url" class="more_btn_blue"><span>입점문의</span></a>
                 </div>
             </div>
         </div>

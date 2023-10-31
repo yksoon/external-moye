@@ -1,6 +1,7 @@
 <script setup>
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { CommonSpinner } from '@/common/js/common';
+import { routerPath } from "@/webPath";
 import { onMounted } from "vue";
 
 onMounted(() => {
@@ -29,7 +30,7 @@ onMounted(() => {
                             전수받고 메신저를 통해 소통 및 궁금한 점도 물어볼 수 있는<br>
                             어플리케이션 기반의 레슨매칭 플랫폼 입니다.
                         </p>
-                        <a href="http://moye.hicompint.com/appIntro" class="more_btn_blue"><span>APP 소개 더보기</span></a>
+                        <a :href="routerPath.web_appIntro_url" class="more_btn_blue"><span>APP 소개 더보기</span></a>
                     </div>
                     <div>
                         <p><img src="/img/web/sub/platform_img01.png" alt=""></p>
