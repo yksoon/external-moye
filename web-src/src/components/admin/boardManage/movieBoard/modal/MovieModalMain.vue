@@ -26,7 +26,7 @@ const inputTitle = ref(null);
 const inputSubTitle = ref(null);
 const inputContent = ref(null);
 const selectAttachmentMethod = ref(null);
-const inputAttachmentFile = ref('link');
+const inputAttachmentFile = ref(null);
 
 const state = reactive({
     fileList: [],
@@ -54,7 +54,8 @@ const getDefaultValue = () => {
     selectShowYn.value.value = modData.show_yn;
     inputTitle.value.value = modData.subject;
     inputSubTitle.value.value = modData.sub_title;
-    inputContent.value.value = modData.content;
+    inputContent.value = modData.content;
+    selectAttachmentMethod.value.value = modData.content.length ? 'link' : 'file';
     state.fileList = modData.file_info;
 };
 
@@ -259,6 +260,15 @@ const validation = () => {
 
     return true;
 };
+
+// 인물 프로필 셀렉트 박스 선택 이벤트
+const handleAttachmentMethod = (e) => {
+    const val = e.target.value;
+
+    selectAttachmentMethod.value = val;
+
+    return;
+};
 </script>
 
 <template>
@@ -302,13 +312,13 @@ const validation = () => {
                 <tr>
                     <th>첨부방식 <span class="red">*</span></th>
                     <td>
-                        <select class="wp100" v-model="selectAttachmentMethod">
+                        <select class="wp100" ref="selectAttachmentMethod" @change="(e) => handleAttachmentMethod(e)">
                             <option value="link" selected>링크첨부</option>
                             <option value="file">파일첨부</option>
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <tr v-if="selectAttachmentMethod && selectAttachmentMethod.value == 'link'">
                     <th>영상링크 <span class="red">*</span></th>
                     <td>
                         <input
@@ -321,7 +331,7 @@ const validation = () => {
                         <!-- <div>{{ selectAttachmentMethod.value }}</div> -->
                     </td>
                 </tr>
-                <tr>
+                <tr v-if="selectAttachmentMethod && selectAttachmentMethod.value == 'file'">
                     <th>파일첨부 <span class="red">*</span></th>
                     <td class="fileicon">
                         <div style="margin-bottom: 5">
@@ -353,7 +363,7 @@ const validation = () => {
                         </div>
                     </td>
                 </tr>
-                <tr v-if="modData">
+                <tr v-if="modData && selectAttachmentMethod.value == 'link'">
                     <th>영상</th>
                     <td>
                         <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${modData.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
