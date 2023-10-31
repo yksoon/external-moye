@@ -179,7 +179,10 @@ const profileInfoSort = (profile_info) => {
                     </div>
                     <div class="detail_btn_wrap">
                         <div class="">
-                            <a @click="() => this.$router.go(-1)" class="detail_btn">목록으로 가기
+                            <a @click="() => {
+                                let self = this;
+                                self.$router.go(-1)}
+                            " class="detail_btn">목록으로 가기
                             </a>
                         </div>
                     </div>
