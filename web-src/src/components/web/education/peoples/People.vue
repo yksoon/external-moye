@@ -125,8 +125,8 @@ const profileInfoSort = (profile_info) => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
+            <LeftMenu subvisual="subvisual_people" page="people" />
             <div id="content">
-                <LeftMenu subvisual="subvisual_people" page="people" />
                 <div id="subtitle">
                     <h2>코치진</h2>
                 </div>
