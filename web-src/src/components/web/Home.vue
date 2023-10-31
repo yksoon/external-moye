@@ -425,7 +425,7 @@ const readyAlert = () => {
                         우리는 예체능 생태계를 체계화하고, 통합 서비스를 제공
                         하고자 합니다.
                     </p>
-                    <a @click="readyAlert" class="more_btn"
+                    <a :href="routerPath.web_greetings_url" class="more_btn"
                         ><span>기업 소개 더보기</span></a
                     >
                     <a :href="routerPath.web_consulting_url" class="more_btn"
