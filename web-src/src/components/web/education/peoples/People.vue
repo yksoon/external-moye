@@ -6,7 +6,7 @@ import {
 } from "@/common/js/common.js";
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
-import { apiPath, routerPath } from "@/webPath";
+import { apiPath } from "@/webPath";
 import { useRoute } from "vue-router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
@@ -137,7 +137,7 @@ const profileInfoSort = (profile_info) => {
                             <span class="deco">MOYE</span>
                             <div class="thumb">
                                 <img style="background-color:#eee;"
-                                    :src="state.people.file_path_enc.length !== 0 ? `${fileBaseUrl}${state.people.file_path_enc}` : '/img/web/sub/default_full.jpg'">
+                                    :src="state.people.file_path_enc ? `${fileBaseUrl}${state.people.file_path_enc}` : '/img/web/sub/default_full.jpg'">
                             </div>
                             <div class="profile">
                                 <div class="profile_top">
@@ -179,7 +179,7 @@ const profileInfoSort = (profile_info) => {
                     </div>
                     <div class="detail_btn_wrap">
                         <div class="">
-                            <a @click="() => this.$route.go(-1)" class="detail_btn">목록으로 가기
+                            <a @click="() => this.$router.go(-1)" class="detail_btn">목록으로 가기
                             </a>
                         </div>
                     </div>
