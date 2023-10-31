@@ -146,7 +146,7 @@ const getHistoryDetail = (history_idx) => {
                         <div class="history_box" v-for="target in state.historyTarget">
                             <div class="year">{{ target.target_year }}</div>
                             <ul class="month">
-                                <div v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
+                                <li v-if="state.historyInfo.filter((el) => el.history_idx === target.history_idx).length !== 0"
                                     v-for="history in state.historyInfo.filter((el) => el.history_idx === target.history_idx)">
                                     <div>
                                         <h6
@@ -170,7 +170,7 @@ const getHistoryDetail = (history_idx) => {
                                         <p class="subtit" v-if="history.sub_title">{{ history.sub_title }}</p>
                                         <p class="txt" v-if="history.content">{{ history.content }}</p>
                                     </div>
-                                </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
