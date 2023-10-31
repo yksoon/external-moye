@@ -1,1 +1,0 @@
-import{_ as e,b as r,c as n,e as t}from"./index-0557fe6c.js";const c={};function o(s,_){return r(),n("div",null,[t(" 인사말 ")])}const f=e(c,[["render",o],["__file","C:/Users/LG/Desktop/server/159/moye/frontend/web-src/src/components/web/greeting/Greeting.vue"]]);export{f as default};

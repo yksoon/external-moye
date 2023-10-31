@@ -183,6 +183,13 @@ const readyAlert = () => {
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
                             </tr>
                         </tbody>
+                        <tbody v-else>
+                            <tr>
+                                <td colSpan="6">
+                                    <b> 데이터가 없습니다. </b>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
 
                     <div class="board_btn_wrap">

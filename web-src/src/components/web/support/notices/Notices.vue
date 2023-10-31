@@ -113,7 +113,6 @@ const handleChange = (page_num) => {
                     </div>
                     <table class="board_table">
                         <colgroup>
-                            <col width="5%" />
                             <col width="25%" />
                             <col width="10%" />
                             <col width="*" />
@@ -122,7 +121,6 @@ const handleChange = (page_num) => {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th>번호</th>
                                 <th>제목</th>
                                 <th>부제목</th>
                                 <th>내용</th>
@@ -132,7 +130,6 @@ const handleChange = (page_num) => {
                         </thead>
                         <tbody v-if="state.boardList.length !== 0">
                             <tr v-for="(board, idx) in state.boardList">
-                                <td>{{ idx + 1 }}</td>
                                 <td><a :href="`${routerPath.web_notices_url}/${board.board_idx}`">{{ board.subject }}</a></td>
                                 <td><a :href="`${routerPath.web_notices_url}/${board.board_idx}`">{{ board.sub_title }}</a></td>
                                 <td><a :href="`${routerPath.web_notices_url}/${board.board_idx}`">{{ board.content }}</a></td>
@@ -142,8 +139,8 @@ const handleChange = (page_num) => {
                         </tbody>
                         <tbody v-else>
                             <tr>
-                                <td>
-                                    목록이 없습니다.
+                                <td colSpan="5">
+                                    <b> 데이터가 없습니다. </b>
                                 </td>
                             </tr>
                         </tbody>
