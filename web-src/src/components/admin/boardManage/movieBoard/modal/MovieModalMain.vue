@@ -311,11 +311,14 @@ const handleAttachmentMethod = (e) => {
                 </tr>
                 <tr>
                     <th>첨부방식 <span class="red">*</span></th>
-                    <td>
+                    <td v-if="!isModData">
                         <select class="wp100" ref="selectAttachmentMethod" @change="(e) => handleAttachmentMethod(e)">
                             <option value="link" selected>링크첨부</option>
                             <option value="file">파일첨부</option>
                         </select>
+                    </td>
+                    <td v-else>
+                        <div></div>
                     </td>
                 </tr>
                 <tr v-if="selectAttachmentMethod && selectAttachmentMethod.value == 'link'">
@@ -363,7 +366,7 @@ const handleAttachmentMethod = (e) => {
                         </div>
                     </td>
                 </tr>
-                <tr v-if="modData && selectAttachmentMethod.value == 'link'">
+                <tr v-if="modData.content.length && selectAttachmentMethod.value == 'link'">
                     <th>영상</th>
                     <td>
                         <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${modData.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
