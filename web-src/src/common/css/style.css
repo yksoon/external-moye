@@ -270,6 +270,7 @@ display: flex;justify-content: space-evenly;}
 .ci p img {max-width: 100%;}
 
 /* 오시는길 */
+.map p {margin: 50px 0 0 0;}
 .map table {border-top: 2px solid #3266B1; margin: 20px 0 0;}
 .map table tr {border-bottom: 1px solid #ddd;}
 .map table tr th {color: #3266B1; font-size: 18px; font-weight: 600; line-height: 18px; padding: 15px 0;}
@@ -388,19 +389,21 @@ padding: 5px 60px; border-radius: 30px;}
 .class .title{position: relative; display: flex; background: url('/img/web/sub/grayline.png') repeat-y right;padding: 20px 0 0 0; width: 20%;}
 .class .part {margin: 0 0 0 50px;width: 80%;padding: 20px 0 0 0;}
 .class .part .list {display: flex;flex-wrap: wrap;}
-.class .part .list p {display: flex; flex-direction: column;align-items: center; width: calc(100% / 6); margin: 0 0 30px;}
+.class .part .list p {display: flex; flex-direction: column;align-items: center;justify-content: space-between; width: calc(100% / 6); margin: 0 0 30px;}
 .class .part .list p img {max-height: 50px;}
-.class .part .list p span {font-size: 17px; font-weight: 600; color: #111; display: block;} 
+.class .part .list p span {font-size: 17px; font-weight: 600; color: #111; display: block;display: flex;flex-direction: column;align-items: center;} 
 .class .sports .title h4 {font-size: 50px; font-weight: 700; color: rgba(177,193,217,0.13); line-height: 50px; display: block;}
 .class .sports .title span {display: block; font-size: 30px; font-weight: 700; color: #3266B1; line-height: 30px;position: absolute; left: 127px; top: 60px;}
 .class .sports .part h5 {font-size: 20px; font-weight: 700; line-height: 24px; padding: 5px 0 5px 20px; background-color: #3266B1; border-radius: 40px; color: #fff;
 margin: 0 0 30px;}
 .class .sports .part .list p span::before {content: ""; display: block; clear: both;width: 30px; height: 1px; background-color: #3266B1; margin: 10px 0;}
+.class .sports .part .list p:hover span {color: #3266B1;}
 
 .class .art .title h4 {font-size: 50px; font-weight: 700; color: rgba(72,169,108,0.053); line-height: 50px; display: block;}
 .class .art .title span {display: block; font-size: 30px; font-weight: 700; color: #48A96C; line-height: 30px;position: absolute; left: 70px; top: 55px;}
 .class .art .part h5 {font-size: 20px; font-weight: 700; line-height: 24px; padding: 5px 0 5px 20px; background-color: #48A96C; border-radius: 40px; color: #fff;
     margin: 0 0 30px;}
+.class .art .part .list p:hover span {color: #48A96C;}
 .class .art .part .list p span::before {content: ""; display: block; clear: both;width: 30px; height: 1px; background-color: #48A96C; margin: 10px 0;}
 
 /* 성장과정별 교육 */
