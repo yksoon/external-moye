@@ -328,61 +328,87 @@ const modBoard = (board_idx) => {
                         </tr>
                     </tbody>
                     <v-container>
-                        <v-card max-width="400" v-for="item in state.boardList">
-                            <div>
-                                <v-img
-                                    height="200"
-                                    :src="`https://img.youtube.com/vi/${item.content}/0.jpg`"
-                                    alt=""
-                                    cover
-                                >
-                                    <input
-                                        type="checkbox"
-                                        style="margin: 1rem"
-                                        :name="`boardIdx_${item.board_idx}`"
-                                        @change="
-                                            (e) =>
-                                                handleSingleCheck(
-                                                    e.target.checked,
+                        <v-row no-gutters>
+                            <v-card
+                                width="19%"
+                                style="margin-right: 1%"
+                                v-for="item in state.boardList"
+                            >
+                                <div v-if="item.content.length > 0">
+                                    <v-img
+                                        height="200"
+                                        :src="`https://img.youtube.com/vi/${item.content}/0.jpg`"
+                                        :alt="item.subject"
+                                        cover
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            style="margin: 1rem"
+                                            :name="`boardIdx_${item.board_idx}`"
+                                            @change="
+                                                (e) =>
+                                                    handleSingleCheck(
+                                                        e.target.checked,
+                                                        item.board_idx
+                                                    )
+                                            "
+                                            :checked="
+                                                state.checkItems.includes(
                                                     item.board_idx
                                                 )
-                                        "
-                                        :checked="
-                                            state.checkItems.includes(
-                                                item.board_idx
-                                            )
-                                                ? true
-                                                : false
-                                        "
-                                    />
-                                </v-img>
-                            </div>
-                            <!-- <div v-else>
-                                <v-img height="200" style="background-color: #f2f2f2;">
-                                    <input type="checkbox" style="margin: 1rem;" :name="`boardIdx_${item.board_idx}`" @change="(e) => handleSingleCheck(e.target.checked, item.board_idx)" :checked="state.checkItems.includes(item.board_idx) ? true : false"/>
-                                </v-img>
-                            </div> -->
-                            <v-card-title>{{ item.subject }}</v-card-title>
-                            <v-card-subtitle>{{
-                                item.sub_title
-                            }}</v-card-subtitle>
-                            <v-card-text>{{ item.content }}</v-card-text>
-                            <v-card-text>
-                                <v-card-actions>
-                                    <v-spacer>
-                                        <div>
-                                            조회수 : {{ item.view_count }}
-                                        </div>
-                                        <div>등록일 : {{ item.reg_dttm }}</div>
-                                    </v-spacer>
-                                    <v-btn
-                                        variant="outlined"
-                                        @click="modBoard(item.board_idx)"
-                                        >수정</v-btn
+                                                    ? true
+                                                    : false
+                                            "
+                                        />
+                                    </v-img>
+                                </div>
+                                <div v-else>
+                                    <v-img
+                                        height="200"
+                                        style="background-color: #f2f2f2"
                                     >
-                                </v-card-actions>
-                            </v-card-text>
-                        </v-card>
+                                        <input
+                                            type="checkbox"
+                                            style="margin: 1rem"
+                                            :name="`boardIdx_${item.board_idx}`"
+                                            @change="
+                                                (e) =>
+                                                    handleSingleCheck(
+                                                        e.target.checked,
+                                                        item.board_idx
+                                                    )
+                                            "
+                                            :checked="
+                                                state.checkItems.includes(
+                                                    item.board_idx
+                                                )
+                                                    ? true
+                                                    : false
+                                            "
+                                        />
+                                    </v-img>
+                                </div>
+                                <v-card-title>{{ item.subject }}</v-card-title>
+                                <v-card-subtitle>{{ item.sub_title }}</v-card-subtitle>
+                                <v-card-text>
+                                    <v-card-actions>
+                                        <v-spacer>
+                                            <div>
+                                                조회수 : {{ item.view_count }}
+                                            </div>
+                                            <div>
+                                                등록일 : {{ item.reg_dttm }}
+                                            </div>
+                                        </v-spacer>
+                                        <v-btn
+                                            variant="outlined"
+                                            @click="modBoard(item.board_idx)"
+                                            >수정</v-btn
+                                        >
+                                    </v-card-actions>
+                                </v-card-text>
+                            </v-card>
+                        </v-row>
                     </v-container>
                 </table>
 
