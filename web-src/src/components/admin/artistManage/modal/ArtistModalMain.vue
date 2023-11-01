@@ -77,7 +77,9 @@ onMounted(() => {
 const getDefaultValue = () => {
     changeSelectCategory1().then(() => {
         selectShowYn.value.value = modData.show_yn;
-        selectCategory2.value.value = modData.category_child_idx;
+        if (modData.category_child_idx) {
+            selectCategory2.value.value = modData.category_child_idx;
+        }
         selectPeopleType.value.value = modData.people_type_cd;
         inputNameFirstKo.value.value = modData.name_first_ko;
         inputNameLastKo.value.value = modData.name_last_ko;
@@ -87,7 +89,9 @@ const getDefaultValue = () => {
         inputNameFirstEn.value.value = modData.name_first_en;
         inputNameLastEn.value.value = modData.name_last_en;
         birthType.value.value = modData.birth_type_cd;
-        birthday.value.value = `${modData.birth_yyyy}-${modData.birth_mm}-${modData.birth_dd}`;
+        if (modData.birth_yyyy) {
+            birthday.value.value = `${modData.birth_yyyy}-${modData.birth_mm}-${modData.birth_dd}`;
+        }
         mobile1.value.value = modData.mobile1;
         mobile2.value.value = modData.mobile2;
         mobile3.value.value = modData.mobile3;
