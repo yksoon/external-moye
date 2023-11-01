@@ -7,15 +7,13 @@ import {
 import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath } from "@/webPath";
-import { useRoute } from "vue-router";
-import router from "@/router";
+import { useRoute, useRouter } from "vue-router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
 const route = useRoute();
-
-// const router = router;
+const router = useRouter();
 
 const state = reactive({
     people: null,
