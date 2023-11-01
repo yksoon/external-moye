@@ -60,7 +60,6 @@ export default {
 
         onMounted(() => {
             if (!userToken) {
-                // navigate(routerPath.admin_signin_url);
                 router.push({ name: "signin" });
             } else {
                 // console.log(userToken);
@@ -183,36 +182,10 @@ export default {
             usePages.setPages(page);
         };
 
-        // 렌더링 페이지
-        // const renderPage = (page) => {
-        //     console.log(page);
-        //     switch (page) {
-        //         // 대시보드
-        //         case "noticeBoard":
-        //             return <NoticeBoard />;
-
-        //         // // 사전등록 관리
-        //         // case "userList":
-        //         //     return <UserList isRefresh={isRefresh} />;
-
-        //         // // 공지사항
-        //         // case "notice":
-        //         //     return <Notice isRefresh={isRefresh} />;
-
-        //         // // 한줄게시판
-        //         // case "oneLineBoard":
-        //         //     return <OneLineBoard isRefresh={isRefresh} />;
-
-        //         default:
-        //             return <NoticeBoard />;
-        //     }
-        // };
-
         return {
             userInfo,
             state,
             switchPage,
-            // renderPage,
             pages,
             isRefresh,
         };
