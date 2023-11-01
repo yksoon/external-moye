@@ -8,11 +8,14 @@ import { successCode } from "@/common/js/resultCode";
 import { reactive, ref, onMounted } from "vue";
 import { apiPath } from "@/webPath";
 import { useRoute } from "vue-router";
+import router from "@/router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 // ------------------- import End --------------------
 
 const route = useRoute();
+
+// const router = router;
 
 const state = reactive({
     people: null,
@@ -179,7 +182,7 @@ const profileInfoSort = (profile_info) => {
                     </div>
                     <div class="detail_btn_wrap">
                         <div class="">
-                            <a @click="() => $router.go(-1)" 
+                            <a @click="() => router.go(-1)" 
                                 class="detail_btn">목록으로 가기
                             </a>
                         </div>
