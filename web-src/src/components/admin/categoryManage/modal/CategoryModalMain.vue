@@ -10,6 +10,7 @@ import {
 import { useModalStore } from "@/stores/modal";
 import { storeToRefs } from "pinia";
 import { categoryModel } from "@/components/admin/categoryManage/categoryModel";
+import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { successCode } from "@/common/js/resultCode";
 import { apiPath } from "@/webPath";
 import { onMounted } from "vue";
@@ -28,7 +29,12 @@ let isModData = false;
 
 const selectShowYn = ref(null);
 const categoryDiv = ref(null);
+const selectCategoryDiv = ref(null);
+const selectParentCategory = ref(null);
 const inputTitle = ref(null);
+const state = reactive({
+    categoryList: []
+})
 
 const useModal = useModalStore();
 
@@ -39,6 +45,8 @@ onMounted(() => {
             : false
         : false;
 
+
+    !isModData && getCategoryList(1, 0, "");
     isModData && getDefaultValue();
 });
 
@@ -54,6 +62,54 @@ const handleClose = () => {
     useModal.setIsModalClose();
 };
 
+// 대분류 카테고리 리스트 가져오기
+const getCategoryList = (pageNum, pageSize, searchKeyword) => {
+    CommonSpinner(true);
+
+    // /v1/people/_categories
+    // POST
+    // 카테고리 목록
+    const url = apiPath.api_admin_get_categories;
+    const data = {
+        page_num: pageNum,
+        page_size: pageSize,
+        search_keyword: searchKeyword,
+        category_div: "000"
+    };
+
+    // 파라미터
+    const restParams = {
+        method: "post",
+        url: url,
+        data: data,
+        callback: (res) => responseLogic(res),
+        admin: "Y",
+    };
+    CommonRest(restParams);
+
+    // 완료 로직
+    const responseLogic = (res) => {
+        let result_code = res.headers.result_code;
+
+        // 성공
+        if (
+            result_code === successCode.success ||
+            result_code === successCode.noData
+        ) {
+            let result_info = res.data.result_info;
+
+            state.categoryList = result_info;
+
+            CommonSpinner(false);
+        } else {
+            // 에러
+            CommonConsole("log", res);
+
+            CommonSpinner(false);
+        }
+    };
+};
+
 // 등록
 const regCategory = () => {
 if (validation()) {
@@ -67,8 +123,9 @@ if (validation()) {
     data = {
         ...model,
         show_yn: selectShowYn.value.value,
-        category_div: "000",
+        category_div: selectCategoryDiv.value.value,
         category_name_ko: inputTitle.value.value,
+        category_parent_idx: selectParentCategory.value.value
     };
 
     
@@ -157,6 +214,22 @@ const modCategory = () => {
     }
 };
 
+// 카테고리 분류 셀렉트 박스 선택 이벤트
+const handleCategoryDiv = (e) => {
+    const val = e.target.value;
+
+    selectCategoryDiv.value = val;
+
+    return;
+};
+
+const handleParentCategory = (e) => {
+    const val = e.target.value;
+
+    selectParentCategory.value = val;
+
+    return;
+}
 
 // 수정, 등록 완료 로직
 const requestCategories = () => {
@@ -168,6 +241,22 @@ const requestCategories = () => {
 
 // 검증
 const validation = () => {
+    if (selectCategoryDiv.value.value == '100' && !selectParentCategory.value) {
+        CommonNotify({
+            type: "alert",
+            message: "대분류를 선택해주세요",
+            callback: () => callbackLogic(),
+        });
+
+        const callbackLogic = () => {
+            setTimeout(() => {
+                selectParentCategory.value.focus();
+            }, 0);
+        };
+
+        return false;
+    }
+
     if (!inputTitle.value.value) {
         CommonNotify({
             type: "alert",
@@ -208,8 +297,18 @@ const validation = () => {
                 </tr>
                 <tr>
                     <th>분류</th>
-                    <td>
-                        {{categoryDiv}}
+                    <td v-if="!modData">
+                        <select class="wp100" ref="selectCategoryDiv" @change="(e) => handleCategoryDiv(e)">
+                            <option value="000">대분류</option>
+                            <option value="100">중분류</option>
+                        </select>
+                        <select v-if="selectCategoryDiv && selectCategoryDiv.value == '100'" class="wp100" ref="selectParentCategory" @change="(e) => handleParentCategory(e)">
+                            <option>대분류를 선택해주세요</option>
+                            <option v-for="parent in state.categoryList" :value="parent.category_idx">{{ parent.category_name_ko }}</option>
+                        </select>
+                    </td>
+                    <td v-if="modData">
+                        {{ categoryDiv }}
                     </td>
                 </tr>
                 <tr>

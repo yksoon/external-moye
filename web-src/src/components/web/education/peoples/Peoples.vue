@@ -29,7 +29,7 @@ onMounted(() => {
     getCategoryList(1, 0, "");
 });
 
-// // 카테고리 리스트 가져오기
+// 카테고리 리스트 가져오기
 const getCategoryList = (pageNum, pageSize, searchKeyword) => {
     CommonSpinner(true);
 
