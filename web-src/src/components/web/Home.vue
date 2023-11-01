@@ -221,7 +221,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
                 let popup = state.popupList[key];
                 let startDate = new Date(popup.start_date);
                 let endDate = new Date(popup.end_date);
-                
+
                 if (popup.show_yn === "Y" && startDate <= today && endDate >= today) {
                     window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
                 }
@@ -258,35 +258,22 @@ const readyAlert = () => {
                 <div class="top">
                     <h3 class="title">LIST OF LEGEND</h3>
                     <p>130개 예체능 카테고리 레전드 마스터</p>
-                    <a :href="routerPath.web_peoples_url" class="more_btn"
-                        ><span>코치진 더보기</span></a
-                    >
+                    <a :href="routerPath.web_peoples_url" class="more_btn"><span>코치진 더보기</span></a>
                 </div>
                 <!-- banner-slider //S-->
                 <div class="slide_box" v-if="state.peopleList1.length !== 0">
                     <div id="gsefSpan">
                         <div class="marquee" id="gsefSpan1">
-                            <div
-                                class="person"
-                                v-for="people in state.peopleList1"
-                            >
+                            <div class="person" v-for="people in state.peopleList1">
                                 <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
-                                    <img
-                                        v-if="people.file_path_enc !== null"
-                                        :src="`${fileBaseUrl}${people.file_path_enc}`"
-                                        :alt="`${people.file_name_org}`"
-                                        style="
+                                    <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`"
+                                        :alt="`${people.file_name_org}`" style="
                                             min-width: 450px;
-                                            min-height: 315px;
-                                        "
-                                    />
+                                            min-height: 180px;
+                                        " />
                                     <!-- 프로필 이미지 없는 경우 -->
-                                    <img
-                                        v-else
-                                        src="/img/web/sub/default_full.jpg"
-                                        alt="인물 기본 이미지"
-                                    />
+                                    <img v-else src="/img/web/sub/default_full.jpg" alt="인물 기본 이미지" />
                                     <p>
                                         <span class="name">{{
                                             people.name_ko
@@ -303,23 +290,13 @@ const readyAlert = () => {
                 <div class="slide_box" v-if="state.peopleList2.length !== 0">
                     <div id="gsefSpan">
                         <div class="marquee" id="gsefSpan2">
-                            <div
-                                class="person"
-                                v-for="people in state.peopleList2"
-                            >
+                            <div class="person" v-for="people in state.peopleList2">
                                 <a :href="`${routerPath.web_peoples_url}/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
-                                    <img
-                                        v-if="people.file_path_enc !== null"
-                                        :src="`${fileBaseUrl}${people.file_path_enc}`"
-                                        :alt="`${people.file_name_org}`"
-                                    />
+                                    <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`"
+                                        :alt="`${people.file_name_org}`" />
                                     <!-- 프로필 이미지 없는 경우 -->
-                                    <img
-                                        v-else
-                                        src="/img/web/sub/default_full.jpg"
-                                        alt="인물 기본 이미지"
-                                    />
+                                    <img v-else src="/img/web/sub/default_full.jpg" alt="인물 기본 이미지" />
                                     <p>
                                         <span class="name">{{
                                             people.name_ko
@@ -363,15 +340,11 @@ const readyAlert = () => {
                         <img src="/img/web/main/sports17.png" alt="" />
                         <img src="/img/web/main/sports18.png" alt="" />
                     </div>
-                    <a :href="routerPath.web_categories_url" class="more_btn"
-                        ><span>카테고리 더보기</span></a
-                    >
+                    <a :href="routerPath.web_categories_url" class="more_btn"><span>카테고리 더보기</span></a>
                 </div>
                 <div class="class_wrap">
                     <div class="pink" @click="readyAlert">
-                        <span
-                            ><img src="/img/web/main/class01.png" alt=""
-                        /></span>
+                        <span><img src="/img/web/main/class01.png" alt="" /></span>
                         <div class="txt">
                             <h5>PRIVATE CLASS</h5>
                             <p>
@@ -381,9 +354,7 @@ const readyAlert = () => {
                         </div>
                     </div>
                     <div class="green" @click="readyAlert">
-                        <span
-                            ><img src="/img/web/main/class02.png" alt=""
-                        /></span>
+                        <span><img src="/img/web/main/class02.png" alt="" /></span>
                         <div class="txt">
                             <h5>SCHOOL CLASS</h5>
                             <p>
@@ -394,18 +365,14 @@ const readyAlert = () => {
                         </div>
                     </div>
                     <div class="blue" @click="readyAlert">
-                        <span
-                            ><img src="/img/web/main/class03.png" alt=""
-                        /></span>
+                        <span><img src="/img/web/main/class03.png" alt="" /></span>
                         <div class="txt">
                             <h5>ONLINE CLASS</h5>
                             <p>온라인 클래스</p>
                         </div>
                     </div>
                     <div @click="readyAlert">
-                        <span
-                            ><img src="/img/web/main/class04.png" alt=""
-                        /></span>
+                        <span><img src="/img/web/main/class04.png" alt="" /></span>
                         <div class="txt">
                             <h5>SPECIAL CLASS</h5>
                             <p>
@@ -425,12 +392,8 @@ const readyAlert = () => {
                         우리는 예체능 생태계를 체계화하고, 통합 서비스를 제공
                         하고자 합니다.
                     </p>
-                    <a :href="routerPath.web_greetings_url" class="more_btn"
-                        ><span>기업 소개 더보기</span></a
-                    >
-                    <a :href="routerPath.web_consulting_url" class="more_btn"
-                        ><span>상담 문의하기</span></a
-                    >
+                    <a :href="routerPath.web_greetings_url" class="more_btn"><span>기업 소개 더보기</span></a>
+                    <a :href="routerPath.web_consulting_url" class="more_btn"><span>상담 문의하기</span></a>
                 </div>
                 <div class="right"></div>
             </div>
@@ -439,15 +402,11 @@ const readyAlert = () => {
                 <div class="top">
                     <h3 class="title">NOTICE</h3>
                     <p>모두의 예체능의 주요 공지사항을 전달합니다.</p>
-                    <a :href="routerPath.web_notices_url" class="more_btn"
-                        ><span>공지사항 더보기</span></a
-                    >
+                    <a :href="routerPath.web_notices_url" class="more_btn"><span>공지사항 더보기</span></a>
                 </div>
                 <div class="box_wrap" v-if="state.boardList.length !== 0">
                     <div class="box" v-for="board in state.boardList">
-                        <a
-                            :href="`${routerPath.web_notices_url}/${board.board_idx}`"
-                        >
+                        <a :href="`${routerPath.web_notices_url}/${board.board_idx}`">
                             <h4>{{ board.subject }}</h4>
                             <p>{{ board.content }}</p>
                             <span>{{ board.reg_dttm.split(" ")[0] }}</span>
