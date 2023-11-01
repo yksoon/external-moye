@@ -447,11 +447,31 @@ border-right: 1px solid #ddd;}
 .partnership .img_wrap p span {display: block;font-size: 20px; font-weight: 500; color: #333; margin: 20px 0 0; line-height: 20px;text-align: center;}
 
 /* 모두의예체능 App */
-.app .banner {max-width: 1600px; height: 470px;background: linear-gradient(90deg, rgba(50,102,177,1) 0%, rgba(51,225,115,1) 100%); border-radius: 30px;display: flex;} 
-.app .banner .info {text-align: center;}
-.app .banner h4 {font-size: 33px; line-height: 46px; letter-spacing: -0.02em; color: #fff; font-weight: 500;}
-.app .banner p {font-size: 18px;letter-spacing: -0.02em; color: #fff; font-weight: 500;}
-.app .banner a {background: url('/img/web/sub/apple_logo.png') no-repeat center}
+.app .banner {max-width: 1600px; height: 470px;background: linear-gradient(90deg, rgba(50,102,177,1) 0%, rgba(51,225,115,1) 100%); border-radius: 30px; margin: 0 0 90px;} 
+.app .banner .background {display: flex;align-items: center;justify-content: center;background: url('/img/web/sub/app_bg.png') no-repeat left bottom;height: 100%;}
+.app .banner .info {text-align: center;margin: 0 105px 0 0;}
+.app .banner .info h3 {font-size: 33px; line-height: 46px; letter-spacing: -0.02em; color: #fff; font-weight: 500;}
+.app .banner .info p {font-size: 18px;letter-spacing: -0.02em; color: #fff; font-weight: 500; line-height: 18px; margin: 55px 0 30px;}
+.app .banner .info a {width: 205px; height: 55px; display: inline-block; border-radius: 20px; box-shadow: 4px 5px #105577;background-color: #fff;}
+.app .banner .info a.apple {background: #fff url('/img/web/sub/apple_logo.png') no-repeat center;margin: 0 15px 0 0;}
+.app .banner .info a.google {background: #fff url('/img/web/sub/google_logo.png') no-repeat center;}
+.app .banner .img {margin: 55px 0 0 0;}
+.app .section {margin: 0 0 100px;}
+.app .section h4 {font-size: 28px; font-weight: 700; color: #48A96C; margin: 0 0 30px;}
+.app .section h4 span {color: #FF2626; font-size: 20px; font-weight: 500; margin: 0 0 0 50px;}
+.app .section .img_wrap {display: flex;justify-content: space-between;}
+.app .section .img_wrap p {position: relative; text-align: center; box-sizing: border-box;border-radius: 30px;}
+.app .section .img_wrap p:last-child {margin: 0;}
+.app .section .img_wrap p span {font-size: 17px;font-weight: 500;position: absolute; bottom: 6px; display: block; background-color: rgba(0,0,0,0.7); width: 100%; color: #fff;
+    padding: 5px 10px; line-height: 17px; border-radius: 0 0 30px 30px;}
+.app .section .graybox_wrap {display: flex;width: 100%;margin: 0 0 40px;}
+.app .section .graybox_wrap .graybox {width: calc((100% - 10px) / 2);display: flex;border: 1px solid #ccc; box-sizing: border-box; border-radius: 30px; padding: 25px 45px;
+    display: flex; align-items: center;flex-wrap: wrap;width: 100%; margin: 0 10px 0 0; position: relative;}
+.app .section .graybox_wrap .graybox:last-child {margin: 0;}
+.app .section .graybox_wrap .graybox h5 {font-size: 20px; font-weight: 700; letter-spacing: -0.03em;line-height: 20px; color: #333;}
+.app .section .graybox_wrap .graybox h5 span {font-size: 20px; font-weight: 500; color: #333; margin: 0 0 0 40px;}
+.app .section .graybox_wrap .graybox img {position: absolute; right: 35px; top: -30px}
+
 
 /* 갤러리 */
 .gallery_wrap {display:flex;flex-wrap: wrap;gap:40px;}
