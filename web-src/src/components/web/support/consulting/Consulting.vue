@@ -186,7 +186,7 @@ const readyAlert = () => {
                         <tbody v-else>
                             <tr>
                                 <td colSpan="6">
-                                    <b> 데이터가 없습니다. </b>
+                                    <b> 목록이 없습니다. </b>
                                 </td>
                             </tr>
                         </tbody>
