@@ -161,12 +161,12 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
 #content {width: 1600px; margin:0 auto; padding:75px 0 130px;min-height:850px;}
 
 #subvisual {width:100%;height:300px;position:relative;display: flex; }
-#subvisual.subvisual_intro  {background:url('/img/web/sub/subvisual_notice.jpg') center center no-repeat;}
-#subvisual.subvisual_business  {background:url('/img/web/sub/subvisual_business.jpg') center center no-repeat;}
-#subvisual.subvisual_notice {background:url('/img/web/sub/subvisual_notice.jpg') center center no-repeat;}
-#subvisual.subvisual_people {background:url('/img/web/sub/subvisual_people.jpg') center center no-repeat;}
-#subvisual.subvisual_partnership {background:url('/img/web/sub/subvisual_partnership.jpg') center center no-repeat;}
-#subvisual.subvisual_app {background:url('/img/web/sub/subvisual_app.jpg') center center no-repeat;}
+#subvisual.subvisual_intro  {background:url('/img/web/sub/subvisual_notice.jpg') center no-repeat;}
+#subvisual.subvisual_business  {background:url('/img/web/sub/subvisual_business.jpg') center no-repeat;}
+#subvisual.subvisual_notice {background:url('/img/web/sub/subvisual_notice.jpg') center no-repeat;}
+#subvisual.subvisual_people {background:url('/img/web/sub/subvisual_people.jpg') center no-repeat;}
+#subvisual.subvisual_partnership {background:url('/img/web/sub/subvisual_partnership.jpg') center no-repeat;}
+#subvisual.subvisual_app {background:url('/img/web/sub/subvisual_app.jpg') center no-repeat;}
 .sub_txt {width:1600px; margin:0 auto;text-align:left;display: flex; align-items: center;}
 .sub_txt h2 {font-size: 38px; line-height: 60px; color: #fff; font-weight: 700;font-family: 'NanumSquareNeo-Variable';}
 
@@ -430,6 +430,26 @@ border-right: 1px solid #ddd;}
 .growth .graybox table tbody tr td.left {text-align: left;padding: 10px 10px 10px 60px; line-height: 27px;}
 .growth .graybox table tbody tr td.circle {display: block; margin: 0; background: url('/img/web/sub/circle_red.png') no-repeat center;}
 
+/* partnership */
+.partnership > div {position: relative;}
+.partnership > div::after {content: ""; display: block; clear: both; background-color: #ccc; height: 1px; min-width: 1600px; position: absolute; top: 20px;z-index: -1;}
+.partnership h5 {font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.02em; border-radius:50px; background-color: #3266B1; padding: 5px 25px; 
+    line-height: 28px; width: 500px; z-index: 1000;}
+.partnership h5.blue {background-color: #3266B1;}
+.partnership h5.pink {background-color: #DF314F;}
+.partnership h5.green {background-color: #48A96C;}
+.partnership h5.gray {background-color: #7D7D7D;}
+.partnership h5 span {font-size: 20px; font-weight: 500; vertical-align: middle; display: inline-block; color: rgba(255,255,255,0.6); margin: 0 0 0 10px;}
+
+.partnership .img_wrap {display: flex; flex-wrap: wrap; margin: 0 0 50px; background: url('/img/web/sub/partner_bg.png') no-repeat right bottom;}
+.partnership .img_wrap p {width: calc((100% - 90px) / 3); box-sizing: border-box; margin: 25px 45px 40px 0;}
+.partnership .img_wrap p:nth-child(3n) {margin: 25px 0 40px;}
+.partnership .img_wrap p span {display: block;font-size: 20px; font-weight: 500; color: #333; margin: 20px 0 0; line-height: 20px;text-align: center;}
+
+/* 모두의예체능 App */
+.app .banner {max-width: 1600px; height: 470px;background: linear-gradient(90deg, rgba(50,102,177,1) 0%, rgba(51,225,115,1) 100%); border-radius: 30px;} 
+.app .banner h4 {font-size: 33px; line-height: 46px; letter-spacing: -0.02em; color: #fff; font-weight: 500; text-align: center;}
+.app .banner p {color: #fff;font-size: 18px; font-weight: 500;}
 
 /* 갤러리 */
 .gallery_wrap {display:flex;flex-wrap: wrap;gap:40px;}

@@ -225,8 +225,7 @@ const readyAlert = () => {
         <div id="leftmenu">
             <div id="lnb">
                 <ul>
-                    <li><a :href="routerPath.web_partnership_url"
-                            :class="page === 'partnership' ? 'on' : ''">Partnership</a></li>
+                    <li><a :href="routerPath.web_partnership_url" :class="page === 'partnership' ? 'on' : ''">파트너쉽</a></li>
                 </ul>
             </div>
         </div>
