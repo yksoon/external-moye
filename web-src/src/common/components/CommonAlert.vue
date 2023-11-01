@@ -44,7 +44,7 @@ export default {
             <v-card-actions>
                 <v-spacer></v-spacer>
 
-                <v-btn text="OK" @click="ok"></v-btn>
+                <v-btn text="확인" @click="ok"></v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
