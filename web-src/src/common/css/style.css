@@ -395,14 +395,14 @@ padding: 5px 60px; border-radius: 30px;}
 .class .part .list p {display: flex; flex-direction: column;align-items: center;justify-content: space-between; width: calc(100% / 6); margin: 0 0 30px;}
 .class .part .list p img {max-height: 50px;}
 .class .part .list p span {font-size: 17px; font-weight: 600; color: #111; display: block;display: flex;flex-direction: column;align-items: center;} 
-.class .sports .title h4 {font-size: 50px; font-weight: 700; color: rgba(177,193,217,0.13); line-height: 50px; display: block;}
+.class .sports .title h4 {font-size: 50px; font-weight: 700; color: rgba(177,193,217,0.25); line-height: 50px; display: block;}
 .class .sports .title span {display: block; font-size: 30px; font-weight: 700; color: #3266B1; line-height: 30px;position: absolute; left: 127px; top: 60px;}
 .class .sports .part h5 {font-size: 20px; font-weight: 700; line-height: 24px; padding: 5px 0 5px 20px; background-color: #3266B1; border-radius: 40px; color: #fff;
 margin: 0 0 30px;}
 .class .sports .part .list p span::before {content: ""; display: block; clear: both;width: 30px; height: 1px; background-color: #3266B1; margin: 10px 0;}
 .class .sports .part .list p:hover span {color: #3266B1;}
 
-.class .art .title h4 {font-size: 50px; font-weight: 700; color: rgba(72,169,108,0.053); line-height: 50px; display: block;}
+.class .art .title h4 {font-size: 50px; font-weight: 700; color: rgba(72,169,108,0.15); line-height: 50px; display: block;}
 .class .art .title span {display: block; font-size: 30px; font-weight: 700; color: #48A96C; line-height: 30px;position: absolute; left: 70px; top: 55px;}
 .class .art .part h5 {font-size: 20px; font-weight: 700; line-height: 24px; padding: 5px 0 5px 20px; background-color: #48A96C; border-radius: 40px; color: #fff;
     margin: 0 0 30px;}
@@ -433,8 +433,8 @@ border-right: 1px solid #ddd;}
 /* partnership */
 .partnership > div {position: relative;}
 .partnership > div::after {content: ""; display: block; clear: both; background-color: #ccc; height: 1px; min-width: 1600px; position: absolute; top: 20px;z-index: -1;}
-.partnership h5 {font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.02em; border-radius:50px; background-color: #3266B1; padding: 5px 25px; 
-    line-height: 28px; width: 500px; z-index: 1000;}
+.partnership h5 {font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.02em; border-radius:50px; background-color: #3266B1; padding: 10px 25px; 
+    line-height: 28px; width: 500px; display: flex;}
 .partnership h5.blue {background-color: #3266B1;}
 .partnership h5.pink {background-color: #DF314F;}
 .partnership h5.green {background-color: #48A96C;}
@@ -447,9 +447,11 @@ border-right: 1px solid #ddd;}
 .partnership .img_wrap p span {display: block;font-size: 20px; font-weight: 500; color: #333; margin: 20px 0 0; line-height: 20px;text-align: center;}
 
 /* 모두의예체능 App */
-.app .banner {max-width: 1600px; height: 470px;background: linear-gradient(90deg, rgba(50,102,177,1) 0%, rgba(51,225,115,1) 100%); border-radius: 30px;} 
-.app .banner h4 {font-size: 33px; line-height: 46px; letter-spacing: -0.02em; color: #fff; font-weight: 500; text-align: center;}
-.app .banner p {color: #fff;font-size: 18px; font-weight: 500;}
+.app .banner {max-width: 1600px; height: 470px;background: linear-gradient(90deg, rgba(50,102,177,1) 0%, rgba(51,225,115,1) 100%); border-radius: 30px;display: flex;} 
+.app .banner .info {text-align: center;}
+.app .banner h4 {font-size: 33px; line-height: 46px; letter-spacing: -0.02em; color: #fff; font-weight: 500;}
+.app .banner p {font-size: 18px;letter-spacing: -0.02em; color: #fff; font-weight: 500;}
+.app .banner a {background: url('/img/web/sub/apple_logo.png') no-repeat center}
 
 /* 갤러리 */
 .gallery_wrap {display:flex;flex-wrap: wrap;gap:40px;}
