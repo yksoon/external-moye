@@ -2,16 +2,16 @@
 
 body {min-width:1600px;max-width: 1920px;margin:0 auto;}
 
-#header  {position:relative;width:100%; height:125px; z-index:999; background-color: #fff;}
+#header  {position:relative;width:100%; height:125px; z-index:999; background-color: #fff;padding: 0 20px;}
 
-#header_content {width:100%; margin:0 auto;height:125px;display: flex;}
-#header_content .logo {position:relative; top:30px; left:160px; z-index:1000;}
+#header_content {width:100%; margin:0 auto;height:125px;display: flex;max-width: 1600px;justify-content: space-between; align-items: center;}
+#header_content .logo {display: flex;height: 100%;align-items: center; z-index:1000;}
 #header_content .logo a{display:block;}
 
 
 /* gnb */
-#gnb {position:relative;top:0; height:125px;display: flex;}
-#gnb ul {display: flex;justify-content: flex-end; width: 1600px; margin: 30px auto 0; text-align: center; align-items: center;}
+#gnb {position:relative;top:0; display: flex;align-items: center;height: 100%;}
+#gnb ul {display: flex;justify-content: flex-end;  text-align: center; align-items: center;height: 100%;}
 #gnb ul:after {content:" "; display:block; clear:both;}
 #gnb ul li {margin: 0 30px; text-align:center; box-sizing:border-box;height: 100%;}
 #gnb ul li > a {display:block; color:#333; font-size:20px;  letter-spacing:-0.02em; font-weight: 600;display: flex;align-items: center;height: 100%;cursor:pointer;}
@@ -44,12 +44,12 @@ body {min-width:1600px;max-width: 1920px;margin:0 auto;}
 		margin-top:0;
     }
 }
+#top_right {display: none;}
 
-
-#mainvisual { width:100%; height:806px; background:url('/img/web/main/main_bg.png') center 0 no-repeat;position: relative;}
+#mainvisual { width:100%; height:806px; background:url('/img/web/main/main_bg.png') center 0 no-repeat;position: relative;  background-size: cover;}
 #mainvisual  .main_txt {background: rgb(0,0,0); background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
-    position:absolute; bottom: 0;transform: translate(-50%, 0);left: 50%; width: 100%;padding: 130px 0 50px;}
-#mainvisual  .main_txt .main_txt_wrap {width:1600px; margin:0 auto;}
+    position:absolute; bottom: 0;transform: translate(-50%, 0);left: 50%; width: 100%;padding: 130px 20px 50px;}
+#mainvisual  .main_txt .main_txt_wrap {max-width:1600px; margin:0 auto;}
 #mainvisual  .main_txt h2 {font-size: 38px; font-weight: 700;font-family: 'NanumSquareNeo-Variable';line-height: 38px;color: #fff;margin: 0 0 15px;}
 #mainvisual  .main_txt p {font-size: 22px;font-weight: 400;color: #D9D9D9;}
 
@@ -78,10 +78,10 @@ transition:all .3s;
 a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') no-repeat right 0; }
 
 .section01 {padding:105px 0 55px;background: url('/img/web/main/section01_bg.png') no-repeat center / cover;}
-.section01 .top {width:1600px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between;}
+.section01 .top {max-width:1600px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between; padding: 0 20px;}
 .section01 .top p {font-size: 24px; line-height: 24px; color: #666; letter-spacing: -0.02em; font-weight: 500;margin: 8px 0 0 -660px;}
 
-.section02 {width: 1600px; margin: 0 auto; padding: 105px 0;}
+.section02 {max-width: 1600px; margin: 0 auto; padding: 105px 20px;}
 .section02 .top {display: flex;align-items: flex-end;}
 .section02 .top p {font-size: 24px; font-weight: 500; color: #666; margin: 0 0 0 60px;}
 .section02 .category {display: flex;justify-content: space-between;align-items: center;margin: 50px 0 55px 0;}
@@ -111,10 +111,10 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
 .section03 .left a.more_btn {display: block;width: 215px;text-align: center;margin: 20px 0 0;}
 .section03 .left a.more_btn span {background: url('/img/web/main/arrow_btn_wh.png') no-repeat right center; color: #fff;}
 .section03 .left a.more_btn:hover span {background: url('/img/web/main/arrow_btn_wh.png') no-repeat right 0; }
-.section03 .right {background: url('/img/web/main/section03_bg2.png')no-repeat right center; width: 50%;box-sizing: border-box; margin: 0 236px 0 0;}
+.section03 .right {background: url('/img/web/main/section03_bg2.png')no-repeat right center; width: 50%;box-sizing: border-box;margin: 0 236px 0px 50px;background-size: contain;}
 
-.section04 {padding: 105px 0;background: url('/img/web/main/section04_bg.png')no-repeat right top; }
-.section04 .top{width:1600px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between;}
+.section04 {padding: 105px 20px;background: url('/img/web/main/section04_bg.png')no-repeat right top; }
+.section04 .top{max-width:1600px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between;}
 .section04 .top p {font-size: 24px; font-weight: 500; color: #666; margin: 8px 0 0 -660px;}
 .section04 .box_wrap {width: 1600px; margin: 0 auto; display: flex;}
 .section04 .box_wrap .box {width: calc((100% - 60px) / 4); margin: 0 20px 0 0;box-sizing: border-box; border-radius: 20px; background-color: #fff;
@@ -138,8 +138,8 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
     word-wrap:break-word; }
 .section04 .box_wrap .box span {color: #333; font-size: 18px; font-weight: 500; letter-spacing: -0.04em; line-height: 23px; display: block; width: 100%; text-align: right;}
 
-#footer {padding: 55px 0 75px; background-color: #E9E9E9;}
-#footer .footer_content {width: 1600px; margin: 0 auto; display: flex;justify-content: space-between;align-items: center;}
+#footer {padding: 55px 20px 75px; background-color: #E9E9E9;}
+#footer .footer_content {max-width: 1600px; margin: 0 auto; display: flex;justify-content: space-between;align-items: center;}
 #footer .footer_content .txt h4 {font-size: 18px; font-weight: 700; color: #333; letter-spacing: -0.04em; line-height: 23px;margin: 0 0 15px;}
 #footer .footer_content .txt span {font-size: 14px; font-weight: 600; color: #666; letter-spacing: -0.04em; ;line-height: 18px;display: inline-block;} 
 #footer .footer_content .txt span::after {content: ""; display: inline-block; clear: both; width: 1px; height: 12px; background-color: #ccc;margin: 0 10px; vertical-align: middle;} 
@@ -509,3 +509,83 @@ border-right: 1px solid #ddd;}
 .movie_view .movie_info {display:flex;justify-content: center;padding:0 0 36px;border-bottom: 1px solid #ddd;margin:12px 0 40px;color: #9e9e9e;}
 .movie_view .movie_info li {padding:0 10px;}
 
+
+/**** mobile layout *************************************************************************************************************/
+@media screen and (max-width:640px) {
+
+
+    body {min-width:320px;max-width: 1920px;margin:0 auto;}
+	#header  { height:70px;}
+
+	#header_content {height:70px;}
+	#header_content .logo a img{height:40px;}
+
+
+	#gnb {display:none;}
+	.top_menu {display:none;}
+	.mob_none {display:none;}
+
+    #top_right {display: block;}
+    #top_right #menu-icon2 img {height: 20px;}
+	#nav {position:absolute; top:70px; right:0; width:100%; text-align:left; z-index:1100;}
+	#nav ul {display:block;}
+	#nav ul li {position:relative; border-top:1px solid #edebe9; background:#fff;}
+	#nav ul li a {position:relative; color:#000; font-size:16px; font-weight:600; display:block; line-height:130%; padding:15px 20px 15px 20px;}
+	#nav ul li a .arrow {position:absolute; top:50%; right:20px; z-index:900;transform: translateY(-50%);}
+	#nav ul li a .arrow img {width:12px; height:8px;}
+	#nav ul > li > ul {}
+	#nav .submenu > a:first-child {border-top:none;}
+	#nav .submenu > a {color:#333; font-size:14px; background:#f7f7f7; font-weight:600; line-height:130%;border-bottom:none; border-top:1px solid #ddd;}
+
+
+    #mainvisual{height: 680px;}
+    #mainvisual .main_txt {padding: 0 20px 20px;}
+    #mainvisual .main_txt h2 {font-size: 24px; line-height: 30px;margin: 0 0 10px;}
+    #mainvisual .main_txt p {font-size: 18px;}
+
+    h3.title {font-size: 24px; line-height: 30px;}
+    a.more_btn {padding: 5px 20px;}
+    a.more_btn span {font-size: 16px; background-size: 10%; padding: 0 25px 0 0;}
+	
+    .section01 {padding: 80px 0 55px;}
+    .section01 .top {display: block;margin: 0 auto 40px; padding: 0 20px;}
+    .section01 .top p {text-align: left; font-size: 18px;margin: 10px 0 20px;}
+
+    .section02 {padding: 80px 20px;}
+    .section02 .top {display: block;}
+    .section02 .top p {margin: 20px 0 0; font-size: 18px;}
+    .section02 .category {display: block; margin: 30px 0;}
+    .section02 .category .icon_wrap {margin: 0 0 10px;}
+    .section02 .class_wrap {display: block;}
+    .section02 .class_wrap > div { width: 100%;flex-direction: column; padding: 10px; justify-content: center; margin: 0 0 15px 0; background: none;}
+    .section02 .class_wrap > div .txt {text-align: center;}
+    .section02 .class_wrap > div .txt h5 {font-size: 20px;}
+    .section02 .class_wrap > div .txt p {font-size: 16px;height: auto; display: block;}
+
+    .section03 {display: block; height: auto; padding: 80px 20px 30px;}
+    .section03 .left {margin: 0; width: 100%; height: 470px;}
+    .section03 .left p {font-size: 18px;line-height: 24px;}
+    .section03 .left a.more_btn span {background-size: 8%;}
+    .section03 .right {width: 100%; height: 400px;margin: 0;}
+
+    .section04 {padding: 80px 20px; background-size: 60%;}
+    .section04 .top {display: block;}
+    .section04 .top p {font-size: 18px;margin: 10px 0 20px;}
+    
+
+    .slide_box {margin: 0 auto 50px; height: 180px;}
+    .slide_box #gsefSpan .person {width: 200px; height: 200px; margin: 0px 15px 0 0;}
+    .slide_box #gsefSpan .person a p {padding: 10px;}
+    .slide_box #gsefSpan .person a p span.name {font-size: 18px;}
+    .slide_box #gsefSpan .person a p span {font-size: 16px;}
+
+    #footer {padding: 50px 20px;}
+    #footer .footer_content {display: block;}
+    #footer .footer_content .txt h4 {font-size: 15px;}
+    #footer .footer_content .txt span {font-size: 13px; line-height: 23px; display: block;}
+    #footer .footer_content .txt span::after {display: none;}
+    #footer .footer_content p.flogo {margin: 20px 0 0;}
+    #footer .footer_content p.flogo img {height: 30px;}
+
+
+}
