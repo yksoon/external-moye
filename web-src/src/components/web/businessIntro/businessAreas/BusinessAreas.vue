@@ -1,6 +1,7 @@
 <script setup>
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
 import { CommonSpinner } from '@/common/js/common';
+import { routerPath } from "@/webPath";
 import { onMounted } from "vue";
 
 onMounted(() => {
