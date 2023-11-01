@@ -161,7 +161,7 @@ const validation = () => {
 
         return false;
     }
-    
+
     if (!inputUserLastName.value.value) {
         CommonNotify({
             type: "alert",
@@ -267,10 +267,14 @@ const readyAlert = () => {
                                 <td>
                                     <div class="placeholder_Title_Big"
                                         style="display: inline-block; position: relative; vertical-align: middle; float: left;">
-                                        <input type="text" id="placeholder" name="username" ref="inputUserFirstName" autofocus
-                                            style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" placeholder="성"/>
-                                        <input type="text" id="placeholder" name="username" ref="inputUserLastName" autofocus
-                                        style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;" placeholder="이름"/>
+                                        <input type="text" id="placeholder" name="username" ref="inputUserFirstName"
+                                            autofocus
+                                            style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;"
+                                            placeholder="성" />
+                                        <input type="text" id="placeholder" name="username" ref="inputUserLastName"
+                                            autofocus
+                                            style="height: 31px; line-height: 31px; width: 120px; padding: 0px 15px! important; box-sizing: border-box;"
+                                            placeholder="이름" />
                                     </div>
                                 </td>
                             </tr>
@@ -290,7 +294,8 @@ const readyAlert = () => {
                                 <th>문의내용</th>
                                 <td colspan="2">
                                     <div class="userContent" style="margin:10px 0 20px;">
-                                        <textarea name="ir1" ref="inputContent" id="ir1" style="width:100%; height:350px"></textarea>
+                                        <textarea name="ir1" ref="inputContent" id="ir1"
+                                            style="width:100%; height:350px"></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -304,12 +309,8 @@ const readyAlert = () => {
                                         </b>
                                     </div>
                                     <div>
-                                        <input
-                                            type="file"
-                                            ref="inputAttachmentFile"
-                                            multiple
-                                            @change="(e) => attachFile(e.target)"
-                                        />
+                                        <input type="file" ref="inputAttachmentFile" multiple
+                                            @change="(e) => attachFile(e.target)" />
                                     </div>
                                 </td>
                             </tr>
