@@ -363,7 +363,7 @@ const readyAlert = () => {
                         <img src="/img/web/main/sports17.png" alt="" />
                         <img src="/img/web/main/sports18.png" alt="" />
                     </div>
-                    <a @click="readyAlert" class="more_btn"
+                    <a :href="routerPath.web_categories_url" class="more_btn"
                         ><span>카테고리 더보기</span></a
                     >
                 </div>

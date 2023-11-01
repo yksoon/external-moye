@@ -30,7 +30,7 @@ onMounted(() => {
                                 진로상담, 원포인트 레슨도 온라인 신청<br>
                                 개인 연락처 공유 없이 앱내 메신저로 소통
                             </p>
-                            <a href="" class="more_btn_blue"><span>APP 소개 더보기</span></a>
+                            <a :href="routerPath.web_appIntro_url" class="more_btn_blue"><span>APP 소개 더보기</span></a>
                         </div>
                         <div><img src="/img/web/sub/busi01_01.jpg" alt=""></div>
                     </div>
