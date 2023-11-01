@@ -113,12 +113,12 @@ const modCategory = () => {
         let data = {};
 
         data = {
-            
             ...model,
             category_idx: modData.category_idx,
             show_yn: selectShowYn.value.value,
             category_div: modData.category_div_cd,
             category_name_ko: inputTitle.value.value,
+            category_parent_idx: modData.category_parent_idx,
         };
 
         const responseLogic = (res) => {
