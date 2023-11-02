@@ -6,13 +6,19 @@ import {
     CommonSpinner,
 } from "@/common/js/common.js";
 import { successCode } from "@/common/js/resultCode";
-import { reactive, onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
 import { useRoute } from "vue-router";
+import VueCookies from 'vue-cookies';
 
 // ------------------- import End --------------------
 
+const props = defineProps({
+    popupIdx: Number,
+});
+
 const route = useRoute();
+const popupIdx = route.params.popup;
 
 const state = reactive({
     popup: null,
@@ -25,8 +31,6 @@ onMounted(() => {
 // 팝업 상세 데이터 가져오기
 const getPopupDetail = () => {
     CommonSpinner(true);
-
-    const popupIdx = route.params.popup;
 
     // /v1/_popup/{popup_idx}
     // GET
@@ -67,6 +71,26 @@ const getPopupDetail = () => {
         }
     };
 };
+
+// function setCookie(name, value, expiredays){
+//     //expiredays 일 후에 소멸되는 쿠키(name = value;)를 굽는다
+//     let today = new Date();
+
+//     today.setDate(today.getDate() + expiredays);
+//     document.cookie = name + "=" + escape(value) + "; path=/; expires=" + today.toGMTString() + ";"
+// }
+
+// function notOpenToday() {
+//     // 오늘하루는 그만 열도록 쿠키를 세팅한다.
+//     setCookie(popupIdx, "no", 1);
+//     window.close();
+// }
+
+// function notOpen() {
+//     setCookie(popupIdx, "no", 1000);
+//     window.close();
+// }
+
 </script>
 
 <template>
