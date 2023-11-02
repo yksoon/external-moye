@@ -179,6 +179,23 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
     };
 };
 
+function getCookie(name) {
+    let cookie = document.cookie;
+    if (document.cookie != "") {
+
+        let cookie_array = cookie.split("; ");
+        for (let index in cookie_array) {
+            
+            let cookie_name = cookie_array[index].split("=");
+            
+            if (cookie_name[0] == "moyepopupcookie") {
+                return cookie_name[1];
+            }
+        }
+    }
+    return;
+}
+
 // 팝업 리스트 가져오기
 const getPopupList = (pageNum, pageSize, searchKeyword) => {
 
@@ -214,6 +231,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
         ) {
             let result_info = res.data.result_info;
             let today = new Date();
+            let currentTime = new Date().getTime();
 
             state.popupList = result_info;
 
@@ -221,6 +239,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
                 let popup = state.popupList[key];
                 let startDate = new Date(popup.start_date);
                 let endDate = new Date(popup.end_date);
+                let lastClosedTime = VueCookies.get(popup.popup_idx);
 
                 if (popup.show_yn === "Y" && startDate <= today && endDate >= today) {
                     window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
