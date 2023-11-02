@@ -67,7 +67,8 @@ const menuDepth = (e) => {
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_partnership_url" id="nav4" @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                    <a :href="routerPath.web_partnership_url" id="nav4"
+                        @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         Partnership
                     </a>
                     <div class="submenu" id="nav4_s">

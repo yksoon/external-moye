@@ -531,8 +531,10 @@ border-right: 1px solid #ddd;}
 	#nav {position:absolute; top:70px; right:0; width:100%; text-align:left; z-index:1100;}
 	#nav ul {display:block;}
 	#nav ul li {position:relative; border-top:1px solid #edebe9; background:#fff;}
+    #nav ul li:last-child { border-bottom:1px solid #edebe9;}
 	#nav ul li a {position:relative; color:#000; font-size:16px; font-weight:600; display:block; line-height:130%; padding:15px 20px 15px 20px;
-        background: url('/img/web/main/down_arrow.png') no-repeat 315px center;}
+        background: url('/img/web/main/down_arrow.png') no-repeat right 20px center;}
+	#nav ul > li > ul {}
 	#nav .submenu > a:first-child {border-top:none;}
 	#nav .submenu > a {color:#333; font-size:14px; background:#f7f7f7; font-weight:600; line-height:130%;border-bottom:none; border-top:1px solid #ddd;}
 
@@ -600,21 +602,21 @@ border-right: 1px solid #ddd;}
     .greetings .txt_box .bottom {margin: 20px 0 0; font-size: 14px;line-height: 20px;}
     .greetings .txt_box .bottom .name {margin: 0;}
 
-    /* 모두의 예체능 소개 */
-    .intro {margin: 0;}
-    .intro h3 {font-size: 18px; margin: 0 0 10px 0;}
-    .intro .box {padding: 20px; margin: 0 0 30px; display: block;}
-    .intro .box ul {width: 100%;}
-    .intro .box ul.left { margin: 0 10px 0 0;}
-    .intro .box ul li {margin: 0 0 10px;}
-    .intro .box ul li span {font-size: 16px;padding: 5px 15px; margin: 0 10px 0 0;}
-    .intro .box ul li p {font-size: 14px;line-height: 20px;}
-    .intro .box ul li.line p {padding: 5px 0 0;}
-
-    /* 연혁 */
-    .history_box {display: block;}
-    .history .month {width: 100%;}
-    .history .month li {display: block;}
+     /* 모두의 예체능 소개 */
+     .intro {margin: 0;}
+     .intro h3 {font-size: 18px; margin: 0 0 10px 0;}
+     .intro .box {padding: 20px; margin: 0 0 30px; display: block;}
+     .intro .box ul {width: 100%;}
+     .intro .box ul.left { margin: 0 0 10px 0;}
+     .intro .box ul li {margin: 0 0 10px;}
+     .intro .box ul li span {font-size: 16px;padding: 5px 15px; margin: 0 10px 0 0;}
+     .intro .box ul li p {font-size: 14px;line-height: 20px;}
+     .intro .box ul li.line p {padding: 5px 0 0;}
+ 
+     /* 연혁 */
+     .history_box {display: block;}
+     .history .month {width: 100%;}
+     .history .month li {display: block;}
 
 
 
