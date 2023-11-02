@@ -9,7 +9,7 @@ const props = defineProps({
 
 onMounted(() => {
     $("#nav").hide();
-    $(".submenu").hide();
+    $(".nav_2depth").hide();
 });
 
 const menuClick = () => {
@@ -18,8 +18,8 @@ const menuClick = () => {
 
 const menuDepth = (e) => {
     e.preventDefault();
-    $(".submenu").not($(e.target).siblings(".submenu")).slideUp();
-    $(e.target).siblings(".submenu").slideToggle();
+    $(".nav_2depth").not($(e.target).siblings(".nav_2depth")).slideUp();
+    $(e.target).siblings(".nav_2depth").slideToggle();
 };
 
 </script>
@@ -35,7 +35,7 @@ const menuDepth = (e) => {
                     <a :href="routerPath.web_greetings_url" id="nav1" @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         모두의예체능 소개
                     </a>
-                    <div class="submenu" id="nav1_s">
+                    <div class="submenu nav_2depth" id="nav1_s">
                         <a :href="routerPath.web_greetings_url">인사말</a>
                         <a :href="routerPath.web_introduction_url">모두의 예체능 소개</a>
                         <a :href="routerPath.web_members_url">조직 및 구성</a>
@@ -48,7 +48,7 @@ const menuDepth = (e) => {
                     <a :href="routerPath.web_businessAreas_url" id="nav2" @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         사업소개
                     </a>
-                    <div class="submenu" id="nav2_s">
+                    <div class="submenu nav_2depth" id="nav2_s">
                         <a :href="routerPath.web_businessAreas_url">사업분야</a>
                         <a :href="routerPath.web_platform_url">플랫폼 서비스 </a>
                         <a :href="routerPath.web_promotion_url">예체능 시설 Promotion</a>
@@ -58,7 +58,7 @@ const menuDepth = (e) => {
                     <a :href="routerPath.web_peoples_url" id="nav3" @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         교육서비스
                     </a>
-                    <div class="submenu" id="nav3_s">
+                    <div class="submenu nav_2depth" id="nav3_s">
                         <a :href="routerPath.web_peoples_url">코치진</a>
                         <a :href="routerPath.web_categories_url">Class 130 Category</a>
                         <a :href="routerPath.web_growthProcess_url">성장과정별 교육</a>
@@ -70,7 +70,7 @@ const menuDepth = (e) => {
                         @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         Partnership
                     </a>
-                    <div class="submenu" id="nav4_s">
+                    <div class="submenu nav_2depth" id="nav4_s">
                         <a :href="routerPath.web_partnership_url">파트너쉽</a>
                     </div>
                 </li>
@@ -78,7 +78,7 @@ const menuDepth = (e) => {
                     <a :href="routerPath.web_appIntro_url" id="nav5" @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         모두의예체능 APP
                     </a>
-                    <div class="submenu" id="nav5_s">
+                    <div class="submenu nav_2depth" id="nav5_s">
                         <a :href="routerPath.web_appIntro_url">모두의예체능 APP</a>
                     </div>
                 </li>
@@ -86,7 +86,7 @@ const menuDepth = (e) => {
                     <a :href="routerPath.web_notices_url" id="nav6" @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         고객센터
                     </a>
-                    <div class="submenu" id="nav6_s">
+                    <div class="submenu nav_2depth" id="nav6_s">
                         <a :href="routerPath.web_notices_url">공지사항</a>
                         <a :href="routerPath.web_consulting_url">상담문의</a>
                         <a v-if="props.companyBoard" :href="companyBoard">회사소개서 다운로드</a>
