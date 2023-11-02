@@ -1,7 +1,3 @@
-// import "./assets/main.css";
-// import VueMaterial from 'vue-material' // CSS 라이브러리 (https://www.npmjs.com/package/vue-material)
-// import 'vue-material/dist/vue-material.min.css'
-// import 'vue-material/dist/theme/default.css'
 import "@/common/css/default.css";
 import "@/common/css/style.css";
 import "@/common/css/board.css";

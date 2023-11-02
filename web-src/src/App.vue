@@ -2,7 +2,7 @@
 import { RouterView } from "vue-router";
 import { onMounted } from "vue";
 import { apiPath } from "@/webPath";
-import { CommonErrModule, CommonRest, CommonConsole } from "@/common/js/common";
+import { CommonRest, CommonConsole } from "@/common/js/common";
 import { successCode } from "@/common/js/resultCode";
 import { useCodesStore } from "@/stores/codes";
 import { useResultCodeStore } from "@/stores/resultCode";
