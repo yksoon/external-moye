@@ -30,13 +30,14 @@ onMounted(() => {
                             <!-- 중분류 -->
                             <div v-for="child in parent.category_child_info">
                                 <h5>{{ child.category_child_name_ko }} ({{ child.category_info.length }})</h5>
-                                <div class="list">
+                                <ul class="list">
                                     <!-- 카테고리 -->
-                                    <p v-for="category in child.category_info">
-                                        <img :src="`/img/web/sub/${category.file_path_enc}`" :alt="category.category_name_ko">
+                                    <li v-for="category in child.category_info">
+                                        <img :src="`/img/web/sub/${category.file_path_enc}`"
+                                            :alt="category.category_name_ko">
                                         <span>{{ category.category_name_ko }}</span>
-                                    </p>
-                                </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
