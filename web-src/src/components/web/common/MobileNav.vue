@@ -18,7 +18,7 @@ const menuClick = () => {
 
 const menuDepth = (e) => {
     e.preventDefault();
-    $(".submenu").slideUp();
+    $(".submenu").not($(e.target).siblings(".submenu")).slideUp();
     $(e.target).siblings(".submenu").slideToggle();
 };
 
@@ -66,15 +66,17 @@ const menuDepth = (e) => {
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_partnership_url" id="nav4">Partnership <span class="arrow"><img
-                                src="/img/web/main/down_arrow.png" alt="" /></span></a>
+                    <a :href="routerPath.web_partnership_url" id="nav4" @click="(e) => {menuDepth(e); e.preventDefault();}">
+                        Partnership <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    </a>
                     <div class="submenu" id="nav4_s">
                         <a :href="routerPath.web_partnership_url">파트너쉽</a>
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_appIntro_url" id="nav5">모두의예체능 APP <span class="arrow"><img
-                                src="/img/web/main/down_arrow.png" alt="" /></span></a>
+                    <a :href="routerPath.web_appIntro_url" id="nav5" @click="(e) => {menuDepth(e); e.preventDefault();}">
+                        모두의예체능 APP <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    </a>
                     <div class="submenu" id="nav5_s">
                         <a :href="routerPath.web_appIntro_url">모두의예체능 APP</a>
                     </div>
