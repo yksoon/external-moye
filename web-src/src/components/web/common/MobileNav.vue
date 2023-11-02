@@ -45,8 +45,7 @@ const menuDepth = (e) => {
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_businessAreas_url" id="nav2"
-                        @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                    <a :href="routerPath.web_businessAreas_url" id="nav2" @click="(e) => { menuDepth(e); e.preventDefault(); }">
                         사업소개
                     </a>
                     <div class="submenu" id="nav2_s">
