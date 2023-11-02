@@ -32,8 +32,8 @@ const menuDepth = (e) => {
         <div id="nav">
             <ul>
                 <li>
-                    <a :href="routerPath.web_greetings_url" id="nav1" @click="(e) => {menuDepth(e); e.preventDefault();}">
-                        모두의예체능 소개 <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    <a :href="routerPath.web_greetings_url" id="nav1" @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                        모두의예체능 소개
                     </a>
                     <div class="submenu" id="nav1_s">
                         <a :href="routerPath.web_greetings_url">인사말</a>
@@ -45,8 +45,9 @@ const menuDepth = (e) => {
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_businessAreas_url" id="nav2" @click="(e) => {menuDepth(e); e.preventDefault();}">
-                        사업소개 <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    <a :href="routerPath.web_businessAreas_url" id="nav2"
+                        @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                        사업소개
                     </a>
                     <div class="submenu" id="nav2_s">
                         <a :href="routerPath.web_businessAreas_url">사업분야</a>
@@ -55,8 +56,8 @@ const menuDepth = (e) => {
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_peoples_url" id="nav3" @click="(e) => {menuDepth(e); e.preventDefault();}">
-                        교육서비스 <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    <a :href="routerPath.web_peoples_url" id="nav3" @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                        교육서비스
                     </a>
                     <div class="submenu" id="nav3_s">
                         <a :href="routerPath.web_peoples_url">코치진</a>
@@ -66,24 +67,24 @@ const menuDepth = (e) => {
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_partnership_url" id="nav4" @click="(e) => {menuDepth(e); e.preventDefault();}">
-                        Partnership <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    <a :href="routerPath.web_partnership_url" id="nav4" @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                        Partnership
                     </a>
                     <div class="submenu" id="nav4_s">
                         <a :href="routerPath.web_partnership_url">파트너쉽</a>
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_appIntro_url" id="nav5" @click="(e) => {menuDepth(e); e.preventDefault();}">
-                        모두의예체능 APP <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    <a :href="routerPath.web_appIntro_url" id="nav5" @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                        모두의예체능 APP
                     </a>
                     <div class="submenu" id="nav5_s">
                         <a :href="routerPath.web_appIntro_url">모두의예체능 APP</a>
                     </div>
                 </li>
                 <li>
-                    <a :href="routerPath.web_notices_url" id="nav6" @click="(e) => {menuDepth(e); e.preventDefault();}">
-                        고객센터 <span class="arrow"><img src="/img/web/main/down_arrow.png" alt="" /></span>
+                    <a :href="routerPath.web_notices_url" id="nav6" @click="(e) => { menuDepth(e); e.preventDefault(); }">
+                        고객센터
                     </a>
                     <div class="submenu" id="nav6_s">
                         <a :href="routerPath.web_notices_url">공지사항</a>
