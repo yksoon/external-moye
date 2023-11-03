@@ -19,11 +19,21 @@ const state = reactive({
     pageInfo: {},
 });
 
+// 페이지네이션의 total-visible를 동적으로 설정
+const paginationTotalVisible = ref(7); // 기본 total-visible 값
+
+// 페이지네이션 total-visible 값을 조절하는 함수
+const adjustTotalVisible = () => {
+  const mediaQuery = window.matchMedia('(max-width: 640px)');
+  paginationTotalVisible.value = mediaQuery.matches ? 4 : 7;
+};
+
+window.addEventListener('resize', adjustTotalVisible); // 창 크기 변경 감지
+
 onMounted(() => {
     getBoardList(1, maxRowNum.basic, "");
+    adjustTotalVisible(); // 페이지네이션 total-visible 초기 계산
 });
-
-const fileBaseUrl = apiPath.api_file;
 
 // 공지사항 리스트 가져오기
 const getBoardList = (pageNum, pageSize, searchKeyword) => {
@@ -159,7 +169,7 @@ const handleChange = (page_num) => {
                     >
                         <v-pagination
                             :length="state.pageInfo.pages"
-                            :total-visible="7"
+                            :total-visible="paginationTotalVisible"
                             rounded="2"
                             v-model="state.pageInfo.page_num"
                             @update:model-value="handleChange"
