@@ -17,7 +17,7 @@ const route = useRoute();
 
 const searchKeyword = ref(null);
 const state = reactive({
-    categoryIdx : null,
+    categoryIdx: null,
     categoryList: [],
     peopleList: [],
     pageInfo: {},
@@ -68,7 +68,7 @@ const getCategoryList = (pageNum, pageSize, searchKeyword) => {
             state.categoryList = result_info;
 
             state.categoryIdx = route.params.category ? route.params.category : null;
-            
+
             getPeopleList(1, maxRowNum.people, "");
 
         } else {
@@ -137,13 +137,14 @@ const handleChange = (page_num) => {
 
     getPeopleList(page_num, maxRowNum.people, keyword);
 };
+
 </script>
 
 <template>
     <div id="wrapper">
-       <!-- 서브컨텐츠     //S-->
-       <div id="container" class="sub_container">
-            <LeftMenu subvisual="subvisual_people" page="people"/>
+        <!-- 서브컨텐츠     //S-->
+        <div id="container" class="sub_container">
+            <LeftMenu subvisual="subvisual_people" page="people" />
             <div id="content">
                 <div id="subtitle">
                     <h2>코치진</h2>
@@ -160,37 +161,34 @@ const handleChange = (page_num) => {
                             </a>
                         </li>
                     </ul>
-                    <h3 class="people_title" v-if="state.categoryList.length">{{state.categoryIdx ? state.categoryList.filter((el) => el.category_idx == state.categoryIdx)[0].category_name_ko : '전체'}}</h3>
+                    <h3 class="people_title" v-if="state.categoryList.length">{{ state.categoryIdx ?
+                        state.categoryList.filter((el) => el.category_idx == state.categoryIdx)[0].category_name_ko : '전체'
+                    }}
+                    </h3>
                     <div class="people_box" v-if="state.peopleList.length !== 0">
                         <div class="people" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                 <div class="people_thumb">
-                                    <div v-if="people.file_path_enc" class="bg-thumb" :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
+                                    <div v-if="people.file_path_enc" class="bg-thumb"
+                                        :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
                                         <span></span>
                                     </div>
-                                    <div v-else  class="bg-thumb"></div>
+                                    <div v-else class="bg-thumb"></div>
                                     <div class="caption">
-                                        <p>{{people.subject}}</p>
+                                        <p>{{ people.subject }}</p>
                                         <div class="info">
                                             <p class="name">{{ people.name_ko }}</p>
-                                            <span class="position">{{ people.category_parent_name_ko }} / {{ people.category_child_name_ko }}</span>
+                                            <span class="position">{{ people.category_parent_name_ko }} / {{
+                                                people.category_child_name_ko }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div
-                        className="pagenation"
-                        v-if="state.peopleList.length !== 0"
-                    >
-                        <v-pagination
-                            :length="state.pageInfo.pages"
-                            :total-visible="7"
-                            rounded="2"
-                            v-model="state.pageInfo.page_num"
-                            @update:model-value="handleChange"
-                        ></v-pagination>
+                    <div className="pagenation" v-if="state.peopleList.length !== 0">
+                        <v-pagination :length="state.pageInfo.pages" :total-visible="7" rounded="2"
+                            v-model="state.pageInfo.page_num" @update:model-value="handleChange"></v-pagination>
                     </div>
                 </div>
             </div>

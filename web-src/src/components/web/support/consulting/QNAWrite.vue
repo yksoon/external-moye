@@ -242,10 +242,9 @@ const readyAlert = () => {
                                         <div class="placeholder_Title_Big"
                                             style="display: inline-block; position: relative; vertical-align: middle; float: left;">
                                             <input type="text" id="placeholder" name="title" ref="inputTitle" autofocus
-                                                style="height: 31px; line-height: 31px; width: 800px; padding: 0px 15px! important; box-sizing: border-box;" />
+                                                class="title" />
                                         </div>
-                                        <span class="input-group-Big"
-                                            style="vertical-align: middle; padding: 8px 10px; font-size: 13px; font-weight: 400; line-height: 1; color: #555; text-align: center; border-radius: 2px; float: left;">
+                                        <span class="input-group-Big">
                                             <label><input type="checkbox" name="hidden_yn" v-model="selectOpenYn">
                                                 &nbsp;비밀글</label>
                                         </span>
@@ -294,8 +293,7 @@ const readyAlert = () => {
                                 <th>문의내용</th>
                                 <td colspan="2">
                                     <div class="userContent" style="margin:10px 0 20px;">
-                                        <textarea name="ir1" ref="inputContent" id="ir1"
-                                            style="width:100%; height:350px"></textarea>
+                                        <textarea name="ir1" ref="inputContent" id="ir1"></textarea>
                                     </div>
                                 </td>
                             </tr>
