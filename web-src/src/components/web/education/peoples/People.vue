@@ -149,9 +149,9 @@ const profileInfoSort = (profile_info) => {
                                     </div>
                                 </div>
                                 <p class="profile_en">
+                                    <span v-if="state.people.name_cn">{{ state.people.name_cn }}</span>
+                                    <span v-if="state.people.name_cn && state.people.name_en"> / </span>
                                     <span v-if="state.people.name_en">{{ state.people.name_en }}</span>
-                                    <span v-if="state.people.name_en && state.people.name_cn"> / </span>
-                                    <span v-if="state.people.name_cn">{{ state.people.name_en }}</span>
                                 </p>
                                 <div class="about">
                                     <p v-if="state.people.birth"><span>생년월일</span>{{ state.people.birth }}</p>
