@@ -239,7 +239,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
                 let popup = state.popupList[key];
                 let startDate = new Date(popup.start_date);
                 let endDate = new Date(popup.end_date);
-                let lastClosedTime = VueCookies.get(popup.popup_idx);
+                // let lastClosedTime = VueCookies.get(popup.popup_idx);
 
                 if (popup.show_yn === "Y" && startDate <= today && endDate >= today) {
                     window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
