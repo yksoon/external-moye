@@ -94,32 +94,40 @@ const getPopupDetail = () => {
 </script>
 
 <template>
-<div id="wrapper">
-    <div id="container" class="sub_container">
-        <div>
-            <table class="board_Vtable" v-if="state.popup">
-                <colgroup>
-                    <col width="*">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th colspan="3">{{ state.popup.title }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan=3>
-                            <div class="board_content">
-                                {{ state.popup.content }}
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div id="wrapper">
+        <div id="container" class="sub_container">
+            <div class="popup">
+                <table class="board_Vtable" v-if="state.popup">
+                    <colgroup>
+                        <col width="*">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th colspan="3">{{ state.popup.title }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan=3>
+                                <div class="board_content">
+                                    {{ state.popup.content }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="check">
+                                <p class="popup"><label><input type="checkbox" name="chk" value="Y"
+                                            onClick="notOpenToday();" style="vertical-align:middle;"> 24시간 동안 열지 않기</label>
+                                </p>
+                                <p class="popup"><label><input type="checkbox" name="chk" value="Y" onClick="notOpen();"
+                                            style="vertical-align:middle;"> 더 이상 보지 않기</label></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

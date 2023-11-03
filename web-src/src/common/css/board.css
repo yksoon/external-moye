@@ -112,6 +112,9 @@ table.board_Vtable tbody tr th {background: #efefef;color: #333;}
 table.board_Vtable tbody tr td{padding:20px; }
 table.board_Vtable tbody tr td div.board_content{min-height:300px; font-size:14px; font-weight:400; color:#333; /* font-family:'"Helvetica Neue", Helvetica, Arial, sans-serif'; */ word-break:break-all;}
 table.board_Vtable tbody tr td div.board_content img {max-width:100%; height:auto;}
+table.board_Vtable tbody tr td.check {padding: 5px; text-align: right;}
+table.board_Vtable tbody tr td.check p.popup {display: inline-block;}
+table.board_Vtable tbody tr td.check p.popup:last-child {margin: 0 0 0 10px;}
 .board_Vtable thead tr td li.download_li{position:relative;}
 .board_Vtable thead tr td li.download_li > a{display:block; color:#999;}
 .board_Vtable thead tr td li.download_li > a img{vertical-align:text-top;}
