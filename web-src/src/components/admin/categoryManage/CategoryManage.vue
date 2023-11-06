@@ -136,7 +136,7 @@ const modCategoryModal = (modData) => {
 // 리스트 새로고침
 const handleNeedUpdate = () => {
     console.log("handleNeedUpdate");
-    getBoardList(1, maxRowNum.basic, "");
+    getCategoryList(1, maxRowNum.category, "");
 };
 
 // 페이지네이션 이동
