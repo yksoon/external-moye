@@ -155,7 +155,7 @@ const profileInfoSort = (profile_info) => {
                                 </p>
                                 <div class="about">
                                     <p v-if="state.people.birth"><span>생년월일</span>{{ state.people.birth }}</p>
-                                    <p v-if="state.people.mobile"><span>연락처</span>{{ state.people.mobile }}</p>
+                                    <p v-if="state.people.mobile1"><span>연락처</span>{{ state.people.mobile1 }}-{{ state.people.mobile2 }}-{{ state.people.mobile3 }}</p>
                                     <p v-if="state.people.gender"><span>성별</span>{{ state.people.gender }}</p>
                                     <p v-if="state.people.email"><span>E-MAIL</span>{{ state.people.email }}</p>
                                     <p v-if="state.people.people_memo" class="full"><span>메모</span>{{
