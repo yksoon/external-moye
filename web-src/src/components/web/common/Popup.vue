@@ -95,11 +95,7 @@ const closePopup = (popupIdx) => {
             <colgroup>
                 <col width="*">
             </colgroup>
-            <thead>
-                <tr>
-                    <th colspan="3">{{ state.popup.title }}</th>
-                </tr>
-            </thead>
+
             <tbody>
                 <tr>
                     <td colspan=3>

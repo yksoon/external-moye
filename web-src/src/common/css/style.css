@@ -527,8 +527,8 @@ border-right: 1px solid #ddd;}
 #app .wrapper {height: 100%;}
 #app .wrapper > div {height: 100%;}
 #app .wrapper > div div.popup {height: 100%;}
-#app .wrapper > div div.popup table.board_Vtable {height: 100%;}
-
+#app .wrapper > div div.popup table.board_Vtable {height: 100%; border-top: 0;}
+#app .wrapper > div div.popup table.board_Vtable tbody tr td div.board_content {height: 100%; font-size: 16px;}
 
 
 
