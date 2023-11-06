@@ -72,24 +72,20 @@ const getPopupDetail = () => {
     };
 };
 
-// function setCookie(name, value, expiredays){
-//     //expiredays 일 후에 소멸되는 쿠키(name = value;)를 굽는다
-//     let today = new Date();
+// 쿠키 설정 함수
+const setCookie = (name, value, days) => {
+  const expires = new Date();
 
-//     today.setDate(today.getDate() + expiredays);
-//     document.cookie = name + "=" + escape(value) + "; path=/; expires=" + today.toGMTString() + ";"
-// }
+  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+};
 
-// function notOpenToday() {
-//     // 오늘하루는 그만 열도록 쿠키를 세팅한다.
-//     setCookie(popupIdx, "no", 1);
-//     window.close();
-// }
-
-// function notOpen() {
-//     setCookie(popupIdx, "no", 1000);
-//     window.close();
-// }
+const closePopup = (popupIdx) => {
+  // 사용자가 '24시간동안 보지 않기'를 클릭한 경우, 해당 팝업을 본 시각을 쿠키에 저장
+  const currentTime = Date.now();
+  setCookie(`popup_viewed_${popupIdx}`, currentTime, 1); // 쿠키에 1일 동안 저장
+  window.close();
+};
 
 </script>
 
@@ -114,13 +110,16 @@ const getPopupDetail = () => {
                                 </div>
                             </td>
                         </tr>
-                        <tr>
+                        <tr v-if="state.popup.option_24_hours_yn === 'Y'">
                             <td class="check">
-                                <p class="popup"><label><input type="checkbox" name="chk" value="Y"
-                                            onClick="notOpenToday();" style="vertical-align:middle;"> 24시간 동안 열지 않기</label>
+                                <p class="popup">
+                                    <label>
+                                        <input type="checkbox" name="chk" value="Y" style="vertical-align:middle;" @click="closePopup(popupIdx)"> 
+                                        24시간 동안 열지 않기
+                                    </label>
                                 </p>
-                                <p class="popup"><label><input type="checkbox" name="chk" value="Y" onClick="notOpen();"
-                                            style="vertical-align:middle;"> 더 이상 보지 않기</label></p>
+                                <!-- <p class="popup"><label><input type="checkbox" name="chk" value="Y" 
+                                            style="vertical-align:middle;"> 더 이상 보지 않기</label></p> -->
                             </td>
                         </tr>
                     </tbody>

@@ -15,6 +15,7 @@ import { artistModel } from "../artistModel";
 // import "@/common/css/admin.css";
 
 // ------------------- import End --------------------
+
 const props = defineProps({
     modData: Object,
     handleNeedUpdate: Function,
@@ -92,9 +93,9 @@ const getDefaultValue = () => {
         if (modData.birth_yyyy) {
             birthday.value.value = `${modData.birth_yyyy}-${modData.birth_mm}-${modData.birth_dd}`;
         }
-        mobile1.value.value = modData.mobile1;
-        mobile2.value.value = modData.mobile2;
-        mobile3.value.value = modData.mobile3;
+        mobile1.value = modData.mobile1;
+        mobile2.value = modData.mobile2;
+        mobile3.value = modData.mobile3;
         gender.value.value = modData.gender_cd;
         email.value.value = modData.email;
         peopleMemo.value.value = modData.people_memo;
@@ -296,6 +297,7 @@ const isFileImage = (file) => {
     }
 };
 
+// 인물 프로필 핸들링 함수 (프로필 추가/삭제)
 const handelProfileSection = (handleType, idx) => {
     switch (handleType) {
         case "add":
@@ -470,9 +472,9 @@ const regArtist = () => {
             email: email.value.value,
             peopleMemo: peopleMemo.value.value,
             interPhoneNumber: "82",
-            mobile1: mobile1.value.value,
-            mobile2: mobile2.value.value,
-            mobile3: mobile3.value.value,
+            mobile1: mobile1.value,
+            mobile2: mobile2.value,
+            mobile3: mobile3.value,
         };
 
         // 기본 formData append
@@ -570,9 +572,9 @@ const modArtist = () => {
             email: email.value.value,
             peopleMemo: peopleMemo.value.value,
             interPhoneNumber: "82",
-            mobile1: mobile1.value.value,
-            mobile2: mobile2.value.value,
-            mobile3: mobile3.value.value,
+            mobile1: mobile1.value,
+            mobile2: mobile2.value,
+            mobile3: mobile3.value,
         };
 
         // 기본 formData append
@@ -837,11 +839,11 @@ const testBtn = () => {
                             </td>
                             <th>연락처</th>
                             <td>
-                                <input type="text" class="input w100" ref="mobile1" />
+                                <input type="text" class="input w100" v-model="mobile1" />
                                 -
-                                <input type="text" class="input w100" ref="mobile2" />
+                                <input type="text" class="input w100" v-model="mobile2" />
                                 -
-                                <input type="text" class="input w100" ref="mobile3" />
+                                <input type="text" class="input w100" v-model="mobile3" />
                             </td>
                         </tr>
                         <tr>

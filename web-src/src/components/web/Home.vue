@@ -179,22 +179,22 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
     };
 };
 
-function getCookie(name) {
-    let cookie = document.cookie;
-    if (document.cookie != "") {
+// function getCookie(name) {
+//     let cookie = document.cookie;
+//     if (document.cookie != "") {
 
-        let cookie_array = cookie.split("; ");
-        for (let index in cookie_array) {
+//         let cookie_array = cookie.split("; ");
+//         for (let index in cookie_array) {
             
-            let cookie_name = cookie_array[index].split("=");
+//             let cookie_name = cookie_array[index].split("=");
             
-            if (cookie_name[0] == "moyepopupcookie") {
-                return cookie_name[1];
-            }
-        }
-    }
-    return;
-}
+//             if (cookie_name[0] == "moyepopupcookie") {
+//                 return cookie_name[1];
+//             }
+//         }
+//     }
+//     return;
+// }
 
 // 팝업 리스트 가져오기
 const getPopupList = (pageNum, pageSize, searchKeyword) => {
@@ -231,7 +231,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
         ) {
             let result_info = res.data.result_info;
             let today = new Date();
-            let currentTime = new Date().getTime();
+            let filteredPopups = [];
 
             state.popupList = result_info;
 
@@ -239,10 +239,13 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
                 let popup = state.popupList[key];
                 let startDate = new Date(popup.start_date);
                 let endDate = new Date(popup.end_date);
-                // let lastClosedTime = VueCookies.get(popup.popup_idx);
 
                 if (popup.show_yn === "Y" && startDate <= today && endDate >= today) {
-                    window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
+                    if (popup.option_24_hours_yn === "Y" && shouldDisplayPopup(popup.popup_idx) || popup.option_24_hours_yn === "N")  {
+                        window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
+                    } else {
+                        //
+                    }
                 }
             }
         } else {
@@ -250,6 +253,40 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
             CommonConsole("log", res);
         }
     };
+};
+
+const shouldDisplayPopup = (popupIdx) => {
+  // 사용자가 해당 팝업을 24시간 이내에 보지 않기 선택하지 않은 경우 true 반환
+  return !hasViewedRecently(popupIdx);
+};
+
+const hasViewedRecently = (popupIdx) => {
+  // 쿠키에서 사용자의 팝업 조회 기록을 확인
+  const viewedCookie = getCookie(`popup_viewed_${popupIdx}`);
+  
+  if (viewedCookie) {
+    // 팝업을 이미 본 경우, 저장된 시각을 파싱하여 24시간 이내인지 확인
+    const viewedTimestamp = parseInt(viewedCookie, 10);
+    const currentTime = Date.now();
+
+    return currentTime - viewedTimestamp <= 24 * 60 * 60 * 1000; // 24시간(밀리초) 이내
+  }
+  return false;
+};
+
+// 쿠키 읽기 함수
+const getCookie = (name) => {
+  const cookies = document.cookie.split('; ');
+
+  for (const cookie of cookies) {
+    const [cookieName, cookieValue] = cookie.split('=');
+
+    if (cookieName === name) {
+      return cookieValue;
+    }
+  }
+  
+  return null;
 };
 
 const readyAlert = () => {
