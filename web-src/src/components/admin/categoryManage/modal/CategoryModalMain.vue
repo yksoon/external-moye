@@ -125,9 +125,8 @@ if (validation()) {
         show_yn: selectShowYn.value.value,
         category_div: selectCategoryDiv.value.value,
         category_name_ko: inputTitle.value.value,
-        category_parent_idx: selectParentCategory.value.value
+        category_parent_idx: selectParentCategory.value
     };
-
     
     const responseLogic = (res) => {
         let result_code = res.headers.result_code;
@@ -241,7 +240,7 @@ const requestCategories = () => {
 
 // 검증
 const validation = () => {
-    if (selectCategoryDiv.value.value == '100' && !selectParentCategory.value) {
+    if (!isModData && selectCategoryDiv.value.value == '100' && !selectParentCategory.value) {
         CommonNotify({
             type: "alert",
             message: "대분류를 선택해주세요",
