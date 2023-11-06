@@ -19,6 +19,8 @@ const state = reactive({
     pageInfo: {},
 });
 
+const fileBaseUrl = apiPath.api_file;
+
 // 페이지네이션의 total-visible를 동적으로 설정
 const paginationTotalVisible = ref(7); // 기본 total-visible 값
 
@@ -113,10 +115,10 @@ const handleChange = (page_num) => {
                         <div class="movie" v-for="board in state.boardList">
                             <a :href="`${routerPath.web_movieGallery_url}/${board.board_idx}`">
                                 <div class="thumb">
-                                    <div v-if="board.content" :style="`background-image:url('https://img.youtube.com/vi/${board.content}/0.jpg'); background-size:cover;`" class="bg-thumb">
+                                    <div v-if="board.file_info.length === 0" :style="`background-image:url('https://img.youtube.com/vi/${board.content}/0.jpg'); background-size:cover;`" class="bg-thumb">
                                         <span></span>
                                     </div>
-                                    <div v-else  class="bg-thumb"></div>
+                                    <div v-else style="background-color: #f2f2f2" class="bg-thumb"></div>
                                     <div class="title">
                                         <p>{{board.subject}}</p>
                                         <div class="info">

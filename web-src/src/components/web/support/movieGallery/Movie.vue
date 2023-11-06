@@ -103,11 +103,11 @@ const getBoardDetail = () => {
                                     </ul>
                                 </td>
                             </tr>
-                            <!-- <tr>
+                            <!-- <tr v-if="state.board.file_info.length">
                                 <td>
-                                    <ul>
+                                    <ul v-for="item in state.board.file_info">
                                         <li class="download_li">
-                                            <a href="#none" onclick class="attachment_parent">첨부파일
+                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">첨부파일
                                                 <img src="/img/common/files.jpg">
                                             </a>
                                             <div class="attachment" style="display:none;">
@@ -119,10 +119,19 @@ const getBoardDetail = () => {
                             </tr> -->
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr v-if="state.board.file_info.length === 0">
                                 <td colspan=3>
                                     <div class="movie_content" style="display: flex; justify-content: center; align-items:center;">
                                         <iframe  :src="`https://www.youtube.com/embed/${state.board.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr v-if="state.board.file_info.length !== 0">
+                                <td colspan=3>
+                                    <div class="movie_content" style="display: flex; justify-content: center; align-items:center;">
+                                        <video controls style="width: 100%; height: 100%;">
+                                            <source :src="`${fileBaseUrl}${state.board.file_info[0].file_path_enc}`" type="video/mp4">
+                                        </video>
                                     </div>
                                 </td>
                             </tr>

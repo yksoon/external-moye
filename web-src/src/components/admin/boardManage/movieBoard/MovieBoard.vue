@@ -329,62 +329,28 @@ const modBoard = (board_idx) => {
                     </tbody>
                     <v-container>
                         <v-row no-gutters>
-                            <v-card
-                                width="19%"
-                                style="margin-right: 1%"
-                                v-for="item in state.boardList"
-                            >
-                                <div v-if="item.content.length > 0">
-                                    <v-img
-                                        height="200"
+                            <v-card width="19%" style="margin-right: 1%" v-for="item in state.boardList">
+                                <div v-if="item.file_info.length === 0">
+                                    <v-img height="200" cover
                                         :src="`https://img.youtube.com/vi/${item.content}/0.jpg`"
                                         :alt="item.subject"
-                                        cover
                                     >
-                                        <input
-                                            type="checkbox"
-                                            style="margin: 1rem"
+                                        <input type="checkbox" style="margin: 1rem"
                                             :name="`boardIdx_${item.board_idx}`"
-                                            @change="
-                                                (e) =>
-                                                    handleSingleCheck(
-                                                        e.target.checked,
-                                                        item.board_idx
-                                                    )
-                                            "
-                                            :checked="
-                                                state.checkItems.includes(
-                                                    item.board_idx
-                                                )
-                                                    ? true
-                                                    : false
-                                            "
+                                            @change="(e) =>handleSingleCheck(e.target.checked, item.board_idx)"
+                                            :checked="state.checkItems.includes(item.board_idx) ? true : false"
                                         />
                                     </v-img>
                                 </div>
-                                <div v-else>
+                                <div v-if="item.file_info.length !== 0">
                                     <v-img
                                         height="200"
                                         style="background-color: #f2f2f2"
                                     >
-                                        <input
-                                            type="checkbox"
-                                            style="margin: 1rem"
+                                        <input type="checkbox" style="margin: 1rem"
                                             :name="`boardIdx_${item.board_idx}`"
-                                            @change="
-                                                (e) =>
-                                                    handleSingleCheck(
-                                                        e.target.checked,
-                                                        item.board_idx
-                                                    )
-                                            "
-                                            :checked="
-                                                state.checkItems.includes(
-                                                    item.board_idx
-                                                )
-                                                    ? true
-                                                    : false
-                                            "
+                                            @change="(e) =>handleSingleCheck(e.target.checked, item.board_idx)"
+                                            :checked="state.checkItems.includes(item.board_idx) ? true : false"
                                         />
                                     </v-img>
                                 </div>

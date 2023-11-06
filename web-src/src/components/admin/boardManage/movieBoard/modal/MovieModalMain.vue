@@ -54,8 +54,8 @@ const getDefaultValue = () => {
     selectShowYn.value.value = modData.show_yn;
     inputTitle.value.value = modData.subject;
     inputSubTitle.value.value = modData.sub_title;
-    inputContent.value = modData.content;
-    selectAttachmentMethod.value.value = modData.content.length ? 'link' : 'file';
+    inputContent.value = modData.content ? modData.content : null;
+    selectAttachmentMethod.value.value = modData.file_info.length ? 'file' : 'link';
     state.fileList = modData.file_info;
 };
 
@@ -66,12 +66,12 @@ const handleClose = () => {
 
 // 파일 첨부시
 const attachFile = (input) => {
-    const maxFileCnt = 5; // 첨부파일 최대 개수
+    const maxFileCnt = 1; // 첨부파일 최대 개수
 
     if (input.files.length > maxFileCnt) {
         CommonNotify({
             type: "alert",
-            message: "파일은 5개까지 업로드 가능합니다.",
+            message: "영상은 1개만 업로드 가능합니다.",
         });
 
         input.value = "";
@@ -98,7 +98,7 @@ if (validation()) {
         categoryType: "900", // 기타
         subject: inputTitle.value.value,
         subTitle: inputSubTitle.value.value,
-        content: inputContent.value.value,
+        content: selectAttachmentMethod.value.value == 'link' ? inputContent.value.value : null,
     };
 
     // 기본 formData append
@@ -107,10 +107,12 @@ if (validation()) {
     }
 
     // 파일 formData append
-    fileArr = Array.from(inputAttachmentFile.value.files);
-    let len = fileArr.length;
-    for (let i = 0; i < len; i++) {
-        formData.append("attachmentFile", fileArr[i]);
+    if (selectAttachmentMethod.value.value == 'file') {
+        fileArr = Array.from(inputAttachmentFile.value.files);
+        let len = fileArr.length;
+        for (let i = 0; i < len; i++) {
+            formData.append("attachmentFile", fileArr[i]);
+        }
     }
 
     const responseLogic = (res) => {
@@ -164,7 +166,7 @@ const modBoard = () => {
             categoryType: "900", // 기타
             subject: inputTitle.value.value,
             subTitle: inputSubTitle.value.value,
-            content: inputContent.value.value,
+            content: selectAttachmentMethod.value.value == 'link' ? inputContent.value.value : null,
         };
 
         // 기본 formData append
@@ -173,11 +175,13 @@ const modBoard = () => {
         }
 
         // 파일 formData append
-        // fileArr = Array.from(inputAttachmentFile.value.files);
-        // let len = fileArr.length;
-        // for (let i = 0; i < len; i++) {
-        //     formData.append("attachmentFile", fileArr[i]);
-        // }
+        if (selectAttachmentMethod.value.value == 'file') {
+            fileArr = Array.from(inputAttachmentFile.value.files);
+            let len = fileArr.length;
+            for (let i = 0; i < len; i++) {
+                formData.append("attachmentFile", fileArr[i]);
+            }
+        }
 
         const responseLogic = (res) => {
             let result_code = res.headers.result_code;
@@ -242,16 +246,32 @@ const validation = () => {
         return false;
     }
 
-    if (!inputContent.value.value) {
+    if (selectAttachmentMethod.value.value == 'link' && !inputContent.value.value) {
         CommonNotify({
             type: "alert",
-            message: "내용을 입력해주세요",
+            message: "링크주소를 입력해주세요",
             callback: () => callbackLogic(),
         });
 
         const callbackLogic = () => {
             setTimeout(() => {
                 inputContent.value.focus();
+            }, 0);
+        };
+
+        return false;
+    }
+
+    if (selectAttachmentMethod.value.value == 'file' && inputAttachmentFile.value.files.length === 0) {
+        CommonNotify({
+            type: "alert",
+            message: "영상을 첨부해주세요",
+            callback: () => callbackLogic(),
+        });
+
+        const callbackLogic = () => {
+            setTimeout(() => {
+                inputAttachmentFile.value.focus();
             }, 0);
         };
 
@@ -317,8 +337,8 @@ const handleAttachmentMethod = (e) => {
                             <option value="file">파일첨부</option>
                         </select>
                     </td>
-                    <td v-else>
-                        <div></div>
+                    <td v-if="isModData">
+                        <div>{{ selectAttachmentMethod.value == "link" ? "링크첨부" : "파일첨부" }}</div>
                     </td>
                 </tr>
                 <tr v-if="selectAttachmentMethod && selectAttachmentMethod.value == 'link'">
@@ -331,7 +351,6 @@ const handleAttachmentMethod = (e) => {
                         />
                         <span>예시) https://www.youtube.com/watch?v=<span class="red"><b>lrmDoJkZjns</b></span></span>
                         <div>주소창에서 빨간표시 부분만 복사하여 입력해주시면 됩니다.</div>
-                        <!-- <div>{{ selectAttachmentMethod.value }}</div> -->
                     </td>
                 </tr>
                 <tr v-if="selectAttachmentMethod && selectAttachmentMethod.value == 'file'">
@@ -366,10 +385,16 @@ const handleAttachmentMethod = (e) => {
                         </div>
                     </td>
                 </tr>
-                <tr v-if="modData.content.length && selectAttachmentMethod.value == 'link'">
+                <tr v-if="isModData">
                     <th>영상</th>
-                    <td>
+                    <td v-if="modData.content.length && selectAttachmentMethod.value == 'link'">
                         <iframe width="560" height="315" :src="`https://www.youtube.com/embed/${modData.content}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </td>
+                    <td v-if="modData.file_info.length && selectAttachmentMethod.value == 'file'">
+                        <!-- <video width="560" height="315" :src="`https://www.youtube.com/embed/${modData.content}`" title="Video player"></video> -->
+                        <video controls width="560" height="315">
+                            <source :src="`${fileBaseUrl}${modData.file_info[0].file_path_enc}`" type="video/mp4">
+                        </video>
                     </td>
                 </tr>
                 <tr v-if="modData">
