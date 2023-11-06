@@ -74,58 +74,55 @@ const getPopupDetail = () => {
 
 // 쿠키 설정 함수
 const setCookie = (name, value, days) => {
-  const expires = new Date();
+    const expires = new Date();
 
-  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
 };
 
 const closePopup = (popupIdx) => {
-  // 사용자가 '24시간동안 보지 않기'를 클릭한 경우, 해당 팝업을 본 시각을 쿠키에 저장
-  const currentTime = Date.now();
-  setCookie(`popup_viewed_${popupIdx}`, currentTime, 1); // 쿠키에 1일 동안 저장
-  window.close();
+    // 사용자가 '24시간동안 보지 않기'를 클릭한 경우, 해당 팝업을 본 시각을 쿠키에 저장
+    const currentTime = Date.now();
+    setCookie(`popup_viewed_${popupIdx}`, currentTime, 1); // 쿠키에 1일 동안 저장
+    window.close();
 };
 
 </script>
 
 <template>
-    <div id="wrapper">
-        <div id="container" class="sub_container">
-            <div class="popup">
-                <table class="board_Vtable" v-if="state.popup">
-                    <colgroup>
-                        <col width="*">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th colspan="3">{{ state.popup.title }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan=3>
-                                <div class="board_content">
-                                    {{ state.popup.content }}
-                                </div>
-                            </td>
-                        </tr>
-                        <tr v-if="state.popup.option_24_hours_yn === 'Y'">
-                            <td class="check">
-                                <p class="popup">
-                                    <label>
-                                        <input type="checkbox" name="chk" value="Y" style="vertical-align:middle;" @click="closePopup(popupIdx)"> 
-                                        24시간 동안 열지 않기
-                                    </label>
-                                </p>
-                                <!-- <p class="popup"><label><input type="checkbox" name="chk" value="Y" 
-                                            style="vertical-align:middle;"> 더 이상 보지 않기</label></p> -->
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <div class="popup">
+        <table class="board_Vtable" v-if="state.popup">
+            <colgroup>
+                <col width="*">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th colspan="3">{{ state.popup.title }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan=3>
+                        <div class="board_content">
+                            {{ state.popup.content }}
+                        </div>
+                    </td>
+                </tr>
+                <tr v-if="state.popup.option_24_hours_yn === 'Y'">
+                    <td class="check">
+                        <p class="popup">
+                            <label>
+                                <input type="checkbox" name="chk" value="Y" style="vertical-align:middle;"
+                                    @click="closePopup(popupIdx)">
+                                24시간 동안 열지 않기
+                            </label>
+                        </p>
+                        <!-- <p class="popup"><label><input type="checkbox" name="chk" value="Y" 
+                                        style="vertical-align:middle;"> 더 이상 보지 않기</label></p> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 

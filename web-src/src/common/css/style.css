@@ -522,6 +522,15 @@ border-right: 1px solid #ddd;}
 .movie_view .movie_info {display:flex;justify-content: center;padding:0 0 36px;border-bottom: 1px solid #ddd;margin:12px 0 40px;color: #9e9e9e;}
 .movie_view .movie_info li {padding:0 10px;}
 
+/* 팝업창 */
+#app {height: 100%;}
+#app .wrapper {height: 100%;}
+#app .wrapper > div {height: 100%;}
+#app .wrapper > div div.popup {height: 100%;}
+#app .wrapper > div div.popup table.board_Vtable {height: 100%;}
+
+
+
 
 /**** mobile layout *************************************************************************************************************/
 @media screen and (max-width:640px) {
