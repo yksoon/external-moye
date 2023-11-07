@@ -6,7 +6,23 @@ const slash = "/";
 // 호스트
 // 포트
 // 버전
+
 const protocol = "http://";
+
+// // ------- 프로토콜 분기 Start -------
+// // 사용자 접속 프로토콜에 따라 API 프로토콜 설정
+// // 현재 페이지의 프로토콜을 가져오기
+// const currentProtocol = window.location.protocol;
+
+// // HTTP 또는 HTTPS 프로토콜에 따라 엔드포인트를 동적으로 생성
+// let protocol;
+
+// if (currentProtocol === "http:") {
+//     protocol = "http://"; // HTTP API 프로토콜 설정
+// } else {
+//     protocol = "https://"; // HTTPS API 프로토콜 설정
+// }
+// // ------- 프로토콜 분기 End -------
 
 // 실행 환경에 따라 분기처리
 // TODO: 백엔드 세팅 후 host 주소 변경
