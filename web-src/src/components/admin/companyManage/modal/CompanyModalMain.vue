@@ -64,12 +64,12 @@ export default {
 
         // 파일 첨부시
         const attachFile = (input) => {
-            const maxFileCnt = 5; // 첨부파일 최대 개수
+            const maxFileCnt = 1; // 첨부파일 최대 개수
 
             if (input.files.length > maxFileCnt) {
                 CommonNotify({
                     type: "alert",
-                    message: "파일은 5개까지 업로드 가능합니다.",
+                    message: "파일은 1개만 업로드 가능합니다.",
                 });
 
                 input.value = "";
@@ -239,21 +239,21 @@ export default {
                 return false;
             }
 
-            if (!inputSubTitle.value.value) {
-                CommonNotify({
-                    type: "alert",
-                    message: "부제목을 입력해주세요",
-                    callback: () => callbackLogic(),
-                });
+            // if (!inputSubTitle.value.value) {
+            //     CommonNotify({
+            //         type: "alert",
+            //         message: "부제목을 입력해주세요",
+            //         callback: () => callbackLogic(),
+            //     });
 
-                const callbackLogic = () => {
-                    setTimeout(() => {
-                        inputSubTitle.value.focus();
-                    }, 0);
-                };
+            //     const callbackLogic = () => {
+            //         setTimeout(() => {
+            //             inputSubTitle.value.focus();
+            //         }, 0);
+            //     };
 
-                return false;
-            }
+            //     return false;
+            // }
 
             if (!inputContent.value.value) {
                 CommonNotify({
@@ -268,6 +268,22 @@ export default {
                     }, 0);
                 };
 
+                return false;
+            }
+
+            if (inputAttachmentFile.value.files.length > 1) {
+                CommonNotify({
+                    type: "alert",
+                    message: "파일은 1개만 업로드 가능합니다.",
+                });
+                return false;
+            }
+
+            if (inputAttachmentFile.value.files.length === 0 && state.fileList.length === 0) {
+                CommonNotify({
+                    type: "alert",
+                    message: "파일을 첨부해주세요.",
+                });
                 return false;
             }
 
@@ -303,7 +319,7 @@ export default {
 
             <tbody>
                 <tr>
-                    <th>노출여부</th>
+                    <th>노출여부 <span class="red">*</span></th>
                     <td>
                         <select class="wp100" ref="selectShowYn">
                             <option value="Y">노출</option>
@@ -312,7 +328,7 @@ export default {
                     </td>
                 </tr>
                 <tr>
-                    <th>제목</th>
+                    <th>제목 <span class="red">*</span></th>
                     <td>
                         <input
                             type="text"
@@ -332,7 +348,7 @@ export default {
                     </td>
                 </tr>
                 <tr>
-                    <th>내용</th>
+                    <th>내용 <span class="red">*</span></th>
                     <td>
                         <textarea
                             class="textarea_basic"
@@ -340,12 +356,6 @@ export default {
                         ></textarea>
                     </td>
                 </tr>
-                <!-- <tr v-if="modData">
-                    <th>조회수</th>
-                    <td>
-                        {{ modData.view_count }}
-                    </td>
-                </tr> -->
                 <tr v-if="modData">
                     <th>등록자</th>
                     <td>
@@ -359,7 +369,7 @@ export default {
                     </td>
                 </tr>
                 <tr>
-                    <th>파일첨부</th>
+                    <th>파일첨부 <span class="red">*</span></th>
                     <td class="fileicon">
                         <div style="margin-bottom: 5">
                             <b>
