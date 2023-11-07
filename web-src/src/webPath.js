@@ -6,7 +6,7 @@ const slash = "/";
 // 호스트
 // 포트
 // 버전
-const protocol = "https://";
+const protocol = "http://";
 
 // 실행 환경에 따라 분기처리
 // TODO: 백엔드 세팅 후 host 주소 변경
