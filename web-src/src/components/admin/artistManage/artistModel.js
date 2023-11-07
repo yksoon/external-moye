@@ -26,6 +26,7 @@ const artistModel = {
     useYn: "",
     delYn: "",
     showYn: "",
+    mainShowYn: "",
     userIdx: 0,
     userNameKo: "",
     userNameEn: "",

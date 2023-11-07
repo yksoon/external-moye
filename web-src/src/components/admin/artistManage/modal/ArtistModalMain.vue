@@ -65,6 +65,7 @@ const mobile3 = ref(null);
 const gender = ref(null);
 const email = ref(null);
 const peopleMemo = ref(null);
+const selectMainShowYn = ref(null);
 
 const selectedCategory1 = ref("1");
 
@@ -93,12 +94,13 @@ const getDefaultValue = () => {
         if (modData.birth_yyyy) {
             birthday.value.value = `${modData.birth_yyyy}-${modData.birth_mm}-${modData.birth_dd}`;
         }
-        mobile1.value = modData.mobile1;
-        mobile2.value = modData.mobile2;
-        mobile3.value = modData.mobile3;
+        mobile1.value.value = modData.mobile1;
+        mobile2.value.value = modData.mobile2;
+        mobile3.value.value = modData.mobile3;
         gender.value.value = modData.gender_cd;
         email.value.value = modData.email;
         peopleMemo.value.value = modData.people_memo;
+        selectMainShowYn.value.value = modData.main_show_yn;
 
         state.fileList = modData.file_info;
 
@@ -472,9 +474,10 @@ const regArtist = () => {
             email: email.value.value,
             peopleMemo: peopleMemo.value.value,
             interPhoneNumber: "82",
-            mobile1: mobile1.value,
-            mobile2: mobile2.value,
-            mobile3: mobile3.value,
+            mobile1: mobile1.value.value,
+            mobile2: mobile2.value.value,
+            mobile3: mobile3.value.value,
+            mainShowYn: selectMainShowYn.value.value,
         };
 
         // 기본 formData append
@@ -572,9 +575,10 @@ const modArtist = () => {
             email: email.value.value,
             peopleMemo: peopleMemo.value.value,
             interPhoneNumber: "82",
-            mobile1: mobile1.value,
-            mobile2: mobile2.value,
-            mobile3: mobile3.value,
+            mobile1: mobile1.value.value,
+            mobile2: mobile2.value.value,
+            mobile3: mobile3.value.value,
+            mainShowYn: selectMainShowYn.value.value,
         };
 
         // 기본 formData append
@@ -735,7 +739,7 @@ const validation = () => {
                 </colgroup>
                 <tbody>
                     <tr>
-                        <th>이름(국문)<span class="red">*</span></th>
+                        <th>이름(국문) <span class="red">*</span></th>
                         <td>
                             <input type="text" class="input w180" ref="inputNameFirstKo" placeholder="성">
                             <input type="text" class="input w180" ref="inputNameLastKo" placeholder="이름">
@@ -836,11 +840,11 @@ const validation = () => {
                             </td>
                             <th>연락처</th>
                             <td>
-                                <input type="text" class="input w100" v-model="mobile1" />
+                                <input type="text" class="input w100" ref="mobile1" />
                                 -
-                                <input type="text" class="input w100" v-model="mobile2" />
+                                <input type="text" class="input w100" ref="mobile2" />
                                 -
-                                <input type="text" class="input w100" v-model="mobile3" />
+                                <input type="text" class="input w100" ref="mobile3" />
                             </td>
                         </tr>
                         <tr>
@@ -858,8 +862,15 @@ const validation = () => {
                         </tr>
                         <tr>
                             <th>메모</th>
-                            <td colspan="3">
+                            <td>
                                 <input type="email" class="input wp100" ref="peopleMemo" />
+                            </td>
+                            <th>메인 노출여부</th>
+                            <td>
+                                <select class="select wp100" ref="selectMainShowYn">
+                                    <option value="N">비노출</option>
+                                    <option value="Y">노출</option>
+                                </select>
                             </td>
                         </tr>
                     </tbody>
