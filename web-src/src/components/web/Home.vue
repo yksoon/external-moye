@@ -348,7 +348,7 @@ const readyAlert = () => {
                     <div id="gsefSpan">
                         <div class="marquee" id="gsefSpan2">
                             <div class="person" v-for="people in state.peopleList2">
-                                <a :href="`${routerPath.web_peoples_url}/${people.people_idx}`">
+                                <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`"
                                         :alt="`${people.file_name_org}`" />
