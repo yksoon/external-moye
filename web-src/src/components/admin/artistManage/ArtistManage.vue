@@ -277,7 +277,7 @@ const modPeopleModal = (modData) => {
 const columnHelper = createColumnHelper();
 
 // 컬럼 세팅
-// [체크박스], [이미지], [이름], [대분류], [중분류], [타입], [노출], [등록자], [등록일], [정보수정]
+// [체크박스], [이미지], [이름], [대분류], [중분류], [타입], [노출], [메인노출], [등록자], [등록일], [정보수정]
 const columns = [
     {
         accessorKey: "people_idx",
@@ -354,6 +354,13 @@ const columns = [
         // sortingFn: "alphanumericCaseSensitive",
     }),
 
+    columnHelper.accessor((row) => row.main_show_yn, {
+        id: "main_show_yn",
+        cell: (info) => info.getValue(),
+        header: "메인노출",
+        // sortingFn: "alphanumericCaseSensitive",
+    }),
+
     columnHelper.accessor((row) => row.reg_user_name_ko, {
         id: "reg_user_name_ko",
         cell: (info) => info.getValue(),
@@ -426,6 +433,7 @@ const table = useVueTable({
                         <col width="7%" />
                         <col width="10%" />
                         <col width="10%" />
+                        <col width="5%" />
                         <col width="5%" />
                         <col width="5%" />
                         <col width="5%" />
