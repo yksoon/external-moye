@@ -41,8 +41,8 @@ const protocol = "http://";
 //     host = "dev-api.medi-city.co.kr";
 // }
 
-// const host = "gateway.hicompint.com";
-const host = "gateway.mo-ye.com";
+const host = "gateway.hicompint.com";
+// const host = "gateway.mo-ye.com";
 
 const port = "60000";
 
