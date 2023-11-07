@@ -710,19 +710,16 @@ const validation = () => {
             return false;
         }
     }
-    if (state.selectedProfile.length === 0) {
-        CommonNotify({
-            type: "alert",
-            message: "한가지 이상의 프로필을 추가해주세요",
-        });
-        return false;
-    }
+
+    // if (state.selectedProfile.length === 0) {
+    //     CommonNotify({
+    //         type: "alert",
+    //         message: "한가지 이상의 프로필을 추가해주세요",
+    //     });
+    //     return false;
+    // }
 
     return true;
-};
-
-const testBtn = () => {
-    console.log(birthday.value.value);
 };
 </script>
 <template>
