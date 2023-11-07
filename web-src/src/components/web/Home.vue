@@ -186,9 +186,9 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
 
 //         let cookie_array = cookie.split("; ");
 //         for (let index in cookie_array) {
-            
+
 //             let cookie_name = cookie_array[index].split("=");
-            
+
 //             if (cookie_name[0] == "moyepopupcookie") {
 //                 return cookie_name[1];
 //             }
@@ -242,7 +242,7 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
                 let endDate = new Date(popup.end_date);
 
                 if (popup.show_yn === "Y" && startDate <= today && endDate >= today) {
-                    if (popup.option_24_hours_yn === "Y" && shouldDisplayPopup(popup.popup_idx) || popup.option_24_hours_yn === "N")  {
+                    if (popup.option_24_hours_yn === "Y" && shouldDisplayPopup(popup.popup_idx) || popup.option_24_hours_yn === "N") {
                         window.open(`/popup/${popup.popup_idx}`, '_blank', `width=${popup.size_width},height=${popup.size_height},top=${popup.position_top},left=${popup.position_left},toolbar=no,scrollbars=${popup.option_scroll_yn}`);
                     } else {
                         //
@@ -257,37 +257,37 @@ const getPopupList = (pageNum, pageSize, searchKeyword) => {
 };
 
 const shouldDisplayPopup = (popupIdx) => {
-  // 사용자가 해당 팝업을 24시간 이내에 보지 않기 선택하지 않은 경우 true 반환
-  return !hasViewedRecently(popupIdx);
+    // 사용자가 해당 팝업을 24시간 이내에 보지 않기 선택하지 않은 경우 true 반환
+    return !hasViewedRecently(popupIdx);
 };
 
 const hasViewedRecently = (popupIdx) => {
-  // 쿠키에서 사용자의 팝업 조회 기록을 확인
-  const viewedCookie = getCookie(`popup_viewed_${popupIdx}`);
-  
-  if (viewedCookie) {
-    // 팝업을 이미 본 경우, 저장된 시각을 파싱하여 24시간 이내인지 확인
-    const viewedTimestamp = parseInt(viewedCookie, 10);
-    const currentTime = Date.now();
+    // 쿠키에서 사용자의 팝업 조회 기록을 확인
+    const viewedCookie = getCookie(`popup_viewed_${popupIdx}`);
 
-    return currentTime - viewedTimestamp <= 24 * 60 * 60 * 1000; // 24시간(밀리초) 이내
-  }
-  return false;
+    if (viewedCookie) {
+        // 팝업을 이미 본 경우, 저장된 시각을 파싱하여 24시간 이내인지 확인
+        const viewedTimestamp = parseInt(viewedCookie, 10);
+        const currentTime = Date.now();
+
+        return currentTime - viewedTimestamp <= 24 * 60 * 60 * 1000; // 24시간(밀리초) 이내
+    }
+    return false;
 };
 
 // 쿠키 읽기 함수
 const getCookie = (name) => {
-  const cookies = document.cookie.split('; ');
+    const cookies = document.cookie.split('; ');
 
-  for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split('=');
+    for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.split('=');
 
-    if (cookieName === name) {
-      return cookieValue;
+        if (cookieName === name) {
+            return cookieValue;
+        }
     }
-  }
-  
-  return null;
+
+    return null;
 };
 
 const readyAlert = () => {
@@ -325,10 +325,7 @@ const readyAlert = () => {
                                 <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`"
-                                        :alt="`${people.file_name_org}`" style="
-                                            min-width: 450px;
-                                            min-height: 180px;
-                                        " />
+                                        :alt="`${people.file_name_org}`" />
                                     <!-- 프로필 이미지 없는 경우 -->
                                     <img v-else src="/img/web/sub/default_full.jpg" alt="인물 기본 이미지" />
                                     <p>
