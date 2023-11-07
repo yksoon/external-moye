@@ -106,6 +106,8 @@ if (validation()) {
         formData.append(key, data[key]);
     }
 
+    console.log(selectAttachmentMethod.value);
+
     // 파일 formData append
     if (selectAttachmentMethod.value.value == 'file') {
         fileArr = Array.from(inputAttachmentFile.value.files);
@@ -166,7 +168,7 @@ const modBoard = () => {
             categoryType: "900", // 기타
             subject: inputTitle.value.value,
             subTitle: inputSubTitle.value.value,
-            content: selectAttachmentMethod.value.value == 'link' ? inputContent.value.value : null,
+            content: inputContent.value.value,
         };
 
         // 기본 formData append
@@ -175,7 +177,7 @@ const modBoard = () => {
         }
 
         // 파일 formData append
-        if (selectAttachmentMethod.value.value == 'file') {
+        if (selectAttachmentMethod.value == 'file') {
             fileArr = Array.from(inputAttachmentFile.value.files);
             let len = fileArr.length;
             for (let i = 0; i < len; i++) {
@@ -246,7 +248,8 @@ const validation = () => {
         return false;
     }
 
-    if (selectAttachmentMethod.value.value == 'link' && !inputContent.value.value) {
+    // 등록일 경우
+    if (!isModData && selectAttachmentMethod.value.value == 'link' && !inputContent.value.value) {
         CommonNotify({
             type: "alert",
             message: "링크주소를 입력해주세요",
@@ -262,7 +265,42 @@ const validation = () => {
         return false;
     }
 
-    if (selectAttachmentMethod.value.value == 'file' && inputAttachmentFile.value.files.length === 0) {
+    // 등록일 경우
+    if (!isModData && selectAttachmentMethod.value.value == 'file' && inputAttachmentFile.value.files.length === 0) {
+        CommonNotify({
+            type: "alert",
+            message: "영상을 첨부해주세요",
+            callback: () => callbackLogic(),
+        });
+
+        const callbackLogic = () => {
+            setTimeout(() => {
+                inputAttachmentFile.value.focus();
+            }, 0);
+        };
+
+        return false;
+    }
+
+    // 수정일 경우
+    if (isModData && selectAttachmentMethod.value == 'link' && !inputContent.value.value) {
+        CommonNotify({
+            type: "alert",
+            message: "링크주소를 입력해주세요",
+            callback: () => callbackLogic(),
+        });
+
+        const callbackLogic = () => {
+            setTimeout(() => {
+                inputContent.value.focus();
+            }, 0);
+        };
+
+        return false;
+    }
+
+    // 수정일 경우
+    if (isModData && selectAttachmentMethod.value == 'file' && inputAttachmentFile.value.files.length === 0) {
         CommonNotify({
             type: "alert",
             message: "영상을 첨부해주세요",
