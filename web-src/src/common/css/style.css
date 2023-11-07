@@ -150,7 +150,7 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
 .slide_box #gsefSpan .person {display:inline-block; width:450px; height:315px;margin:0 30px 0 0;  text-align:center;position:Relative;overflow:hidden;
     border-radius: 20px;}
 .slide_box #gsefSpan .person a {width:100%;display:block;}
-.slide_box #gsefSpan .person a img {display:block;position:absolute; top:0; bottom:0; left:0; right:0; margin:auto; max-width:100%; object-fit: cover; height: 100%;}
+.slide_box #gsefSpan .person a img {display:block;position:absolute; top:0; bottom:0; left:0; right:0; margin:auto; width:100%; object-fit: cover; height: 100%;}
 .slide_box #gsefSpan .person a p {position: absolute; bottom: 0; width: 100% ; text-align: left; padding: 35px 10px 20px 30px;
     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.35) 75%,rgba(0,0,0,0.5) 100%); 
 }
@@ -365,8 +365,8 @@ padding: 5px 60px; border-radius: 30px;}
 .p_detail_wrap {position: relative;}
 .p_detail {display:flex;position: relative;}
 .p_detail .detail_info {width:520px;margin:0 80px 0 100px;position: relative;}
-.p_detail .detail_info .thumb {border-radius: 20px;overflow: hidden;}
-.p_detail .detail_info .thumb img {max-width:100%;}
+.p_detail .detail_info .thumb {border-radius: 20px;overflow: hidden;max-width: 520px;height: 350px;}
+.p_detail .detail_info .thumb img { width: 100%; height: 100%; object-fit: cover;}
 .p_detail .detail_info .deco {position: absolute;top:86px;left:-170px;font-size: 24px;font-weight: 900;color: #efefef;line-height: 1;transform:rotate(90deg);letter-spacing:1em;}
 .p_detail .detail_cv .deco {position: absolute;top:20px;left:0;font-size: 62px;font-weight: 900;color: #f2f2f2;line-height: 1;}
 .p_detail .profile .profile_top {display:flex;gap:10px 25px;align-items: center;padding:38px 0 0;flex-wrap: wrap;}
