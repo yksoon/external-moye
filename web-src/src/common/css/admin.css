@@ -85,12 +85,13 @@ a.backbtn:hover {color: #616161;border: 1px solid #a8a8a8;}
 a.hotel_btn {display:inline-block;width: 220px;height: 53px;line-height: 53px;font-size: 14px;text-align: center;border-radius: 50px;margin: 0 20px 0 0 ;transition:all 0.3s;}
 .file {display:none;}
 .file_btn {display:inline-block;width:auto;min-width:146px;padding: 0 38px;height: 48px;text-align: center;line-height: 48px;border: 1px solid #ddd;color: #818181;cursor: pointer;}
-a.tablebtn {display:inline-block;width:auto;padding: 0 10px;height: 26px;text-align: center;line-height: 26px;border-radius: 5px;font-size: 14px;background: #525252;
-    color:#fff;cursor: pointer;
+a.tablebtn {display:inline-block;width:auto;padding: 0 10px;height: 28px;text-align: center;line-height: 28px;border-radius: 5px;font-size: 14px;background: #525252;
+    color:#fff;cursor: pointer;vertical-align: middle;
     transition:all 0.3s;}
 a.tablebtn:hover {background: #adabab; color: #fff;}
 a.tablebtn.btn01 {background: #0047a0;}
-a.outbtn{background: #0754A3; padding: 5px 10px; border-radius: 5px; color: #fff; display: inline-block; margin: 0 0 5px;cursor: pointer;
+a.outbtn{background: #0754A3; padding: 0 10px; border-radius: 5px; color: #fff; display: inline-block; margin: 0 0 5px;cursor: pointer; height: 28px; line-height: 28px;
+    font-size: 14px;
     transition:all .3s;
     -webkit-transition:all .3s;
     -moz-transition:all .3s;
@@ -181,6 +182,9 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 .modal_wrap .modal {position:absolute;top:50%;left:50%;transform:translate(-50%, -50%); box-shadow: 5px 5px 15px rgba(0,0,0,0.1);background:#fff;padding:40px;max-height:840px;z-index:999;border-radius: 5px;}
 .modal{ -ms-overflow-style: none; } .modal::-webkit-scrollbar{ display:none; }
 .modal_wrap .modal #transition-modal-description {overflow-y: scroll; max-height: 700px;}
+.modal_wrap .modal #transition-modal-description::-webkit-scrollbar{width: 6px;}
+.modal_wrap .modal #transition-modal-description::-webkit-scrollbar-thumb{height: 20%; background-color: #5d7794;border-radius: 10px; }
+.modal_wrap .modal #transition-modal-description::-webkit-scrollbarr-track{background-color: #e3effa;}
 .modal_wrap .modal .modal_close {position:absolute;top:42px;right:50px;cursor:pointer;}
 .modal_wrap .modal .modal_close img {width: 14px;}
 .modal_wrap .fileicon img {width:20px;vertical-align: middle;}
@@ -265,8 +269,10 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 .table_bb tbody th {font-size: 14px;background: #f1f8ff;padding:10px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: center;}
 .table_bb tbody td:last-child {border-right: none;}
 .table_bb tbody td {font-size: 14px;padding:10px;border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;text-align: left;}
-.table_bb select {font-size: 14px;font-family:'Pretendard'; outline: none;border: 1px solid #ddd; margin: 0 10px 10px 0; min-width: 100px;
-    background: url('/img/common/check.png') no-repeat 90% 50%;}
+.table_bb tbody td > div {margin: 0 0 10px;}
+.table_bb tbody td > div:last-child {margin:0 }
+.table_bb select {font-size: 14px;font-family:'Pretendard'; outline: none;border: 1px solid #ddd; margin: 0 10px 0 0; min-width: 100px;
+    background: url('/img/common/check.png') no-repeat right 5px center;vertical-align: middle;}
 .table_bb select:last-child {margin: 0 10px 0 0;}
 .table_bb input {font-size: 14px;font-family:'Pretendard'; outline: none;}
 
@@ -308,7 +314,7 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
     -moz-transition:all .3s;
     -ms-transition:all .3s;
     -o-transition:all .3s;
-    margin: 0 10px 5px 0;
+    margin: 0 10px 0 0;
 }
 .admin input:focus {border: 1px solid #0754A3;}
 
@@ -317,13 +323,16 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
     height: 120px;
     line-height: 26px;
     vertical-align: middle;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     width: 100%;
     resize: none;
     padding: 10px;
 }
+
+.admin .textarea_basic::-webkit-scrollbar {width: 6px;}
+.admin .textarea_basic::-webkit-scrollbar-thumb {height: 12%; background-color: #5d7794;border-radius: 10px;  }
 
 
 

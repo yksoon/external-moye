@@ -153,7 +153,7 @@ table.board_Wtable thead tr.boardW_second td{padding:10px 20px; border-bottom:1p
 table.board_Wtable thead tr th{background:url('/img/common/child_icon.png') 15px 8px no-repeat; padding:8px; font-size:12px; font-weight:400; border-bottom:2px solid #eee; text-align:center;}
 table.board_Wtable thead tr th.active{background:none;}
 table.board_Wtable thead tr td{font-size:16px; padding:5px 20px; font-weight:400; border-bottom:2px solid #eee;}
-table.board_Wtable thead tr td input{vertical-align:middle ;outline: none;border: 1px solid #ddd;border-radius: 5px; font-size: 14px;margin: 5px 5px 0 0;padding: 0 0 0 10px;
+table.board_Wtable thead tr td input{vertical-align:middle ;outline: none;border: 1px solid #ddd;border-radius: 5px; font-size: 14px;margin: 0 5px 0 0;padding: 0 0 0 10px;
     transition:all .3s;
     -webkit-transition:all .3s;
     -moz-transition:all .3s;

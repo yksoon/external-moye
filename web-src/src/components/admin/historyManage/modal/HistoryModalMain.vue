@@ -191,7 +191,7 @@ const regHistory = () => {
         const responseLogic = (res) => {
             let result_code = res.headers.result_code;
             let result_message_ko = res.headers.result_message_ko;
-            
+
             if (result_code === successCode.success) {
                 CommonSpinner(false);
 
@@ -637,11 +637,8 @@ const validation = () => {
                         <th>해당연도 <span class="red">*</span></th>
                         <td>
                             <select class="select w100" v-model="inputYear" v-if="!isModData">
-                                <option
-                                    v-if="state.targetYearOption !== 0"
-                                    v-for="item in state.targetYearOption"
-                                    :value="item"
-                                >
+                                <option v-if="state.targetYearOption !== 0" v-for="item in state.targetYearOption"
+                                    :value="item">
                                     {{ item }}
                                 </option>
                             </select>
@@ -658,11 +655,7 @@ const validation = () => {
                     <tr>
                         <th>메모</th>
                         <td colSpan="3">
-                            <input
-                                type="text"
-                                class="input wp100"
-                                ref="inputMemo"
-                            />
+                            <input type="text" class="input wp100" ref="inputMemo" />
                         </td>
                     </tr>
                     <!-- <tr>
@@ -705,11 +698,7 @@ const validation = () => {
         <div class="con_area">
             <h4 className="mo_subtitle">연혁 상세 정보</h4>
             <a class="outbtn" @click="handelHistory('add')">연혁 추가</a>
-            <table
-                class="table_bb"
-                v-for="item in state.historyList"
-                :id="item.idx"
-            >
+            <table class="table_bb" v-for="item in state.historyList" :id="item.idx">
                 <colgroup>
                     <col width="15%" />
                     <col width="*" />
@@ -719,70 +708,43 @@ const validation = () => {
                 <tbody>
                     <tr>
                         <th>연혁 제목 <span class="red">*</span></th>
-                        <td colSpan="2">
-                            <input
-                                type="text"
-                                class="input wp100"
-                                ref="inputTitle"
-                                id="inputTitle"
-                                :value="item.inputTitle"
-                                @change="(e) => handleHistoryInput(e, item.idx)"
-                            />
-                        </td>
-                        <td>
-                            <a
-                                class="tablebtn"
-                                @click="handelHistory('remove', item.idx)"
-                                >연혁 삭제</a
-                            >
+                        <td colSpan="3">
+                            <input type="text" class="input w460" ref="inputTitle" id="inputTitle" :value="item.inputTitle"
+                                @change="(e) => handleHistoryInput(e, item.idx)" />
+                            <a class="tablebtn" @click="handelHistory('remove', item.idx)">연혁 삭제</a>
                         </td>
                     </tr>
                     <tr>
                         <th>부제목</th>
                         <td colSpan="3">
-                            <input
-                                type="text"
-                                class="input wp100"
-                                ref="inputSubTitle"
-                                id="inputSubTitle"
-                                :value="item.inputSubTitle"
-                                @change="(e) => handleHistoryInput(e, item.idx)"
-                            />
+                            <input type="text" class="input wp100\" ref="inputSubTitle" id="inputSubTitle"
+                                :value="item.inputSubTitle" @change="(e) => handleHistoryInput(e, item.idx)" />
                         </td>
                     </tr>
                     <tr>
                         <th>내용</th>
                         <td colSpan="3">
-                            <textarea
-                                class="textarea_basic"
-                                ref="inputContent"
-                                id="inputContent"
-                                :value="item.inputContent"
-                                @change="(e) => handleHistoryInput(e, item.idx)"
-                            ></textarea>
+                            <textarea class="textarea_basic" ref="inputContent" id="inputContent" :value="item.inputContent"
+                                @change="(e) => handleHistoryInput(e, item.idx)"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <th>시작일</th>
                         <td>
-                            <select class="select w100" id="startDate" ref="startDate" :value="item.startDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                            <select class="select w100" id="startDate" ref="startDate" :value="item.startDate"
+                                @change="(e) => handleHistoryInput(e, item.idx)">
                                 <option value="">월 선택</option>
-                                <option
-                                    v-for="item in month"
-                                    :value="item"
-                                >
+                                <option v-for="item in month" :value="item">
                                     {{ item }} 월
                                 </option>
                             </select>
                         </td>
                         <th>종료일</th>
                         <td>
-                            <select class="select w100" id="endDate" ref="endDate" :value="item.endDate" @change="(e) => handleHistoryInput(e, item.idx)">
+                            <select class="select w100" id="endDate" ref="endDate" :value="item.endDate"
+                                @change="(e) => handleHistoryInput(e, item.idx)">
                                 <option value="">월 선택</option>
-                                <option
-                                    v-for="item in month"
-                                    :value="item"
-                                >
+                                <option v-for="item in month" :value="item">
                                     {{ item }} 월
                                 </option>
                             </select>
@@ -791,27 +753,15 @@ const validation = () => {
                     <tr>
                         <th>장소</th>
                         <td colSpan="3">
-                            <input
-                                type="text"
-                                class="input wp100"
-                                ref="inputPlace"
-                                id="inputPlace"
-                                :value="item.inputPlace"
-                                @change="(e) => handleHistoryInput(e, item.idx)"
-                            />
+                            <input type="text" class="input wp100" ref="inputPlace" id="inputPlace" :value="item.inputPlace"
+                                @change="(e) => handleHistoryInput(e, item.idx)" />
                         </td>
                     </tr>
                     <tr>
                         <th>포트폴리오<br />링크</th>
                         <td colSpan="3">
-                            <input
-                                type="text"
-                                class="input wp100"
-                                ref="inputPortfolio"
-                                id="inputPortfolio"
-                                :value="item.inputPortfolio"
-                                @change="(e) => handleHistoryInput(e, item.idx)"
-                            />
+                            <input type="text" class="input wp100" ref="inputPortfolio" id="inputPortfolio"
+                                :value="item.inputPortfolio" @change="(e) => handleHistoryInput(e, item.idx)" />
                         </td>
                     </tr>
                     <!-- <tr>
