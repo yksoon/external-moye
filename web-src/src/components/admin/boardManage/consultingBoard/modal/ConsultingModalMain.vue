@@ -242,48 +242,48 @@ const requestBoards = () => {
 
 // 검증
 const validation = () => {
-    if (!inputTitle.value.value) {
+    // if (!inputTitle.value.value) {
+    //     CommonNotify({
+    //         type: "alert",
+    //         message: "제목을 입력해주세요",
+    //         callback: () => callbackLogic(),
+    //     });
+
+    //     const callbackLogic = () => {
+    //         setTimeout(() => {
+    //             inputTitle.value.focus();
+    //         }, 0);
+    //     };
+
+    //     return false;
+    // }
+
+    // if (!inputSubTitle.value.value) {
+    //     CommonNotify({
+    //         type: "alert",
+    //         message: "부제목을 입력해주세요",
+    //         callback: () => callbackLogic(),
+    //     });
+
+    //     const callbackLogic = () => {
+    //         setTimeout(() => {
+    //             inputSubTitle.value.focus();
+    //         }, 0);
+    //     };
+
+    //     return false;
+    // }
+
+    if (!inputAnswerContent.value.value) {
         CommonNotify({
             type: "alert",
-            message: "제목을 입력해주세요",
+            message: "답변 내용을 입력해주세요",
             callback: () => callbackLogic(),
         });
 
         const callbackLogic = () => {
             setTimeout(() => {
-                inputTitle.value.focus();
-            }, 0);
-        };
-
-        return false;
-    }
-
-    if (!inputSubTitle.value.value) {
-        CommonNotify({
-            type: "alert",
-            message: "부제목을 입력해주세요",
-            callback: () => callbackLogic(),
-        });
-
-        const callbackLogic = () => {
-            setTimeout(() => {
-                inputSubTitle.value.focus();
-            }, 0);
-        };
-
-        return false;
-    }
-
-    if (!inputContent.value.value) {
-        CommonNotify({
-            type: "alert",
-            message: "내용을 입력해주세요",
-            callback: () => callbackLogic(),
-        });
-
-        const callbackLogic = () => {
-            setTimeout(() => {
-                inputContent.value.focus();
+                inputAnswerContent.value.focus();
             }, 0);
         };
 
@@ -426,7 +426,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>답변 내용</th>
+                    <th>답변 내용 <span class="red">*</span></th>
                     <td>
                         <textarea
                             class="textarea_basic"
