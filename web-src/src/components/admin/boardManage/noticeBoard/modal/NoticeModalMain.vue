@@ -239,21 +239,21 @@ export default {
                 return false;
             }
 
-            if (!inputSubTitle.value.value) {
-                CommonNotify({
-                    type: "alert",
-                    message: "부제목을 입력해주세요",
-                    callback: () => callbackLogic(),
-                });
+            // if (!inputSubTitle.value.value) {
+            //     CommonNotify({
+            //         type: "alert",
+            //         message: "부제목을 입력해주세요",
+            //         callback: () => callbackLogic(),
+            //     });
 
-                const callbackLogic = () => {
-                    setTimeout(() => {
-                        inputSubTitle.value.focus();
-                    }, 0);
-                };
+            //     const callbackLogic = () => {
+            //         setTimeout(() => {
+            //             inputSubTitle.value.focus();
+            //         }, 0);
+            //     };
 
-                return false;
-            }
+            //     return false;
+            // }
 
             if (!inputContent.value.value) {
                 CommonNotify({
@@ -312,7 +312,7 @@ export default {
                     </td>
                 </tr>
                 <tr>
-                    <th>제목</th>
+                    <th>제목 <span class="red">*</span></th>
                     <td>
                         <input
                             type="text"
@@ -332,7 +332,7 @@ export default {
                     </td>
                 </tr>
                 <tr>
-                    <th>내용</th>
+                    <th>내용 <span class="red">*</span></th>
                     <td>
                         <textarea
                             class="textarea_basic"
