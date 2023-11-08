@@ -312,6 +312,16 @@ const validation = () => {
         return false;
     }
 
+    if (!isModData) {
+        if (inputAttachmentFile.value.files.length === 0) {
+            CommonNotify({
+                type: "alert",
+                message: "한가지 이상의 이미지를 첨부해주세요",
+            });
+            return false;
+        }
+    }
+
     return true;
 };
 </script>
@@ -382,7 +392,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>파일첨부</th>
+                    <th>파일첨부 <span class="red">*</span></th>
                     <td class="fileicon">
                         <div style="margin-bottom: 5">
                             <b>
