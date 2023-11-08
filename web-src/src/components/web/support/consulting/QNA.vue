@@ -107,7 +107,7 @@ const getBoardDetail = () => {
                                 <td colspan="3"><b>{{ state.board.category_type }}</b></td>
                             </tr>
                             <tr v-if="state.board.file_info.length !== 0">
-                                <td>
+                                <td colspan="3">
                                     <div>
                                         <div v-for="item in state.board.file_info" class="download_li">
                                             <a :href="`${fileBaseUrl}${item.file_path_enc}`">
@@ -133,7 +133,7 @@ const getBoardDetail = () => {
                                 <td colspan="2">{{ state.board.comment_info.content }}</td>
                             </tr>
                             <tr v-if="state.board.comment_info && state.board.comment_info.file_info.length !== 0">
-                                <td>
+                                <td colspan="3">
                                     <div>
                                         <div v-for="item in state.board.comment_info.file_info" class="download_li">
                                             <a :href="`${fileBaseUrl}${item.file_path_enc}`">

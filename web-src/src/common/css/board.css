@@ -29,7 +29,7 @@ div.form_group:after {content:" "; display:block; clear:both;}
 	-webkit-appearance: none; /* 화살표 없애기 for chrome*/
    -moz-appearance: none;    /* 화살표 없애기 for firefox*/
    	appearance: none;         /* 화살표 없애기 공통*/
-    background: url('/img/common/check.png') no-repeat 90% 50%; /* 화살표 아이콘 추가 */
+    background: url('/img/common/check.png') no-repeat right 5px center; /* 화살표 아이콘 추가 */
 	color:#333;
 	font-size:14px;
     outline: none;
@@ -145,7 +145,7 @@ table.board_Wtable{border-top:2px solid #3266B1; width:100%;}
 table.board_Wtable thead tr.boardW_title th{background:none; padding:10px 0; font-size:16px; font-weight:600; color:#333; border-bottom:1px solid #eee; text-align:center;}
 table.board_Wtable thead tr.boardW_title td{padding:10px 20px; color:#333; border-bottom:1px solid #eee;text-align:left;font-size: 16px;}
 table.board_Wtable thead tr.boardW_title td .select {font-size: 14px;outline: none;border: 1px solid #ddd;min-width: 120px;height: 30px;border-radius: 5px;
-    background: url('/img/common/check.png') no-repeat 90% 50%;padding: 0 0 0 10px;}
+    background: url('/img/common/check.png') no-repeat right 5px center;padding: 0 0 0 10px;}
 table.board_Wtable thead tr.boardW_title td input.title {height: 31px; line-height: 31px; width: 800px; padding: 0px 15px; box-sizing: border-box;}
 table.board_Wtable thead tr.boardW_small th{padding:10px 0;}
 table.board_Wtable thead tr.boardW_second th{padding:10px 0; border-bottom:1px solid #eee;}
@@ -532,8 +532,8 @@ input[type="text"]:focus.common_text_input{
 /* 상담문의 게시판 */
 #select_Option {font-size: 11px;height: 33px; line-height: 33px;padding: 0 8px;}
 .placeholder_box input[type="text"] {width: 170px;font-size: 11px;height: 33px; line-height: 33px;}
-table.board_table thead tr th {font-size: 12px;}
-table.board_table tbody tr td {font-size: 12px;}
+table.board_table thead tr th {font-size: 12px; padding: 10px 0;}
+table.board_table tbody tr td {font-size: 12px;padding: 10px 0; word-break: break-word;}
 .btn_primary {height: 33px;line-height: 33px;}
 
 

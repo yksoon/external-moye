@@ -440,16 +440,18 @@ const readyAlert = () => {
             </div>
 
             <div class="section03">
-                <div class="left">
-                    <h3 class="title">예체능 교육의 Digital Transformation</h3>
-                    <p>
-                        우리는 예체능 생태계를 체계화하고, 통합 서비스를 제공
-                        하고자 합니다.
-                    </p>
-                    <a :href="routerPath.web_greetings_url" class="more_btn"><span>기업 소개 더보기</span></a>
-                    <a :href="routerPath.web_consulting_url" class="more_btn"><span>상담 문의하기</span></a>
+                <div>
+                    <div class="left">
+                        <h3 class="title">예체능 교육의 Digital Transformation</h3>
+                        <p>
+                            우리는 예체능 생태계를 체계화하고, 통합 서비스를 제공
+                            하고자 합니다.
+                        </p>
+                        <a :href="routerPath.web_greetings_url" class="more_btn"><span>기업 소개 더보기</span></a>
+                        <a :href="routerPath.web_consulting_url" class="more_btn"><span>상담 문의하기</span></a>
+                    </div>
+                    <div class="right"><img src="/img/web/main/section03_bg2.png"></div>
                 </div>
-                <div class="right"></div>
             </div>
 
             <div class="section04">
