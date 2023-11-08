@@ -144,7 +144,7 @@ const getBoardDetail = () => {
                             </tr>
                             <!-- 관리자 댓글 답변 -->
                             <tr v-if="state.board.comment_info">
-                                <th rowspan="2">{{ state.board.comment_info.reg_user_name_ko }}</th>
+                                <th>{{ state.board.comment_info.user_name_ko }}</th>
                                 <td colspan="2">{{ state.board.comment_info.content }}</td>
                             </tr>
                             <tr v-if="state.board.file_info.length !== 0">

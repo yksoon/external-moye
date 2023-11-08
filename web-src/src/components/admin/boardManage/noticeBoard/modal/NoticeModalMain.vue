@@ -92,7 +92,7 @@ export default {
                 data = {
                     ...model,
                     showYn: selectShowYn.value.value,
-                    boardType: "000",
+                    boardType: "900",
                     categoryType: "900",
                     subject: inputTitle.value.value,
                     subTitle: inputSubTitle.value.value,
@@ -158,7 +158,7 @@ export default {
                     ...model,
                     showYn: selectShowYn.value.value,
                     boardIdx: modData.board_idx,
-                    boardType: "000",
+                    boardType: "900",
                     categoryType: "900",
                     subject: inputTitle.value.value,
                     subTitle: inputSubTitle.value.value,

@@ -76,7 +76,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
-        board_type: "000",
+        board_type: "900",
     };
 
     // 파라미터

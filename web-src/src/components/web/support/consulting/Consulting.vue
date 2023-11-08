@@ -191,7 +191,7 @@ const readyAlert = () => {
                                 <td>{{ board.category_type }}</td>
                                 <td>{{ board.subject }}</td>
                                 <td>{{ board.user_name_first_ko + board.user_name_last_ko }}</td>
-                                <td>{{ board.comment_info ? '답변완료' : '미답변' }}</td>
+                                <td>{{ board.process_status_cd === "000" ? "답변완료" : "미답변" }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
                             </tr>
                         </tbody>
