@@ -118,21 +118,6 @@ const getBoardDetail = () => {
                                     </div>
                                 </td>
                             </tr>
-                            <!-- <tr>
-                                <td colspan="3" v-if="state.board.file_info.length !== 0">
-                                    <ul v-for="item in state.board.file_info">
-                                        <li class="download_li">
-                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">{{
-                                                item.file_name }}
-                                                <img src="/img/common/file.svg">
-                                            </a>
-                                            <div class="attachment" style="display:none;">
-                                                <div class="xbtn"><img src="/img/common/x_btn.png"></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr> -->
                         </thead>
                         <tbody>
                             <tr>
