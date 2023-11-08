@@ -4,7 +4,7 @@ export const usePagesStore = defineStore("pages", {
     persist: {
         storage: sessionStorage, //쓰고싶은 스토리지(세션 또는 로컬)
     },
-    state: () => ({ pages: "" }),
+    state: () => ({ pages: "profileMng" }),
     actions: {
         setPages(param) {
             this.pages = param;
