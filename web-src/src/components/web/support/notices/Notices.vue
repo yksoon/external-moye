@@ -110,12 +110,6 @@ const handleChange = (page_num) => {
                 </div>
                 <div>
                     <div class="form_group">
-                        <select id="select_Option" title="select" name="sfl">
-                            <option value="all">검색</option>
-                            <option value="제목">제목</option>
-                            <option value="내용">내용</option>
-                            <option value="모두">제목 + 내용</option>
-                        </select>
                         <div class="placeholder_box">
                             <input type="text" id="placeholder" name="stx" value="" autofocus="autofocus" placeholder="검색">
                             <button type="button" onclick="document.fsearch.submit()" class="btn_primary">검색</button>
