@@ -295,7 +295,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>분류</th>
+                    <th>분류 <span class="red">*</span></th>
                     <td v-if="!modData">
                         <select class="wp100" ref="selectCategoryDiv" @change="(e) => handleCategoryDiv(e)">
                             <option value="000">대분류</option>
@@ -311,7 +311,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>카테고리명</th>
+                    <th>카테고리명 <span class="red">*</span></th>
                     <td>
                         <input
                             type="text"
