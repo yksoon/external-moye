@@ -221,6 +221,22 @@ const validation = () => {
         return false;
     }
 
+    if (!inputContent.value.value) {
+        CommonNotify({
+            type: "alert",
+            message: "내용을 입력해주세요",
+            callback: () => callbackLogic(),
+        });
+
+        const callbackLogic = () => {
+            setTimeout(() => {
+                inputContent.value.focus();
+            }, 0);
+        };
+
+        return false;
+    }
+
     if (!startDate.value.value) {
         CommonNotify({
             type: "alert",
@@ -230,7 +246,7 @@ const validation = () => {
 
         const callbackLogic = () => {
             setTimeout(() => {
-                inputContent.value.focus();
+                startDate.value.focus();
             }, 0);
         };
 
@@ -246,7 +262,7 @@ const validation = () => {
 
         const callbackLogic = () => {
             setTimeout(() => {
-                inputContent.value.focus();
+                endDate.value.focus();
             }, 0);
         };
 
@@ -280,7 +296,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>제목</th>
+                    <th>제목 <span class="red">*</span></th>
                     <td colSpan="3">
                         <input
                             type="text"
@@ -290,7 +306,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>내용</th>
+                    <th>내용 <span class="red">*</span></th>
                     <td colSpan="3">
                         <textarea
                             class="textarea_basic"
@@ -337,7 +353,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>시작일</th>
+                    <th>시작일 <span class="red">*</span></th>
                     <td colspan="3">
                         <!-- 2023-11-11 00:00:00 -->
                         <input type="date" class="input wp80" ref="startDate" />
@@ -345,7 +361,7 @@ const validation = () => {
                     </td>
                 </tr>
                 <tr>
-                    <th>종료일</th>
+                    <th>종료일 <span class="red">*</span></th>
                     <td colspan="3">
                         <input type="date" class="input wp80" ref="endDate" />
                         <input type="time" class="input wp80" ref="endTime" />
