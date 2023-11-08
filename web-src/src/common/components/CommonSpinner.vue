@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <v-dialog width="auto" v-model="isSpinner">
+    <v-dialog width="auto" v-model="isSpinner" :lazy="true">
         <v-progress-circular indeterminate></v-progress-circular>
     </v-dialog>
 </template>

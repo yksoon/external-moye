@@ -131,7 +131,7 @@ const regBoard = () => {
 
         const restParams = {
             method: "post_multi",
-            url: apiPath.api_admin_reg_comment, // /v1/board
+            url: apiPath.api_admin_reg_comment, // /v1/_comment
             data: formData,
             admin: "Y",
             callback: (res) => responseLogic(res),
