@@ -78,10 +78,10 @@ transition:all .3s;
 a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') no-repeat right 0; }
 
 .section01 {padding:105px 0 55px;background: url('/img/web/main/section01_bg.png') no-repeat center / cover;}
-.section01 .top {max-width:1600px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between; padding: 0 20px;}
+.section01 .top {max-width:1640px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between; padding: 0 20px;}
 .section01 .top p {font-size: 24px; line-height: 24px; color: #666; letter-spacing: -0.02em; font-weight: 500;margin: 8px 0 0 -660px;}
 
-.section02 {max-width: 1600px; margin: 0 auto; padding: 105px 20px;}
+.section02 {max-width: 1640px; margin: 0 auto; padding: 105px 20px;}
 .section02 .top {display: flex;align-items: flex-end;}
 .section02 .top p {font-size: 24px; font-weight: 500; color: #666; margin: 0 0 0 60px;}
 .section02 .category {display: flex;justify-content: space-between;align-items: center;margin: 50px 0 55px 0;}

@@ -90,7 +90,8 @@ const getBoardDetail = () => {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3">{{ state.board.subject }} &nbsp;<img v-if="state.board.open_yn === 'N'" src="/img/common/common_lock.png" alt=""></th>
+                                <th colspan="3">{{ state.board.subject }} &nbsp;<img v-if="state.board.open_yn === 'N'"
+                                        src="/img/common/common_lock.png" alt=""></th>
                                 <!-- <th colspan="3">{{ state.board.subject }}</th> -->
                             </tr>
                             <tr>
@@ -108,18 +109,28 @@ const getBoardDetail = () => {
                             <tr v-if="state.board.file_info.length !== 0">
                                 <td>
                                     <div>
-                                        <div
-                                            
-                                            v-for="item in state.board.file_info"
-                                        >
-                                            <a
-                                                :href="`${fileBaseUrl}${item.file_path_enc}`"
-                                            >
+                                        <div v-for="item in state.board.file_info">
+                                            <a :href="`${fileBaseUrl}${item.file_path_enc}`">
                                                 <img src="/img/common/file.svg" alt="" />
                                                 {{ item.file_name }}
                                             </a>
                                         </div>
                                     </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" v-if="state.board.file_info.length !== 0">
+                                    <ul v-for="item in state.board.file_info">
+                                        <li class="download_li">
+                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">{{
+                                                item.file_name }}
+                                                <img src="/img/common/files.jpg">
+                                            </a>
+                                            <div class="attachment" style="display:none;">
+                                                <div class="xbtn"><img src="/img/common/x_btn.png"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </td>
                             </tr>
                         </thead>
@@ -133,8 +144,20 @@ const getBoardDetail = () => {
                             </tr>
                             <!-- 관리자 댓글 답변 -->
                             <tr v-if="state.board.comment_info">
-                                <th>{{ state.board.comment_info.reg_user_name_ko }}</th>
+                                <th rowspan="2">{{ state.board.comment_info.reg_user_name_ko }}</th>
                                 <td colspan="2">{{ state.board.comment_info.content }}</td>
+                            </tr>
+                            <tr v-if="state.board.file_info.length !== 0">
+                                <td>
+                                    <div>
+                                        <div v-for="item in state.board.file_info">
+                                            <a :href="`${fileBaseUrl}${item.file_path_enc}`">
+                                                <img src="/img/common/file.svg" alt="" />
+                                                {{ item.file_name }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
