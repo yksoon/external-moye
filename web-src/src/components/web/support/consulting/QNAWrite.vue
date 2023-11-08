@@ -297,7 +297,7 @@ const readyAlert = () => {
                                     </div>
                                 </td>
                             </tr>
-                            <!-- <tr>
+                            <tr>
                                 <th>파일첨부</th>
                                 <td class="fileicon">
                                     <div style="margin-bottom: 5">
@@ -311,7 +311,7 @@ const readyAlert = () => {
                                             @change="(e) => attachFile(e.target)" />
                                     </div>
                                 </td>
-                            </tr> -->
+                            </tr>
                         </tbody>
                     </table>
                     <div class="boardW_btn">

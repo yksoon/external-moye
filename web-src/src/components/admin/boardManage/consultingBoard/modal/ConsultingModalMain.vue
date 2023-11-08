@@ -376,7 +376,7 @@ const validation = () => {
                         {{ modData.reg_dttm }}
                     </td>
                 </tr>
-                <!-- <tr>
+                <tr>
                     <th>파일</th>
                     <td class="fileicon">
                         <div>
@@ -393,7 +393,7 @@ const validation = () => {
                             </div>
                         </div>
                     </td>
-                </tr> -->
+                </tr>
             </tbody>
         </table>
 
@@ -420,7 +420,7 @@ const validation = () => {
                         ></textarea>
                     </td>
                 </tr>
-                <!-- <tr>
+                <tr>
                     <th>파일</th>
                     <td class="fileicon">
                         <div style="margin-bottom: 5">
@@ -451,7 +451,7 @@ const validation = () => {
                             </div>
                         </div>
                     </td>
-                </tr> -->
+                </tr>
             </tbody>
         </table>
 

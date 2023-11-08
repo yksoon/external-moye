@@ -106,7 +106,7 @@ const getBoardDetail = () => {
                             <tr>
                                 <td colspan="3"><b>{{ state.board.category_type }}</b></td>
                             </tr>
-                            <!-- <tr v-if="state.board.file_info.length !== 0">
+                            <tr v-if="state.board.file_info.length !== 0">
                                 <td>
                                     <div>
                                         <div v-for="item in state.board.file_info" class="download_li">
@@ -117,7 +117,7 @@ const getBoardDetail = () => {
                                         </div>
                                     </div>
                                 </td>
-                            </tr> -->
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -132,7 +132,7 @@ const getBoardDetail = () => {
                                 <th>{{ state.board.comment_info.user_name_ko }}</th>
                                 <td colspan="2">{{ state.board.comment_info.content }}</td>
                             </tr>
-                            <!-- <tr v-if="state.board.comment_info && state.board.comment_info.file_info.length !== 0">
+                            <tr v-if="state.board.comment_info && state.board.comment_info.file_info.length !== 0">
                                 <td>
                                     <div>
                                         <div v-for="item in state.board.comment_info.file_info" class="download_li">
@@ -143,7 +143,7 @@ const getBoardDetail = () => {
                                         </div>
                                     </div>
                                 </td>
-                            </tr> -->
+                            </tr>
                         </tbody>
                     </table>
                     <div class="board_btn_wrap">
