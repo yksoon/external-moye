@@ -97,6 +97,11 @@ const handleChange = (page_num) => {
 
     getBoardList(page_num, maxRowNum.basic, keyword);
 };
+
+// 게시글 클릭시 페이지 이동 함수
+const boardOpen = (board_idx) => {
+    location.href = routerPath.web_notices_url + '/' + board_idx;
+}
 </script>
 
 <template>
@@ -133,10 +138,10 @@ const handleChange = (page_num) => {
                             </tr>
                         </thead>
                         <tbody v-if="state.boardList.length !== 0">
-                            <tr v-for="(board, idx) in state.boardList">
-                                <td><a :href="`${routerPath.web_notices_url}/${board.board_idx}`">{{ board.subject }}</a></td>
-                                <td><a :href="`${routerPath.web_notices_url}/${board.board_idx}`">{{ board.sub_title }}</a></td>
-                                <td><a :href="`${routerPath.web_notices_url}/${board.board_idx}`">{{ board.content }}</a></td>
+                            <tr v-for="(board, idx) in state.boardList" @click="boardOpen(board.board_idx)">
+                                <td>{{ board.subject }}</td>
+                                <td>{{ board.sub_title }}</td>
+                                <td>{{ board.content }}</td>
                                 <td>{{ board.view_count }}</td>
                                 <td>{{ board.reg_dttm.split(' ')[0] }}</td>
                             </tr>
