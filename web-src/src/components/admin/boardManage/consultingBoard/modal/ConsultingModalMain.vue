@@ -305,7 +305,7 @@ const validation = () => {
             <tbody>
                 <tr>
                     <th>상담 카테고리</th>
-                    <td v-if="isModData">
+                    <td>
                         {{ modData.category_type }}
                     </td>
                 </tr>
@@ -376,23 +376,9 @@ const validation = () => {
                         {{ modData.reg_dttm }}
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th>파일</th>
                     <td class="fileicon">
-                        <!-- <div style="margin-bottom: 5">
-                            <b>
-                                여러 파일 선택이 가능합니다. 여러 파일 선택 시
-                                ctrl 누른 후 선택하시면 됩니다.
-                            </b>
-                        </div>
-                        <div>
-                            <input
-                                type="file"
-                                ref="inputAttachmentFile"
-                                multiple
-                                @change="(e) => attachFile(e.target)"
-                            />
-                        </div> -->
                         <div>
                             <div
                                 v-if="state.fileList.length !== 0"
@@ -407,7 +393,7 @@ const validation = () => {
                             </div>
                         </div>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
 
@@ -434,7 +420,7 @@ const validation = () => {
                         ></textarea>
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th>파일</th>
                     <td class="fileicon">
                         <div style="margin-bottom: 5">
@@ -465,7 +451,7 @@ const validation = () => {
                             </div>
                         </div>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
 
