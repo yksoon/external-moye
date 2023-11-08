@@ -386,7 +386,6 @@ padding: 5px 60px; border-radius: 30px;}
 .p_detail .detail_cv > div {padding:20px 0 0;}
 .p_detail .detail_cv div.detail_cv_list {display: flex; align-items: flex-start;gap:45px;margin:0 0 60px;}
 .p_detail .detail_cv div.detail_cv_list h6 {font-weight: 700;font-size: 24px;color: #3266b1;border-left: 4px solid #3266b1;padding:0 0 16px;max-width:200px;width:110px;padding:0 20px;line-height: 1;}
-.p_detail .detail_cv div.detail_cv_list ul {width: 80%;}
 .p_detail .detail_cv div.detail_cv_list ul li {margin:0 0 18px;font-size: 18px;color: #333;line-height: 28px; background: url('/img/web/sub/grayspuare.png') no-repeat left 12px;
     padding: 0 0 0 20px;}
 
