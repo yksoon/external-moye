@@ -107,11 +107,11 @@ const getBoardDetail = () => {
                             </tr>
                             <tr>
                                 <td colspan="3" v-if="state.board.file_info.length !== 0">
-                                    <ul v-for="item in state.board.file_info">
-                                        <li class="download_li">
-                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">{{
-                                                item.file_name }}
+                                    <ul>
+                                        <li class="download_li" v-for="item in state.board.file_info">
+                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">
                                                 <img src="/img/common/file.svg">
+                                                {{ item.file_name }}
                                             </a>
                                             <div class="attachment" style="display:none;">
                                                 <div class="xbtn"><img src="/img/common/x_btn.png"></div>
@@ -135,8 +135,6 @@ const getBoardDetail = () => {
                         <div class="boardW_btn">
                             <a :href="routerPath.web_notices_url" class="back_btn">목록
                             </a>
-                            <!-- <span class="left2_btn"><?=$btn_link['delete']?></span>
-                            <span class="back_btn"><?=$btn_link['update']?></span> -->
                         </div>
                     </div>
                 </div>
