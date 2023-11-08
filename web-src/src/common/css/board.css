@@ -117,7 +117,13 @@ table.board_Vtable tbody tr td.check p.popup {display: inline-block;}
 table.board_Vtable tbody tr td.check p.popup:last-child {margin: 0 0 0 10px;}
 .board_Vtable thead tr td li.download_li{position:relative;}
 .board_Vtable thead tr td li.download_li > a{display:block; color:#999;}
-.board_Vtable thead tr td li.download_li > a img{vertical-align:text-top;}
+.board_Vtable thead tr td li.download_li > a img{width: 20px;}
+.board_Vtable thead tr td .download_li{position:relative;}
+.board_Vtable thead tr td .download_li > a{display:block; color:#999;}
+.board_Vtable thead tr td .download_li > a img{width: 20px;}
+.board_Vtable tbody tr td .download_li{position:relative;}
+.board_Vtable tbody tr td .download_li > a{display:block; color:#333;}
+.board_Vtable tbody tr td .download_li > a img{width: 20px;vertical-align: middle;}
 .attachment{position:absolute; top:25px; left:-19px; background:#fff; width:254px; padding:6px; border:1px solid #aaa;}
 .attachment ul{zoom:1; margin-top:6px; position:relative;}
 .attachment ul:first-child{margin-top:0px;}

@@ -78,7 +78,7 @@ const getBoardDetail = () => {
     <div id="wrapper">
         <!-- 서브컨텐츠     //S-->
         <div id="container" class="sub_container">
-            <LeftMenu subvisual="subvisual_notice" page="notice"/>
+            <LeftMenu subvisual="subvisual_notice" page="notice" />
             <div id="content">
                 <div id="subtitle">
                     <h2>공지사항</h2>
@@ -92,16 +92,16 @@ const getBoardDetail = () => {
                         </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3">{{state.board.subject}}</th>
+                                <th colspan="3">{{ state.board.subject }}</th>
                             </tr>
                             <tr>
                                 <td colspan="3">
                                     <ul>
-                                        <li>{{state.board.reg_user_name_ko}}</li>
+                                        <li>{{ state.board.reg_user_name_ko }}</li>
                                         <li class="imbar">|</li>
-                                        <li>{{state.board.view_count}}</li>
+                                        <li>{{ state.board.view_count }}</li>
                                         <li class="imbar">|</li>
-                                        <li>{{state.board.reg_dttm}}</li>
+                                        <li>{{ state.board.reg_dttm }}</li>
                                     </ul>
                                 </td>
                             </tr>
@@ -109,8 +109,9 @@ const getBoardDetail = () => {
                                 <td colspan="3" v-if="state.board.file_info.length !== 0">
                                     <ul v-for="item in state.board.file_info">
                                         <li class="download_li">
-                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">{{ item.file_name }}
-                                                <img src="/img/common/files.jpg">
+                                            <a class="attachment_parent" :href="`${fileBaseUrl}${item.file_path_enc}`">{{
+                                                item.file_name }}
+                                                <img src="/img/common/file.svg">
                                             </a>
                                             <div class="attachment" style="display:none;">
                                                 <div class="xbtn"><img src="/img/common/x_btn.png"></div>
@@ -124,7 +125,7 @@ const getBoardDetail = () => {
                             <tr>
                                 <td colspan=3>
                                     <div class="board_content">
-                                        {{state.board.content}}
+                                        {{ state.board.content }}
                                     </div>
                                 </td>
                             </tr>
