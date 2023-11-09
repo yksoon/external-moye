@@ -7,7 +7,7 @@ const slash = "/";
 // 포트
 // 버전
 
-const protocol = "http://";
+const protocol = "https://";
 
 // // ------- 프로토콜 분기 Start -------
 // // 사용자 접속 프로토콜에 따라 API 프로토콜 설정
