@@ -10,6 +10,7 @@ import { apiPath, routerPath } from "@/webPath";
 import { boardModel } from "@/components/web/support/consulting/models/boardModel";
 import { useRoute } from "vue-router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
+import axios from "axios";
 
 // ------------------- import End --------------------
 
@@ -106,6 +107,8 @@ const regBoard = () => {
             if (result_code === successCode.success) {
                 CommonSpinner(false);
 
+                requestKakao();
+
                 CommonNotify({
                     type: "alert",
                     message: "문의 등록이 완료 되었습니다",
@@ -122,6 +125,56 @@ const regBoard = () => {
         };
     }
 };
+
+// 카카오 알림톡 발송
+const requestKakao = () => {
+    // 알림톡 API 엔드포인트
+    const apiUrl = 'https://talkapi.lgcns.com/request/kakao.json';
+    const authToken = 'TEiR6d7xkfOtQyzl3XoU4Q==moye123';
+    const headers = {
+        headers: {
+            'Content-Type': 'application/json', // Content-Type 지정 (JSON 사용 시)
+            'Authorization': `Bearer ${authToken}`, // Bearer Token 추가
+        },
+    }
+
+    let categoryType = "";
+    switch (selectCategory.value.value) {
+        case "000": categoryType = "개인레슨"; break;
+        case "100": categoryType = "그룹레슨"; break;
+        case "200": categoryType = "제휴문의"; break;
+        default: break;
+    }
+
+    const msg = `[상담문의 - ${categoryType}] ${inputUserFirstName.value.value} ${inputUserLastName.value.value}님의 "${inputTitle.value.value}" 문의글이 등록되었습니다.`;
+
+    // 알림톡 메시지 데이터
+    const messageData = {
+        service: 2210082248,
+        message: msg,
+        mobile: '01024124594',
+        // template: '10000',
+        buttons: [
+            {
+                name: '웹링크버튼',
+                type: 'WL',
+                url_pc: 'http://moye.hicompint.com/support/consulting',
+                url_mobile: 'http://moye.hicompint.com/support/consulting',
+            },
+        ],
+    };
+
+    // Axios를 사용하여 알림톡 API에 POST 요청을 보냅니다.
+    axios.post(apiUrl, messageData, headers)
+    .then((response) => {
+        console.log('알림톡 전송 성공:', response.data);
+        // 알림톡 전송에 성공한 경우 처리할 작업을 추가할 수 있습니다.
+    })
+    .catch((error) => {
+        console.error('알림톡 전송 실패:', error);
+        // 알림톡 전송에 실패한 경우 처리할 작업을 추가할 수 있습니다.
+    });
+}
 
 // 수정, 등록 완료 로직
 const requestBoards = () => {
