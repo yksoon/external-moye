@@ -16,16 +16,18 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 // Import Swiper styles
 import 'swiper/css';
 
-// import 'swiper/css/effect-fade';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 // // import './style.css';
 
 // // import required modules
-// import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 // ------------------- import End --------------------
+
+const modules = [EffectFade, Navigation, Pagination];
 
 const state = reactive({
     peopleList1: [],
@@ -289,6 +291,7 @@ const readyAlert = () => {
     <div>
         <div id="mainvisual">
             <swiper :spaceBetween="30" :effect="'fade'" :modules="modules" class="mySwiper">
+                <!-- <swiper-slide v-for="num in 5" :class="`main0${num}`"> -->
                 <swiper-slide class="main01">
                     <div class="main_txt">
                         <div class="main_txt_wrap">
@@ -301,7 +304,7 @@ const readyAlert = () => {
                         </div>
                     </div>
                 </swiper-slide>
-                <!-- <swiper-slide class="main02">
+                <swiper-slide class="main02">
                     <div class="main_txt">
                         <div class="main_txt_wrap">
                             <h2>전국민이 열광하는 레전드를 만나다</h2>
@@ -348,7 +351,7 @@ const readyAlert = () => {
                             </p>
                         </div>
                     </div>
-                </swiper-slide> -->
+                </swiper-slide>
             </swiper>
         </div>
         <!-- container //S-->
