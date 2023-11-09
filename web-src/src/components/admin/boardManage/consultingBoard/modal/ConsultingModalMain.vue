@@ -9,7 +9,7 @@ import {
 import { useModalStore } from "@/stores/modal";
 import { useCodesStore } from "@/stores/codes";
 import { storeToRefs } from "pinia";
-import { boardModel } from "@/components/admin/boardManage/boardModel";
+import { commentModel } from "@/components/admin/boardManage/consultingBoard/commentModel";
 import { successCode } from "@/common/js/resultCode";
 import { apiPath } from "@/webPath";
 import { onMounted } from "vue";
@@ -101,19 +101,28 @@ const regBoard = () => {
         CommonSpinner(true);
 
         const formData = new FormData();
-        const model = boardModel;
+        const model = commentModel;
         let data = {};
 
         let fileArr = [];
 
+        // data = {
+        //     ...model,
+        //     showYn: selectShowYn.value.value,
+        //     boardType: "100",
+        //     boardIdx: isModData && modData.board_idx,
+        //     categoryType: isModData && modData.category_type_cd,
+        //     subject: inputTitle.value.value,
+        //     subTitle: inputSubTitle.value.value,
+        //     content: inputAnswerContent.value.value,
+        // };
+
         data = {
             ...model,
-            showYn: selectShowYn.value.value,
-            boardType: "100",
+            showYn: "Y",
             boardIdx: isModData && modData.board_idx,
-            categoryType: isModData && modData.category_type_cd,
-            subject: inputTitle.value.value,
-            subTitle: inputSubTitle.value.value,
+            subject: inputAnswerContent.value.value,
+            subTitle: inputAnswerContent.value.value,
             content: inputAnswerContent.value.value,
         };
 
@@ -172,14 +181,24 @@ const modBoard = () => {
 
         let fileArr = [];
 
+        // data = {
+        //     ...model,
+        //     showYn: selectShowYn.value.value,
+        //     boardIdx: modData.board_idx,
+        //     boardType: "100",
+        //     categoryType: modData.category_type_cd,
+        //     subject: modData.subject,
+        //     subTitle: modData.sub_title,
+        //     content: inputAnswerContent.value.value,
+        //     commentIdx: modData.comment_info.comment_idx,
+        // };
+
         data = {
             ...model,
-            showYn: selectShowYn.value.value,
-            boardIdx: modData.board_idx,
-            boardType: "100",
-            categoryType: modData.category_type_cd,
-            subject: modData.subject,
-            subTitle: modData.sub_title,
+            showYn: "Y",
+            boardIdx: isModData && modData.board_idx,
+            subject: inputAnswerContent.value.value,
+            subTitle: inputAnswerContent.value.value,
             content: inputAnswerContent.value.value,
             commentIdx: modData.comment_info.comment_idx,
         };
