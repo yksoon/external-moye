@@ -176,7 +176,7 @@ const modBoard = () => {
         CommonSpinner(true);
 
         const formData = new FormData();
-        const model = boardModel;
+        const model = commentModel;
         let data = {};
 
         let fileArr = [];
