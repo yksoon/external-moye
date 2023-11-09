@@ -717,7 +717,7 @@ const validation = () => {
                     <tr>
                         <th>부제목</th>
                         <td colSpan="3">
-                            <input type="text" class="input wp100\" ref="inputSubTitle" id="inputSubTitle"
+                            <input type="text" class="input w460" ref="inputSubTitle" id="inputSubTitle"
                                 :value="item.inputSubTitle" @change="(e) => handleHistoryInput(e, item.idx)" />
                         </td>
                     </tr>
