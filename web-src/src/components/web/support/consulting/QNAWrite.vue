@@ -151,30 +151,19 @@ const requestKakao = () => {
     // 알림톡 메시지 데이터
     const messageData = {
         service: 2210082248,
-        title: '상담글 등록',
+        // title: '상담글 등록',
         message: msg,
         mobile: '01024124594',
-        // template: '10000',
-        buttons: [
-            {
-                name: '웹링크버튼',
-                type: 'WL',
-                url_pc: 'http://moye.hicompint.com/support/consulting',
-                url_mobile: 'http://moye.hicompint.com/support/consulting',
-            },
-        ],
-        itemHeader: '포인트 적립 안내',
-        itemHighlight: {
-          title: '하이라이트 타이틀',
-          description: '하이라이트 내용',
-        },
-        item: {
-          list: [
-            { title: '가격', description: '10,000원' },
-            { title: '할인금액', description: '-1원' },
-          ],
-          summary: { title: '총 금액', description: '9,999원' },
-        },
+        // template: '10047',
+        messageType: 'AT',
+        // buttons: [
+        //     {
+        //         name: '웹링크버튼',
+        //         type: 'WL',
+        //         url_pc: 'http://moye.hicompint.com/support/consulting',
+        //         url_mobile: 'http://moye.hicompint.com/support/consulting',
+        //     },
+        // ],
     };
 
     // Axios를 사용하여 알림톡 API에 POST 요청을 보냅니다.
