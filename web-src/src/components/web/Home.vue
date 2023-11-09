@@ -1,9 +1,6 @@
 <script setup>
 import {
     CommonConsole,
-    CommonErrModule,
-    CommonModal,
-    CommonNotify,
     CommonRest,
     CommonSpinner,
 } from "@/common/js/common";
@@ -11,15 +8,25 @@ import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
 import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
-import { popupModel } from "@/components/web/support/consulting/models/boardModel";
-
-import Popup from "@/components/web/common/Popup.vue";
-
 import { routerPath } from "@/webPath";
-// import $ from "jquery";
 
-// window.jQuery = window.$ = $;
-const searchKeyword = ref(null);
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+// import 'swiper/css/effect-fade';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+
+// // import './style.css';
+
+// // import required modules
+// import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+
+// ------------------- import End --------------------
+
 const state = reactive({
     peopleList1: [],
     peopleList2: [],
@@ -180,23 +187,6 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
     };
 };
 
-// function getCookie(name) {
-//     let cookie = document.cookie;
-//     if (document.cookie != "") {
-
-//         let cookie_array = cookie.split("; ");
-//         for (let index in cookie_array) {
-
-//             let cookie_name = cookie_array[index].split("=");
-
-//             if (cookie_name[0] == "moyepopupcookie") {
-//                 return cookie_name[1];
-//             }
-//         }
-//     }
-//     return;
-// }
-
 // 팝업 리스트 가져오기
 const getPopupList = (pageNum, pageSize, searchKeyword) => {
 
@@ -311,7 +301,7 @@ const readyAlert = () => {
                         </div>
                     </div>
                 </swiper-slide>
-                <swiper-slide class="main02">
+                <!-- <swiper-slide class="main02">
                     <div class="main_txt">
                         <div class="main_txt_wrap">
                             <h2>전국민이 열광하는 레전드를 만나다</h2>
@@ -358,7 +348,7 @@ const readyAlert = () => {
                             </p>
                         </div>
                     </div>
-                </swiper-slide>
+                </swiper-slide> -->
             </swiper>
         </div>
         <!-- container //S-->
