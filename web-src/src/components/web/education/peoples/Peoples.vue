@@ -31,7 +31,7 @@ const paginationTotalVisible = ref(7); // 기본 total-visible 값
 // 페이지네이션 total-visible 값을 조절하는 함수
 const adjustTotalVisible = () => {
   const mediaQuery = window.matchMedia('(max-width: 640px)');
-  paginationTotalVisible.value = mediaQuery.matches ? 4 : 7;
+  paginationTotalVisible.value = mediaQuery.matches ? 3 : 7;
 };
 
 window.addEventListener('resize', adjustTotalVisible); // 창 크기 변경 감지
