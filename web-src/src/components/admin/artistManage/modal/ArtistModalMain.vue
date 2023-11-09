@@ -66,13 +66,16 @@ const gender = ref(null);
 const email = ref(null);
 const peopleMemo = ref(null);
 const selectMainShowYn = ref(null);
+const inputSortNum = ref(null);
 
 const selectedCategory1 = ref("1");
 
 onMounted(() => {
     getCategories(1, 0);
-
+    
     getPeopleProfileType();
+
+    inputSortNum.value.value = "0"; // 인물 정렬 초기값 설정
 });
 
 // 수정일 경우 초기 세팅
@@ -101,6 +104,7 @@ const getDefaultValue = () => {
         email.value.value = modData.email;
         peopleMemo.value.value = modData.people_memo;
         selectMainShowYn.value.value = modData.main_show_yn;
+        inputSortNum.value.value = String(modData.sort_num);
 
         state.fileList = modData.file_info;
 
@@ -478,6 +482,7 @@ const regArtist = () => {
             mobile2: mobile2.value.value,
             mobile3: mobile3.value.value,
             mainShowYn: selectMainShowYn.value.value,
+            sortNum: parseInt(inputSortNum.value.value),
         };
 
         // 기본 formData append
@@ -579,6 +584,7 @@ const modArtist = () => {
             mobile2: mobile2.value.value,
             mobile3: mobile3.value.value,
             mainShowYn: selectMainShowYn.value.value,
+            sortNum: parseInt(inputSortNum.value.value),
         };
 
         // 기본 formData append
@@ -713,6 +719,24 @@ const validation = () => {
             });
             return false;
         }
+    }
+
+    const sortNum = parseInt(inputSortNum.value.value);
+
+    if (isNaN(sortNum) || sortNum < 0) {
+        CommonNotify({
+            type: "alert",
+            message: "0 이상의 정수만 입력해주세요",
+            callback: () => callbackLogic(),
+        });
+
+        const callbackLogic = () => {
+            setTimeout(() => {
+                inputSortNum.value.value = "0";
+                inputSortNum.value.focus();
+            }, 0);
+        };
+        return false;
     }
 
     // if (state.selectedProfile.length === 0) {
@@ -871,6 +895,13 @@ const validation = () => {
                                     <option value="N">비노출</option>
                                     <option value="Y">노출</option>
                                 </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>정렬 순서</th>
+                            <td colSpan="3">
+                                <input type="text" class="input wp100" ref="inputSortNum" />
+                                <span> 입력하신 숫자가 클수록 상위에 노출됩니다. 예시) 10, 9, 8, ... 1 (+최신 등록 순으로 인물 정렬)</span>
                             </td>
                         </tr>
                     </tbody>
