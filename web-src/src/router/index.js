@@ -6,8 +6,9 @@ import MainLayout from '@/layouts/MainLayout.vue';
 import Home from "@/components/web/Home.vue";
 import NotFound from "@/components/web/NotFound.vue";
 
-const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+const router = new VueRouter({
+    // history: createWebHistory(import.meta.env.BASE_URL),
+    mode: 'history',
     // 페이지 url 라우팅 경로 추가시 routes에 작성
     routes: [
         // ------------------- 사용자페이지 --------------------
