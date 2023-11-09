@@ -298,16 +298,68 @@ const readyAlert = () => {
 <template>
     <div>
         <div id="mainvisual">
-            <div class="main_txt">
-                <div class="main_txt_wrap">
-                    <h2>전국민이 열광하는 레전드를 만나다</h2>
-                    <p>
-                        “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
-                        쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
-                        모두의예체능의 Vision입니다."
-                    </p>
-                </div>
-            </div>
+            <swiper :spaceBetween="30" :effect="'fade'" :modules="modules" class="mySwiper">
+                <swiper-slide class="main01">
+                    <div class="main_txt">
+                        <div class="main_txt_wrap">
+                            <h2>전국민이 열광하는 레전드를 만나다</h2>
+                            <p>
+                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
+                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
+                                모두의예체능의 Vision입니다."
+                            </p>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide class="main02">
+                    <div class="main_txt">
+                        <div class="main_txt_wrap">
+                            <h2>전국민이 열광하는 레전드를 만나다</h2>
+                            <p>
+                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
+                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
+                                모두의예체능의 Vision입니다."
+                            </p>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide class="main03">
+                    <div class="main_txt">
+                        <div class="main_txt_wrap">
+                            <h2>전국민이 열광하는 레전드를 만나다</h2>
+                            <p>
+                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
+                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
+                                모두의예체능의 Vision입니다."
+                            </p>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide class="main04">
+                    <div class="main_txt">
+                        <div class="main_txt_wrap">
+                            <h2>전국민이 열광하는 레전드를 만나다</h2>
+                            <p>
+                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
+                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
+                                모두의예체능의 Vision입니다."
+                            </p>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide class="main05">
+                    <div class="main_txt">
+                        <div class="main_txt_wrap">
+                            <h2>전국민이 열광하는 레전드를 만나다</h2>
+                            <p>
+                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
+                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
+                                모두의예체능의 Vision입니다."
+                            </p>
+                        </div>
+                    </div>
+                </swiper-slide>
+            </swiper>
         </div>
         <!-- container //S-->
         <div id="container">
