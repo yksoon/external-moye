@@ -88,7 +88,7 @@ const getDefaultValue = () => {
         selectPeopleType.value.value = modData.people_type_cd;
         inputNameFirstKo.value.value = modData.name_first_ko;
         inputNameLastKo.value.value = modData.name_last_ko;
-        
+
         inputNameFirstCn.value.value = modData.name_first_cn;
         inputNameLastCn.value.value = modData.name_last_cn;
         inputNameFirstEn.value.value = modData.name_first_en;
@@ -943,7 +943,7 @@ const validation = () => {
                                     " v-for="inputItem in state.selectedProfile.filter(
         (el) => el.parentIdx === item.idx
     )">
-                                    <input type="text" class="input w370" :id="`${item.idx}-${inputItem.inputIdx}`"
+                                    <input type="text" class="input w800" :id="`${item.idx}-${inputItem.inputIdx}`"
                                         :value="inputItem.profileContent" @change="(e) =>
                                             handleInput(
                                                 e,
