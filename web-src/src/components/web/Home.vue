@@ -372,24 +372,8 @@ const readyAlert = () => {
                 </div>
                 <div class="category">
                     <div class="icon_wrap">
-                        <img src="/img/web/main/sports01.png" alt="" />
-                        <img src="/img/web/main/sports02.png" alt="" />
-                        <img src="/img/web/main/sports03.png" alt="" />
-                        <img src="/img/web/main/sports04.png" alt="" />
-                        <img src="/img/web/main/sports05.png" alt="" />
-                        <img src="/img/web/main/sports06.png" alt="" />
-                        <img src="/img/web/main/sports07.png" alt="" />
-                        <img src="/img/web/main/sports08.png" alt="" />
-                        <img src="/img/web/main/sports09.png" alt="" />
-                        <img src="/img/web/main/sports10.png" alt="" />
-                        <img src="/img/web/main/sports11.png" alt="" />
-                        <img src="/img/web/main/sports12.png" alt="" />
-                        <img src="/img/web/main/sports13.png" alt="" />
-                        <img src="/img/web/main/sports14.png" alt="" />
-                        <img src="/img/web/main/sports15.png" alt="" />
-                        <img src="/img/web/main/sports16.png" alt="" />
-                        <img src="/img/web/main/sports17.png" alt="" />
-                        <img src="/img/web/main/sports18.png" alt="" />
+                        <!-- 카테고리 아이콘 이미지 -->
+                        <img v-for="num in 18" :src="`/img/web/main/sports${num < 10 ? '0'+num : num}.png`" :alt="`sports${num}`" />
                     </div>
                     <a :href="routerPath.web_categories_url" class="more_btn"><span>카테고리 더보기</span></a>
                 </div>
