@@ -22,6 +22,9 @@ const menuDepth = (e) => {
     $(e.target).siblings(".nav_2depth").slideToggle();
 };
 
+const readyAlert = () => {
+    alert("준비중입니다 :-)");
+};
 </script>
 
 <template>
@@ -90,6 +93,7 @@ const menuDepth = (e) => {
                         <a :href="routerPath.web_notices_url">공지사항</a>
                         <a :href="routerPath.web_consulting_url">상담문의</a>
                         <a v-if="props.companyBoard" :href="companyBoard">회사소개서 다운로드</a>
+                        <a v-if="!props.companyBoard" @click="readyAlert">회사소개서 다운로드</a>
                         <a :href="routerPath.web_photoGallery_url">포토 갤러리</a>
                         <a :href="routerPath.web_movieGallery_url">영상 갤러리</a>
                     </div>
