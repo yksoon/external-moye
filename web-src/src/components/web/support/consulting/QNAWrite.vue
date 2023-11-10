@@ -132,10 +132,11 @@ const requestKakao = () => {
     const apiUrl = 'https://talkapi.lgcns.com/request/kakao.json';
     const authToken = 'TEiR6d7xkfOtQyzl3XoU4Q==moye123';
     const headers = {
-        headers: {
-            'Content-Type': 'application/json', // Content-Type 지정 (JSON 사용 시)
-            'Authorization': `Bearer ${authToken}`, // Bearer Token 추가
-        },
+        'Content-Type': 'application/json', // Content-Type 지정 (JSON 사용 시)
+        'Authorization': `Bearer ${authToken}`, // Bearer Token 추가
+        'authToken': 'TEiR6d7xkfOtQyzl3XoU4Q==',
+        'serverName': 'moye123',
+        'paymentType': 'P'
     }
 
     let categoryType = "";
@@ -146,28 +147,18 @@ const requestKakao = () => {
         default: break;
     }
 
-    const msg = `[상담문의 - ${categoryType}] ${inputUserFirstName.value.value} ${inputUserLastName.value.value}님의 "${inputTitle.value.value}" 문의글이 등록되었습니다.`;
+    const msg = `[상담문의 - #{${categoryType}}] #{${inputUserFirstName.value.value + inputUserLastName.value.value}}님의 "#{${inputTitle.value.value}}" 문의글이 등록되었습니다.`;
 
     // 알림톡 메시지 데이터
     const messageData = {
         service: 2210082248,
-        // title: '상담글 등록',
         message: msg,
         mobile: '01024124594',
-        // template: '10047',
-        messageType: 'AT',
-        // buttons: [
-        //     {
-        //         name: '웹링크버튼',
-        //         type: 'WL',
-        //         url_pc: 'http://moye.hicompint.com/support/consulting',
-        //         url_mobile: 'http://moye.hicompint.com/support/consulting',
-        //     },
-        // ],
+        template: '10047',
     };
 
     // Axios를 사용하여 알림톡 API에 POST 요청을 보냅니다.
-    axios.post(apiUrl, messageData, headers)
+    axios.post(apiUrl, messageData, {headers})
     .then((response) => {
         console.log('알림톡 전송 성공:', response.data);
         // 알림톡 전송에 성공한 경우 처리할 작업을 추가할 수 있습니다.
