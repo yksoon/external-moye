@@ -134,7 +134,9 @@ const getBoard = (board_idx) => {
 };
 
 const readyAlert = () => {
-    alert("준비중입니다 :-)");
+    event.returnValue = false;
+    alert('준비중입니다.');
+    return false;
 };
 </script>
 
