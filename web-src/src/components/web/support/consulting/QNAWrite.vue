@@ -147,7 +147,7 @@ const requestKakao = () => {
         default: break;
     }
 
-    const msg = `[상담문의-#{${categoryType}}] #{${inputUserFirstName.value.value + inputUserLastName.value.value}}님의 "#{${inputTitle.value.value}}" 문의글이 등록되었습니다.`;
+    const msg = `[상담문의-${categoryType}] ${inputUserFirstName.value.value + inputUserLastName.value.value}님의 "${inputTitle.value.value}" 문의글이 등록되었습니다.`;
     
     // 알림톡 메시지 데이터
     const messageData = {
@@ -160,14 +160,14 @@ const requestKakao = () => {
           {
             name: '홈페이지 상담문의 목록',
             type: 'WL',
-            url_pc: 'https://www.mo-ye.com/support/consulting',
-            url_mobile: 'https://www.mo-ye.com/support/consulting',
+            url_pc: 'http://mo-ye.com/support/consulting',
+            url_mobile: 'http://mo-ye.com/support/consulting',
           },
           {
             name: '관리자페이지',
             type: 'WL',
-            url_pc: 'https://www.mo-ye.com/admin',
-            url_mobile: 'https://www.mo-ye.com/admin',
+            url_pc: 'http://mo-ye.com/admin',
+            url_mobile: 'http://mo-ye.com/admin',
           },
         ],
     };
