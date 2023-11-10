@@ -10,24 +10,29 @@ import { apiPath } from "@/webPath";
 import { reactive, ref, onMounted } from "vue";
 import { routerPath } from "@/webPath";
 
+// UI 관련 파일 import
+import { marqueeInit } from "@/common/js/crawler";
+
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
+// // import required modules
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
+
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/bundle'
 
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css/effect-fade';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+// import 'swiper/css/autoplay';
 
 // // import './style.css';
 
-// // import required modules
-import { EffectFade, Navigation, Pagination } from 'swiper/modules';
-
 // ------------------- import End --------------------
 
-const modules = [EffectFade, Navigation, Pagination];
+const modules = [EffectFade, Navigation, Pagination, Autoplay];
 
 const state = reactive({
     peopleList1: [],
@@ -46,8 +51,6 @@ onMounted(() => {
     getPopupList(1, maxRowNum.basic, "");
     // window.open('','_blank','width=700, height=600, top=50, left=50, scrollbars=yes');
 });
-
-import { marqueeInit } from "@/common/js/crawler";
 
 // 인물 리스트 가져오기
 const getPeopleList = (pageNum, pageSize, searchKeyword) => {
@@ -84,7 +87,6 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
             result_code === successCode.noData
         ) {
             let result_info = res.data.result_info;
-            let page_info = res.data.page_info;
 
             state.peopleList1 = result_info.slice(0, 4);
             state.peopleList2 = result_info.slice(-4);
@@ -175,7 +177,6 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
             result_code === successCode.noData
         ) {
             let result_info = res.data.result_info;
-            let page_info = res.data.page_info;
 
             state.boardList = result_info;
 
@@ -290,57 +291,8 @@ const readyAlert = () => {
 <template>
     <div>
         <div id="mainvisual">
-            <swiper :spaceBetween="30" :effect="'fade'" :modules="modules" class="mySwiper">
-                <!-- <swiper-slide v-for="num in 5" :class="`main0${num}`"> -->
-                <swiper-slide class="main01">
-                    <div class="main_txt">
-                        <div class="main_txt_wrap">
-                            <h2>전국민이 열광하는 레전드를 만나다</h2>
-                            <p>
-                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
-                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
-                                모두의예체능의 Vision입니다."
-                            </p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide class="main02">
-                    <div class="main_txt">
-                        <div class="main_txt_wrap">
-                            <h2>전국민이 열광하는 레전드를 만나다</h2>
-                            <p>
-                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
-                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
-                                모두의예체능의 Vision입니다."
-                            </p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide class="main03">
-                    <div class="main_txt">
-                        <div class="main_txt_wrap">
-                            <h2>전국민이 열광하는 레전드를 만나다</h2>
-                            <p>
-                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
-                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
-                                모두의예체능의 Vision입니다."
-                            </p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide class="main04">
-                    <div class="main_txt">
-                        <div class="main_txt_wrap">
-                            <h2>전국민이 열광하는 레전드를 만나다</h2>
-                            <p>
-                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
-                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
-                                모두의예체능의 Vision입니다."
-                            </p>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide class="main05">
+            <swiper class="mySwiper swiper-slide" :modules="modules" :crossFade="true" :spaceBetween="50" effect="fade" :autoplay="{delay: 3000}" loop>
+                <swiper-slide v-for="num in 5" :class="`main0${num}`">
                     <div class="main_txt">
                         <div class="main_txt_wrap">
                             <h2>전국민이 열광하는 레전드를 만나다</h2>
