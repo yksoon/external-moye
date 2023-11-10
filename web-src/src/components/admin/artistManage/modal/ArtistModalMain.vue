@@ -269,13 +269,13 @@ const handleCategory1 = (e) => {
 
 // 파일 첨부시
 const attachFile = (input) => {
-    const maxFileCnt = 5; // 첨부파일 최대 개수
+    const maxFileCnt = 1; // 첨부파일 최대 개수
 
     if (isFileImage(input.files)) {
         if (input.files.length > maxFileCnt) {
             CommonNotify({
                 type: "alert",
-                message: "파일은 5개까지 업로드 가능합니다.",
+                message: "파일은 1개만 업로드 가능합니다.",
             });
 
             input.value = "";
@@ -810,8 +810,7 @@ const validation = () => {
                         <td class="fileicon_artist" colSpan="3">
                             <div style="margin-bottom: 5">
                                 <b>
-                                    여러 파일 선택이 가능합니다. 여러 파일 선택
-                                    시 ctrl 누른 후 선택하시면 됩니다.
+                                    1개의 이미지 파일을 업로드 해주세요.
                                 </b>
                             </div>
                             <div>
@@ -829,7 +828,6 @@ const validation = () => {
                     </tr>
                 </tbody>
             </table>
-
 
             <div>
                 <h4 className="mo_subtitle">인물 기본 정보</h4>
@@ -901,7 +899,7 @@ const validation = () => {
                             <th>정렬 순서</th>
                             <td colSpan="3">
                                 <input type="text" class="input wp100" ref="inputSortNum" />
-                                <span> 입력하신 숫자가 클수록 상위에 노출됩니다. 예시) 10, 9, 8, ... 1 (+최신 등록 순으로 인물 정렬)</span>
+                                <div style="margin: 5px 0 0 5px;">입력하신 숫자가 클수록 상위에 노출됩니다. 예시) 10, 9, 8, ... 1 (+최신 등록 순으로 인물 정렬)</div>
                             </td>
                         </tr>
                     </tbody>
