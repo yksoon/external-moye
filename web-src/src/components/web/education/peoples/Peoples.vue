@@ -30,8 +30,8 @@ const paginationTotalVisible = ref(7); // 기본 total-visible 값
 
 // 페이지네이션 total-visible 값을 조절하는 함수
 const adjustTotalVisible = () => {
-  const mediaQuery = window.matchMedia('(max-width: 640px)');
-  paginationTotalVisible.value = mediaQuery.matches ? 3 : 7;
+    const mediaQuery = window.matchMedia('(max-width: 640px)');
+    paginationTotalVisible.value = mediaQuery.matches ? 3 : 7;
 };
 
 window.addEventListener('resize', adjustTotalVisible); // 창 크기 변경 감지
@@ -181,9 +181,12 @@ const handleChange = (page_num) => {
                         <div class="people" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                 <div class="people_thumb">
-                                    <div v-if="people.file_path_enc" class="bg-thumb"
+                                    <!-- <div v-if="people.file_path_enc" class="bg-thumb"
                                         :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
                                         <span></span>
+                                    </div> -->
+                                    <div v-if="people.file_path_enc" class="bg-thumb">
+                                        <img src="/img/web/sub/default_full.jpg" alt="">
                                     </div>
                                     <div v-else class="bg-thumb"></div>
                                     <div class="caption">
