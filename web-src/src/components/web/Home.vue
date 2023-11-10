@@ -19,17 +19,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 // // import required modules
 import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/bundle'
-
-// import 'swiper/css/effect-fade';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// import 'swiper/css/autoplay';
-
-// // import './style.css';
-
 // ------------------- import End --------------------
 
 const modules = [EffectFade, Navigation, Pagination, Autoplay];
@@ -323,7 +312,7 @@ const readyAlert = () => {
                                 <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`"
-                                        :alt="`${people.file_name_org}`" loading="lazy"/>
+                                        :alt="`${people.name_ko} 프로필이미지`" loading="lazy"/>
                                     <!-- 프로필 이미지 없는 경우 -->
                                     <img v-else src="/img/web/sub/default_full.jpg" alt="인물 기본 이미지" />
                                     <p>

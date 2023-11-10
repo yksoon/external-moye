@@ -5,6 +5,9 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate"; //피니아
 import AosVue from "aos-vue";
 import 'aos/dist/aos.css';
 import "@/common/css/aos.css";
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/bundle'
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";
