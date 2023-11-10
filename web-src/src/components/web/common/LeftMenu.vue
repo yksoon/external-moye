@@ -262,7 +262,8 @@ const readyAlert = () => {
                 <ul>
                     <li><a :href="routerPath.web_notices_url" :class="page === 'notice' ? 'on' : ''">공지사항</a></li>
                     <li><a :href="routerPath.web_consulting_url" :class="page === 'consulting' ? 'on' : ''">상담문의</a></li>
-                    <li><a :href="state.filePath !== null ? `${fileBaseUrl}${state.filePath}` : ''">회사소개서 다운로드</a></li>
+                    <li><a v-if="state.filePath" :href="`${fileBaseUrl}${state.filePath}`">회사소개서 다운로드</a></li>
+                    <li><a v-if="!state.filePath" @click="readyAlert">회사소개서 다운로드</a></li>
                     <li><a :href="routerPath.web_photoGallery_url" :class="page === 'photo' ? 'on' : ''">포토 갤러리</a></li>
                     <li><a :href="routerPath.web_movieGallery_url" :class="page === 'movie' ? 'on' : ''">영상 갤러리</a></li>
                 </ul>
