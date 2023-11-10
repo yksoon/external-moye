@@ -322,7 +322,7 @@ const readyAlert = () => {
                                 <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`"
-                                        :alt="`${people.file_name_org}`" />
+                                        :alt="`${people.file_name_org}`" loading="lazy"/>
                                     <!-- 프로필 이미지 없는 경우 -->
                                     <img v-else src="/img/web/sub/default_full.jpg" alt="인물 기본 이미지" />
                                     <p>
