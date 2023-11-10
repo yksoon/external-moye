@@ -94,7 +94,7 @@ const getCategoryList = (pageNum, pageSize, searchKeyword) => {
 
 // 인물 리스트 가져오기 (카테고리별)
 const getPeopleList = (pageNum, pageSize, searchKeyword) => {
-    CommonSpinner(true);
+    // CommonSpinner(true);
 
     // /v1/_peoples
     // POST
@@ -145,6 +145,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
 
 // 페이지네이션 이동
 const handleChange = (page_num) => {
+    CommonSpinner(true);
     const keyword = searchKeyword.value;
 
     getPeopleList(page_num, maxRowNum.people, keyword);

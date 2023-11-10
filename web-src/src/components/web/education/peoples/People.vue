@@ -145,7 +145,7 @@ const isValidValue = (value) => {
                             <span class="deco">MOYE</span>
                             <div class="thumb">
                                 <img style="background-color:#eee;"
-                                    :src="state.people.file_info.length ? `${fileBaseUrl}${state.people.file_info[0].file_path_enc}` : '/img/web/sub/default_full.jpg'" loading="lazy">
+                                    :src="state.people.file_info.length ? `${fileBaseUrl}${state.people.file_info[0].file_path_enc}` : '/img/web/sub/default_full.jpg'">
                             </div>
                             <div class="profile">
                                 <div class="profile_top">
