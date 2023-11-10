@@ -369,12 +369,12 @@ const columns = [
                     class: "tablebtn",
                     onClick: () => modBoard(row.board_idx),
                 },
-                "수정"
+                "상세"
             ),
         {
             id: "viewDetail",
             cell: (info) => info.getValue(),
-            header: "정보수정",
+            header: "답변관리",
             // enableSorting: false,
         }
     ),
