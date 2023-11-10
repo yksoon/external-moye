@@ -9,7 +9,7 @@ let token;
 const headerTokenName = "Moye-Token";
 const headerSrcnName = "Moye-Src";
 
-const timeOut = 20000;
+const timeOut = 30000;
 
 /*
     REST CONNECTION 시 Request 를 가로채서

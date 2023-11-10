@@ -83,7 +83,7 @@ const CommonErrorCatch = async (error) => {
     }
 
     // TODO: 타임아웃 전역 사용 가능하도록 (env 설정)
-    const timeOut = 20000;
+    const timeOut = 30000;
 
     // 타임아웃 (axios 타임아웃 걸릴경우)
     if (error.message === `timeout of ${timeOut}ms exceeded`) {
