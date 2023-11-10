@@ -94,7 +94,7 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
 .section02 .category .icon_wrap img {margin: 0 25px 0 0;}
 .section02 .class_wrap {display: flex;}
 .section02 .class_wrap > div {border: 1px solid #C5C5C5; border-radius: 20px; background: url('/img/web/main/arrow_right.png') no-repeat 335px center; box-sizing: border-box;
-    width: calc((100% - 60px) / 4); margin: 0 20px 0 0; display: flex; align-items: center; padding: 25px 0 25px 0; height: 167px;
+    width: calc((100% - 60px) / 4); margin: 0 20px 0 0; display: flex;  padding: 25px 0 25px 0; height: 167px;
 	transition:all .5s;
 	    -webkit-transition:all .5s;
 	    -moz-transition:all .5s;
@@ -102,12 +102,13 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
     -o-transition:all .5s;
 }
 .section02 .class_wrap > div:last-child {margin: 0;}
-.section02 .class_wrap > div span {display: inline-block;width: 90px;display: flex; justify-content: space-evenly;}
-.section02 .class_wrap > div .txt h5 {font-size: 24px; line-height: 30px; letter-spacing: -0.04em; font-weight: 700; }
-.section02 .class_wrap > div.pink .txt h5 {color: #FF4665;}
-.section02 .class_wrap > div.green .txt h5 {color: #00D68C;}
-.section02 .class_wrap > div.blue .txt h5 {color: #1E6EFF;}
-.section02 .class_wrap > div .txt p {font-size: 18px; color: #666; font-weight: 400; line-height: 26px;height: 90px;display: flex;align-items: center;}
+.section02 .class_wrap > div a {display: flex; align-items: center; width: 100%;}
+.section02 .class_wrap > div a span {display: inline-block;width: 90px;display: flex; justify-content: space-evenly;}
+.section02 .class_wrap > div a .txt h5 {font-size: 24px; line-height: 30px; letter-spacing: -0.04em; font-weight: 700; }
+.section02 .class_wrap > div.pink a .txt h5 {color: #FF4665;}
+.section02 .class_wrap > div.green a .txt h5 {color: #00D68C;}
+.section02 .class_wrap > div.blue a .txt h5 {color: #1E6EFF;}
+.section02 .class_wrap > div a .txt p {font-size: 18px; color: #666; font-weight: 400; line-height: 26px;height: 90px;display: flex;align-items: center;}
 .section02 .class_wrap > div:hover { background: url('/img/web/main/arrow_right.png') no-repeat 350px center;}
 
 .section03 { background: #000; display: flex; height: 555px;padding: 0 20px;}
@@ -120,6 +121,7 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
 .section03 .left a.more_btn span {background: url('/img/web/main/arrow_btn_wh.png') no-repeat right center; color: #fff;}
 .section03 .left a.more_btn:hover span {background: url('/img/web/main/arrow_btn_wh.png') no-repeat right 0; }
 .section03 .right {display: none;}
+.section03 .right img {width: 100%;}
 
 .section04 {padding: 105px 20px;background: url('/img/web/main/section04_bg.png')no-repeat right top; }
 .section04 .top{max-width:1600px; margin: 0 auto 60px;display: flex;align-items: flex-start;justify-content: space-between;}
@@ -373,7 +375,7 @@ padding: 5px 60px; border-radius: 30px;}
 /* 코치진 상세 */
 .p_detail_wrap {position: relative;}
 .p_detail {display:flex;position: relative;}
-.p_detail .detail_info {width:520px;margin:0 80px 0 100px;position: relative;}
+.p_detail .detail_info {width:520px;margin:0 80px 0 100px;position: relative; position: sticky; top: 20px;left: 0;height: fit-content;}
 .p_detail .detail_info .thumb {border-radius: 20px;overflow: hidden;max-width: 520px;height: 350px;}
 .p_detail .detail_info .thumb img { width: 100%; height: 100%; object-fit: cover;}
 .p_detail .detail_info .deco {position: absolute;top:86px;left:-170px;font-size: 24px;font-weight: 900;color: #efefef;line-height: 1;transform:rotate(90deg);letter-spacing:1em;}
@@ -391,7 +393,8 @@ padding: 5px 60px; border-radius: 30px;}
 .p_detail .detail_cv {position: relative; width:calc( 100% - 700px );}
 .p_detail .detail_cv > div {padding:20px 0 0;}
 .p_detail .detail_cv div.detail_cv_list {display: flex; align-items: flex-start;gap:45px;margin:0 0 60px;}
-.p_detail .detail_cv div.detail_cv_list h6 {font-weight: 700;font-size: 24px;color: #3266b1;border-left: 4px solid #3266b1;padding:0 0 16px;max-width:200px;width:110px;padding:0 20px;line-height: 1;}
+.p_detail .detail_cv div.detail_cv_list h6 {font-weight: 700;font-size: 24px;color: #3266b1;border-left: 4px solid #3266b1;padding:0 0 16px;max-width:200px;width:110px;
+    padding:0 20px;line-height: 1;position: sticky;left: 0;top: 20px;}
 .p_detail .detail_cv div.detail_cv_list ul li {margin:0 0 18px;font-size: 18px;color: #333;line-height: 28px; background: url('/img/web/sub/grayspuare.png') no-repeat left 12px;
     padding: 0 0 0 20px;}
 
@@ -545,7 +548,7 @@ border-right: 1px solid #ddd;}
 
 
     body {min-width:320px;max-width: 1920px;margin:0 auto;}
-	#header  { height:70px;}
+	#header  { height:70px; position: fixed;}
 
 	#header_content {height:70px;}
 	#header_content .logo a img{height:40px;}
@@ -594,9 +597,10 @@ border-right: 1px solid #ddd;}
     .section02 .category .icon_wrap {margin: 0 0 10px;}
     .section02 .category .icon_wrap img {margin: 0;}
     .section02 .class_wrap {display: block;}
-    .section02 .class_wrap > div { width: 100%;flex-direction: column; padding: 10px; justify-content: center; margin: 0 0 15px 0; 
+    .section02 .class_wrap > div { width: 100%; padding: 10px; margin: 0 0 15px 0; 
         background: url('/img/web/main/arrow_right.png') no-repeat right 20px center;}
     .section02 .class_wrap > div:hover {background: url('/img/web/main/arrow_right.png') no-repeat right 20px center;}
+    .section02 .class_wrap > div a{ justify-content: center;flex-direction: column;}
     .section02 .class_wrap > div .txt {text-align: center;}
     .section02 .class_wrap > div .txt h5 {font-size: 20px;}
     .section02 .class_wrap > div .txt p {font-size: 16px;height: auto; display: block;}
@@ -740,7 +744,7 @@ border-right: 1px solid #ddd;}
 
     /* 코치진 상세 */
     .p_detail {flex-direction: column;}
-    .p_detail .detail_info {width: 100%;margin: 0;}
+    .p_detail .detail_info {width: 100%;margin: 0;top: 70px;z-index: 1000;background: #fff;}
     .p_detail .detail_info .thumb {position: relative;height: 250px;}
     .p_detail .detail_info .thumb img {position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);}
     .p_detail .detail_info .deco {display: none;}

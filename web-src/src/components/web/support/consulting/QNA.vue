@@ -87,15 +87,16 @@ const getBoardDetail = () => {
                             <col width="18%">
                             <col width="*">
                             <col width="*">
+                            <col width="*">
                         </colgroup>
                         <thead>
                             <tr>
-                                <th colspan="3">{{ state.board.subject }} &nbsp;<img v-if="state.board.open_yn === 'N'"
+                                <th colspan="4">{{ state.board.subject }} &nbsp;<img v-if="state.board.open_yn === 'N'"
                                         src="/img/common/common_lock.png" alt=""></th>
                                 <!-- <th colspan="3">{{ state.board.subject }}</th> -->
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <ul>
                                         <li>{{ state.board.user_name_first_ko + state.board.user_name_last_ko }}</li>
                                         <li class="imbar">|</li>
@@ -104,10 +105,10 @@ const getBoardDetail = () => {
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3"><b>{{ state.board.category_type }}</b></td>
+                                <td colspan="4"><b>{{ state.board.category_type }}</b></td>
                             </tr>
                             <tr v-if="state.board.file_info.length !== 0">
-                                <td colspan="3">
+                                <td colspan="4">
                                     <div>
                                         <div v-for="item in state.board.file_info" class="download_li">
                                             <a :href="`${fileBaseUrl}${item.file_path_enc}`">
@@ -121,7 +122,7 @@ const getBoardDetail = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan=3>
+                                <td colspan="4">
                                     <div class="board_content">
                                         {{ state.board.content }}
                                     </div>
@@ -129,11 +130,14 @@ const getBoardDetail = () => {
                             </tr>
                             <!-- 관리자 댓글 답변 -->
                             <tr v-if="state.board.comment_info">
-                                <th>{{ state.board.comment_info.user_name_ko }}</th>
-                                <td colspan="2">{{ state.board.comment_info.content }}</td>
+                                <th>작성자</th>
+                                <td>{{ state.board.comment_info.user_name_ko }}</td>
+                                <th>등록일</th>
+                                <td>2023-11-10</td>
                             </tr>
                             <tr v-if="state.board.comment_info && state.board.comment_info.file_info.length !== 0">
-                                <td colspan="3">
+                                <th>첨부파일</th>
+                                <td colspan="2">
                                     <div>
                                         <div v-for="item in state.board.comment_info.file_info" class="download_li">
                                             <a :href="`${fileBaseUrl}${item.file_path_enc}`">
@@ -143,6 +147,10 @@ const getBoardDetail = () => {
                                         </div>
                                     </div>
                                 </td>
+                            </tr>
+                            <tr v-if="state.board.comment_info">
+                                <th>내용</th>
+                                <td>{{ state.board.comment_info.content }}</td>
                             </tr>
                         </tbody>
                     </table>

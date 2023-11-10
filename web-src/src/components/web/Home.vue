@@ -291,7 +291,8 @@ const readyAlert = () => {
 <template>
     <div>
         <div id="mainvisual">
-            <swiper class="mySwiper swiper-slide" :modules="modules" :crossFade="true" :spaceBetween="50" effect="fade" :autoplay="{delay: 3000}" loop>
+            <swiper class="mySwiper swiper-slide" :modules="modules" :crossFade="true" :spaceBetween="50" effect="fade"
+                :autoplay="{ delay: 3000 }" loop>
                 <swiper-slide v-for="num in 5" :class="`main0${num}`">
                     <div class="main_txt">
                         <div class="main_txt_wrap">
@@ -373,49 +374,58 @@ const readyAlert = () => {
                 <div class="category">
                     <div class="icon_wrap">
                         <!-- 카테고리 아이콘 이미지 -->
-                        <img v-for="num in 18" :src="`/img/web/main/sports${num < 10 ? '0'+num : num}.png`" :alt="`sports${num}`" />
+                        <img v-for="num in 18" :src="`/img/web/main/sports${num < 10 ? '0' + num : num}.png`"
+                            :alt="`sports${num}`" />
                     </div>
                     <a :href="routerPath.web_categories_url" class="more_btn"><span>카테고리 더보기</span></a>
                 </div>
                 <div class="class_wrap">
                     <div class="pink" @click="readyAlert">
-                        <span><img src="/img/web/main/class01.png" alt="" /></span>
-                        <div class="txt">
-                            <h5>PRIVATE CLASS</h5>
-                            <p>
-                                1:1 One Point Lesson<br />
-                                1:N Buddies Lesson
-                            </p>
-                        </div>
+                        <a href="">
+                            <span><img src="/img/web/main/class01.png" alt="" /></span>
+                            <div class="txt">
+                                <h5>PRIVATE CLASS</h5>
+                                <p>
+                                    1:1 One Point Lesson<br />
+                                    1:N Buddies Lesson
+                                </p>
+                            </div>
+                        </a>
                     </div>
                     <div class="green" @click="readyAlert">
-                        <span><img src="/img/web/main/class02.png" alt="" /></span>
-                        <div class="txt">
-                            <h5>SCHOOL CLASS</h5>
-                            <p>
-                                1:1 One Point Lesson<br />
-                                정기 특별 레슨<br />
-                                지자체 파견 레슨
-                            </p>
-                        </div>
+                        <a href="">
+                            <span><img src="/img/web/main/class02.png" alt="" /></span>
+                            <div class="txt">
+                                <h5>SCHOOL CLASS</h5>
+                                <p>
+                                    1:1 One Point Lesson<br />
+                                    정기 특별 레슨<br />
+                                    지자체 파견 레슨
+                                </p>
+                            </div>
+                        </a>
                     </div>
                     <div class="blue" @click="readyAlert">
-                        <span><img src="/img/web/main/class03.png" alt="" /></span>
-                        <div class="txt">
-                            <h5>ONLINE CLASS</h5>
-                            <p>온라인 클래스</p>
-                        </div>
+                        <a href="">
+                            <span><img src="/img/web/main/class03.png" alt="" /></span>
+                            <div class="txt">
+                                <h5>ONLINE CLASS</h5>
+                                <p>온라인 클래스</p>
+                            </div>
+                        </a>
                     </div>
                     <div @click="readyAlert">
-                        <span><img src="/img/web/main/class04.png" alt="" /></span>
-                        <div class="txt">
-                            <h5>SPECIAL CLASS</h5>
-                            <p>
-                                구독형 레슨<br />
-                                레슨 + 팀 운영 혼합<br />
-                                유학 대비반, 커리어 패스 상담
-                            </p>
-                        </div>
+                        <a href="">
+                            <span><img src="/img/web/main/class04.png" alt="" /></span>
+                            <div class="txt">
+                                <h5>SPECIAL CLASS</h5>
+                                <p>
+                                    구독형 레슨<br />
+                                    레슨 + 팀 운영 혼합<br />
+                                    유학 대비반, 커리어 패스 상담
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
