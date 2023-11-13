@@ -2,6 +2,8 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import mkcert from 'vite-plugin-mkcert';
+import fs from 'fs';
 
 const path = require("path");
 
@@ -9,6 +11,15 @@ const path = require("path");
 
 export default ({ mode }) => {
     return defineConfig({
+        // server: {
+        //     https: {
+        //         // key: '/usr/local/apache2/conf/ssl/moye.hicompint.com/2023/www_mo-ye.com.key',
+        //         // cert: '/usr/local/apache2/conf/ssl/moye.hicompint.com/2023/www_mo-ye.com_cert.crt',
+        //         key: fs.readFileSync('/usr/local/apache2/conf/ssl/moye.hicompint.com/2023/www_mo-ye.com.key'),
+        //         cert: fs.readFileSync('/usr/local/apache2/conf/ssl/moye.hicompint.com/2023/www_mo-ye.com_cert.crt'),
+        //     }
+        // },
+        server: { https: true },
         plugins: [
             vue({
                 template: {
@@ -22,11 +33,11 @@ export default ({ mode }) => {
             }),
             vueJsx({
                 // options are passed on to @vue/babel-plugin-jsx
-
                 compilerOptions: {
                     jsx: "preserve",
                 },
             }),
+            mkcert()
         ],
         resolve: {
             alias: {

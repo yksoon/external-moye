@@ -6,7 +6,8 @@
         "start": "vite",
         "build": "vite build --mode development",
         "prd": "vite build --mode production",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "cert": "rm -rf usr/local/apache2/conf/ssl/moye.hicompint.com/2023/ && mkdir -p usr/local/apache2/conf/ssl/moye.hicompint.com/2023/ && mkcert -key-file ./usr/local/apache2/conf/ssl/moye.hicompint.com/2023/www_mo-ye.com.key -cert-file ./usr/local/apache2/conf/ssl/moye.hicompint.com/2023/www_mo-ye.com_cert.crt 'localhost'"
     },
     "dependencies": {
         "@tanstack/vue-table": "^8.10.3",
@@ -14,7 +15,9 @@
         "aos": "^2.3.4",
         "aos-vue": "^0.0.5",
         "axios": "^1.5.0",
+        "fs": "^0.0.1-security",
         "jquery": "^3.7.1",
+        "nss": "^0.0.1",
         "pinia": "^2.1.6",
         "pinia-plugin-persistedstate": "^3.2.0",
         "swiper": "^11.0.3",
@@ -28,6 +31,7 @@
         "@mdi/font": "^7.3.67",
         "@vitejs/plugin-vue": "^4.3.4",
         "@vue/babel-plugin-jsx": "^1.1.5",
-        "vite": "^4.4.9"
+        "vite": "^4.4.9",
+        "vite-plugin-mkcert": "^1.16.0"
     }
 }
