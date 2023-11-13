@@ -133,9 +133,9 @@ const getBoardDetail = () => {
                                 <th>작성자</th>
                                 <td>{{ state.board.comment_info.user_name_ko }}</td>
                                 <th>등록일</th>
-                                <td>2023-11-10</td>
+                                <td>{{ state.board.comment_info.reg_dttm }}</td>
                             </tr>
-                            <tr v-if="state.board.comment_info && state.board.comment_info.file_info.length !== 0">
+                            <tr v-if="state.board.comment_info && state.board.comment_info.file_info">
                                 <th>첨부파일</th>
                                 <td colspan="2">
                                     <div>
