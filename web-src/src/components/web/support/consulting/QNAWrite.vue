@@ -151,11 +151,11 @@ const requestKakao = () => {
     
     // 알림톡 메시지 데이터
     const messageData = {
-        service: 2210082248,
-        message: msg,
-        mobile: '01024124594',
+        service: 2210082248, // 알림톡 Service No
+        message: msg, // 메세지 내용 (*템플릿에 맞춰서 작성해야합니다.)
+        mobile: '01056833825', // 수신번호
         title: '상담문의 알림',
-        template: '10047',
+        template: '10047', // 템플릿 ID
         buttons: [
           {
             name: '홈페이지 상담문의 목록',
