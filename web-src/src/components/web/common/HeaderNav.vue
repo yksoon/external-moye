@@ -150,7 +150,7 @@ const readyAlert = () => {
                     <div class="submenu">
                         <a :href="routerPath.web_greetings_url">인사말</a>
                         <a :href="routerPath.web_introduction_url">모두의 예체능 소개</a>
-                        <a :href="routerPath.web_members_url">조직 및 구성</a>
+                        <!-- <a :href="routerPath.web_members_url">조직 및 구성</a> -->
                         <a :href="routerPath.web_histories_url">연혁</a>
                         <a :href="routerPath.web_ci_url">CI</a>
                         <a :href="routerPath.web_location_url">오시는길</a>

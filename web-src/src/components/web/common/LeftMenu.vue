@@ -162,7 +162,7 @@ const readyAlert = () => {
                     <li><a :href="routerPath.web_greetings_url" :class="page === 'greetings' ? 'on' : ''">인사말</a></li>
                     <li><a :href="routerPath.web_introduction_url" :class="page === 'introduction' ? 'on' : ''">모두의 예체능
                             소개</a></li>
-                    <li><a :href="routerPath.web_members_url" :class="page === 'members' ? 'on' : ''">조직 및 구성</a></li>
+                    <!-- <li><a :href="routerPath.web_members_url" :class="page === 'members' ? 'on' : ''">조직 및 구성</a></li> -->
                     <li><a :href="routerPath.web_histories_url" :class="page === 'histories' ? 'on' : ''">연혁</a></li>
                     <li><a :href="routerPath.web_ci_url" :class="page === 'ci' ? 'on' : ''">CI</a></li>
                     <li><a :href="routerPath.web_location_url" :class="page === 'location' ? 'on' : ''">오시는길</a></li>
