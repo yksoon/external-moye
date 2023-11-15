@@ -43,9 +43,9 @@ export default {
 
         onMounted(() => {
             if (ipInfo.value) {
-                setInterval(getCodes(), 3600000);
-                setInterval(getResultCode(), 3600000);
-                setInterval(getCompanyBoard(1, 1, ""), 3600000);
+                setInterval(getCodes, 3600000);
+                setInterval(getResultCode, 3600000);
+                setInterval(() => getCompanyBoard(1, 1, ""), 3600000);
             } else {
                 getIpInfo();
             }

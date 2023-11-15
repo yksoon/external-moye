@@ -34,6 +34,9 @@ const vuetify = createVuetify({
         },
     },
     ssr: true,
+    theme: {
+        defaultTheme: 'light',
+    },
 });
 
 // 피니아
