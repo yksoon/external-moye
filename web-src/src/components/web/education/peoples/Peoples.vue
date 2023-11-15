@@ -205,7 +205,7 @@ const handleChange = (page_num) => {
                             </a>
                         </div>
                     </div>
-                    <div className="pagenation" v-if="state.peopleList.length !== 0">
+                    <div class="pagenation" v-if="state.peopleList.length !== 0">
                         <v-pagination :length="state.pageInfo.pages" :total-visible="paginationTotalVisible" rounded="2"
                             v-model="state.pageInfo.page_num" @update:model-value="handleChange"></v-pagination>
                     </div>
