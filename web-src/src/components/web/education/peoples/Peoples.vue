@@ -186,9 +186,10 @@ const handleChange = (page_num) => {
                                         :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
                                         <span></span>
                                     </div> -->
-                                     <!-- 프로필 이미지 있는 경우 -->
+                                    <!-- 프로필 이미지 있는 경우 -->
                                     <div v-if="people.file_path_enc" class="bg-thumb">
-                                        <img :src="fileBaseUrl+people.file_path_enc" :alt="`${people.name_ko} 프로필이미지`" loading="lazy"/>
+                                        <img :src="fileBaseUrl + people.file_path_enc" :alt="`${people.name_ko} 프로필이미지`"
+                                            loading="lazy" />
                                     </div>
                                     <!-- 프로필 이미지 없을 경우 -->
                                     <div v-if="!people.file_path_enc" class="bg-thumb-noimg"></div>

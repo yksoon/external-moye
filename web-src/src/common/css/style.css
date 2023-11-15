@@ -155,6 +155,7 @@ a.more_btn_blue:hover span {background: url('/img/web/sub/arrow_btn_blue.png') n
 #footer .footer_content .txt span::after {content: ""; display: inline-block; clear: both; width: 1px; height: 12px; background-color: #ccc;margin: 0 10px; vertical-align: middle;} 
 #footer .footer_content .txt span::after:last-child {display: none;}
 
+
 /* banner-slider */
 .slide_box  {width: 100%;height:315px; margin:0 auto 50px;}
 .slide_box #gsefSpan .person {display:inline-block; width:450px; height:315px;margin:0 30px 0 0;  text-align:center;position:Relative;overflow:hidden;
@@ -222,6 +223,8 @@ a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; bo
 .btn_box a.btn01:hover {background: #efefef; color: #858585;}
 .btn_box a.btn02 {background:#a8a8a8;}
 .btn_box a.btn02:hover {background: #efefef; }
+
+
 
 
 /* 인사말 */
@@ -543,6 +546,8 @@ border-right: 1px solid #ddd;}
 #app .wrapper > div div.popup table.board_Vtable {height: 100%; border-top: 0;}
 #app .wrapper > div div.popup table.board_Vtable tbody tr td div.board_content {height: 100%; font-size: 16px;}
 
+.v-overlay-container{pointer-events: none !important;}
+.v-overlay-container .v-overlay__scrim {pointer-events: none !important;}
 
 
 /**** mobile layout *************************************************************************************************************/
