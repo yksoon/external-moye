@@ -69,7 +69,7 @@ export default {
 </script>
 
 <template>
-    <v-dialog v-model="isOpen">
+    <v-dialog v-model="isOpen" persistent>
         <!-- <v-card> -->
         <div class="modal_wrap" id="modal_wrap">
             <div :class="`modal w${width}`">
