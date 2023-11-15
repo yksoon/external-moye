@@ -127,6 +127,28 @@ const isValidValue = (value) => {
     return false;
 };
 
+const goBackOrHome = () => {
+    // 이전 페이지로 이동하려고 시도
+    // if (router && router.history && router.history.length > 1) {
+    //     router.back();
+    // } else {
+    //     // 이전 페이지가 없으면 메인 페이지로 이동
+    //     router.push({ name: "home" }); // home은 메인 페이지의 라우터 이름입니다. 실제로 사용하는 라우터 이름으로 변경해야 합니다.
+    // }
+    // console.log(router.back);
+
+    // 라우터 객체 초기화 대기
+    router.isReady().then(() => {
+        // router.history가 정의되었는지 확인
+        // if (router.history && router.history.length > 1) {
+        //     router.go(-1);
+        // } else {
+        //     router.push({ name: "home" }); // 실제 홈 페이지의 라우터 이름으로 변경 필요
+        // }
+        console.log(router.history);
+    });
+}
+
 </script>
 
 <template>
@@ -187,8 +209,8 @@ const isValidValue = (value) => {
                     </div>
                     <div class="detail_btn_wrap">
                         <div class="">
-                            <a @click="() => router.go(-1)" 
-                                class="detail_btn">목록으로 가기
+                            <a @click="goBackOrHome" class="detail_btn">
+                                목록으로 가기
                             </a>
                         </div>
                     </div>

@@ -154,7 +154,7 @@ export default {
         </component>
         <CommonAlert />
         <CommonConfirm />
-        <CommonSpinner @click.stop/>
+        <CommonSpinner />
         <CommonModal />
     </div>
 </template>

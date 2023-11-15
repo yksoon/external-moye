@@ -232,6 +232,12 @@ const router = createRouter({
             component: () => import("@/components/admin/Signin.vue"),
         },
         {
+            // 관리자 로그인
+            path: "/admin/TestPage",
+            name: "TestPage",
+            component: () => import("@/components/admin/TestPage.vue"),
+        },
+        {
             // 404
             // vue-router 4버전부터는 나머지 경로를 "/:catchAll(.*)" 로 잡아줘야 에러가 안남
             path: "/:catchAll(.*)",
