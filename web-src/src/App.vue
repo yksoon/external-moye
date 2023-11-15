@@ -7,6 +7,8 @@ import { successCode } from "@/common/js/resultCode";
 import { useCodesStore } from "@/stores/codes";
 import { useResultCodeStore } from "@/stores/resultCode";
 import { useIpInfoStore } from "@/stores/ipInfo";
+import { useSpinnerStore } from "@/stores/spinner";
+import { useModalStore } from "@/stores/modal";
 import { storeToRefs } from "pinia";
 import axios from "axios";
 
@@ -36,7 +38,6 @@ export default {
         const codes = useCodesStore();
         const resultCode = useResultCodeStore();
         const useIpInfo = useIpInfoStore();
-
         const { ipInfo } = storeToRefs(useIpInfo);
 
         onMounted(() => {
@@ -144,14 +145,34 @@ export default {
             };
         };
     },
+    data() {
+        const useSpinner = useSpinnerStore();
+        const { isSpinner } = storeToRefs(useSpinner);
+        const useModal = useModalStore();
+        const { isOpen } = storeToRefs(useModal);
+        return {
+            isSpinner: isSpinner, // 로딩 중 여부를 나타내는 데이터
+            isOpen: isOpen, // 모달창 활성화 여부를 나타내는 데이터
+        };
+    },
+    methods: {
+        // 배경 클릭 이벤트 막기
+        preventBackgroundClick(event) {
+            event.stopPropagation(); // 배경 클릭 이벤트 전파 차단
+        },
+    },
 };
 </script>
 
 <template>
     <div class="wrapper">
+        <!-- 배경 클릭을 막는 투명한 배경 -->
+        <div v-if="isSpinner || isOpen" class="overlay" @click="preventBackgroundClick"></div>
+        <!-- 컨텐츠 영역 -->
         <component :is="$route.meta.layout || 'div'">
             <RouterView />
         </component>
+        <!-- 공용 컴포넌트 -->
         <CommonAlert />
         <CommonConfirm />
         <CommonSpinner />
@@ -159,4 +180,18 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style>
+.wrapper {
+    position: relative;
+}
+/* 투명한 배경 스타일 */
+.wrapper .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0); /* 투명도 조절 가능 */
+    z-index: 2000; /* 로딩 스피너보다 낮은 z-index 설정 */
+}
+</style>
