@@ -828,10 +828,6 @@ border-right: 1px solid #ddd;}
      .app .section .graybox_wrap .graybox h5 span {font-size: 14px;position: absolute;right: 0;}
      .app .section .graybox_wrap .graybox img {position: static;max-width: 20%;}
 
-     .v-btn--icon.v-btn--density-default {    width: calc(var(--v-btn-height) + 0px);
+     .v-btn--icon.v-btn--density-default { width: calc(var(--v-btn-height) + 0px);
         height: calc(var(--v-btn-height) + 0px);}
-    }
-
-    @media screen and (max-width:320px) {
-
     }
