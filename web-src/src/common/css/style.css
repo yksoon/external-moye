@@ -211,7 +211,6 @@ div.mo_title > h4{font-size: 21px;font-weight: 700;}
 
 .pagenation {margin:80px 0 0; max-width: 100%;display: flex;justify-content: center;}
 
-
 .placeholder_Title_Big input {border: 1px solid #3266B1; outline: none; border-radius: 5px;margin: 5px 0;}
 a.btn {background: #0047a0; color: #fff; font-weight: 600; padding: 5px 20px; border-radius: 5px; display: inline-block;margin: 10px 3px 0;cursor: pointer;
     transition:all .3s;
@@ -668,28 +667,28 @@ border-right: 1px solid #ddd;}
     .greetings .txt_box .bottom {margin: 20px 0 0; font-size: 14px;line-height: 20px;}
     .greetings .txt_box .bottom .name {margin: 0;}
 
-     /* 모두의 예체능 소개 */
-     .intro {margin: 0;}
-     .intro h3 {font-size: 18px; margin: 0 0 10px 0;}
-     .intro .box {padding: 20px; margin: 0 0 30px; display: block;}
-     .intro .box ul {width: 100%;}
-     .intro .box ul.left { margin: 0 0 10px 0;}
-     .intro .box ul li {margin: 0 0 10px;}
-     .intro .box ul li span {font-size: 16px;padding: 5px 15px; margin: 0 10px 0 0;}
-     .intro .box ul li p {font-size: 14px;line-height: 20px;}
-     .intro .box ul li.line p {padding: 5px 0 0;}
- 
-     /* 연혁 */
-     .history_box {display: block;}
-     .history .year {width: 100%; text-align: left; padding: 0 0 20px 0;font-size: 34px; border-right: 0;}
-     .history .month {width: 100%; padding: 0 0 0 20px; margin: 0 0 40px;}
-     .history .month li {display: block; margin: 0 0 10px;}
-     .history_box:first-child .month li h6 {font-size: 16px;}
-     .history .month li p.tit {font-size: 14px;}
-     .history .history_title {display: block;}
-     .history_box:nth-child(2n) .year { padding: 0 0 20px 0; border-left: 0;}
-     .history_box:nth-child(2n) .month {text-align: left; border-left: 3px solid #111; border-right: 0; padding: 0 0 0 20px;}
-     .history_box:nth-child(2n) .month li h6 {margin: 0;font-size: 16px;}
+    /* 모두의 예체능 소개 */
+    .intro {margin: 0;}
+    .intro h3 {font-size: 18px; margin: 0 0 10px 0;}
+    .intro .box {padding: 20px; margin: 0 0 30px; display: block;}
+    .intro .box ul {width: 100%;}
+    .intro .box ul.left { margin: 0 0 10px 0;}
+    .intro .box ul li {margin: 0 0 10px;}
+    .intro .box ul li span {font-size: 16px;padding: 5px 15px; margin: 0 10px 0 0;}
+    .intro .box ul li p {font-size: 14px;line-height: 20px;}
+    .intro .box ul li.line p {padding: 5px 0 0;}
+
+    /* 연혁 */
+    .history_box {display: block;}
+    .history .year {width: 100%; text-align: left; padding: 0 0 20px 0;font-size: 34px; border-right: 0;}
+    .history .month {width: 100%; padding: 0 0 0 20px; margin: 0 0 40px;}
+    .history .month li {display: block; margin: 0 0 10px;}
+    .history_box:first-child .month li h6 {font-size: 16px;}
+    .history .month li p.tit {font-size: 14px;}
+    .history .history_title {display: block;}
+    .history_box:nth-child(2n) .year { padding: 0 0 20px 0; border-left: 0;}
+    .history_box:nth-child(2n) .month {text-align: left; border-left: 3px solid #111; border-right: 0; padding: 0 0 0 20px;}
+    .history_box:nth-child(2n) .month li h6 {margin: 0;font-size: 16px;}
 
     /* CI */
     .ci h3 {font-size: 20px; margin: 0 0 10px;}
@@ -756,7 +755,7 @@ border-right: 1px solid #ddd;}
     .people_title {font-size: 20px; margin: 0 0 10px;}
     .people_box {gap: 20px;}
     .people {width: calc((100% - 20px ) /2); }
-    .v-pagination__list { flex-wrap: wrap;}
+    .v-pagination__list { flex-wrap: nowrap;}
     .people .info {padding: 10px;}
 
     /* 코치진 상세 */
@@ -814,33 +813,30 @@ border-right: 1px solid #ddd;}
     .partnership .img_wrap p img {width: 100%;}
     .partnership .img_wrap p span {font-size: 16px; line-height: 18px; margin: 5px 0 0;}
 
-     /* 모두의예체능 App */   
-     .app .banner {height: auto;}
-     .app .banner .background {flex-direction: column; padding: 40px 20px 0;}
-     .app .banner .info {margin:0;}
-     .app .banner .info h3 {font-size: 26px; line-height: 36px;}
-     .app .banner .info p {margin: 20px 0;}
-     .app .banner .info a {width: auto;  display: block;}
-     .app .banner .info a.apple {background-size: 35%;margin: 0 0 15px 0;}
-     .app .banner .info a.google {background-size: 35%;}
-     .app .banner .img {display: flex; flex-direction: column;position: relative;}
-     .app .banner .img img:first-child {margin: 0;}
-     .app .banner .img img:last-child {display: none;}
-     .app .section {margin: 0 0 50px;}
-     .app .section h4 {font-size: 20px; margin: 0 0 10px}
-     .app .section h4 span {font-size: 14px;display: block; margin: 5px 0;}
-     .app .section .img_wrap {flex-direction: column;}
-     .app .section .img_wrap p span {font-size: 14px; }
-     .app .section .graybox_wrap {flex-direction: column;gap: 10px;margin: 0 0 20px;}
-     .app .section .graybox_wrap .graybox {width: 100%; padding: 10px 20px;justify-content: space-between;}
-     .app .section .graybox_wrap .graybox h5 {font-size: 16px;position: relative;width: 110px;}
-     .app .section .graybox_wrap .graybox h5 span {font-size: 14px;position: absolute;right: 0;}
-     .app .section .graybox_wrap .graybox img {position: static;max-width: 20%;}
+    /* 모두의예체능 App */   
+    .app .banner {height: auto;}
+    .app .banner .background {flex-direction: column; padding: 40px 20px 0;}
+    .app .banner .info {margin:0;}
+    .app .banner .info h3 {font-size: 26px; line-height: 36px;}
+    .app .banner .info p {margin: 20px 0;}
+    .app .banner .info a {width: auto;  display: block;}
+    .app .banner .info a.apple {background-size: 35%;margin: 0 0 15px 0;}
+    .app .banner .info a.google {background-size: 35%;}
+    .app .banner .img {display: flex; flex-direction: column;position: relative;}
+    .app .banner .img img:first-child {margin: 0;}
+    .app .banner .img img:last-child {display: none;}
+    .app .section {margin: 0 0 50px;}
+    .app .section h4 {font-size: 20px; margin: 0 0 10px}
+    .app .section h4 span {font-size: 14px;display: block; margin: 5px 0;}
+    .app .section .img_wrap {flex-direction: column;}
+    .app .section .img_wrap p span {font-size: 14px; }
+    .app .section .graybox_wrap {flex-direction: column;gap: 10px;margin: 0 0 20px;}
+    .app .section .graybox_wrap .graybox {width: 100%; padding: 10px 20px;justify-content: space-between;}
+    .app .section .graybox_wrap .graybox h5 {font-size: 16px;position: relative;width: 110px;}
+    .app .section .graybox_wrap .graybox h5 span {font-size: 14px;position: absolute;right: 0;}
+    .app .section .graybox_wrap .graybox img {position: static;max-width: 20%;}
 
-     .v-btn--icon.v-btn--density-default {    width: calc(var(--v-btn-height) + 0px);
-        height: calc(var(--v-btn-height) + 0px);}
-    }
-
-    @media screen and (max-width:320px) {
-
-    }
+    .v-btn--icon.v-btn--density-default { width: calc(var(--v-btn-height)) !important;
+    height: calc(var(--v-btn-height)) !important;}
+}
+    

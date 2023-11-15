@@ -128,24 +128,16 @@ const isValidValue = (value) => {
 };
 
 const goBackOrHome = () => {
-    // 이전 페이지로 이동하려고 시도
-    // if (router && router.history && router.history.length > 1) {
-    //     router.back();
-    // } else {
-    //     // 이전 페이지가 없으면 메인 페이지로 이동
-    //     router.push({ name: "home" }); // home은 메인 페이지의 라우터 이름입니다. 실제로 사용하는 라우터 이름으로 변경해야 합니다.
-    // }
-    // console.log(router.back);
-
     // 라우터 객체 초기화 대기
     router.isReady().then(() => {
-        // router.history가 정의되었는지 확인
-        if (router.history && router.history.length > 1) {
+        // 이벤트 핸들러 함수 안에서 history에 접근하여 이전 페이지로 이동하거나 홈으로 이동
+        if (router.currentRoute.dep.size > 1) {
             router.go(-1);
         } else {
-            router.push({ name: "home" }); // 실제 홈 페이지의 라우터 이름으로 변경 필요
+            router.push({ name: "home" }); // 메인페이지로 이동
         }
-        // console.log(router.history);
+
+        // console.log(router.currentRoute.dep.size);
     });
 }
 
@@ -209,7 +201,7 @@ const goBackOrHome = () => {
                     </div>
                     <div class="detail_btn_wrap">
                         <div class="">
-                            <a @click="goBackOrHome" class="detail_btn">
+                            <a @click="() => router.go(-1)" class="detail_btn">
                                 목록으로 가기
                             </a>
                         </div>
