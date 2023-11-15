@@ -5,7 +5,7 @@ import {
     CommonSpinner,
 } from "@/common/js/common.js";
 import { successCode } from "@/common/js/resultCode";
-import { reactive, ref, onMounted } from "vue";
+import { reactive, onMounted } from "vue";
 import { apiPath } from "@/webPath";
 import { useRoute, useRouter } from "vue-router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
@@ -14,6 +14,8 @@ import LeftMenu from '@/components/web/common/LeftMenu.vue';
 
 const route = useRoute();
 const router = useRouter();
+
+const peopleIdx = route.params.people;
 
 const state = reactive({
     people: null,
@@ -30,8 +32,6 @@ const fileBaseUrl = apiPath.api_file;
 // 인물 상세 데이터 가져오기
 const getPeopleDetail = () => {
     CommonSpinner(true);
-
-    const peopleIdx = route.params.people;
 
     // /v1/_people/{people_idx}
     // GET
@@ -64,7 +64,6 @@ const getPeopleDetail = () => {
 
             if (state.people.profile_info.length !== 0) {
                 profileInfoSort(state.people.profile_info);
-                // state.profileInfo = state.people.profile_info;
             }
 
             CommonSpinner(false);
@@ -126,21 +125,6 @@ const isValidValue = (value) => {
     }
     return false;
 };
-
-const goBackOrHome = () => {
-    // 라우터 객체 초기화 대기
-    router.isReady().then(() => {
-        // 이벤트 핸들러 함수 안에서 history에 접근하여 이전 페이지로 이동하거나 홈으로 이동
-        if (router.currentRoute.dep.size > 1) {
-            router.go(-1);
-        } else {
-            router.push({ name: "home" }); // 메인페이지로 이동
-        }
-
-        // console.log(router.currentRoute.dep.size);
-    });
-}
-
 </script>
 
 <template>
@@ -153,7 +137,6 @@ const goBackOrHome = () => {
                     <h2>코치진</h2>
                 </div>
                 <div class="p_detail_wrap" v-if="state.people">
-                    <!-- <h3 class="people_title">{{ state.people.category_parent_name_ko }}</h3> -->
                     <div class="p_detail">
                         <div class="detail_info">
                             <span class="deco">MOYE</span>

@@ -38,6 +38,7 @@ window.addEventListener('resize', adjustTotalVisible); // 창 크기 변경 감�
 
 onMounted(() => {
     getCategoryList(1, 0, "");
+    getPeopleList(1, maxRowNum.people, "");
     adjustTotalVisible(); // 페이지네이션 total-visible 초기 계산
 });
 
@@ -79,10 +80,7 @@ const getCategoryList = (pageNum, pageSize, searchKeyword) => {
 
             state.categoryList = result_info;
 
-            state.categoryIdx = route.params.category ? route.params.category : null;
-
-            getPeopleList(1, maxRowNum.people, "");
-
+            state.categoryIdx = route.params.category;
         } else {
             // 에러
             CommonConsole("log", res);
@@ -104,7 +102,7 @@ const getPeopleList = (pageNum, pageSize, searchKeyword) => {
         page_num: pageNum,
         page_size: pageSize,
         search_keyword: searchKeyword,
-        category_idx: state.categoryIdx,
+        category_idx: route.params.category,
         show_yn: "Y"
     };
 
@@ -182,10 +180,6 @@ const handleChange = (page_num) => {
                         <div class="people" v-for="people in state.peopleList">
                             <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                 <div class="people_thumb">
-                                    <!-- <div v-if="people.file_path_enc" class="bg-thumb"
-                                        :style="`background-image:url('${fileBaseUrl}${people.file_path_enc}'); background-size:cover;`">
-                                        <span></span>
-                                    </div> -->
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <div v-if="people.file_path_enc" class="bg-thumb">
                                         <img :src="fileBaseUrl + people.file_path_enc" :alt="`${people.name_ko} 프로필이미지`"
