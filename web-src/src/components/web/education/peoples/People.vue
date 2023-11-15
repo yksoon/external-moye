@@ -201,7 +201,7 @@ const goBackOrHome = () => {
                     </div>
                     <div class="detail_btn_wrap">
                         <div class="">
-                            <a @click="goBackOrHome" class="detail_btn">
+                            <a @click="() => router.go(-1)" class="detail_btn">
                                 목록으로 가기
                             </a>
                         </div>

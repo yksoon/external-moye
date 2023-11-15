@@ -1,137 +1,15 @@
 <script setup>
-import {
-    CommonConsole,
-    CommonRest,
-    CommonNotify,
-    CommonSpinner,
-} from "@/common/js/common.js";
-import { successCode } from "@/common/js/resultCode";
-import { reactive, ref, onMounted } from "vue";
 import { apiPath, routerPath } from "@/webPath";
-import { useRoute } from "vue-router";
+import { useCompanyFileStore } from "@/stores/companyFile";
+import { storeToRefs } from "pinia";
 import MobileNav from "@/components/web/common/MobileNav.vue";
 
 // ------------------- import End --------------------
 
-const route = useRoute();
-
-const searchKeyword = ref(null);
-const state = reactive({
-    lastBoard: [],
-    board: [],
-    lastCategory: [],
-    filePath: null,
-});
-
-onMounted(() => {
-    getLastBoard(1, 1, "");
-});
+const useCompanyFile = useCompanyFileStore();
+const { companyFile } = storeToRefs(useCompanyFile);
 
 const fileBaseUrl = apiPath.api_file;
-
-// 회사소개서 다운로드 링크 가져오기
-const getLastBoard = (pageNum, pageSize, searchKeyword) => {
-    // CommonSpinner(true);
-
-    // /v1/boards
-    // POST
-    // board_type
-    // 000 : 공지사항
-    // 100 : 상담문의
-    // 200 : 포토게시판
-    // 300 : 영상게시판
-    // 400 : 회사소개 [v]
-    // 900 : 기타
-    const url = apiPath.api_admin_boards;
-    const data = {
-        page_num: pageNum,
-        page_size: pageSize,
-        search_keyword: searchKeyword,
-        board_type: "400",
-    };
-
-    // 파라미터
-    const restParams = {
-        method: "post",
-        url: url,
-        data: data,
-        callback: (res) => responseLogic(res),
-        admin: "Y",
-    };
-    CommonRest(restParams);
-
-    // 완료 로직
-    const responseLogic = (res) => {
-        let result_code = res.headers.result_code;
-
-        // 성공
-        if (
-            result_code === successCode.success ||
-            result_code === successCode.noData
-        ) {
-            let result_info = res.data.result_info;
-
-            state.lastBoard = result_info;
-
-            // 최신 회사소개서 board_idx로 상세 데이터 요청
-            if (state.lastBoard) {
-                getBoard(state.lastBoard[0].board_idx);
-            } else {
-                // CommonSpinner(false);
-            }
-        } else {
-            // 에러
-            CommonConsole("log", res);
-
-            CommonSpinner(false);
-        }
-    };
-};
-
-const getBoard = (board_idx) => {
-    const boardIdx = String(board_idx);
-
-    // v1/board/{board_idx}
-    // GET
-    const url = apiPath.api_admin_get_board + `/${boardIdx}`;
-    const data = {};
-
-    // 파라미터
-    const restParams = {
-        method: "get",
-        url: url,
-        data: data,
-        callback: (res) => responseLogic(res),
-        admin: "Y",
-    };
-    CommonRest(restParams);
-
-    const responseLogic = (res) => {
-        let result_code = res.headers.result_code;
-        let result_info = res.data.result_info;
-
-        // 성공
-        if (result_code === successCode.success) {
-            state.board = result_info;
-            state.filePath = state.board.file_info.length
-                ? state.board.file_info[0].file_path_enc
-                : "";
-
-            // CommonSpinner(false);
-        }
-        // 에러
-        else {
-            CommonConsole("log", res);
-
-            CommonSpinner(false);
-
-            CommonNotify({
-                type: "alert",
-                message: res.headers.result_message_ko,
-            });
-        }
-    };
-};
 
 const readyAlert = () => {
     event.returnValue = false;
@@ -190,8 +68,8 @@ const readyAlert = () => {
                     <div class="submenu">
                         <a :href="routerPath.web_notices_url">공지사항</a>
                         <a :href="routerPath.web_consulting_url">상담문의</a>
-                        <a v-if="state.filePath" :href="`${fileBaseUrl}${state.filePath}`">회사소개서 다운로드</a>
-                        <a v-if="!state.filePath" @click="readyAlert">회사소개서 다운로드</a>
+                        <a v-if="companyFile" :href="`${fileBaseUrl}${companyFile}`">회사소개서 다운로드</a>
+                        <a v-if="!companyFile" @click="readyAlert">회사소개서 다운로드</a>
                         <a :href="routerPath.web_photoGallery_url">포토 갤러리</a>
                         <a :href="routerPath.web_movieGallery_url">영상 갤러리</a>
                     </div>
@@ -199,6 +77,6 @@ const readyAlert = () => {
             </ul>
         </div>
         <!-- Mobile버전 Navigation -->
-        <MobileNav :companyBoard="fileBaseUrl + state.filePath" />
+        <MobileNav :companyBoard="fileBaseUrl + companyFile" />
     </div>
 </template>
