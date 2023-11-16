@@ -1,6 +1,5 @@
 <script setup>
 import { apiPath, routerPath } from "@/webPath";
-import { useCompanyFileStore } from "@/stores/companyFile";
 
 // ------------------- import End --------------------
 
@@ -8,8 +7,6 @@ const props = defineProps({
     page: String,
     subvisual: String
 });
-
-const companyFile = useCompanyFileStore().getCompanyFile;
 
 const fileBaseUrl = apiPath.api_file;
 
@@ -20,7 +17,9 @@ const readyAlert = () => {
 };
 
 const companyFileDownload = () => {
-    if (companyFile.length) {
+    const companyFile = JSON.parse(sessionStorage.getItem("companyFile")).companyFile;
+
+    if (companyFile) {
         window.location.href = fileBaseUrl + companyFile;
         return;
     } else {

@@ -1,13 +1,10 @@
 <script setup>
 import { apiPath, routerPath } from "@/webPath";
-import { useCompanyFileStore } from "@/stores/companyFile";
 import MobileNav from "@/components/web/common/MobileNav.vue";
 
 // ------------------- import End --------------------
 
 const fileBaseUrl = apiPath.api_file;
-
-const companyFile = useCompanyFileStore().getCompanyFile;
 
 const readyAlert = () => {
     event.returnValue = false;
@@ -16,7 +13,9 @@ const readyAlert = () => {
 };
 
 const companyFileDownload = () => {
-    if (companyFile.length) {
+    const companyFile = JSON.parse(sessionStorage.getItem("companyFile")).companyFile;
+
+    if (companyFile) {
         window.location.href = fileBaseUrl + companyFile;
         return;
     } else {
