@@ -54,8 +54,15 @@ body {min-width:1600px;max-width: 1920px;margin:0 auto;}
 #mainvisual .main04 {background:url('/img/web/main/mainvisual04.png') center 0 no-repeat; background-size: cover;}
 #mainvisual .main05 {background:url('/img/web/main/mainvisual05.png') center 0 no-repeat; background-size: cover;}
 #mainvisual .main_txt {background: rgb(0,0,0); background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,1) 100%);
-    position:absolute; bottom: 0;transform: translate(-50%, 0);left: 50%; width: 100%;padding: 130px 20px 50px;}
-#mainvisual .main_txt .main_txt_wrap {max-width:1600px; margin:0 auto;}
+    position:absolute; bottom: 0;transform: translate(-50%, 0);left: 50%; width: 100%;padding: 130px 20px 50px;z-index: 1000;}
+#mainvisual .main_txt .main_txt_wrap {max-width:1600px; margin:0 auto; position: relative;}
+#mainvisual .main_txt .main_txt_wrap .scrolldown {display: inline-block;animation: rotate_image 6s linear infinite;transform-origin: 50% 50%; position: absolute;right: 0;
+bottom: 0}
+@keyframes rotate_image{
+    100% {
+        transform: rotate(360deg);
+    }
+}
 #mainvisual .main_txt h2 {font-size: 38px; font-weight: 700;font-family: 'NanumSquareNeo-Variable';line-height: 38px;color: #fff;margin: 0 0 15px; word-break: keep-all;}
 #mainvisual .main_txt p {font-size: 22px;font-weight: 400;color: #D9D9D9;}
 
@@ -592,6 +599,7 @@ border-right: 1px solid #ddd;}
     #mainvisual .main_txt .main_txt_wrap {padding: 0 20px;}
     #mainvisual .main_txt h2 {font-size: 24px; line-height: 30px;margin: 0 0 10px;}
     #mainvisual .main_txt p {font-size: 18px;}
+    #mainvisual .main_txt .main_txt_wrap .scrolldown  {display: none;}
 
     h3.title {font-size: 24px; line-height: 30px;}
     a.more_btn {padding: 5px 20px;}

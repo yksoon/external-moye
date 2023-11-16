@@ -285,19 +285,23 @@ const readyAlert = () => {
             <swiper class="mySwiper swiper-slide" :modules="modules" :crossFade="true" :spaceBetween="50" effect="fade"
                 :autoplay="{ delay: 3000 }" loop>
                 <swiper-slide v-for="num in 5" :class="`main0${num}`">
-                    <div class="main_txt">
-                        <div class="main_txt_wrap">
-                            <h2>전국민이 열광하는 레전드를 만나다</h2>
-                            <p>
-                                “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
-                                쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
-                                모두의예체능의 Vision입니다."
-                            </p>
-                        </div>
-                    </div>
                 </swiper-slide>
             </swiper>
+            <div class="main_txt">
+                <div class="main_txt_wrap">
+                    <h2>전국민이 열광하는 레전드를 만나다</h2>
+                    <p>
+                        “좋아서 하는 공부는 즐겁다”를 모토로 누구나 관심있지만,
+                        쉽게 접근하기 어려웠던 예체능을 생활화 하는 것이
+                        모두의예체능의 Vision입니다."
+                    </p>
+                    <span class="scrolldown">
+                        <img src="/img/web/main/scrolldown.png" alt="">
+                    </span>
+                </div>
+            </div>
         </div>
+
         <!-- container //S-->
         <div id="container">
             <div class="section01">
@@ -314,7 +318,7 @@ const readyAlert = () => {
                                 <a :href="`${routerPath.web_peoples_url}/people/${people.people_idx}`">
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <img v-if="people.file_path_enc !== null" :src="`${fileBaseUrl}${people.file_path_enc}`"
-                                        :alt="`${people.name_ko} 프로필이미지`" loading="lazy"/>
+                                        :alt="`${people.name_ko} 프로필이미지`" loading="lazy" />
                                     <!-- 프로필 이미지 없는 경우 -->
                                     <img v-else src="/img/web/sub/default_full.jpg" alt="인물 기본 이미지" />
                                     <p>
