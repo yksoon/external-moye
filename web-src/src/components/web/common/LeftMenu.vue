@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from "vue";
 import { apiPath, routerPath } from "@/webPath";
+import { useCompanyFileStore } from "@/stores/companyFile";
 
 // ------------------- import End --------------------
 
@@ -9,7 +9,7 @@ const props = defineProps({
     subvisual: String
 });
 
-const companyFile = ref(sessionStorage.getItem("companyFile"));
+const companyFile = useCompanyFileStore().getCompanyFile;
 
 const fileBaseUrl = apiPath.api_file;
 
@@ -20,8 +20,9 @@ const readyAlert = () => {
 };
 
 const companyFileDownload = () => {
-    if (companyFile) {
+    if (companyFile.length) {
         window.location.href = fileBaseUrl + companyFile;
+        return;
     } else {
         readyAlert();
     }

@@ -1,6 +1,6 @@
 <script>
 import { RouterView } from "vue-router";
-import { reactive, onMounted } from "vue";
+import { onMounted } from "vue";
 import { apiPath } from "@/webPath";
 import { CommonRest, CommonConsole } from "@/common/js/common";
 import { successCode } from "@/common/js/resultCode";
@@ -36,10 +36,6 @@ export default {
         const useCompanyFile = useCompanyFileStore();
         const useIpInfo = useIpInfoStore();
         const { ipInfo } = storeToRefs(useIpInfo);
-        const state = reactive({
-            lastBoard: [], // 회사소개서 최신글
-            board: [], // 회사소개서 최신글 상세
-        });
 
         onMounted(() => {
             if (ipInfo.value) {
@@ -185,11 +181,9 @@ export default {
                 ) {
                     let result_info = res.data.result_info;
 
-                    state.lastBoard = result_info;
-
                     // 최신 회사소개서 board_idx로 상세 데이터 요청
-                    if (state.lastBoard) {
-                        getCompanyBoardDetail(state.lastBoard[0].board_idx);
+                    if (result_info) {
+                        getCompanyBoardDetail(result_info[0].board_idx);
                     } else {
                         // CommonSpinner(false);
                     }
@@ -226,10 +220,8 @@ export default {
 
                 // 성공
                 if (result_code === successCode.success) {
-                    state.board = result_info;
-
-                    useCompanyFile.setCompanyFile(state.board.file_info[0].file_path_enc);
-                    // sessionStorage.setItem("companyFile", state.board.file_info[0].file_path_enc);
+                    useCompanyFile.setCompanyFile(result_info.file_info[0].file_path_enc);
+                    // sessionStorage.setItem("companyFile", result_info.file_info[0].file_path_enc);
                 }
                 // 에러
                 else {
