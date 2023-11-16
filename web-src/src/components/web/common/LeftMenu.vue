@@ -1,7 +1,5 @@
 <script setup>
 import { apiPath, routerPath } from "@/webPath";
-import { useCompanyFileStore } from "@/stores/companyFile";
-import { storeToRefs } from "pinia";
 
 // ------------------- import End --------------------
 
@@ -10,8 +8,7 @@ const props = defineProps({
     subvisual: String
 });
 
-const useCompanyFile = useCompanyFileStore();
-const { companyFile } = storeToRefs(useCompanyFile);
+const companyFile = sessionStorage.getItem("companyFile");
 
 const fileBaseUrl = apiPath.api_file;
 
@@ -20,6 +17,15 @@ const readyAlert = () => {
     alert('준비중입니다.');
     return false;
 };
+
+const companyFileDownload = () => {
+    if (companyFile) {
+        window.location.href = fileBaseUrl + companyFile;
+    } else {
+        readyAlert();
+    }
+    return;
+}
 
 </script>
 
@@ -141,8 +147,7 @@ const readyAlert = () => {
                 <ul>
                     <li><a :href="routerPath.web_notices_url" :class="page === 'notice' ? 'on' : ''">공지사항</a></li>
                     <li><a :href="routerPath.web_consulting_url" :class="page === 'consulting' ? 'on' : ''">상담문의</a></li>
-                    <li v-if="companyFile"><a :href="`${fileBaseUrl}${companyFile}`">회사소개서 다운로드</a></li>
-                    <li v-if="!companyFile"><a @click="readyAlert">회사소개서 다운로드</a></li>
+                    <li><a @click="companyFileDownload">회사소개서 다운로드</a></li>
                     <li><a :href="routerPath.web_photoGallery_url" :class="page === 'photo' ? 'on' : ''">포토 갤러리</a></li>
                     <li><a :href="routerPath.web_movieGallery_url" :class="page === 'movie' ? 'on' : ''">영상 갤러리</a></li>
                 </ul>

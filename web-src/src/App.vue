@@ -45,7 +45,7 @@ export default {
             if (ipInfo.value) {
                 setInterval(getCodes, 3600000);
                 setInterval(getResultCode, 3600000);
-                setInterval(() => getCompanyBoard(1, 1, ""), 3600000);
+                setInterval(getCompanyBoard, 3600000);
             } else {
                 getIpInfo();
             }
@@ -73,7 +73,7 @@ export default {
                         .then(() => {
                             getCodes();
                             getResultCode();
-                            getCompanyBoard(1, 1, "")
+                            getCompanyBoard();
                         });
                 })
                 .catch((error) => {
@@ -144,7 +144,7 @@ export default {
         };
 
         // 회사소개서 다운로드 링크 가져오기 (1. 회사소개서 최신글)
-        const getCompanyBoard = (pageNum, pageSize, searchKeyword) => {
+        const getCompanyBoard = () => {
             // CommonSpinner(true);
 
             // /v1/_boards
@@ -158,9 +158,9 @@ export default {
             // 900 : 기타
             const url = apiPath.api_admin_boards;
             const data = {
-                page_num: pageNum,
-                page_size: pageSize,
-                search_keyword: searchKeyword,
+                page_num: 1,
+                page_size: 1,
+                search_keyword: "",
                 board_type: "400",
             };
 
@@ -229,6 +229,7 @@ export default {
                     state.board = result_info;
 
                     useCompanyFile.setCompanyFile(state.board.file_info[0].file_path_enc);
+                    sessionStorage.setItem("companyFile", state.board.file_info[0].file_path_enc);
                 }
                 // 에러
                 else {

@@ -6,7 +6,7 @@ import {
 } from "@/common/js/common";
 import { successCode } from "@/common/js/resultCode";
 import { maxRowNum } from "@/common/js/pagenationInfoStatic";
-import { reactive, ref, onMounted } from "vue";
+import { reactive, ref, onMounted, onBeforeUnmount } from "vue";
 import { apiPath, routerPath } from '@/webPath';
 import { useRoute } from "vue-router";
 import LeftMenu from '@/components/web/common/LeftMenu.vue';
@@ -183,7 +183,7 @@ const handleChange = (page_num) => {
                                     <!-- 프로필 이미지 있는 경우 -->
                                     <div v-if="people.file_path_enc" class="bg-thumb">
                                         <img :src="fileBaseUrl + people.file_path_enc" :alt="`${people.name_ko} 프로필이미지`"
-                                            loading="lazy" />
+                                             />
                                     </div>
                                     <!-- 프로필 이미지 없을 경우 -->
                                     <div v-if="!people.file_path_enc" class="bg-thumb-noimg"></div>

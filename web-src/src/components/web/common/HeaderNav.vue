@@ -1,21 +1,27 @@
 <script setup>
 import { apiPath, routerPath } from "@/webPath";
-import { useCompanyFileStore } from "@/stores/companyFile";
-import { storeToRefs } from "pinia";
 import MobileNav from "@/components/web/common/MobileNav.vue";
 
 // ------------------- import End --------------------
 
-const useCompanyFile = useCompanyFileStore();
-const { companyFile } = storeToRefs(useCompanyFile);
-
 const fileBaseUrl = apiPath.api_file;
+
+const companyFile = sessionStorage.getItem("companyFile");
 
 const readyAlert = () => {
     event.returnValue = false;
     alert('준비중입니다.');
     return false;
 };
+
+const companyFileDownload = () => {
+    if (companyFile) {
+        window.location.href = fileBaseUrl + companyFile;
+    } else {
+        readyAlert();
+    }
+    return;
+}
 </script>
 
 <template>
@@ -68,8 +74,7 @@ const readyAlert = () => {
                     <div class="submenu">
                         <a :href="routerPath.web_notices_url">공지사항</a>
                         <a :href="routerPath.web_consulting_url">상담문의</a>
-                        <a v-if="companyFile" :href="`${fileBaseUrl}${companyFile}`">회사소개서 다운로드</a>
-                        <a v-if="!companyFile" @click="readyAlert">회사소개서 다운로드</a>
+                        <a @click="companyFileDownload">회사소개서 다운로드</a>
                         <a :href="routerPath.web_photoGallery_url">포토 갤러리</a>
                         <a :href="routerPath.web_movieGallery_url">영상 갤러리</a>
                     </div>
@@ -77,6 +82,6 @@ const readyAlert = () => {
             </ul>
         </div>
         <!-- Mobile버전 Navigation -->
-        <MobileNav :companyBoard="fileBaseUrl + companyFile" />
+        <MobileNav :companyFileHandler="companyFileDownload" />
     </div>
 </template>

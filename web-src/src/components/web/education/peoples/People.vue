@@ -66,7 +66,6 @@ const getPeopleDetail = () => {
                 profileInfoSort(state.people.profile_info);
             }
 
-            CommonSpinner(false);
         } else {
             // 에러
             CommonConsole("log", res);
@@ -117,6 +116,8 @@ const profileInfoSort = (profile_info) => {
             }
         }
     }
+
+    CommonSpinner(false);
 };
 
 const isValidValue = (value) => {
