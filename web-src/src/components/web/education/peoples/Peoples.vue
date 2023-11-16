@@ -38,7 +38,6 @@ window.addEventListener('resize', adjustTotalVisible); // 창 크기 변경 감�
 
 onMounted(() => {
     getCategoryList(1, 0, "");
-    getPeopleList(1, maxRowNum.people, "");
     adjustTotalVisible(); // 페이지네이션 total-visible 초기 계산
 });
 
@@ -77,10 +76,10 @@ const getCategoryList = (pageNum, pageSize, searchKeyword) => {
             result_code === successCode.noData
         ) {
             let result_info = res.data.result_info;
-
             state.categoryList = result_info;
-
             state.categoryIdx = route.params.category;
+
+            getPeopleList(1, maxRowNum.people, "");
         } else {
             // 에러
             CommonConsole("log", res);
