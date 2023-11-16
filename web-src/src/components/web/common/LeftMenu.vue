@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import { apiPath, routerPath } from "@/webPath";
 
 // ------------------- import End --------------------
@@ -8,7 +9,7 @@ const props = defineProps({
     subvisual: String
 });
 
-const companyFile = sessionStorage.getItem("companyFile");
+const companyFile = ref(sessionStorage.getItem("companyFile"));
 
 const fileBaseUrl = apiPath.api_file;
 

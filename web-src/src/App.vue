@@ -229,7 +229,7 @@ export default {
                     state.board = result_info;
 
                     useCompanyFile.setCompanyFile(state.board.file_info[0].file_path_enc);
-                    sessionStorage.setItem("companyFile", state.board.file_info[0].file_path_enc);
+                    // sessionStorage.setItem("companyFile", state.board.file_info[0].file_path_enc);
                 }
                 // 에러
                 else {

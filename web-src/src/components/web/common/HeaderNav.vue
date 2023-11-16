@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import { apiPath, routerPath } from "@/webPath";
 import MobileNav from "@/components/web/common/MobileNav.vue";
 
@@ -6,7 +7,7 @@ import MobileNav from "@/components/web/common/MobileNav.vue";
 
 const fileBaseUrl = apiPath.api_file;
 
-const companyFile = sessionStorage.getItem("companyFile");
+const companyFile = ref(sessionStorage.getItem("companyFile"));
 
 const readyAlert = () => {
     event.returnValue = false;
@@ -15,8 +16,9 @@ const readyAlert = () => {
 };
 
 const companyFileDownload = () => {
-    if (companyFile) {
-        window.location.href = fileBaseUrl + companyFile;
+    if (companyFile.value) {
+        window.location.href = fileBaseUrl + companyFile.value;
+        return;
     } else {
         readyAlert();
     }

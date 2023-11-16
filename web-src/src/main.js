@@ -14,6 +14,7 @@ import { createPinia } from "pinia";
 
 import App from "./App.vue";
 import router from "./router";
+import VueLazyLoad from 'vue3-lazyload'
 
 // Vuetify
 import "vuetify/styles";
@@ -49,5 +50,6 @@ const app = createApp(App);
 app.use(pinia);
 app.use(vuetify);
 app.use(router);
+app.use(VueLazyLoad);
 
 app.use(AosVue).mount('#app')
