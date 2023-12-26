@@ -425,6 +425,15 @@ const modBoard = (board_idx) => {
                         </tr>
                     </tbody>
                 </table>
+                <div className="pagenation" v-if="state.boardList.length !== 0">
+                    <v-pagination
+                        :length="state.pageInfo.pages"
+                        :total-visible="5"
+                        rounded="2"
+                        v-model="state.pageInfo.page_num"
+                        @update:model-value="handleChange"
+                    ></v-pagination>
+                </div>
             </div>
         </div>
     </div>

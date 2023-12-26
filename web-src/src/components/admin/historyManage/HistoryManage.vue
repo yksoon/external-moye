@@ -448,7 +448,8 @@ const table = useVueTable({
             </div>
             <div className="pagenation" v-if="state.historyList.length !== 0">
                 <v-pagination :length="state.pageInfo.pages" :total-visible="5" rounded="2"
-                    v-model="state.pageInfo.page_num" @update:model-value="handleChange"></v-pagination>
+                    v-model="state.pageInfo.page_num" @update:model-value="handleChange">
+                </v-pagination>
             </div>
         </div>
     </div>
