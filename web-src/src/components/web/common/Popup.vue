@@ -56,7 +56,6 @@ const getPopupDetail = () => {
             result_code === successCode.noData
         ) {
             let result_info = res.data.result_info;
-            // let page_info = res.data.page_info;
 
             state.popup = result_info;
 

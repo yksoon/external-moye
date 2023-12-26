@@ -1,7 +1,6 @@
 <script>
 import { storeToRefs } from "pinia";
 import { useAlertStore } from "@/stores/noti";
-import { onMounted, watch } from "vue";
 
 export default {
     name: "CommonAlert",

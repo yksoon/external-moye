@@ -56,7 +56,6 @@ const getBoardDetail = () => {
             result_code === successCode.noData
         ) {
             let result_info = res.data.result_info;
-            // let page_info = res.data.page_info;
 
             state.board = result_info;
 

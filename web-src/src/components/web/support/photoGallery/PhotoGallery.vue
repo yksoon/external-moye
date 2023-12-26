@@ -81,6 +81,7 @@ const getBoardList = (pageNum, pageSize, searchKeyword) => {
             let page_info = res.data.page_info;
 
             state.boardList = result_info;
+            state.pageInfo = page_info;
 
             CommonSpinner(false);
         } else {
